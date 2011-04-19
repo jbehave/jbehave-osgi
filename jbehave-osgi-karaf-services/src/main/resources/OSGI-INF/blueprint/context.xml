@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<!-- <bean id="embedderClass" class="org.jbehave.core.embedder.Embedder" 
+		/> -->
+
+	<bean id="runnerService"
+		class="org.jbehave.osgi.core.services.impl.RunnerServicesBasicImpl"
+		init-method="startUp">
+		<!-- <property name="embedder" ref="embedderClass" /> -->
+	</bean>
+
+	<service ref="runnerService" interface="org.jbehave.osgi.core.services.RunnerService">
+	</service>
+</blueprint>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<reference id="runnerService" interface="org.jbehave.osgi.core.services.RunnerService"/>
+
+	<command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+		<command name="jbehave/runnerStatus">
+			<action class="org.jbehave.osgi.commands.RunnerStatusCommand">
+				<property name="runnerService" ref="runnerService" />
+			</action>
+		</command>
+		<command name="jbehave/executeRunner">
+			<action class="org.jbehave.osgi.commands.RunnerExecCommand">
+				<property name="runnerService" ref="runnerService" />
+			</action>
+		</command>
+	</command-bundle>
+
+</blueprint>

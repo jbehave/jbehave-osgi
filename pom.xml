@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jbehave.osgi</groupId>
+	<artifactId>jbehave-osgi</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JBehave OSGi</name>
+	<description>JBehave OSGi provides a OSGi integration layer for Behaviour-Driven Development.
+	</description>
+
+	<modules>
+		<module>jbehave-osgi-karaf-services</module>
+		<module>jbehave-osgi-karaf-commands</module>
+		<module>jbehave-osgi-karaf-features</module>
+	</modules>
+
+	<prerequisites>
+		<maven>3.0.0</maven>
+	</prerequisites>
+
+	<properties>
+		<jbehave.core.version>3.3</jbehave.core.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.8.5</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>${jbehave.core.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.8</version>
+					<configuration>
+						<junitArtifactName>junit:junit</junitArtifactName>
+						<forkMode>once</forkMode>
+						<printSummary>true</printSummary>
+						<useFile>true</useFile>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.7</version>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+							<configuration>
+								<links>
+									<link>http://java.sun.com/j2se/1.6/docs/api</link>
+								</links>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<preparationGoals>clean install</preparationGoals>
+						<goals>deploy</goals>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0-beta-3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<formats>
+							<format>html</format>
+						</formats>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.3.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.xsite</groupId>
+					<artifactId>xsite-maven-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	<profiles>
+	</profiles>
+
+
+	<developers />
+	<contributors />
+
+	<scm>
+		<connection>scm:git:git://git.codehaus.org/jbehave-desktop.git</connection>
+		<developerConnection>scm:git:ssh://git@git.codehaus.org/jbehave-desktop.git</developerConnection>
+		<url>http://git.codehaus.org/gitweb.cgi?p=jbehave-desktop.git</url>
+	</scm>
+
+</project>

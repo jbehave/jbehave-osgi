@@ -1,0 +1,24 @@
+
+To install it do the following:
+
+1) Start Karaf
+./karaf clean
+
+2) Install the Jbehave OSGi Services
+
+features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features/1.0-SNAPSHOT/xml/features
+features:install jbehave-osgi
+
+
+3) After install it you can test with the command:
+
+jbehave:runnerStatus
+
+<-- not working yet -->
+4) Install the bundles with the Embedder and Steps classes
+
+osgi:install xxx-snapshot
+
+5) Execute the Jbehave Osgi Story Runner
+
+jbehave:runEmbedder 
