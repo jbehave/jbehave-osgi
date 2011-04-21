@@ -3,6 +3,8 @@ package org.jbehave.osgi.services.impl;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.osgi.services.EmbedderService;
 
@@ -51,4 +53,8 @@ public class EmbedderServiceImpl implements EmbedderService {
 		return embedder;
 	}
 
+	@Override
+	public String toString() {
+	    return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+	}
 }

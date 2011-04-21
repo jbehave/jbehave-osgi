@@ -13,13 +13,9 @@ features:install jbehave-osgi
         
 3) After installing it you can test with the command:
 
+list
 jbehave:status
 
-4) Install the bundles with the Embedder <-- not working yet -->
+4) Run the embeddables via the Embedder
 
-osgi:install mvn:org.jbehave.osgi/jbehave-osgi-services/1.0-SNAPSHOT/jar
-osgi:install mvn:org.jbehave.osgi/jbehave-osgi-commands/1.0-SNAPSHOT/jar
-
-5) Run the embeddables via the Embedder
-
-jbehave:runAsEmbeddables
+jbehave:runAsEmbeddables <-- How do we specify the embeddable class names?
