@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
-	<reference id="embedderService" interface="org.jbehave.osgi.core.services.EmbedderService"/>
+	<reference id="embedderService" interface="org.jbehave.osgi.services.EmbedderService"/>
 
 	<command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
 		<command name="jbehave/status">
