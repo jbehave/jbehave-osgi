@@ -10,9 +10,9 @@
   <description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
 
   <modules>
-    <module>jbehave-osgi-karaf-services</module>
-    <module>jbehave-osgi-karaf-commands</module>
-    <module>jbehave-osgi-karaf-features</module>
+    <module>jbehave-osgi-services</module>
+    <module>jbehave-osgi-commands</module>
+    <module>jbehave-osgi-features</module>
   </modules>
 
   <prerequisites>

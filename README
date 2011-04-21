@@ -6,17 +6,23 @@ To install it do the following:
 
 2) Install the OSGi Services as Karaf Features
 
-features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features/1.0-SNAPSHOT/xml/features
-features:install jbehave-osgi
+features:addurl mvn:org.jbehave.osgi/jbehave-osgi-features/1.0-SNAPSHOT/xml/karaf
+features:install jbehave-osgi  
 
+<-- Fails with error -->
+karaf@root> Exception in thread "Thread-18" java.lang.IllegalArgumentException: Cannot write resource: org/xmlpull/mxp1/MXParser.class :43114: exception: java.io.IOException: Pipe closed
+        at aQute.lib.osgi.Jar.writeResource(Jar.java:302)
+        at aQute.lib.osgi.Jar.write(Jar.java:211)
+        at org.ops4j.pax.swissbox.bnd.BndUtils$1.run(BndUtils.java:174)
+        
 3) After installing it you can test with the command:
 
 jbehave:status
 
 4) Install the bundles with the Embedder <-- not working yet -->
 
-osgi:install mvn:org.jbehave.osgi/jbehave-osgi-karaf-services/1.0-SNAPSHOT/jar
-osgi:install mvn:org.jbehave.osgi/jbehave-osgi-karaf-commands/1.0-SNAPSHOT/jar
+osgi:install mvn:org.jbehave.osgi/jbehave-osgi-services/1.0-SNAPSHOT/jar
+osgi:install mvn:org.jbehave.osgi/jbehave-osgi-commands/1.0-SNAPSHOT/jar
 
 5) Run the embeddables via the Embedder
 

@@ -9,9 +9,9 @@
     <artifactId>jbehave-osgi</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>jbehave-osgi-karaf-services</artifactId>
-  <description>Provides OSGi services that interacts with JBehave.</description>
-  <name>JBehave OSGi :: Services Bundle</name>
+  <artifactId>jbehave-osgi-services</artifactId>
+  <name>JBehave OSGi Services Bundle</name>
+  <description>Provides OSGi Services to interface to JBehave.</description>
 
   <packaging>bundle</packaging>
 
