@@ -1,8 +1,8 @@
 
 To install it do the following:
 
-1) Start Karaf shell
-<Karaf bin dir>/karaf 
+1) Start Karaf shell (in clean mode)
+<Karaf bin dir>/karaf clean
 
 Ensure the karaf installation dir has +wr priviledges enabled for all enclosed items.
 
