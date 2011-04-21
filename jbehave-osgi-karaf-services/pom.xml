@@ -1,59 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<parent>
-		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>jbehave-osgi</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jbehave.osgi</groupId>
+    <artifactId>jbehave-osgi</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>jbehave-osgi-karaf-services</artifactId>
+  <description>Provides OSGi services that interacts with JBehave.</description>
+  <name>JBehave OSGi :: Services Bundle</name>
 
+  <packaging>bundle</packaging>
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jbehave.osgi</groupId>
-	<artifactId>jbehave-osgi-karaf-services</artifactId>
-	<description>Provides OSGi services that interacts with Jbehave.</description>
-	<name>Jbehave OSGi :: Services Bundle</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <version>${jbehave.core.version}</version>
+    </dependency>
+  </dependencies>
 
-	<properties>
-		<wrapped.version>3.3</wrapped.version>
-	</properties>
-
-	<packaging>bundle</packaging>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>${wrapped.version}</version>
-			<!-- <optional>true</optional> -->
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.3.4</version>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-
-						<Export-Package>org.jbehave.osgi.core.services</Export-Package>
-						<Private-Package>org.jbehave.osgi.core.services.impl</Private-Package>
-						<!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
-<!-- 						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency> -->
-<!-- 						<Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency> -->
-<!-- 						<_exportcontents>*</_exportcontents> -->
-<!-- 						<Embed-Transitive>true</Embed-Transitive> -->
-						<Export-Service>org.jbehave.osgi.core.services.RunnerService</Export-Service>
-					</instructions>
-					<unpackBundle>true</unpackBundle>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.4</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>org.jbehave.osgi.services</Export-Package>
+            <Private-Package>org.jbehave.osgi.services.impl</Private-Package>
+            <!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
+            <!-- <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency> -->
+            <!-- <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency> -->
+            <!-- <_exportcontents>*</_exportcontents> -->
+            <!-- <Embed-Transitive>true</Embed-Transitive> -->
+            <Export-Service>org.jbehave.osgi.services.EmbedderService</Export-Service>
+          </instructions>
+          <unpackBundle>true</unpackBundle>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

@@ -11,12 +11,13 @@ features:install jbehave-osgi
 
 3) After installing it you can test with the command:
 
-jbehave:runnerStatus
+jbehave:status
 
 4) Install the bundles with the Embedder <-- not working yet -->
 
-osgi:install xxx-snapshot
+osgi:install mvn:org.jbehave.osgi/jbehave-osgi-karaf-services/1.0-SNAPSHOT/jar
+osgi:install mvn:org.jbehave.osgi/jbehave-osgi-karaf-commands/1.0-SNAPSHOT/jar
 
-5) Run the stories via the Embedder
+5) Run the embeddables via the Embedder
 
-jbehave:runEmbedder 
+jbehave:runAsEmbeddables
