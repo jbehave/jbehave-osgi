@@ -6,7 +6,7 @@
     <artifactId>jbehave-osgi</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>jbehave-osgi-features</artifactId>
+  <artifactId>jbehave-osgi-karaf-features</artifactId>
   <name>JBehave OSGi Features</name>
   <description>Provides OSGi Features to interface to JBehave.</description>
 

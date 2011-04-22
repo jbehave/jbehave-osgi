@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>jbehave-osgi-commands</artifactId>
+  <artifactId>jbehave-osgi-karaf-commands</artifactId>
   <packaging>bundle</packaging>
   <name>JBehave OSGi Commands Bundle</name>
   <description>Provides OSGi Commands to interface to JBehave.</description>
