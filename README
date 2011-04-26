@@ -1,21 +1,56 @@
 
-To install it do the following:
+Jbehave OGSi works on two OSGi environments: Apache Karaf and Eclipse Equinox.
 
-1) Start Karaf shell (in clean mode)
+To use with KARAF do the following:
+
+1) Build the module 
+
+mvn install -Pkaraf
+
+2) Start Karaf shell (in clean mode)
 <Karaf bin dir>/karaf clean
 
 Ensure the karaf installation dir has +wr priviledges enabled for all enclosed items.
 
-2) Install the OSGi Services as Karaf Features
+3) Install the OSGi Services as Karaf Features
 
-features:addurl mvn:org.jbehave.osgi/jbehave-osgi-features/1.0-SNAPSHOT/xml/karaf
-features:install jbehave-osgi  
+karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-features/1.0.0-SNAPSHOT/xml/karaf
+karaf> features:install jbehave-osgi  
         
-3) After installing it you can test with the command:
+4) After installing it you can test with the command:
 
 list
 jbehave:status
 
-4) Run the embeddables via the Embedder
+5) Install bundle(s) with Steps and Embedable
 
-jbehave:runAsEmbeddables <-- How do we specify the embeddable class names?
+karaf> osgi:install <your test bundle>
+
+6) Run the embeddables via the Embedder
+
+karaf> jbehave:runAsEmbeddables <-- How do we specify the embeddable class names?
+
+
+To use with EQUINOX do the following:
+
+1) Build the module 
+
+mvn install -Pequinox
+
+2) Start Equinox shell
+
+
+3) Install the OSGi Services as Equinox Features
+
+        
+4) After installing it you can test with the command:
+
+list
+jbehave:status
+
+5) Install bundle(s) with Steps and Embedable
+
+
+6) Run the embeddables via the Embedder
+
+
