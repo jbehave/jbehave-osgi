@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jbehave-osgi-equinox-commands
+Bundle-SymbolicName: jbehave-osgi-equinox-commands
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.jbehave.osgi.equinox.commands.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.3.0"
+Require-Bundle: org.eclipse.osgi

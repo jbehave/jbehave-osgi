@@ -3,7 +3,7 @@
 
 	<reference id="embedderService" interface="org.jbehave.osgi.services.EmbedderService"/>
 
-	<command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+	<command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0" >
 		<command name="jbehave/status">
 			<action class="org.jbehave.osgi.commands.StatusCommand">
 				<property name="embedderService" ref="embedderService" />
