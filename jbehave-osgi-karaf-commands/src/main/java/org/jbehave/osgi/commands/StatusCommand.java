@@ -5,7 +5,7 @@ import org.jbehave.osgi.services.EmbedderService;
 
 /**
  * <p>
- * Command to get Status of JBehave OSGi EmbedderService.
+ * Command to show the Status of JBehave OSGi EmbedderService.
  * </p>
  * 
  * @author Cristiano Gavião
@@ -15,9 +15,7 @@ public class StatusCommand extends EmbedderCommand {
 
 	public Object doExecute() throws Exception {
         EmbedderService embedderService = getEmbedderService();
-
-		System.out.println("JBehave OSGi EmbedderService is" +  (embedderService.isStarted() ? " " : " not ") + "started");
-
+        embedderService.showStatus();
 		return null;
 	}
 
