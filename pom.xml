@@ -15,25 +15,55 @@
 	</prerequisites>
 
 	<properties>
-		<jbehave.core.version>3.3</jbehave.core.version>
+		<jbehave.core.version>3.4-SNAPSHOT</jbehave.core.version>
+		<slf4j.version>1.6.1</slf4j.version>
+
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+	</repositories>
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<version>1.8.5</version>
-				<scope>test</scope>
-			</dependency>
 			<dependency>
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-core</artifactId>
 				<version>${jbehave.core.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>4.2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>4.2.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -180,6 +210,7 @@
 			<modules>
 				<module>jbehave-osgi-services</module>
 				<module>jbehave-osgi-equinox</module>
+				<module>jbehave-osgi-trader-fragment-pde</module>
 			</modules>
 		</profile>
 		<profile>
@@ -187,11 +218,10 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-
 			<modules>
 				<module>jbehave-osgi-services</module>
-				<module>jbehave-osgi-karaf-commands</module>
-				<module>jbehave-osgi-karaf-features</module>
+				<module>jbehave-osgi-karaf</module>
+				<module>jbehave-osgi-trader-fragment-mvn</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -204,5 +234,4 @@
 		<developerConnection>scm:git:ssh://git@git.codehaus.org/jbehave-osgi.git</developerConnection>
 		<url>http://git.codehaus.org/gitweb.cgi?p=jbehave-osgi.git</url>
 	</scm>
-
 </project>

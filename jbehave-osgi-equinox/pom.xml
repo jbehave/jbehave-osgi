@@ -16,7 +16,7 @@
 	<packaging>pom</packaging>
 	<name>Jbehave OSGI Equinox : Parent POM</name>
 	<properties>
-		<tycho-version>0.12.0</tycho-version>
+		<tycho-version>0.13.0-SNAPSHOT</tycho-version>
 		<platform-version-name>helios</platform-version-name>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20110304120314/repository</orbit-site>
@@ -25,6 +25,8 @@
 		<module>../jbehave-osgi-equinox-commands</module>
 		<module>../jbehave-osgi-equinox-features</module>
 		<module>../jbehave-osgi-equinox-update-site</module>
+		<module>../jbehave-osgi-equinox-target-definition</module>
+		<module>../jbehave-osgi-equinox-its</module>
 	</modules>
 
 	<repositories>
@@ -37,6 +39,21 @@
 			<id>orbit</id>
 			<layout>p2</layout>
 			<url>${orbit-site}</url>
+		</repository>
+		<repository>
+			<id>zodiac-repository</id>
+			<name>Zodiac Milestone Repository</name>
+			<url>http://zodiac.springsource.com/maven/bundles/milestone</url>
+		</repository>
+		<repository>
+			<id>eclemma</id>
+			<url>http://update.eclemma.org/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -52,16 +69,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<!-- <plugin> -->
-				<!-- <groupId>org.eclipse.tycho</groupId> -->
-				<!-- <artifactId>tycho-compiler-plugin</artifactId> -->
-				<!-- <version>${tycho-version}</version> -->
-				<!-- <configuration> -->
-				<!-- <source>1.6</source> -->
-				<!-- <target>1.6</target> -->
-				<!-- <encoding>UTF-8</encoding> -->
-				<!-- </configuration> -->
-				<!-- </plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -74,6 +81,16 @@
 		</pluginManagement>
 
 		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<compilerId>jdt</compilerId>
+					<usePdeSourceRoots>true</usePdeSourceRoots>
+				</configuration>
+			</plugin>
+
 			<!-- enable source bundle generation -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>

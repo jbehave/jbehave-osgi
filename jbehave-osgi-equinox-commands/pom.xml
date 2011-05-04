@@ -22,9 +22,11 @@
 			<artifactId>jbehave-osgi-services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.eclipse.gemini.blueprint</groupId>
+			<artifactId>gemini-blueprint-core</artifactId>
+			<version>1.0.0.M1</version>
+		</dependency>
 	</dependencies>
-
-
 
 </project>
