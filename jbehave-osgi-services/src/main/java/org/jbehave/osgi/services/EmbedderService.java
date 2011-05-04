@@ -2,16 +2,27 @@ package org.jbehave.osgi.services;
 
 import java.util.List;
 
+/**
+ * <p>
+ * Jbehave OSGi Embedder Service
+ * </p>
+ * 
+ * @author Cristiano Gavião
+ */
 public interface EmbedderService {
 
-    void startUp();
+	boolean isStarted();
 
-    boolean isStarted();
+	void showStatus();
 
-    String getStatus();
+	void runAsEmbeddables();
 
-    void runAsEmbeddables(List<String> classNames);
+	void runStoriesWithAnnotatedEmbedderRunner();
+	
+	List<String> getIncludeList();
+	
+	List<String> getExcludeList();
 
-    void runStoriesWithAnnotatedEmbedderRunner(String runnerClass, List<String> classNames);
+	void runStoriesWithAnnotatedEmbedderRunner(List<String> includes);
 
 }
