@@ -25,7 +25,11 @@
 			<artifactId>slf4j-jdk14</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -55,8 +59,8 @@
 							*</Import-Package> -->
 						<!-- <Require-Bundle>org.apache.cxf.bundle</Require-Bundle> -->
 						<!-- <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency> -->
-						<!-- <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency> -->
-						<!-- <_exportcontents>*</_exportcontents> -->
+						<Embed-Dependency>jbehave-core;scope=compile;inline=true,javax.inject;scope=compile;inline=false</Embed-Dependency>
+						<_exportcontents>org.jbehave.core.*</_exportcontents>
 						<!-- <Embed-Directory>target/dependency</Embed-Directory> -->
 						<!-- <Embed-StripGroup>true</Embed-StripGroup> -->
 						<!-- <Embed-Transitive>true</Embed-Transitive> -->
