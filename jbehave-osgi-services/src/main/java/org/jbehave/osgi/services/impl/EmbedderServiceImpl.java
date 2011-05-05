@@ -6,12 +6,14 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.osgi.services.EmbedderService;
+import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * <p>
- * Default implementation of the Jbehave OSGi Embedder Service {@link EmbedderService}
+ * Default implementation of the Jbehave OSGi Embedder Service
+ * {@link EmbedderService}
  * </p>
  * 
  * @author Cristiano Gavião
@@ -20,43 +22,43 @@ public class EmbedderServiceImpl implements EmbedderService {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(EmbedderServiceImpl.class);
+
+	private BundleContext bundleContext;
 	private Embedder embedder;
 	private Boolean status = false;
 	private List<String> excludeList = null;
 	private List<String> includeList = null;
+	private List<String> embedderClassList = null;
 
-	/**
-	 * Finds class names, using the {@link #newStoryFinder()}, in the
-	 * {@link #searchDirectory()} given specified {@link #includes} and
-	 * {@link #excludes}.
-	 * 
-	 * @return A List of class names found
-	 */
-	protected List<String> classNames() {
-		LOGGER.debug("Searching for class names including " + getIncludeList()
-				+ " and excluding " + getExcludeList());
-		// TODO List<String> classNames =
-		// newStoryFinder().findClassNames(searchDirectory(), getIncludeList(),
-		// getExcludeList());
-		List<String> classNames = getIncludeList();
-		LOGGER.info("Found class names: " + classNames);
-		return classNames;
+	@Override
+	public List<String> getEmbedderClassList() {
+		if (embedderClassList == null) {
+			embedderClassList = new ArrayList<String>();
+			LOGGER.debug("Searching for Embedder classes, including "
+					+ getIncludeList() + " and excluding " + getExcludeList()
+					+ ".");
+			// TODO List<String> classNames =
+			// newStoryFinder().findClassNames(searchDirectory(),
+			// getIncludeList(),
+			// getExcludeList());
+			embedderClassList.addAll(getIncludeList());
+			LOGGER.info("Found this Embedder classes: " + embedderClassList);
+		}
+		return embedderClassList;
 	}
 
 	public Embedder getEmbedder() {
 		return embedder;
 	}
 
-	@Override
-	public List<String> getExcludeList() {
+	protected List<String> getExcludeList() {
 		if (excludeList == null) {
 			excludeList = new ArrayList<String>();
 		}
 		return excludeList;
 	}
 
-	@Override
-	public List<String> getIncludeList() {
+	protected List<String> getIncludeList() {
 		if (includeList == null) {
 			includeList = new ArrayList<String>();
 		}
@@ -69,22 +71,18 @@ public class EmbedderServiceImpl implements EmbedderService {
 	}
 
 	@Override
-	public void runAsEmbeddables() {
-		LOGGER.info("Running stories using embedder " + embedder);
-		embedder.runAsEmbeddables(classNames());
-	}
-
-	@Override
 	public void runStoriesWithAnnotatedEmbedderRunner() {
-		LOGGER.info("Running stories with annotated embedder runner using this classes: " + classNames());
-		embedder.runStoriesWithAnnotatedEmbedderRunner(classNames());
+		LOGGER.info("Running stories with annotated embedder runner using this classes: "
+				+ getEmbedderClassList());
+		embedder.runStoriesWithAnnotatedEmbedderRunner(getEmbedderClassList());
 	}
 
 	@Override
 	public void runStoriesWithAnnotatedEmbedderRunner(List<String> includes) {
 
-		LOGGER.info("Running stories with annotated embedder runner using this classes: " + includes);
-		embedder.runStoriesWithAnnotatedEmbedderRunner(classNames());
+		LOGGER.info("Running stories with annotated embedder runner using this classes: "
+				+ includes);
+		embedder.runStoriesWithAnnotatedEmbedderRunner(includes);
 		runStoriesWithAnnotatedEmbedderRunner();
 	}
 
@@ -111,7 +109,7 @@ public class EmbedderServiceImpl implements EmbedderService {
 			for (int i = 0; i < includeItens.length; i++) {
 				getIncludeList().add(includeItens[i]);
 			}
-			LOGGER.debug("Injected Include List " + getIncludeList().toString());			
+			LOGGER.debug("Injected Include List " + getIncludeList().toString());
 		}
 	}
 
@@ -147,5 +145,13 @@ public class EmbedderServiceImpl implements EmbedderService {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this,
 				ToStringStyle.SHORT_PREFIX_STYLE);
+	}
+
+	public BundleContext getBundleContext() {
+		return bundleContext;
+	}
+
+	public void setBundleContext(BundleContext bundleContext) {
+		this.bundleContext = bundleContext;
 	}
 }

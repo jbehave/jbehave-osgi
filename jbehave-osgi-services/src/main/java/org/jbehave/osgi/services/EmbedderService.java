@@ -15,14 +15,10 @@ public interface EmbedderService {
 
 	void showStatus();
 
-	void runAsEmbeddables();
-
 	void runStoriesWithAnnotatedEmbedderRunner();
 	
-	List<String> getIncludeList();
+	List<String> getEmbedderClassList();
 	
-	List<String> getExcludeList();
-
 	void runStoriesWithAnnotatedEmbedderRunner(List<String> includes);
 
 }
