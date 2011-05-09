@@ -1,6 +1,6 @@
-#Jbehave OGSi
+#JBehave OGSi
 
-Jbehave OGSi works on two OSGi environments: Apache Karaf and Eclipse Equinox.
+JBehave OGSi works on two OSGi environments: Apache Karaf and Eclipse Equinox.
 
 ##KARAF
 
@@ -18,7 +18,7 @@ Ensure the karaf installation dir has +wr priviledges enabled for all enclosed i
 
 3) Install the OSGi Services as Karaf Features:
 
-    karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-features/1.0.0-SNAPSHOT/xml/karaf
+    karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features/1.0.0-SNAPSHOT/xml/karaf
     karaf> features:install jbehave-osgi  
         
 4) After installing it you can test with the command:
