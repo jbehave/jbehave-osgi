@@ -2,6 +2,7 @@ package org.jbehave.osgi.commands;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.felix.gogo.commands.Argument;
 import org.apache.felix.gogo.commands.Command;
 import org.jbehave.osgi.services.EmbedderService;
@@ -22,13 +23,13 @@ public class RunAnnotaddedEmbedderCommand extends EmbedderCommand {
 	public Object doExecute() throws Exception {
 		EmbedderService embedderService = getEmbedderService();
 		if (embedderService.isStarted()) {
-			if (includes != null && !includes.isEmpty()) {
+			if ( CollectionUtils.isNotEmpty(includes) ) {
 				embedderService.runStoriesWithAnnotatedEmbedderRunner(includes);
 			} else {
 				embedderService.runStoriesWithAnnotatedEmbedderRunner();
 			}
 		} else {
-			System.out.println("JBehave OSGi Embedder Service isn't started.");
+			System.out.println("OSGi Embedder Service isn't started.");
 		}
 		return null;
 	}

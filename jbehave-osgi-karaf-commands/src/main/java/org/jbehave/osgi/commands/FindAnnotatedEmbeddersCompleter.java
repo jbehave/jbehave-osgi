@@ -19,10 +19,9 @@ public class FindAnnotatedEmbeddersCompleter implements Completer {
 	 *            the list of completions proposed to the user
 	 */
 	@Override
-	public int complete(String buffer, int cursor, List<String> candidates) {
-		
+	public int complete(String buffer, int cursor, List<String> candidates) {		
 		StringsCompleter delegate = new StringsCompleter();
-		delegate.getStrings().addAll(embedderService.getEmbedderClassList());
+		delegate.getStrings().addAll(embedderService.findClassNames());
 		return delegate.complete(buffer, cursor, candidates);
 	}
 

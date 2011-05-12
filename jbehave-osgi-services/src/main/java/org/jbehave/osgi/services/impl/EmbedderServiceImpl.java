@@ -2,6 +2,8 @@ package org.jbehave.osgi.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.jbehave.core.embedder.Embedder;
@@ -12,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * <p>
- * Default implementation of the Jbehave OSGi Embedder Service
+ * Default implementation of the OSGi Embedder Service
  * {@link EmbedderService}
  * </p>
  * 
@@ -20,138 +22,112 @@ import org.slf4j.LoggerFactory;
  */
 public class EmbedderServiceImpl implements EmbedderService {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(EmbedderServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmbedderServiceImpl.class);
 
-	private BundleContext bundleContext;
-	private Embedder embedder;
-	private Boolean status = false;
-	private List<String> excludeList = null;
-	private List<String> includeList = null;
-	private List<String> embedderClassList = null;
+    private BundleContext bundleContext;
+    private Embedder embedder;
+    private Boolean status = false;
+    private List<String> excludeNames = new ArrayList<String>();
+    private List<String> includeNames = new ArrayList<String>();
+    private List<String> classNames = null;
 
-	@Override
-	public List<String> getEmbedderClassList() {
-		if (embedderClassList == null) {
-			embedderClassList = new ArrayList<String>();
-			LOGGER.debug("Searching for Embedder classes, including "
-					+ getIncludeList() + " and excluding " + getExcludeList()
-					+ ".");
-			// TODO List<String> classNames =
-			// newStoryFinder().findClassNames(searchDirectory(),
-			// getIncludeList(),
-			// getExcludeList());
-			embedderClassList.addAll(getIncludeList());
-			LOGGER.info("Found this Embedder classes: " + embedderClassList);
-		}
-		return embedderClassList;
-	}
+    @Override
+    public List<String> findClassNames() {
+        if (classNames == null) {
+            classNames = new ArrayList<String>();
+            LOGGER.debug("Searching for Embedder class names, including " + includeNames + " and excluding "
+                    + excludeNames + ".");
+            // TODO List<String> classNames =
+            // newStoryFinder().findClassNames(searchDirectory(),
+            // getIncludeList(),
+            // getExcludeList());
+            classNames.addAll(includeNames);
+            LOGGER.info("Found Embedder classes: " + classNames);
+        }
+        System.out.println("Found class names : '"+classNames+"'" + " size "+classNames.size());
+        return classNames;
+    }
 
-	public Embedder getEmbedder() {
-		return embedder;
-	}
+    public Embedder getEmbedder() {
+        return embedder;
+    }
 
-	protected List<String> getExcludeList() {
-		if (excludeList == null) {
-			excludeList = new ArrayList<String>();
-		}
-		return excludeList;
-	}
+    @Override
+    public boolean isStarted() {
+        return status;
+    }
 
-	protected List<String> getIncludeList() {
-		if (includeList == null) {
-			includeList = new ArrayList<String>();
-		}
-		return includeList;
-	}
+    @Override
+    public void runStoriesWithAnnotatedEmbedderRunner() {
+        runStoriesWithAnnotatedEmbedderRunner(findClassNames());
+    }
 
-	@Override
-	public boolean isStarted() {
-		return status;
-	}
+    @Override
+    public void runStoriesWithAnnotatedEmbedderRunner(List<String> classNames) {
+        LOGGER.info("Running stories with annotated embedder runner using classes: '" + classNames +"'");
+        embedder.runStoriesWithAnnotatedEmbedderRunner(classNames);
+    }
 
-	@Override
-	public void runStoriesWithAnnotatedEmbedderRunner() {
-		LOGGER.info("Running stories with annotated embedder runner using this classes: "
-				+ getEmbedderClassList());
-		embedder.runStoriesWithAnnotatedEmbedderRunner(getEmbedderClassList());
-	}
+    public void setEmbedder(Embedder embedder) {
+        this.embedder = embedder;
+        LOGGER.debug("Injected Embedder " + embedder);
+    }
 
-	@Override
-	public void runStoriesWithAnnotatedEmbedderRunner(List<String> includes) {
+    public void setExcludes(String excludesCSV) {
+        excludeNames.addAll(fromCSV(excludesCSV));
+        LOGGER.info("Updated exclude names " + excludeNames);
+    }
 
-		LOGGER.info("Running stories with annotated embedder runner using this classes: "
-				+ includes);
-		embedder.runStoriesWithAnnotatedEmbedderRunner(includes);
-		runStoriesWithAnnotatedEmbedderRunner();
-	}
+    public void setIncludes(String includesCSV) {
+        includeNames.addAll(fromCSV(includesCSV));
+        LOGGER.info("Updated include names " + includeNames);
+    }
 
-	public void setEmbedder(Embedder embedder) {
-		this.embedder = embedder;
-		LOGGER.debug("Injected Embedder " + embedder);
-	}
+    private List<String> fromCSV(String csv) {
+        List<String> list = new ArrayList<String>();
+        if ( csv != null ){
+            for (String string : csv.split(",")) {
+                if ( StringUtils.isNotEmpty(string) ){
+                    list.add(string);
+                }                
+            }
+        }
+        return list;
+    }
 
-	public void setExcludes(String excludes) {
-		getExcludeList().clear();
-		if (excludes != null) {
-			String[] excludeItens = excludes.split(",");
-			for (int i = 0; i < excludeItens.length; i++) {
-				getExcludeList().add(excludeItens[i]);
-			}
-			LOGGER.debug("Injected Exclude List " + getExcludeList().toString());
-		}
-	}
+    @Override
+    public void showStatus() {
+        StringBuilder message = new StringBuilder("OSGi Embedder Service is" + (isStarted() ? " " : " not ")
+                + "started");
+        String eol = System.getProperty("line.separator");
+        message.append(eol + "Include names (" + includeNames.size() + "):" + includeNames);
+        message.append(eol + "Exclude names (" + excludeNames.size() + "):" + excludeNames);
+        System.out.println(message.toString());
+        LOGGER.info(message.toString());
+    }
 
-	public void setIncludes(String includes) {
-		getIncludeList().clear();
-		if (includes != null) {
-			String[] includeItens = includes.split(",");
-			for (int i = 0; i < includeItens.length; i++) {
-				getIncludeList().add(includeItens[i]);
-			}
-			LOGGER.debug("Injected Include List " + getIncludeList().toString());
-		}
-	}
+    public void start() {
+        LOGGER.info("Starting OSGi Embedder Service");
+        status = true;
+    }
 
-	@Override
-	public void showStatus() {
-		StringBuilder message = new StringBuilder(
-				"JBehave OSGi EmbedderService is"
-						+ (isStarted() ? " " : " not ") + "started");
-		String eol = System.getProperty("line.separator");
-		message.append(eol + "Include list(" + getIncludeList().size() + "):"
-				+ getIncludeList().toString());
-		message.append(eol + "Exclude list(" + getExcludeList().size() + "):"
-				+ getExcludeList().toString());
-		System.out.println(message);
-		LOGGER.info(message.toString());
-		// LOGGER.info("Include list: " + getIncludeList());
-		// LOGGER.info("Exclude list: " + getExcludeList());
-	}
+    public void stop() {
+        LOGGER.info("Stopping OSGi Embedder Service");
+        status = false;
+        embedder = null;
+    }
 
-	public void start() {
+    public BundleContext getBundleContext() {
+        return bundleContext;
+    }
 
-		LOGGER.info("Starting JBehave OSGi Embedder Service");
-		status = true;
-	}
+    public void setBundleContext(BundleContext bundleContext) {
+        this.bundleContext = bundleContext;
+    }
 
-	public void stop() {
-		LOGGER.info("Stopping JBehave OSGi Embedder Service");
-		status = false;
-		embedder = null;
-	}
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
 
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this,
-				ToStringStyle.SHORT_PREFIX_STYLE);
-	}
-
-	public BundleContext getBundleContext() {
-		return bundleContext;
-	}
-
-	public void setBundleContext(BundleContext bundleContext) {
-		this.bundleContext = bundleContext;
-	}
 }

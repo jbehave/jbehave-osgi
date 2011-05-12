@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * <p>
- * Jbehave OSGi Embedder Service
+ * OSGi Embedder Service
  * </p>
  * 
  * @author Cristiano Gavião
@@ -15,10 +15,10 @@ public interface EmbedderService {
 
 	void showStatus();
 
+    List<String> findClassNames();
+    
 	void runStoriesWithAnnotatedEmbedderRunner();
 	
-	List<String> getEmbedderClassList();
-	
-	void runStoriesWithAnnotatedEmbedderRunner(List<String> includes);
+	void runStoriesWithAnnotatedEmbedderRunner(List<String> classNames);
 
 }
