@@ -6,18 +6,10 @@ import org.apache.karaf.shell.console.Completer;
 import org.apache.karaf.shell.console.completer.StringsCompleter;
 import org.jbehave.osgi.services.EmbedderService;
 
-public class FindAnnotatedEmbeddersCompleter implements Completer {
+public class ClassNamesCompleter implements Completer {
 
 	private EmbedderService embedderService;
 
-	/**
-	 * @param buffer
-	 *            it's the beginning string typed by the user
-	 * @param cursor
-	 *            it's the position of the cursor
-	 * @param candidates
-	 *            the list of completions proposed to the user
-	 */
 	@Override
 	public int complete(String buffer, int cursor, List<String> candidates) {		
 		StringsCompleter delegate = new StringsCompleter();

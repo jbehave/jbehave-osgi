@@ -16,14 +16,14 @@
 				<property name="embedderService" ref="embedderService" />
 			</action>
 			<completers xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
-				<ref component-id="embedderCompleter" />
+				<ref component-id="completer" />
 				<null />
 			</completers>
 		</command>
 	</cm:command-bundle>
 
-	<bean id="embedderCompleter"
-		class="org.jbehave.osgi.commands.FindAnnotatedEmbeddersCompleter">
+	<bean id="completer"
+		class="org.jbehave.osgi.commands.ClassNamesCompleter">
 		<property name="embedderService" ref="embedderService" />
 	</bean>
 
