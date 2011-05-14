@@ -36,11 +36,13 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
+					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Import-Package>
 							org.apache.felix.service.command, *
 						</Import-Package>
-						<Require-Bundle>org.jbehave.osgi.jbehave-osgi-services</Require-Bundle>
+						<Require-Bundle>jbehave-osgi-services</Require-Bundle>
 					</instructions>
 				</configuration>
 			</plugin>
