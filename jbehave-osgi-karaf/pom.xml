@@ -11,8 +11,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>../jbehave-osgi-services</module>
 		<module>../jbehave-osgi-karaf-commands</module>
-		<module>../jbehave-osgi-karaf-features</module>
+		<module>../jbehave-osgi-karaf-features-core</module>
+		<module>../jbehave-osgi-karaf-features-deps</module>
 		<module>../jbehave-osgi-karaf-its</module>
 	</modules>
 

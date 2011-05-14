@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="jbehave-osgi-core-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+
+	<!-- JBehave OSGi features: -->
+
+	<repository>mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-deps/${project.version}/xml/karaf</repository>
+	<feature name="jbehave-osgi-core" version="${project.version}"
+		resolver="(obr)">
+
+		<feature version="${project.version}">jbehave-osgi-deps</feature>
+
+		<bundle>mvn:org.jbehave.osgi/jbehave-osgi-services/${project.version}</bundle>
+		<bundle>mvn:org.jbehave.osgi/jbehave-osgi-karaf-commands/${project.version}</bundle>
+	</feature>
+
+</features>

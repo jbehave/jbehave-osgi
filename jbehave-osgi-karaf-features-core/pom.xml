@@ -8,9 +8,9 @@
 		<relativePath>../jbehave-osgi-karaf/pom.xml</relativePath>
 	</parent>
 
-  <artifactId>jbehave-osgi-karaf-features</artifactId>
-  <name>JBehave OSGi Karaf : Features</name>
-  <description>Provides OSGi Features to interface to JBehave.</description>
+  <artifactId>jbehave-osgi-karaf-features-core</artifactId>
+  <name>JBehave OSGi Karaf : Features Core</name>
+  <description>Provides OSGi Core Features to interface to JBehave.</description>
   <packaging>pom</packaging>
 
   <build>
