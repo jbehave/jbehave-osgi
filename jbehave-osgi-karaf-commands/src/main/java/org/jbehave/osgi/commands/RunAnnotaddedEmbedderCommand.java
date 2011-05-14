@@ -26,7 +26,7 @@ public class RunAnnotaddedEmbedderCommand extends EmbedderCommand {
 			if ( CollectionUtils.isNotEmpty(includes) ) {
 				embedderService.runStoriesWithAnnotatedEmbedderRunner(includes);
 			} else {
-				embedderService.runStoriesWithAnnotatedEmbedderRunner();
+				System.out.println("One or more Annotated Embedder class should be informed.");
 			}
 		} else {
 			System.out.println("OSGi Embedder Service isn't started.");
