@@ -26,18 +26,98 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
+			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Dependencies NOT FOUND in any Bundle Repository and will be embedded -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.plexus</groupId> -->
+		<!-- <artifactId>plexus-utils</artifactId> -->
+		<!-- <version>2.0.5</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.freemarker</groupId> -->
+		<!-- <artifactId>freemarker</artifactId> -->
+		<!-- <version>2.3.16</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.thoughtworks.paranamer</groupId> -->
+		<!-- <artifactId>paranamer</artifactId> -->
+		<!-- <version>2.3</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>junit</groupId> -->
+		<!-- <artifactId>junit-dep</artifactId> -->
+		<!-- <version>4.8.2</version> -->
+		<!-- <exclusions> -->
+		<!-- <exclusion> -->
+		<!-- <groupId>org.hamcrest</groupId> -->
+		<!-- <artifactId>hamcrest-core</artifactId> -->
+		<!-- </exclusion> -->
+		<!-- </exclusions> -->
+		<!-- </dependency> -->
+
+		<!-- Dependencies from SpringSource Bundle Repository -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.xmlpull</groupId> -->
+		<!-- <artifactId>com.springsource.org.xmlpull</artifactId> -->
+		<!-- <version>1.1.4.c</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.xml.stream</groupId> -->
+		<!-- <artifactId>com.springsource.javax.xml.stream</artifactId> -->
+		<!-- <version>1.0.1</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.commons</groupId> -->
+		<!-- <artifactId>com.springsource.org.apache.commons.io</artifactId> -->
+		<!-- <version>1.4.0</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.commons</groupId> -->
+		<!-- <artifactId>com.springsource.org.apache.commons.lang</artifactId> -->
+		<!-- <version>2.5.0</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.commons</groupId> -->
+		<!-- <artifactId>com.springsource.org.apache.commons.collections</artifactId> -->
+		<!-- <version>3.2.1</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hamcrest</groupId> -->
+		<!-- <artifactId>com.springsource.org.hamcrest</artifactId> -->
+		<!-- <version>1.1.0</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hamcrest</groupId> -->
+		<!-- <artifactId>com.springsource.org.hamcrest.core</artifactId> -->
+		<!-- <version>1.1.0</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.inject</groupId> -->
+		<!-- <artifactId>com.springsource.javax.inject</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.thoughtworks.xstream</groupId> -->
+		<!-- <artifactId>com.springsource.com.thoughtworks.xstream</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
@@ -60,36 +140,25 @@
 				<configuration>
 					<manifestLocation>META-INF</manifestLocation>
 					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>1.0.0.qualifier</Bundle-Version>
 						<Export-Package>org.jbehave.osgi.services</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl</Private-Package>
-						<!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
 						<!-- <Import-Package>org.slf4j;version="[1.6,2)";provider=paxlogging, 
 							*</Import-Package> -->
+						<Import-Package>!org.codehaus.jettison.*,!org.apache.xpath.*,!org.apache.xml.utils.*,!org.mozilla.javascript,!org.python.*,!sun.*,!org.mozilla.*,!org.w3c.dom.*,!org.jdom.*,!org.joda.*,!org.zeroturnaround.javarebel.*
+							,!org.apache.tools.ant.*,!nu.xom,!net.sf.cglib.proxy,!javax.el.*,!javax.servlet.*,!com.sun.*,!org.apache.log,!org.jaxen.*,!org.dom4j.*,*</Import-Package>
 						<!-- <Require-Bundle>org.apache.cxf.bundle</Require-Bundle> -->
-						<!-- <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency> -->
-						<Embed-Dependency>jbehave-core;scope=compile;inline=true,javax.inject;scope=compile;inline=false</Embed-Dependency>
+						<Embed-Dependency>jbehave-core;scope=compile;inline=true,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false,junit-dep;scope=compile;inline=false</Embed-Dependency>
 						<_exportcontents>org.jbehave.core.*</_exportcontents>
 						<!-- <Embed-Directory>target/dependency</Embed-Directory> -->
 						<!-- <Embed-StripGroup>true</Embed-StripGroup> -->
-						<!-- <Embed-Transitive>true</Embed-Transitive> -->
+						<Embed-Transitive>true</Embed-Transitive>
 						<Export-Service>org.jbehave.osgi.services.EmbedderService</Export-Service>
 					</instructions>
 					<unpackBundle>true</unpackBundle>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>copy-dependencies</id> -->
-			<!-- <phase>package</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>copy-dependencies</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
 		</plugins>
 	</build>
-
 </project>

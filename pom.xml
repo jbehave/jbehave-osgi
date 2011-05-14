@@ -56,11 +56,13 @@
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
 				<version>4.2.0</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.compendium</artifactId>
 				<version>4.2.0</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -208,7 +210,6 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-services</module>
 				<module>jbehave-osgi-equinox</module>
 				<module>jbehave-osgi-trader-fragment-pde</module>
 			</modules>
@@ -219,7 +220,6 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-services</module>
 				<module>jbehave-osgi-karaf</module>
 				<module>jbehave-osgi-trader-fragment-mvn</module>
 			</modules>
