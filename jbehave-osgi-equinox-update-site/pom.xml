@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jbehave-osgi-equinox-update-site</artifactId>
-	<name>Jbehave OSGI Equinox : Update Site</name>
+	<name>JBehave OSGI Equinox : Update Site</name>
 	<packaging>eclipse-update-site</packaging>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>

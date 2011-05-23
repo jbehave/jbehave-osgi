@@ -86,9 +86,9 @@ This way you could call the story runner without parameters:
 
 To use with equinox do the following:
 
-1) Build the module: 
+1) Build the equinox module: 
 
-    mvn install -Pequinox
+    mvn install -Dplatform-version-name=helios
 
 2) Start Equinox shell
 

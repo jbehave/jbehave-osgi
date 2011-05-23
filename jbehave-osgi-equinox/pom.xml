@@ -14,7 +14,7 @@
 
 	<artifactId>jbehave-osgi-equinox</artifactId>
 	<packaging>pom</packaging>
-	<name>Jbehave OSGI Equinox : Parent POM</name>
+	<name>JBehave OSGI Equinox : Parent POM</name>
 	<properties>
 		<tycho-version>0.13.0-SNAPSHOT</tycho-version>
 		<platform-version-name>helios</platform-version-name>

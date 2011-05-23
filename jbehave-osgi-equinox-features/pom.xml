@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jbehave-osgi-equinox-features</artifactId>
-	<name>Jbehave OSGI Equinox : Features</name>
+	<name>JBehave OSGI Equinox : Features</name>
 	<packaging>eclipse-feature</packaging>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
