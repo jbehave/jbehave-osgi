@@ -25,8 +25,6 @@
 		<module>../jbehave-osgi-equinox-commands</module>
 		<module>../jbehave-osgi-equinox-features</module>
 		<module>../jbehave-osgi-equinox-update-site</module>
-		<module>../jbehave-osgi-equinox-target-definition</module>
-		<module>../jbehave-osgi-equinox-its</module>
 	</modules>
 
 	<repositories>
