@@ -65,7 +65,7 @@ karaf> jbehave:status
 
 7) Run the stories via Annotadded Embedder:
 
-karaf> jbehave:runstorieswithannotaddedembedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
+karaf> jbehave:run-stories-with-annotated-embedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
 
 * it is possible to setup the AnnotatedEmbedder classes to be run creating a properties file named org.jbehave.osgi.cfg that
 should be located on {$karaf}/etc directory.
@@ -77,7 +77,7 @@ excludes=
  
 This way you could call the story runner without parameters:
 
-karaf> jbehave:runstorieswithannotaddedembedder
+karaf> jbehave:run-stories-with-annotated-embedder
  
 ##EQUINOX
 
@@ -85,19 +85,17 @@ To use with equinox do the following:
 
 1) Build the equinox module: 
 
-    mvn install -Dplatform-version-name=helios
+mvn install [-Dplatform-version-name=<helios,indigo>]
+
+(the platform-version-name is optional and defaults to helios)
 
 2) Start Equinox shell
 
-
 3) Install the OSGi Services as Equinox Features
-
         
 4) After installing it you can test with the command:
 
-
 5) Install bundle(s) with Steps and Embedable
-
 
 6) Run the embeddables via the Embedder
 
