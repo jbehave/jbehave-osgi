@@ -11,8 +11,8 @@
 				<property name="embedderService" ref="embedderService" />
 			</action>
 		</command>
-		<command name="jbehave/runAnnotaddedEmbedder">
-			<action class="org.jbehave.osgi.commands.RunAnnotaddedEmbedderCommand">
+		<command name="jbehave/run-stories-with-annotated-embedder">
+			<action class="org.jbehave.osgi.commands.RunStoriesWithAnnotatedEmbedderCommand">
 				<property name="embedderService" ref="embedderService" />
 			</action>
 			<completers xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">

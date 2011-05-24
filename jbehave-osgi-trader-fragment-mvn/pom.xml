@@ -8,7 +8,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>jbehave-osgi-trader-fragment-mvn</artifactId>
-	<name>Jbehave OSGi : Example Trader Scenarios Fragment - MVN</name>
+	<name>JBehave OSGi Karaf : Trader Example Fragment mvn</name>
 	<packaging>bundle</packaging>
 	<dependencies>
 		<dependency>
@@ -19,11 +19,6 @@
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-trader-annotations-example</artifactId>
-			<version>${jbehave.core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-ant</artifactId>
 			<version>${jbehave.core.version}</version>
 		</dependency>
 	</dependencies>
@@ -39,7 +34,7 @@
 						<Fragment-Host>org.jbehave.osgi.jbehave-osgi-services</Fragment-Host>
 						<!-- <Import-Package>org.slf4j;version="[1.6,2)";provider=paxlogging, 
 							*</Import-Package> -->
-						<Embed-Dependency>jbehave-trader-annotations-example;scope=compile;inline=true,jbehave-trader-example;scope=compile;inline=true,jbehave-ant;scope=compile;inline=false</Embed-Dependency>
+						<Embed-Dependency>jbehave-trader-annotations-example;scope=compile;inline=true,jbehave-trader-example;scope=compile;inline=true</Embed-Dependency>
 						<_exportcontents>org.jbehave.examples.trader.*</_exportcontents>
 						<!-- <Embed-Directory>target/dependency</Embed-Directory> -->
 						<!-- <Embed-StripGroup>true</Embed-StripGroup> -->
