@@ -9,15 +9,14 @@
 	<name>JBehave OSGi : Parent POM</name>
 	<description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
 
-
 	<prerequisites>
 		<maven>3.0.0</maven>
 	</prerequisites>
 
 	<properties>
-		<jbehave.core.version>3.4-SNAPSHOT</jbehave.core.version>
+		<jbehave.core.version>3.4</jbehave.core.version>
 		<slf4j.version>1.6.1</slf4j.version>
-
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<repositories>
@@ -205,13 +204,21 @@
 	</build>
 	<profiles>
 		<profile>
+			<id>service</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-services</module>
+			</modules>
+		</profile>
+		<profile>
 			<id>equinox</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
 				<module>jbehave-osgi-equinox</module>
-				<module>jbehave-osgi-trader-fragment-pde</module>
 			</modules>
 		</profile>
 		<profile>
@@ -220,8 +227,26 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
+				<module>jbehave-osgi-services</module>
 				<module>jbehave-osgi-karaf</module>
-				<module>jbehave-osgi-trader-fragment-mvn</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>sample-bnd</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-sample-fragment-trader-bnd</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>sample-tycho</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-sample-fragment-trader-tycho</module>
 			</modules>
 		</profile>
 	</profiles>
