@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/jbehave.osgi.equinox.features.deps_1.0.0.qualifier.jar" id="jbehave.osgi.equinox.features.deps" version="1.0.0.qualifier"/>
+   <feature url="features/jbehave.osgi.equinox.features.core_1.0.0.qualifier.jar" id="jbehave.osgi.equinox.features.core" version="1.0.0.qualifier"/>
+   <category-def name="jbehave_equinox_category_id" label="Jbehave OSGi : Equinox">
+      <description>
+         Jbehave OSGi : Equinox
+      </description>
+   </category-def>
+</site>
