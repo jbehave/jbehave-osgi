@@ -8,7 +8,7 @@
 		<relativePath>../jbehave-osgi-equinox/pom.xml</relativePath>
 	</parent>
 	<artifactId>jbehave-osgi-equinox-target-definition</artifactId>
-	<name>Jbehave OSGI Equinox : Target Definition</name>
+	<name>JBehave OSGI Equinox : Target Definition</name>
 	<packaging>pom</packaging>
 
 	<build>

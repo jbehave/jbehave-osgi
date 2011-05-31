@@ -8,7 +8,7 @@
 		<relativePath>../jbehave-osgi-equinox/pom.xml</relativePath>
 	</parent>
 	<artifactId>jbehave-osgi-equinox-features-core</artifactId>
-	<name>Jbehave OSGI Equinox : Features Core</name>
+	<name>JBehave OSGI Equinox : Features Core</name>
 	<packaging>eclipse-feature</packaging>
 	<dependencies>
 		<dependency>

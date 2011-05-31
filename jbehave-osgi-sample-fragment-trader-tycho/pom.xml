@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jbehave-osgi-sample-fragment-trader-tycho</artifactId>
-	<name>Jbehave OSGI Equinox : Trader Fragment</name>
+	<name>JBehave OSGI Equinox : Trader Fragment</name>
 	<description>Builded using MANIFEST-FIRST method.</description>
 	<packaging>eclipse-plugin</packaging>
 	<parent>

@@ -13,7 +13,7 @@
 
 	<artifactId>jbehave-osgi-equinox-commands</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Jbehave OSGi Equinox : Commands Bundle</name>
+	<name>JBehave OSGi Equinox : Commands Bundle</name>
 	<description>Provides OSGi Commands to interface to JBehave.</description>
 
 	<dependencies>

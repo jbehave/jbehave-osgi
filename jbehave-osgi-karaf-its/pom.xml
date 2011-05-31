@@ -6,5 +6,5 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>jbehave-osgi-karaf-its</artifactId>
-  <name>Jbehave OSGi Karaf : Integration Tests</name>
+  <name>JBehave OSGi Karaf : Integration Tests</name>
 </project>

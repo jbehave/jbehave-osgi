@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="jbehave-osgi-indigo" sequenceNumber="5">
+<target name="eclipse-jbehave-osgi-indigo" sequenceNumber="5">
 <locations>
 <location path="${project_loc:/jbehave-osgi-equinox-repository}/target/repository/" type="Profile"/>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="false" type="InstallableUnit">

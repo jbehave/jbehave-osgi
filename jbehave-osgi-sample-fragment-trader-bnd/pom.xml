@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>jbehave-osgi-sample-fragment-trader-bnd</artifactId>
-	<name>Jbehave OSGi : Example Trader Scenarios Fragment - BND</name>
+	<name>JBehave OSGi : Example Trader Scenarios Fragment - BND</name>
 	<description>Builded using POM-FIRST method.</description>
 	<packaging>bundle</packaging>
 

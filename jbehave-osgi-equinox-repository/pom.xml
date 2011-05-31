@@ -9,8 +9,7 @@
 	</parent>
 	<artifactId>jbehave-osgi-equinox-repository</artifactId>
 	<packaging>eclipse-repository</packaging>
-	<name>Jbehave OSGI Equinox : P2 Repository</name>
-
+	<name>JBehave OSGI Equinox : P2 Repository</name>
 
 	<build>
 		<plugins>
