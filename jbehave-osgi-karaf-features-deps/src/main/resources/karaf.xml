@@ -2,11 +2,11 @@
 
 <features name="jbehave-osgi-deps-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
 
-	<!-- JBehave OSGi features: -->
+	<repository>mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-deps/${project.version}/xml/karaf</repository>
 
+	<!-- JBehave OSGi features: -->
 	<feature name="jbehave-osgi-deps" version="${project.version}"
 		resolver="(obr)">
-
 
 		<!-- Download bundles from public bundles repositories -->
 		<bundle>mvn:org.apache.commons/com.springsource.org.apache.commons.collections/3.2.1</bundle>
@@ -16,27 +16,6 @@
 		<bundle>mvn:org.hamcrest/com.springsource.org.hamcrest.core/1.1.0</bundle>
 		<bundle>mvn:javax.inject/com.springsource.javax.inject/1.0.0</bundle>
 		
-		<!-- XML -->
-		<bundle>mvn:com.thoughtworks.xstream/com.springsource.com.thoughtworks.xstream/1.3.1</bundle>
-		<bundle>mvn:org.xmlpull/com.springsource.org.xmlpull/1.1.4.c</bundle>
-		<bundle>mvn:javax.xml.stream/com.springsource.javax.xml.stream/1.0.1</bundle>
-
-<!-- 		<bundle>mvn:org.apache.xml/com.springsource.org.apache.xml.resolver/1.2.0</bundle> -->
-<!-- 		<bundle>mvn:org.apache.xmlcommons/com.springsource.org.apache.xmlcommons/1.3.4</bundle> -->
-<!-- 		<bundle>mvn:org.apache.xalan/com.springsource.org.apache.xml.serializer/2.7.1</bundle> -->
-<!-- 		<bundle>mvn:org.apache.xmlcommons/com.springsource.org.apache.xmlcommons/1.3.4</bundle> -->
-<!-- 		<bundle>mvn:org.apache.xerces/com.springsource.org.apache.xerces/2.9.1</bundle> -->
-<!-- 		<bundle>mvn:org.apache.xalan/com.springsource.org.apache.xalan/2.7.1</bundle> -->
-<!-- 		<bundle>mvn:org.jdom/com.springsource.org.jdom/1.1.0</bundle> -->
-<!-- 		<bundle>mvn:org.mozilla.javascript/com.springsource.org.mozilla.javascript/1.7.0.R2</bundle> -->
-<!-- 		<bundle>mvn:org.python/com.springsource.org.python/2.2.1</bundle> -->
-
-		<!-- not found in any public repository -->
-		<!-- <bundle>wrap:mvn:org.codehaus.plexus/plexus-utils/2.0.5</bundle> -->
-		<!-- <bundle>wrap:mvn:com.thoughtworks.paranamer/paranamer/2.3</bundle> -->
-		<!-- <bundle>wrap:mvn:org.freemarker/freemarker/2.3.16</bundle> -->
-		<!-- <bundle>wrap:mvn:junit/junit-dep/4.8.2</bundle> -->
-
 	</feature>
 
 </features>

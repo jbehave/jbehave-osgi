@@ -3,7 +3,7 @@
 <features name="jbehave-osgi-core-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
 
 	<!-- JBehave OSGi features: -->
-
+	<repository>mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-core/${project.version}/xml/karaf</repository>
 	<repository>mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-deps/${project.version}/xml/karaf</repository>
 	<feature name="jbehave-osgi-core" version="${project.version}"
 		resolver="(obr)">
