@@ -15,7 +15,7 @@ import org.jbehave.osgi.services.EmbedderService;
  * @author Cristiano Gavião
  */
 @Command(scope = "jbehave", name = "runStoriesWithAnnotatedEmbedder", description = "Run Stories via Annotated Embedder on Karaf")
-public class RunAnnotaddedEmbedderCommand extends EmbedderCommand {
+public class RunStoriesWithAnnotatedEmbedderCommand extends EmbedderCommand {
 
 	@Argument(index = 0, name = "includes", description = "One or more annotated embedders to be run", required = false, multiValued = true)
 	private List<String> includes = null;
