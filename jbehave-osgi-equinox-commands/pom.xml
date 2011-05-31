@@ -13,7 +13,7 @@
 
 	<artifactId>jbehave-osgi-equinox-commands</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>JBehave OSGi Equinox : Commands Bundle</name>
+	<name>Jbehave OSGi Equinox : Commands Bundle</name>
 	<description>Provides OSGi Commands to interface to JBehave.</description>
 
 	<dependencies>
@@ -23,10 +23,14 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.gemini.blueprint</groupId>
-			<artifactId>gemini-blueprint-core</artifactId>
-			<version>1.0.0.M1</version>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
 </project>
