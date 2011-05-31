@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Trader OSGi scenarios - PDE
-Bundle-SymbolicName: jbehave-osgi-pde-trader-fragment
+Bundle-SymbolicName: jbehave-osgi-sample-fragment-trader-tycho
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: jbehave.org
 Fragment-Host: jbehave-osgi-services;bundle-version="1.0.0"
