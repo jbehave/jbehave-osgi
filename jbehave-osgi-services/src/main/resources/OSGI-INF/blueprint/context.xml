@@ -6,8 +6,7 @@
 	<bean id="embedderBean" class="org.jbehave.core.embedder.Embedder"
 		scope="singleton" />
 
-	<bean id="embedderServiceImpl" class="org.jbehave.osgi.services.impl.EmbedderServiceImpl"
-		init-method="start" destroy-method="stop">
+	<bean id="embedderServiceImpl" class="org.jbehave.osgi.services.impl.EmbedderServiceImpl">
 		<property name="embedder" ref="embedderBean" />
 		<property name="bundleContext" ref="blueprintBundleContext" />
 	</bean>

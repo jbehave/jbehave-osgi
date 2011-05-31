@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class EmbedderServiceImpl implements EmbedderService {
 
+
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(EmbedderServiceImpl.class);
 
