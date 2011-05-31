@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- by Cristiano Gavião - www.ajail.net-->
+<feature
+      id="jbehave.osgi.equinox.features.deps"
+      label="Jbehave Equinox Feature - Dependecies (required)"
+      version="1.0.0.qualifier"
+      provider-name="Jbehave.org"
+      os="linux,macosx,win32"
+      arch="x86,x86_64">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.apache.aries.blueprint.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+
+</feature>
