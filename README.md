@@ -8,86 +8,104 @@ To use with Karaf do the following:
 
 1) Build the Karaf bundles: 
 
-$ mvn install -Pkaraf
+    $ mvn install -Pkaraf
 
 2) Start Karaf shell (in clean mode):
     
-$ <karaf bin dir>/karaf clean
+    $ <karaf bin dir>/karaf clean
 
 Ensure the karaf installation dir has +wr priviledges enabled for all enclosed items.
 
 3) Install the OSGi Services as Karaf Features:
 
-karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features/1.0.0-SNAPSHOT/xml/karaf
-karaf> features:install jbehave-osgi  
+    karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-core/1.0.0-SNAPSHOT/xml/karaf
+    karaf> features:install jbehave-osgi-features-core  
         
 4) After installing it you can test with the command:
 
-karaf> list -s
+    karaf> list -s
 
 should show a list like this:
 
-START LEVEL 100 , List Threshold: 50
-   ID   State         Blueprint      Level  Symbolic name
-[  42] [Active     ] [            ] [   60] org.apache.commons.collections (3.2.1)
-[  43] [Active     ] [            ] [   60] org.apache.commons.io (1.4)
-[  44] [Active     ] [            ] [   60] org.apache.commons.lang (2.5)
-[  45] [Active     ] [            ] [   60] wrap_mvn_org.codehaus.plexus_plexus-utils_2.0.5 (0)
-[  46] [Active     ] [            ] [   60] wrap_mvn_com.thoughtworks.paranamer_paranamer_2.3 (0)
-[  47] [Active     ] [            ] [   60] wrap_mvn_org.freemarker_freemarker_2.3.16 (0)
-[  48] [Active     ] [            ] [   60] wrap_mvn_org.hamcrest_hamcrest-all_1.1 (0)
-[  49] [Active     ] [            ] [   60] wrap_mvn_junit_junit-dep_4.8.2 (0)
-[  50] [Active     ] [            ] [   60] wrap_mvn_xpp3_xpp3_min_1.1.4c (0)
-[  51] [Active     ] [            ] [   60] wrap_mvn_com.thoughtworks.xstream_xstream_1.3.1 (0)
-[  52] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
-[  53] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
+    START LEVEL 100 , List Threshold: 50
+    ID   State         Blueprint      Level  Symbolic name
+    [  42] [Active     ] [            ] [   60] com.springsource.org.apache.commons.collections (3.2.1)
+    [  43] [Active     ] [            ] [   60] com.springsource.org.apache.commons.io (1.4.0)
+    [  44] [Active     ] [            ] [   60] com.springsource.org.apache.commons.lang (2.5.0)
+    [  45] [Installed  ] [            ] [   60] com.springsource.org.hamcrest (1.1.0)
+    [  46] [Active     ] [            ] [   60] com.springsource.org.hamcrest.core (1.1.0)
+    [  47] [Active     ] [            ] [   60] com.springsource.javax.inject (1.0.0)
+    [  48] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
+    [  49] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
 
-5) Install the bundle fragment with Steps and AnnotatedEmbedder classes:
 
-karaf> osgi:install mvn:org.jbehave.osgi/jbehave-osgi-trader-fragment-mvn/1.0.0-SNAPSHOT
+5) To use Jbehave-OSGi you need to create a bundle fragment containing Steps and AnnotatedEmbedder classes for your own project, associating it to org.jbehave.osgi.jbehave-osgi-services (as Fragment-Host).
+   We provided two projects that you could use to test, one using maven-bundle-plugin and another using tycho.
+ 
+  5.1) Build the provided sample:
+  
+    $ mvn install -Psample-bnd 
+  
+  5.2) Install the bundle fragment with Steps and AnnotatedEmbedder classes:
+  
+    karaf> osgi:install mvn:org.jbehave.osgi/jbehave-osgi-sample-fragment-trader-bnd/1.0.0-SNAPSHOT
 
 6) Refresh the org.jbehave.osgi.jbehave-osgi-services using its ID:
 
-karaf> refresh 52 <-- ID that appears on ID column after the command List -->
-karaf> list -s
+    karaf> refresh 48 <-- ID that appears on ID column after the command List -->
+    karaf> list -s
 
-should show something like this:
+    should show something like this:
     ...
-[  52] [Active     ] [Destroyed   ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
-                                       Fragments: 54
-[  53] [Active     ] [Destroyed   ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
-[  54] [Resolved   ] [            ] [   60] org.jbehave.osgi.jbehave-osgi-trader-fragment-mvn (1.0.0.SNAPSHOT)
-                                       Hosts: 52
+    [  48] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
+                                           Fragments: 50
+    [  49] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
+    [  50] [Resolved   ] [            ] [   60] org.jbehave.osgi.jbehave-osgi-sample-fragment-trader-bnd (1.0.0.SNAPSHOT)
+                                           Hosts: 48
 
 6) Verify the Status:
 
-karaf> jbehave:status
+    karaf> jbehave:status
+    
+    
+You should see:
+    
+    OSGi Embedder Service is started.
+
 
 7) Run the stories via Annotadded Embedder:
 
-karaf> jbehave:run-stories-with-annotated-embedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
+    karaf> jbehave:run-stories-with-annotated-embedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
 
-* it is possible to setup the AnnotatedEmbedder classes to be run creating a properties file named org.jbehave.osgi.cfg that
+* It is possible to setup the AnnotatedEmbedder classes to be run creating a properties file named org.jbehave.osgi.cfg that
 should be located on {$karaf}/etc directory.
 
 The configuration file should contain this properties:
 
 includes=org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
-excludes= 
  
 This way you could call the story runner without parameters:
 
-karaf> jbehave:run-stories-with-annotated-embedder
+    karaf> jbehave:run-stories-with-annotated-embedder
+ 
+ 
  
 ##EQUINOX
+* because we are using Wiring API that is part of OSGI R4.3, this module will be supported only by Indigo (3.7).
 
-To use with equinox do the following:
+Equinox module should be build using Eclipse Tycho, that uses manifest-first approach. But it requires the common service project, that is build using pom-first approach.
+The mix of the two methods in same maven reactor is not allowed by Tycho, so you need to separate the build into to phases (steps 1 and 2):
 
-1) Build the equinox module: 
+1) Build the service project
 
-mvn install [-Dplatform-version-name=<helios,indigo>]
+	mvn install -Pservice
 
-(the platform-version-name is optional and defaults to helios)
+2) Build the equinox module: 
+
+	mvn install -Pequinox
+
+This will create a P2 repository which will contain the JBehave features and all dependencies needed to be run.
+
 
 2) Start Equinox shell
 
