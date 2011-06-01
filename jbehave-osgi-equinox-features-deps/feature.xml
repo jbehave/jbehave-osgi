@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- by Cristiano Gavião - www.ajail.net-->
 <feature
-      id="jbehave.osgi.equinox.features.deps"
+      id="org.jbehave.osgi.equinox.features.deps"
       label="Jbehave Equinox Feature - Dependecies (required)"
       version="1.0.0.qualifier"
       provider-name="Jbehave.org"

@@ -42,7 +42,7 @@
 						<Import-Package>
 							org.apache.felix.service.command, *
 						</Import-Package>
-						<Require-Bundle>jbehave-osgi-services</Require-Bundle>
+						<Require-Bundle>org.jbehave.osgi.jbehave-osgi-services</Require-Bundle>
 					</instructions>
 				</configuration>
 			</plugin>
