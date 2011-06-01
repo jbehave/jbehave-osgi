@@ -4,31 +4,38 @@ JBehave OGSi works on two OSGi environments: Apache Karaf and Eclipse Equinox.
 
 ##KARAF
 
-To use with Karaf do the following:
+### Building
+
+The Karaf module is built using 'one step' maven profile run:
 
 1) Build the Karaf bundles: 
 
     $ mvn install -Pkaraf
 
-2) Start Karaf shell (in clean mode):
+That will install on your local maven repo the Core and Dependencies features needed for JBehave-OSGi to be executed on Karaf. 
+
+### Installation
+This procedure was tested in Karaf 2.2.1.
+
+1) Start Karaf shell (in clean mode):
     
     $ <karaf bin dir>/karaf clean
 
 Ensure the karaf installation dir has +wr priviledges enabled for all enclosed items.
 
-3) Install the OSGi Services as Karaf Features:
+2) Install the OSGi Services as Karaf Features:
 
     karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-core/1.0.0-SNAPSHOT/xml/karaf
     karaf> features:install jbehave-osgi-features-core  
         
-4) After installing it you can test with the command:
+3) After installing it you can test with the command:
 
     karaf> list -s
 
 should show a list like this:
 
     START LEVEL 100 , List Threshold: 50
-    ID   State         Blueprint      Level  Symbolic name
+        ID   State         Blueprint      Level  Symbolic name
     [  42] [Active     ] [            ] [   60] com.springsource.org.apache.commons.collections (3.2.1)
     [  43] [Active     ] [            ] [   60] com.springsource.org.apache.commons.io (1.4.0)
     [  44] [Active     ] [            ] [   60] com.springsource.org.apache.commons.lang (2.5.0)
@@ -38,51 +45,49 @@ should show a list like this:
     [  48] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
     [  49] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
 
+4) Verify the Status:
 
-5) To use Jbehave-OSGi you need to create a bundle fragment containing Steps and AnnotatedEmbedder classes for your own project, associating it to org.jbehave.osgi.jbehave-osgi-services (as Fragment-Host).
-   We provided two projects that you could use to test, one using maven-bundle-plugin and another using tycho.
- 
-  5.1) Build the provided sample:
-  
-    $ mvn install -Psample-bnd 
-  
-  5.2) Install the bundle fragment with Steps and AnnotatedEmbedder classes:
-  
-    karaf> osgi:install mvn:org.jbehave.osgi/jbehave-osgi-sample-fragment-trader-bnd/1.0.0-SNAPSHOT
-
-6) Refresh the org.jbehave.osgi.jbehave-osgi-services using its ID:
-
-    karaf> refresh 48 <-- ID that appears on ID column after the command List -->
-    karaf> list -s
-
-    should show something like this:
-    ...
-    [  48] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
-                                           Fragments: 50
-    [  49] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
-    [  50] [Resolved   ] [            ] [   60] org.jbehave.osgi.jbehave-osgi-sample-fragment-trader-bnd (1.0.0.SNAPSHOT)
-                                           Hosts: 48
-
-6) Verify the Status:
-
-    karaf> jbehave:status
-    
+    karaf> jbehave:status   
     
 You should see:
     
     OSGi Embedder Service is started.
 
 
-7) Run the stories via Annotadded Embedder:
+### Running Stories
+
+To use Jbehave-OSGi you need to create a bundle fragment containing Steps and AnnotatedEmbedder classes for your own project, associating it to org.jbehave.osgi.jbehave-osgi-services (as Fragment-Host).  
+We provided two projects that you could use to test, one using maven-bundle-plugin and another using tycho.
+ 
+1) Build the provided sample:
+  
+    $ mvn install -Psample-bnd 
+  
+2) Install the bundle fragment with Steps and AnnotatedEmbedder classes:
+  
+    karaf> osgi:install mvn:org.jbehave.osgi/jbehave-osgi-sample-fragment-trader-bnd/1.0.0-SNAPSHOT
+
+3) Refresh the org.jbehave.osgi.jbehave-osgi-services using its ID:
+
+    karaf> refresh 48 <-- ID that appears on ID column after the command List -->
+    karaf> list -s
+
+should show something like this:
+    
+    [  48] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-services (1.0.0.SNAPSHOT)
+                                           Fragments: 50
+    [  49] [Active     ] [Created     ] [   60] org.jbehave.osgi.jbehave-osgi-karaf-commands (1.0.0.SNAPSHOT)
+    [  50] [Resolved   ] [            ] [   60] org.jbehave.osgi.jbehave-osgi-sample-fragment-trader-bnd (1.0.0.SNAPSHOT)
+                                           Hosts: 48
+
+4) Run the stories via Annotadded Embedder:
 
     karaf> jbehave:run-stories-with-annotated-embedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
 
-* It is possible to setup the AnnotatedEmbedder classes to be run creating a properties file named org.jbehave.osgi.cfg that
-should be located on {$karaf}/etc directory.
-
+It is possible to setup the AnnotatedEmbedder classes to be run creating a properties file named org.jbehave.osgi.cfg that should be located on {$karaf}/etc directory.  
 The configuration file should contain this properties:
 
-includes=org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
+    includes=org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder  
  
 This way you could call the story runner without parameters:
 
@@ -91,6 +96,8 @@ This way you could call the story runner without parameters:
  
  
 ##EQUINOX
+
+### Building
 * because we are using Wiring API that is part of OSGI R4.3, this module will be supported only by Indigo (3.7).
 
 Equinox module should be build using Eclipse Tycho, that uses manifest-first approach. But it requires the common service project, that is build using pom-first approach.
@@ -104,8 +111,19 @@ The mix of the two methods in same maven reactor is not allowed by Tycho, so you
 
 	mvn install -Pequinox
 
-This will create a P2 repository which will contain the JBehave features and all dependencies needed to be run.
+This will create a P2 repository which will contain the Core and Dependencies features needed for JBehave-OSGi to be executed on Equinox.
 
+
+### Installation
+
+#### Using Eclipse Launcher:
+
+
+#### Using Equinox jar:
+
+
+
+### Running Stories
 
 2) Start Equinox shell
 
