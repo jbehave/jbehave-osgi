@@ -100,7 +100,7 @@ This way you could call the story runner without parameters:
 ### Building
 * because we are using Wiring API that is part of OSGI R4.3, this module will be supported only by Indigo (3.7).
 
-Equinox module should be build using Eclipse Tycho, that uses manifest-first approach. But it requires the common service project, that is build using pom-first approach.
+Equinox module will be built using Eclipse Tycho, that uses _manifest-first_ approach. But it requires the common service project, that is build using _pom-first_ approach.
 The mix of the two methods in same maven reactor is not allowed by Tycho, so you need to separate the build into to phases (steps 1 and 2):
 
 1) Build the service project
