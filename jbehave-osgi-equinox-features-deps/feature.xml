@@ -2,9 +2,9 @@
 <!-- by Cristiano Gavião - www.ajail.net-->
 <feature
       id="org.jbehave.osgi.equinox.features.deps"
-      label="Jbehave Equinox Feature - Dependecies (required)"
+      label="JBehave Equinox Feature - Dependencies (required)"
       version="1.0.0.qualifier"
-      provider-name="Jbehave.org"
+      provider-name="JBehave.org"
       os="linux,macosx,win32"
       arch="x86,x86_64">
 
@@ -21,11 +21,45 @@
    </license>
 
    <plugin
-         id="org.apache.aries.blueprint.core"
+         id="org.apache.aries.proxy.api"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.apache.aries.blueprint"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.aries.proxy.impl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.aries.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.apache.commons.lang"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.apache.commons.collections"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

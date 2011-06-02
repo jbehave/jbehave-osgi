@@ -28,10 +28,33 @@
 				<configuration>
 					<includeAllDependencies>true</includeAllDependencies>
 					<createArtifactRepository>true</createArtifactRepository>
-<!-- 					<compress>true</compress> -->
+					<!-- <compress>true</compress> -->
 				</configuration>
 			</plugin>
-			
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/repository</outputDirectory>
+							<resources>
+								<resource>
+									<directory>.</directory>
+									<includes>
+										<include>index.html</include>
+										<!-- <include>web/*</include> -->
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>

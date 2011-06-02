@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="jbehave.osgi.equinox.features.core"
-      label="Jbehave Equinox Feature - Core (required)"
+      id="org.jbehave.osgi.equinox.features.core"
+      label="JBehave Equinox Feature - Core (required)"
       version="1.0.0.qualifier"
-      provider-name="Jbehave.org"
+      provider-name="JBehave.org"
       os="linux,macosx,win32"
       arch="x86,x86_64">
 
@@ -20,7 +20,7 @@
    </license>
 
    <includes
-         id="jbehave.osgi.equinox.features.deps"
+         id="org.jbehave.osgi.equinox.features.deps"
          version="0.0.0"/>
 
    <requires>
@@ -28,14 +28,14 @@
    </requires>
 
    <plugin
-         id="jbehave-osgi-equinox-commands"
+         id="org.jbehave.osgi.equinox.commands"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="jbehave-osgi-services"
+         id="org.jbehave.osgi.jbehave-osgi-services"
          download-size="0"
          install-size="0"
          version="0.0.0"

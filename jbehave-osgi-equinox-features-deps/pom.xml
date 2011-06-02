@@ -14,18 +14,33 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.aries.blueprint</groupId>
-			<artifactId>org.apache.aries.blueprint.core</artifactId>
+			<artifactId>org.apache.aries.blueprint</artifactId>
 			<version>0.3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.aries.quiesce</groupId>
-			<artifactId>org.apache.aries.quiesce.manager</artifactId>
+			<groupId>org.apache.aries.proxy</groupId>
+			<artifactId>org.apache.aries.proxy.api</artifactId>
 			<version>0.3</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.eclipse.gemini.blueprint</groupId> -->
-		<!-- <artifactId>gemini-blueprint-core</artifactId> -->
-		<!-- <version>1.0.0.M1</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.apache.aries.proxy</groupId>
+			<artifactId>org.apache.aries.proxy.impl</artifactId>
+			<version>0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries</groupId>
+			<artifactId>org.apache.aries.util</artifactId>
+			<version>0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>com.springsource.org.apache.commons.lang</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>com.springsource.org.apache.commons.collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 	</dependencies>
 </project>

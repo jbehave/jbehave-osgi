@@ -23,13 +23,14 @@
 		<!-- Only will work on Indigo(3.7) because Helios(3.6) doesn't have support 
 			to BundleWiring API -->
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20110523182458/repository</orbit-site>
+		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository</orbit-site>
 	</properties>
 	<modules>
 		<!-- Tycho don't support building of pom-first and manifest-first in same 
 			reactor, so we can't build services project here: -->
 		<!-- <module>../jbehave-osgi-services</module> -->
 		<module>../jbehave-osgi-equinox-commands</module>
+<!-- 		<module>../jbehave-osgi-equinox-commands.test</module> -->
 		<module>../jbehave-osgi-equinox-features-core</module>
 		<module>../jbehave-osgi-equinox-features-deps</module>
 		<module>../jbehave-osgi-equinox-repository</module>
@@ -72,17 +73,17 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.4.1</version>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho-version}</version>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.4.1</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
 					</configuration>
@@ -148,7 +149,7 @@
 					<configuration>
 						<resolver>p2</resolver>
 						<pomDependencies>consider</pomDependencies>
-						<ignoreTychoRepositories>false</ignoreTychoRepositories> 
+						<ignoreTychoRepositories>false</ignoreTychoRepositories>
 						<target>
 							<artifact>
 								<groupId>${project.groupId}</groupId>
@@ -186,6 +187,16 @@
 							<classifier>jbehave-osgi-indigo</classifier>
 						</artifact>
 					</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>
