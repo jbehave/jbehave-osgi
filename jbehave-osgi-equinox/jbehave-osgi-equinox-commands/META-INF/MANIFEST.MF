@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Blueprint: OSGI-INF/blueprint/*.xml
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.eclipse.osgi.framework.console,
+Import-Package: org.eclipse.osgi.framework.console, org.jbehave.osgi.services,
  org.osgi.framework
 Require-Bundle: org.eclipse.osgi, org.jbehave.osgi.services,
  org.apache.commons.collections;bundle-version="[3.2.1,4.0.0)",

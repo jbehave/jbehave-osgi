@@ -30,7 +30,7 @@
 			reactor, so we can't build services project here: -->
 		<!-- <module>../jbehave-osgi-services</module> -->
 		<module>jbehave-osgi-equinox-commands</module>
-		<module>jbehave-osgi-equinox-commands.test</module>
+		<module>jbehave-osgi-equinox-commands-test</module>
 		<module>jbehave-osgi-equinox-features-core</module>
 		<module>jbehave-osgi-equinox-features-deps</module>
 		<module>jbehave-osgi-equinox-repository</module>
