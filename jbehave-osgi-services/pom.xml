@@ -44,15 +44,48 @@
 				<extensions>true</extensions>
 				<configuration>
 					<unpackBundle>true</unpackBundle>
-<!-- 					<manifestLocation>target/classes/META-INF</manifestLocation> -->
+					<!-- <manifestLocation>target/classes/META-INF</manifestLocation> -->
 					<instructions>
 						<!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
 						<!-- <Bundle-Version>1.0.0.qualifier</Bundle-Version> -->
 						<Export-Package>org.jbehave.osgi.services</Export-Package>
-						<Private-Package>org.jbehave.osgi.services.impl</Private-Package>
-						<Import-Package>org.apache.log4j,org.osgi.service.blueprint;resolution:=optional,org.zeroturnaround.javarebel;resolution:=optional,org.python.*;resolution:=optional,org.mozilla.javascript;resolution:=optional,org.joda.*;resolution:=optional,org.jdom.*;resolution:=optional,org.jaxen.*;resolution:=optional,org.dom4j.*;resolution:=optional,org.codehaus.jettison.*;resolution:=optional,org.apache.xpath.*;resolution:=optional,org.apache.xml.utils.*;resolution:=optional,org.apache.tools.ant.*;resolution:=optional,org.apache.log;resolution:=optional,nu.xom;resolution:=optional,javax.security.*;resolution:=optional,net.sf.cglib.proxy;resolution:=optional,!javax.swing.*,!javax.servlet.*,javax.el;resolution:=optional,com.sun.*;resolution:=optional,sun.misc;resolution:=optional,sun.reflect;resolution:=optional,*</Import-Package>
+						<Private-Package>org.jbehave.osgi.services.impl,org.jbehave.*,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
+						<Import-Package>
+							!com.sun.org.apache.xml.internal.utils,
+							!com.sun.org.apache.xpath.internal,
+							!com.sun.org.apache.xpath.internal.objects,javax.el,
+							!javax.inject,javax.security.auth,javax.servlet,
+							!javax.servlet.http, !javax.servlet.jsp, !javax.servlet.jsp.el,
+							!javax.servlet.jsp.tagext, !javax.swing,javax.swing.plaf,
+							!javax.swing.tree, javax.xml.datatype,
+							javax.xml.namespace,
+							javax.xml.parsers, javax.xml.stream, javax.xml.transform,
+							javax.xml.transform.sax, !net.sf.cglib.proxy, !nu.xom,
+							org.apache.commons.collections;version="[3.2,4)",
+							org.apache.commons.io;version="[1.4,2)",
+							org.apache.commons.lang;version="[2.5,3)",
+							org.apache.commons.lang.builder;version="[2.5,3)",
+							!org.apache.log, org.apache.log4j,
+							!org.apache.tools.ant,
+							!org.apache.tools.ant.taskdefs, org.apache.xml.utils,
+							org.apache.xpath, org.apache.xpath.objects,
+							!org.codehaus.jettison, !org.codehaus.jettison.mapped,
+							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, org.hamcrest, !org.jaxen,
+							!org.jaxen.dom, !org.jaxen.dom4j, !org.jaxen.jdom,
+							org.jbehave.osgi.services, !org.jdom, !org.jdom.input,
+							!org.jdom.output,
+							!org.joda.time, !org.joda.time.format, org.junit,
+							org.junit.runner, org.junit.runner.notification,
+							org.junit.runners, org.junit.runners.model,
+							!org.mozilla.javascript, org.osgi.framework;version="[1.5,2)",
+							!org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
+							!org.python.core, !org.python.util, org.slf4j;version="[1.6,2)",
+							org.w3c.dom, org.w3c.dom.traversal, org.xml.sax
+							,org.xml.sax.helpers, !org.zeroturnaround.javarebel, !sun.misc,
+							!sun.reflect</Import-Package>
+						<!-- <Import-Package>org.apache.log4j,org.osgi.service.blueprint;resolution:=optional,org.zeroturnaround.javarebel;resolution:=optional,org.python.*;resolution:=optional,org.mozilla.javascript;resolution:=optional,org.joda.*;resolution:=optional,org.jdom.*;resolution:=optional,org.jaxen.*;resolution:=optional,org.dom4j.*;resolution:=optional,org.codehaus.jettison.*;resolution:=optional,org.apache.xpath.*;resolution:=optional,org.apache.xml.utils.*;resolution:=optional,org.apache.tools.ant.*;resolution:=optional,org.apache.log;resolution:=optional,nu.xom;resolution:=optional,javax.security.*;resolution:=optional,net.sf.cglib.proxy;resolution:=optional,!javax.swing.*,!javax.servlet.*,javax.el;resolution:=optional,com.sun.*;resolution:=optional,sun.misc;resolution:=optional,sun.reflect;resolution:=optional,*</Import-Package> -->
 						<Embed-Dependency>jbehave-core;scope=compile;inline=false,xstream;scope=compile;inline=false,xpp3_min;scope=compile;inline=false,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false</Embed-Dependency>
-						<_exportcontents>!org.hamcrest,org.jbehave.*</_exportcontents>
+						<!-- <_exportcontents>!org.hamcrest,*</_exportcontents> -->
 						<!-- <_exportcontents>!org.hamcrest,org.jbehave.*,com.thoughtworks.*,freemarker.*,org.xmlpull.*,org.codehaus.*,org.apache.*,org.zeroturnaround.*,org.dom4j.*,org.junit.*,junit.*,*</_exportcontents> -->
 						<!-- <excludeDependencies>*;optional=true</excludeDependencies> -->
 						<Embed-Directory>jars</Embed-Directory>
