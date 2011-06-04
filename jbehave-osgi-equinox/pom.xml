@@ -30,7 +30,7 @@
 			reactor, so we can't build services project here: -->
 		<!-- <module>../jbehave-osgi-services</module> -->
 		<module>../jbehave-osgi-equinox-commands</module>
-<!-- 		<module>../jbehave-osgi-equinox-commands.test</module> -->
+		<module>../jbehave-osgi-equinox-commands.test</module>
 		<module>../jbehave-osgi-equinox-features-core</module>
 		<module>../jbehave-osgi-equinox-features-deps</module>
 		<module>../jbehave-osgi-equinox-repository</module>
@@ -149,7 +149,6 @@
 					<configuration>
 						<resolver>p2</resolver>
 						<pomDependencies>consider</pomDependencies>
-						<ignoreTychoRepositories>false</ignoreTychoRepositories>
 						<target>
 							<artifact>
 								<groupId>${project.groupId}</groupId>
@@ -192,7 +191,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<source>1.6</source>
