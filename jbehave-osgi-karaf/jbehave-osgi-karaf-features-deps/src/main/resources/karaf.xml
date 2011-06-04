@@ -2,7 +2,7 @@
 
 <features name="org.jbehave.osgi.karaf.features.deps-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
 
-	<repository>mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-deps/${project.version}/xml/karaf</repository>
+	<repository>mvn:org.jbehave.osgi/org.jbehave.osgi.karaf.features.deps/${project.version}/xml/karaf</repository>
 
 	<!-- JBehave OSGi features: -->
 	<feature name="jbehave-osgi-features-deps" version="${project.version}"

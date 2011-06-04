@@ -126,15 +126,6 @@
 				<module>jbehave-osgi-sample-fragment-trader-bnd</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>sample-tycho</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-sample-fragment-trader-tycho</module>
-			</modules>
-		</profile>
 	</profiles>
 
 	<developers />
