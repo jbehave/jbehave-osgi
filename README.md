@@ -25,7 +25,7 @@ Ensure the karaf installation dir has +wr priviledges enabled for all enclosed i
 
 2) Install the OSGi Services as Karaf Features:
 
-    karaf> features:addurl mvn:org.jbehave.osgi/jbehave-osgi-karaf-features-core/1.0.0-SNAPSHOT/xml/karaf
+    karaf> features:addurl mvn:org.jbehave.osgi/org.jbehave.osgi.karaf.features.core/1.0.0-SNAPSHOT/xml/karaf
     karaf> features:install jbehave-osgi-features-core  
         
 3) After installing it you can test with the command:
@@ -56,8 +56,8 @@ You should see:
 
 ### Running Stories
 
-To use Jbehave-OSGi you need to create a bundle fragment containing Steps and AnnotatedEmbedder classes for your own project, associating it to org.jbehave.osgi.jbehave-osgi-services (as Fragment-Host).  
-We provided two projects that you could use to test, one using maven-bundle-plugin and another using tycho.
+To use Jbehave-OSGi you need to create a bundle fragment containing Steps and AnnotatedEmbedder classes for your own project, associating it to org.jbehave.osgi.services (as Fragment-Host).  
+We provided one project that you could use to test. It was created using maven-bundle-plugin to facilitate embed Trader jars.
  
 1) Build the provided sample:
   
@@ -65,7 +65,7 @@ We provided two projects that you could use to test, one using maven-bundle-plug
   
 2) Install the bundle fragment with Steps and AnnotatedEmbedder classes:
   
-    karaf> osgi:install mvn:org.jbehave.osgi/jbehave-osgi-sample-fragment-trader-bnd/1.0.0-SNAPSHOT
+    karaf> osgi:install mvn:org.jbehave.osgi/org.jbehave.osgi.sample.fragment.trader.bnd/1.0.0-SNAPSHOT
 
 3) Refresh the org.jbehave.osgi.jbehave-osgi-services using its ID:
 
