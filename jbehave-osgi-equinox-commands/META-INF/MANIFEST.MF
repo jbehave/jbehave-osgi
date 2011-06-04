@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.osgi,
  org.apache.commons.collections;bundle-version="[3.2.1,4.0.0)",
  org.apache.commons.lang;bundle-version="[2.5.0,3.0.0)",
  org.jbehave.osgi.jbehave-osgi-services;bundle-version="1.0.0"
+Export-Package: org.jbehave.osgi.equinox.commands

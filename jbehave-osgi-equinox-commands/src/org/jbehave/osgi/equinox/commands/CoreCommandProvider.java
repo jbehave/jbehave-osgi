@@ -8,11 +8,13 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.eclipse.osgi.framework.console.CommandProvider;
 import org.jbehave.osgi.services.EmbedderService;
+import org.osgi.framework.BundleContext;
 
 public class CoreCommandProvider implements
 		CommandProvider {
 
 	private EmbedderService embedderService;
+	private static BundleContext bundleContext;
 
 	@Override
 	public String getHelp() {
@@ -69,5 +71,13 @@ public class CoreCommandProvider implements
 			}
 		}
 		return list;
+	}
+
+	public static BundleContext getBundleContext() {
+		return bundleContext;
+	}
+
+	public static void setBundleContext(BundleContext bundleContextp) {
+		bundleContext = bundleContextp;
 	}
 }
