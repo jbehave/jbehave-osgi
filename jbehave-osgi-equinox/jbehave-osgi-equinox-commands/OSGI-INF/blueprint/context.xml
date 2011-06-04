@@ -9,7 +9,7 @@
 
 	<bean id="commandProviderImpl" class="org.jbehave.osgi.equinox.commands.CoreCommandProvider">
 		<property name="embedderService" ref="embedderService" />
-		<property name="bundleContext" ref="blueprintBundleContext" />
+		<property name="injectedBundleContext" ref="blueprintBundleContext" />
 	</bean>
 
 	<service id="commandService" ref="commandProviderImpl"
