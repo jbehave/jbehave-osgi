@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>jbehave-osgi</artifactId>
+		<artifactId>org.jbehave.osgi</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>jbehave-osgi-services</artifactId>
+	<artifactId>org.jbehave.osgi.services</artifactId>
 	<name>JBehave OSGi : Services Bundle</name>
 	<description>Provides OSGi Services to interface to JBehave.</description>
 	<packaging>bundle</packaging>
@@ -46,7 +46,7 @@
 					<unpackBundle>true</unpackBundle>
 					<!-- <manifestLocation>target/classes/META-INF</manifestLocation> -->
 					<instructions>
-						<!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<!-- <Bundle-Version>1.0.0.qualifier</Bundle-Version> -->
 						<Export-Package>org.jbehave.osgi.services</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,org.jbehave.*,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
@@ -70,7 +70,7 @@
 							!org.apache.tools.ant.taskdefs, org.apache.xml.utils,
 							org.apache.xpath, org.apache.xpath.objects,
 							!org.codehaus.jettison, !org.codehaus.jettison.mapped,
-							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, org.hamcrest, !org.jaxen,
+							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, !org.hamcrest, org.hamcrest.core, !org.jaxen,
 							!org.jaxen.dom, !org.jaxen.dom4j, !org.jaxen.jdom,
 							org.jbehave.osgi.services, !org.jdom, !org.jdom.input,
 							!org.jdom.output,

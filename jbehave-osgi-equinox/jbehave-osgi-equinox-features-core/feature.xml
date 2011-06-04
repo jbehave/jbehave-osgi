@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.jbehave.osgi.equinox.features.core"
+      label="JBehave Equinox Feature - Core (required)"
+      version="1.0.0.qualifier"
+      provider-name="JBehave.org"
+      os="linux,macosx,win32"
+      arch="x86,x86_64">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="org.jbehave.osgi.equinox.features.deps"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.eclipse.osgi"/>
+   </requires>
+
+   <plugin
+         id="org.jbehave.osgi.equinox.commands"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

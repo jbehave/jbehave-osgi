@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>jbehave-osgi</artifactId>
+		<artifactId>org.jbehave.osgi</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>jbehave-osgi-sample-fragment-trader-bnd</artifactId>

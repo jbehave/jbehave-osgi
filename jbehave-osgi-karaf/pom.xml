@@ -2,19 +2,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>jbehave-osgi</artifactId>
+		<artifactId>org.jbehave.osgi</artifactId>
 		<groupId>org.jbehave.osgi</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>jbehave-osgi-karaf</artifactId>
+	<artifactId>org.jbehave.osgi.karaf</artifactId>
 	<name>JBehave OSGi Karaf : Parent POM</name>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../jbehave-osgi-karaf-commands</module>
-		<module>../jbehave-osgi-karaf-features-core</module>
-		<module>../jbehave-osgi-karaf-features-deps</module>
-		<module>../jbehave-osgi-karaf-its</module>
+		<module>jbehave-osgi-karaf-commands</module>
+		<module>jbehave-osgi-karaf-features-core</module>
+		<module>jbehave-osgi-karaf-features-deps</module>
+		<module>jbehave-osgi-karaf-its</module>
 	</modules>
 
 	<properties>
