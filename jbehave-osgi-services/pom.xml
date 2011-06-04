@@ -49,7 +49,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<!-- <Bundle-Version>1.0.0.qualifier</Bundle-Version> -->
 						<Export-Package>org.jbehave.osgi.services</Export-Package>
-						<Private-Package>org.jbehave.osgi.services.impl,org.jbehave.*,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
+						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
 						<Import-Package>
 							!com.sun.org.apache.xml.internal.utils,
 							!com.sun.org.apache.xpath.internal,
@@ -85,8 +85,7 @@
 							!sun.reflect</Import-Package>
 						<!-- <Import-Package>org.apache.log4j,org.osgi.service.blueprint;resolution:=optional,org.zeroturnaround.javarebel;resolution:=optional,org.python.*;resolution:=optional,org.mozilla.javascript;resolution:=optional,org.joda.*;resolution:=optional,org.jdom.*;resolution:=optional,org.jaxen.*;resolution:=optional,org.dom4j.*;resolution:=optional,org.codehaus.jettison.*;resolution:=optional,org.apache.xpath.*;resolution:=optional,org.apache.xml.utils.*;resolution:=optional,org.apache.tools.ant.*;resolution:=optional,org.apache.log;resolution:=optional,nu.xom;resolution:=optional,javax.security.*;resolution:=optional,net.sf.cglib.proxy;resolution:=optional,!javax.swing.*,!javax.servlet.*,javax.el;resolution:=optional,com.sun.*;resolution:=optional,sun.misc;resolution:=optional,sun.reflect;resolution:=optional,*</Import-Package> -->
 						<Embed-Dependency>jbehave-core;scope=compile;inline=false,xstream;scope=compile;inline=false,xpp3_min;scope=compile;inline=false,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false</Embed-Dependency>
-						<!-- <_exportcontents>!org.hamcrest,*</_exportcontents> -->
-						<!-- <_exportcontents>!org.hamcrest,org.jbehave.*,com.thoughtworks.*,freemarker.*,org.xmlpull.*,org.codehaus.*,org.apache.*,org.zeroturnaround.*,org.dom4j.*,org.junit.*,junit.*,*</_exportcontents> -->
+						<_exportcontents>org.jbehave.*,</_exportcontents>
 						<!-- <excludeDependencies>*;optional=true</excludeDependencies> -->
 						<Embed-Directory>jars</Embed-Directory>
 						<Embed-Transitive>true</Embed-Transitive>
