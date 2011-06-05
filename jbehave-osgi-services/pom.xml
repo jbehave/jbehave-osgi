@@ -57,7 +57,7 @@
 							!javax.inject,javax.security.auth,!javax.servlet,
 							!javax.servlet.http, !javax.servlet.jsp, !javax.servlet.jsp.el,
 							!javax.servlet.jsp.tagext, !javax.swing,javax.swing.plaf,
-							!javax.swing.tree, javax.xml.datatype,
+							javax.swing.tree, javax.xml.datatype,
 							javax.xml.namespace,
 							javax.xml.parsers, javax.xml.stream, javax.xml.transform,
 							javax.xml.transform.sax, !net.sf.cglib.proxy, !nu.xom,
