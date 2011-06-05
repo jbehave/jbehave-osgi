@@ -129,7 +129,7 @@ In your case, you could probably point it to some HTTP server where you have dep
 After open the file you just need to click on "Set as Target Platform" link and your workspace will be configured properly.
 
 
-##### Running Stories
+#### Running Stories with Eclipse Launcher:
 
 1) Setup OSGi Framework Launcher
 Once your workspace is set up you can setup the Equinox launcher, choosing the bundles and tests fragments that must be installed when the Equinox is launched.  
