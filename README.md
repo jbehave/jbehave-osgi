@@ -111,27 +111,54 @@ The mix of the two methods in same maven reactor is not allowed by Tycho, so you
 
 	mvn install -Pequinox
 
-This will create a P2 repository which will contain the Core and Dependencies features needed for JBehave-OSGi to be executed on Equinox.
+This will create a P2 repository (org.jbehave.osgi.equinox.repository/target/repository) which will contain the Core feature and all bundles dependencies needed for JBehave-OSGi to be executed on Equinox.
 
+### Using Eclipse Launcher:
 
-### Installation
+#### Installation
 
-#### Using Eclipse Launcher:
-
-
-#### Using Equinox jar:
-
+After the JBehave-OSGi-Equinox have been built you need to setup the Target Platform for your own project. 
+It's recommended that you create one Workspace for each set of related project (same parent POM). This way you could setup one Target Platform for them.  
+We provide one example of how you could do that using Target Platform Definition File. Go to the org.jbehave.osgi.equinox.target project and open (double-click) the eclipse-jbehave-osgi-indigo.target file.  
+You could see that this definition file is pointing to ${project_loc:/org.jbehave.osgi.equinox.repository}/target/repository/ exactly where our repository was created before.  
+So you just need to click on "Set as Target Platform" link and your workspace will be configured properly.
 
 
 ### Running Stories
 
-2) Start Equinox shell
+2) Setup OSGi Framework Launcher
+You need to setup your launcher choosing the bundles and tests fragments that must be installed when the Equinox is launched.  
+We provided one launcher sample named run_jbehave-osgi_equinox_runtime where we selected org.jbehave.osgi.sample.fragment.trader.bnd test fragment.
 
-3) Install the OSGi Services as Equinox Features
-        
-4) After installing it you can test with the command:
+- Go to menu "Run", "Debug Configurations". 
+- Select run_jbehave-osgi_equinox_runtime launcher.
+- Check if only the necessary workspace projects is selected. 
+- Click on "Validate Bundles" to ensure that all dependencies is satisfied. 
+- Then click on "Debug" button.
 
-5) Install bundle(s) with Steps and Embedable
+Your Equinox instance should be started (check the Console View).
 
-6) Run the embeddables via the Embedder
+3) After launching Equinox you can test JBehave OSGi Services with this commands:
 
+    osgi> help
+    
+You should see the JBehave help (with others too):
+
+	--- JBehave Equinox Commands ---
+	jbStatus - JBehave OSGi EmbedderService status.
+	jbRunStoriesWithAnnotatedEmbedder - Run Stories via Annotated Embedder. 
+	
+Then you could try the service status:
+
+    osgi> jbStatus
+    
+You should see:
+
+     OSGi Embedder Service is started.      
+
+4) Run the stories via the Embedder
+
+    osgi> jbRunStoriesWithAnnotatedEmbedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
+    
+    
+#### Using Equinox external jar:
