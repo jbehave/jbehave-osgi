@@ -12,7 +12,7 @@
 	<packaging>bundle</packaging>
 
 	<properties>
-		<jbehave-examples.version>3.4</jbehave-examples.version>
+		<jbehave-examples.version>3.5-SNAPSHOT</jbehave-examples.version>
 	</properties>
 
 	<dependencies>
@@ -22,9 +22,9 @@
 			<version>${jbehave-examples.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-trader-annotations-example</artifactId>
-			<version>${jbehave-examples.version}</version>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
