@@ -29,11 +29,6 @@
 			<artifactId>org.osgi.core</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<scope>provided</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -48,7 +43,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<!-- <Bundle-Version>1.0.0.qualifier</Bundle-Version> -->
-						<Export-Package>org.jbehave.osgi.services</Export-Package>
+						<Export-Package>org.jbehave.osgi.services, org.jbehave.osgi.io</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
 						<Import-Package>
 							!com.sun.org.apache.xml.internal.utils,
@@ -73,7 +68,7 @@
 							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, !org.hamcrest, org.hamcrest.core, !org.jaxen,
 							!org.jaxen.dom, !org.jaxen.dom4j, !org.jaxen.jdom,
 							org.jbehave.osgi.services, !org.jdom, !org.jdom.input,
-							!org.jdom.output,
+							!org.jdom.output, org.jbehave.osgi.io, org.osgi.framework.*,
 							!org.joda.time, !org.joda.time.format, org.junit,
 							org.junit.runner, org.junit.runner.notification,
 							org.junit.runners, org.junit.runners.model,
