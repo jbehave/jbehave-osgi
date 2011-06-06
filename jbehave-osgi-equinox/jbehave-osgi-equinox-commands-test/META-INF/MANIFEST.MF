@@ -4,7 +4,7 @@ Bundle-Name: JBehave OSGi Equinox : Commands Bundle Tests
 Bundle-SymbolicName: org.jbehave.osgi.equinox.commands.test
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.junit, org.hamcrest;bundle-version="1.1.0"
+Require-Bundle: org.junit, org.hamcrest.core;bundle-version="1.1.0",org.hamcrest.integration;bundle-version="1.1.0"
 Fragment-Host: org.jbehave.osgi.equinox.commands;bundle-version="1.0.0"
 Import-Package: 
  org.jbehave.osgi.services,
