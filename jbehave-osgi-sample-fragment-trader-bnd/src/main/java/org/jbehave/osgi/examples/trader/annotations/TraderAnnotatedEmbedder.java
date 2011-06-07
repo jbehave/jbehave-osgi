@@ -1,5 +1,6 @@
 package org.jbehave.osgi.examples.trader.annotations;
 
+import static org.jbehave.core.io.CodeLocations.codeLocationFromPath;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
 import static org.jbehave.core.reporters.Format.TXT;
@@ -46,8 +47,7 @@ public class TraderAnnotatedEmbedder extends InjectableEmbedder {
 
 	@Test
 	public void run() {
-		List<String> storyPaths = new OsgiStoryFinder().findPaths(
-				"/", "**/*.story",
+		List<String> storyPaths = new OsgiStoryFinder().findPaths(codeLocationFromPath("./"), "**/*.story",
 				"**/examples_table_loaded*");
 		injectedEmbedder().runStoriesAsPaths(storyPaths);
 	}

@@ -37,6 +37,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Import-Package>!org.hamcrest,*</Import-Package>
+						<Export-Package>org.jbehave.osgi.examples.trader.annotations.*</Export-Package>
 						<Fragment-Host>org.jbehave.osgi.services</Fragment-Host>
 						<Embed-Dependency>jbehave-trader-annotations-example;scope=compile;inline=true,jbehave-trader-example;scope=compile;inline=true</Embed-Dependency>
 						<_exportcontents>org.jbehave.examples.trader.*</_exportcontents>
