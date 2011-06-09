@@ -14,27 +14,28 @@
 </location>
 </locations>
 <includeBundles>
+<plugin id="org.eclipse.core.commands"/>
+<plugin id="org.eclipse.equinox.common.source"/>
+<plugin id="org.eclipse.osgi.services"/>
+<plugin id="javax.servlet"/>
+<plugin id="org.eclipse.osgi.services.source"/>
 <plugin id="org.eclipse.equinox.weaving.hook"/>
 <plugin id="javax.servlet.source"/>
-<plugin id="org.eclipse.equinox.common.source"/>
-<plugin id="org.junit"/>
-<plugin id="org.eclipse.equinox.weaving.caching.source"/>
-<plugin id="org.eclipse.osgi.services"/>
-<plugin id="org.eclipse.osgi"/>
-<plugin id="org.eclipse.equinox.transforms.hook.source"/>
-<plugin id="org.eclipse.equinox.weaving.hook.source"/>
-<plugin id="org.eclipse.equinox.cm.source"/>
-<plugin id="org.hamcrest.core"/>
-<plugin id="org.eclipse.equinox.transforms.hook"/>
-<plugin id="org.eclipse.osgi.source"/>
-<plugin id="org.eclipse.core.commands"/>
-<plugin id="org.eclipse.equinox.cm"/>
-<plugin id="org.eclipse.equinox.weaving.caching"/>
-<plugin id="org.eclipse.osgi.util"/>
-<plugin id="javax.servlet"/>
-<plugin id="org.eclipse.osgi.util.source"/>
 <plugin id="org.eclipse.equinox.common"/>
+<plugin id="org.junit"/>
 <plugin id="org.eclipse.equinox.servletbridge.extensionbundle"/>
+<plugin id="org.eclipse.osgi.util.source"/>
+<plugin id="org.eclipse.equinox.transforms.hook.source"/>
+<plugin id="org.eclipse.equinox.cm"/>
+<plugin id="org.eclipse.equinox.weaving.hook.source"/>
 <plugin id="org.apache.commons.io"/>
+<plugin id="org.eclipse.equinox.weaving.caching.source"/>
+<plugin id="org.hamcrest.core"/>
+<plugin id="org.eclipse.osgi.source"/>
+<plugin id="org.eclipse.osgi.util"/>
+<plugin id="org.eclipse.equinox.cm.source"/>
+<plugin id="org.eclipse.equinox.weaving.caching"/>
+<plugin id="org.eclipse.osgi"/>
+<plugin id="org.eclipse.equinox.transforms.hook"/>
 </includeBundles>
 </target>

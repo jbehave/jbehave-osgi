@@ -161,5 +161,5 @@ You should see:
 
 3) Run the stories via the Embedder
 
-    osgi> jbRunStoriesWithAnnotatedEmbedder org.jbehave.examples.trader.annotations.TraderAnnotatedEmbedder
+    osgi> jbRunStoriesWithAnnotatedEmbedder org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder
     
