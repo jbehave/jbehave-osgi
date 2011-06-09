@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.sample.fragment.trader.bnd</artifactId>
 	<name>JBehave OSGi : Example Trader Scenarios Fragment - BND</name>
@@ -34,15 +34,17 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
+					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>1.1.0.qualifier</Bundle-Version>
 						<Import-Package>!org.hamcrest,*</Import-Package>
 						<Export-Package>org.jbehave.osgi.examples.trader.annotations.*</Export-Package>
 						<Fragment-Host>org.jbehave.osgi.services</Fragment-Host>
 						<Embed-Dependency>jbehave-trader-annotations-example;scope=compile;inline=true,jbehave-trader-example;scope=compile;inline=true</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
 						<_exportcontents>org.jbehave.examples.trader.*</_exportcontents>
 					</instructions>
-					<unpackBundle>true</unpackBundle>
 				</configuration>
 			</plugin>
 		</plugins>
