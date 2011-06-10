@@ -55,8 +55,7 @@
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
 				<version>4.3.0</version>
-				<systemPath>${basedir}/lib/osgi.core.jar</systemPath>
-				<scope>system</scope>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
