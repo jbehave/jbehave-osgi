@@ -32,6 +32,20 @@
 			<version>0.3</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.aries.blueprint</groupId>
+			<artifactId>
+				org.apache.aries.blueprint.annotation.api
+			</artifactId>
+			<version>0.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.blueprint</groupId>
+			<artifactId>
+				org.apache.aries.blueprint.annotation.impl
+			</artifactId>
+			<version>0.3.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>com.springsource.org.apache.commons.lang</artifactId>
 			<version>2.5.0</version>

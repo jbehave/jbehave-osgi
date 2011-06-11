@@ -7,5 +7,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit, org.hamcrest.core;bundle-version="1.1.0",org.hamcrest.integration;bundle-version="1.1.0"
 Fragment-Host: org.jbehave.osgi.equinox.commands;bundle-version="1.0.0"
 Import-Package: 
+ org.apache.aries.blueprint.annotation;version="0.3.1",
+ org.apache.aries.blueprint.annotation.impl;version="0.3.1",
+ org.apache.aries.blueprint.annotation.service;version="0.3.1",
  org.jbehave.osgi.services,
  org.osgi.framework;version="1.6.0"

@@ -6,30 +6,34 @@
 <location path="${project_loc:/org.jbehave.osgi.equinox.repository}/target/repository/" type="Profile"/>
 </locations>
 <includeBundles>
-<plugin id="org.apache.aries.proxy.api"/>
-<plugin id="org.hamcrest.core"/>
-<plugin id="org.eclipse.osgi.services"/>
+<plugin id="com.springsource.org.apache.commons.lang"/>
+<plugin id="org.apache.aries.blueprint"/>
+<plugin id="org.apache.xbean.finder"/>
+<plugin id="org.eclipse.equinox.io"/>
+<plugin id="org.apache.aries.proxy.impl"/>
+<plugin id="com.springsource.org.apache.commons.collections"/>
+<plugin id="javax.mail.glassfish"/>
+<plugin id="org.easymock"/>
+<plugin id="org.apache.aries.blueprint.annotation.impl"/>
+<plugin id="org.objectweb.asm"/>
+<plugin id="org.hamcrest.integration"/>
+<plugin id="org.eclipse.net4j.jms.api"/>
+<plugin id="org.eclipse.equinox.util"/>
 <plugin id="ch.qos.logback.classic"/>
+<plugin id="ch.qos.logback.core"/>
+<plugin id="org.eclipse.osgi"/>
+<plugin id="org.eclipse.equinox.supplement"/>
+<plugin id="org.eclipse.equinox.log"/>
+<plugin id="org.apache.aries.blueprint.annotation.api"/>
+<plugin id="javax.servlet"/>
+<plugin id="org.apache.commons.io"/>
+<plugin id="ch.qos.logback.slf4j"/>
+<plugin id="org.apache.aries.proxy.api"/>
+<plugin id="org.eclipse.osgi.services"/>
+<plugin id="org.slf4j.api"/>
 <plugin id="org.apache.aries.util"/>
 <plugin id="org.eclipse.equinox.servletbridge.extensionbundle"/>
-<plugin id="org.eclipse.equinox.log"/>
-<plugin id="com.springsource.org.apache.commons.collections"/>
-<plugin id="ch.qos.logback.core"/>
-<plugin id="org.eclipse.equinox.io"/>
 <plugin id="org.junit"/>
-<plugin id="org.apache.aries.proxy.impl"/>
-<plugin id="org.slf4j.api"/>
-<plugin id="ch.qos.logback.slf4j"/>
-<plugin id="org.apache.commons.io"/>
-<plugin id="org.objectweb.asm"/>
-<plugin id="org.easymock"/>
-<plugin id="org.hamcrest.integration"/>
-<plugin id="org.apache.aries.blueprint"/>
-<plugin id="com.springsource.org.apache.commons.lang"/>
-<plugin id="javax.servlet"/>
-<plugin id="org.eclipse.equinox.supplement"/>
-<plugin id="org.eclipse.osgi"/>
-<plugin id="org.eclipse.equinox.util"/>
-<plugin id="org.eclipse.net4j.jms.api"/>
+<plugin id="org.hamcrest.core"/>
 </includeBundles>
 </target>

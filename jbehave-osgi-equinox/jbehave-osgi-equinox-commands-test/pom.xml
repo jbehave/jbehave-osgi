@@ -10,6 +10,19 @@
 	<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 	<name>JBehave OSGi Equinox : Commands Bundle Tests</name>
+
+	<properties>
+		<local-p2-site>file:/${basedir}/../behave-osgi-equinox-repository/target/repository</local-p2-site>
+		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
+	</properties>
+	<!-- <repositories> -->
+	<!-- <repository> -->
+	<!-- <id>local-p2</id> -->
+	<!-- <layout>p2</layout> -->
+	<!-- <url>${local-p2-site}</url> -->
+	<!-- </repository> -->
+	<!-- </repositories> -->
+
 	<build>
 		<plugins>
 			<plugin>
@@ -17,7 +30,52 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<testSuite>org.jbehave.osgi.equinox.commands.test</testSuite>
+					<testClass>org.jbehave.osgi.equinox.commands.test.AllTests</testClass>
 					<showEclipseLog>true</showEclipseLog>
+					<!-- <argLine>${ui.test.vmargs}</argLine> -->
+					<bundleStartLevel>
+						<bundle>
+							<id>org.apache.aries.util</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.aries.blueprint</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.aries.proxy.api</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.aries.proxy.impl</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.aries.blueprint.annotations.impl</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.aries.proxy.impl</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.jbehave.osgi.equinox.commands</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.jbehave.osgi.services</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
 					<excludes>
 						<!-- test mojo matches TestProject be default and treats it as PojoTest -->
 						<exclude>**/Test*.class</exclude>
@@ -27,12 +85,27 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.equinox.commands</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.blueprint</groupId>
+			<artifactId>
+				org.apache.aries.blueprint.annotation.api
+			</artifactId>
+			<version>0.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.blueprint</groupId>
+			<artifactId>
+				org.apache.aries.blueprint.annotation.impl
+			</artifactId>
+			<version>0.3.1</version>
 		</dependency>
 	</dependencies>
 </project>

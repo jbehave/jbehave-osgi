@@ -15,7 +15,6 @@
 
 	<properties>
 		<jbehave.core.version>3.5-SNAPSHOT</jbehave.core.version>
-		<slf4j.version>1.6.1</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -42,14 +41,8 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
+				<version>1.6.1</version>
 				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-jdk14</artifactId>
-				<version>${slf4j.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>

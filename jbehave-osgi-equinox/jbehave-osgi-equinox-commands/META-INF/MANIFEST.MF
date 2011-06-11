@@ -12,3 +12,4 @@ Import-Package: org.apache.commons.collections;version="3.2.1",
  org.jbehave.osgi.services,
  org.osgi.framework
 Export-Package: org.jbehave.osgi.equinox.commands
+Require-Bundle: org.apache.aries.blueprint;bundle-version="0.3.1",org.apache.aries.proxy.api;bundle-version="0.3.0",org.apache.aries.proxy.impl;bundle-version="0.3.0",org.apache.aries.util;bundle-version="0.3.0"
