@@ -14,9 +14,9 @@ import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.annotations.UsingSteps;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.embedder.StoryControls;
+import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.junit.AnnotatedEmbedderRunner;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
-import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.ParameterConverters.DateConverter;
 import org.jbehave.examples.trader.steps.AndSteps;
 import org.jbehave.examples.trader.steps.BeforeAfterSteps;
@@ -25,19 +25,20 @@ import org.jbehave.examples.trader.steps.PriorityMatchingSteps;
 import org.jbehave.examples.trader.steps.SandpitSteps;
 import org.jbehave.examples.trader.steps.SearchSteps;
 import org.jbehave.examples.trader.steps.TraderSteps;
+import org.jbehave.osgi.configuration.OsgiDefaultConfiguration;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyDateConverter;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyEmbedder;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyReportBuilder;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryControls;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryLoader;
-import org.jbehave.osgi.io.OsgiLoadFromClasspath;
 import org.jbehave.osgi.io.OsgiStoryFinder;
+import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AnnotatedEmbedderRunner.class)
-@Configure(stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
+@Configure(using = OsgiDefaultConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { TraderSteps.class, BeforeAfterSteps.class,
 		AndSteps.class, CalendarSteps.class, PriorityMatchingSteps.class,
@@ -46,8 +47,9 @@ public class TraderAnnotatedEmbedder extends InjectableEmbedder {
 
 	@Test
 	public void run() {
-		List<String> storyPaths = new OsgiStoryFinder().findPaths("org.jbehave.examples.trader.stories", "*.story",
-				"**/examples_table_loaded*");
+		List<String> storyPaths = new OsgiStoryFinder().findPaths(
+				"/org/jbehave/examples/trader/stories", "*.story",
+				"examples_table_loaded*");
 		injectedEmbedder().runStoriesAsPaths(storyPaths);
 	}
 
@@ -67,13 +69,13 @@ public class TraderAnnotatedEmbedder extends InjectableEmbedder {
 		}
 	}
 
-	public static class MyStoryLoader extends OsgiLoadFromClasspath {
+	public static class MyStoryLoader extends LoadFromClasspath {
 		public MyStoryLoader() {
 			super();
 		}
 	}
 
-	public static class MyReportBuilder extends StoryReporterBuilder {
+	public static class MyReportBuilder extends OsgiStoryReporterBuilder {
 		public MyReportBuilder() {
 			this.withFormats(CONSOLE, TXT, HTML, XML).withDefaultFormats();
 		}

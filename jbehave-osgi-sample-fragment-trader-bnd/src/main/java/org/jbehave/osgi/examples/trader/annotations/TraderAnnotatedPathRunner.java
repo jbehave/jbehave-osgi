@@ -24,12 +24,11 @@ import org.jbehave.examples.trader.steps.PriorityMatchingSteps;
 import org.jbehave.examples.trader.steps.SandpitSteps;
 import org.jbehave.examples.trader.steps.SearchSteps;
 import org.jbehave.examples.trader.steps.TraderSteps;
+import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryLoader;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyDateConverter;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyRegexPrefixCapturingPatternParser;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyReportBuilder;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyStoryControls;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyStoryLoader;
-import org.jbehave.osgi.io.OsgiLoadFromClasspath;
 import org.junit.runner.RunWith;
 
 @RunWith(AnnotatedPathRunner.class)
@@ -39,7 +38,7 @@ import org.junit.runner.RunWith;
                 storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip", systemProperties="java.awt.headless=true")
 @UsingSteps(instances = { TraderSteps.class, BeforeAfterSteps.class, AndSteps.class, CalendarSteps.class,
         PriorityMatchingSteps.class, SandpitSteps.class, SearchSteps.class })
-@UsingPaths(searchIn = "../trader/src/main/java", includes = { "**/*.story" }, excludes = { "**/examples_table*.story" })
+@UsingPaths(searchIn = "/org/jbehave/examples/trader/stories", includes = { "**/*.story" }, excludes = { "**/examples_table*.story" })
 public class TraderAnnotatedPathRunner {
 
     public static class MyStoryControls extends StoryControls {
@@ -49,11 +48,6 @@ public class TraderAnnotatedPathRunner {
         }
     }
 
-    public static class MyStoryLoader extends OsgiLoadFromClasspath {
-        public MyStoryLoader() {
-            super(TraderAnnotatedPathRunner.class.getClassLoader());
-        }
-    }
 
     public static class MyReportBuilder extends StoryReporterBuilder {
         public MyReportBuilder() {

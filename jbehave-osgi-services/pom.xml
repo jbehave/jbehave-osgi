@@ -40,7 +40,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Version>1.1.0.qualifier</Bundle-Version>
-						<Export-Package>org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration</Export-Package>
+						<Export-Package>org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration, org.jbehave.osgi.reporters</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
 						<Import-Package>
 							!com.sun.org.apache.xml.internal.utils,
@@ -57,12 +57,12 @@
 							org.apache.commons.io;version="[1.4,2)",
 							org.apache.commons.lang;version="[2.5,3)",
 							org.apache.commons.lang.builder;version="[2.5,3)",
-							!org.apache.log, org.apache.log4j,
+							!org.apache.log, !org.apache.log4j,
 							!org.apache.tools.ant,
 							!org.apache.tools.ant.taskdefs, !org.apache.xml.utils,
 							!org.apache.xpath, !org.apache.xpath.objects,
 							!org.codehaus.jettison, !org.codehaus.jettison.mapped,
-							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, !org.hamcrest, org.hamcrest.core, !org.jaxen,
+							!org.dom4j,!org.dom4j.io,!org.dom4j.tree, org.hamcrest.*;version="[1.1,2)", !org.jaxen,
 							!org.jaxen.dom, !org.jaxen.dom4j, !org.jaxen.jdom,
 							org.jbehave.osgi.services, !org.jdom, !org.jdom.input,
 							!org.jdom.output, org.jbehave.osgi.io, org.osgi.framework.*,
