@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="jbehave-osgi-indigo" sequenceNumber="7">
+<target name="jbehave-osgi-indigo" sequenceNumber="8">
 <locations>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.equinox.sdk.feature.group" version="3.7.0.v20110502-7M7W8Z8eNV4Ulz-bhichboyz0Z5T"/>
@@ -9,33 +9,44 @@
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.apache.commons.io" version="1.4.0.v20081110-1000"/>
+<unit id="org.hamcrest.core" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.integration" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest.library" version="1.1.0.v20090501071000"/>
+<unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
 <unit id="org.junit" version="4.8.2.v4_8_2_v20110321-1705"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository"/>
 </location>
 </locations>
 <includeBundles>
-<plugin id="org.eclipse.core.commands"/>
-<plugin id="org.eclipse.equinox.common.source"/>
-<plugin id="org.eclipse.osgi.services"/>
-<plugin id="javax.servlet"/>
-<plugin id="org.eclipse.osgi.services.source"/>
-<plugin id="org.eclipse.equinox.weaving.hook"/>
-<plugin id="javax.servlet.source"/>
-<plugin id="org.eclipse.equinox.common"/>
-<plugin id="org.junit"/>
-<plugin id="org.eclipse.equinox.servletbridge.extensionbundle"/>
-<plugin id="org.eclipse.osgi.util.source"/>
 <plugin id="org.eclipse.equinox.transforms.hook.source"/>
-<plugin id="org.eclipse.equinox.cm"/>
-<plugin id="org.eclipse.equinox.weaving.hook.source"/>
-<plugin id="org.apache.commons.io"/>
-<plugin id="org.eclipse.equinox.weaving.caching.source"/>
-<plugin id="org.hamcrest.core"/>
-<plugin id="org.eclipse.osgi.source"/>
-<plugin id="org.eclipse.osgi.util"/>
-<plugin id="org.eclipse.equinox.cm.source"/>
-<plugin id="org.eclipse.equinox.weaving.caching"/>
-<plugin id="org.eclipse.osgi"/>
+<plugin id="org.eclipse.osgi.services.source"/>
+<plugin id="org.eclipse.equinox.common.source"/>
 <plugin id="org.eclipse.equinox.transforms.hook"/>
+<plugin id="javax.servlet"/>
+<plugin id="org.eclipse.equinox.common"/>
+<plugin id="org.hamcrest.core"/>
+<plugin id="org.hamcrest"/>
+<plugin id="org.eclipse.osgi.source"/>
+<plugin id="org.hamcrest.text"/>
+<plugin id="org.hamcrest.library"/>
+<plugin id="org.eclipse.equinox.weaving.hook"/>
+<plugin id="org.eclipse.equinox.weaving.caching"/>
+<plugin id="org.eclipse.equinox.cm.source"/>
+<plugin id="org.eclipse.osgi.util.source"/>
+<plugin id="org.eclipse.equinox.cm"/>
+<plugin id="org.eclipse.osgi.util"/>
+<plugin id="org.junit" version="4.8.2.v4_8_2_v20110321-1705"/>
+<plugin id="org.hamcrest.generator"/>
+<plugin id="org.easymock"/>
+<plugin id="org.eclipse.osgi"/>
+<plugin id="javax.servlet.source"/>
+<plugin id="org.eclipse.core.commands"/>
+<plugin id="org.eclipse.equinox.weaving.caching.source"/>
+<plugin id="org.hamcrest.integration"/>
+<plugin id="com.thoughtworks.qdox"/>
+<plugin id="org.eclipse.osgi.services"/>
+<plugin id="org.apache.commons.io"/>
+<plugin id="org.eclipse.equinox.servletbridge.extensionbundle"/>
+<plugin id="org.eclipse.equinox.weaving.hook.source"/>
 </includeBundles>
 </target>
