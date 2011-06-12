@@ -64,7 +64,7 @@ public class OsgiStoryFinder extends StoryFinder {
 		}
 
 		if (excludes != null) {
-			for (String filePattern : includes) {
+			for (String filePattern : excludes) {
 				Collection<String> foundExcludeFiles = wiring.listResources(
 						basedir, filePattern,
 						BundleWiring.LISTRESOURCES_RECURSE);
