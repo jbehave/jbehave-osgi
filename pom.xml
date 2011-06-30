@@ -82,7 +82,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-services</module>
+				<module>org.jbehave.osgi.services</module>
 			</modules>
 		</profile>
 		<profile>
@@ -91,7 +91,9 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-equinox</module>
+				<!-- can't run bnd in same reactor than tycho -->
+				<!-- <module>jbehave-osgi-services</module> -->
+				<module>org.jbehave.osgi.equinox</module>
 			</modules>
 		</profile>
 		<profile>
@@ -100,17 +102,26 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-services</module>
-				<module>jbehave-osgi-karaf</module>
+				<module>org.jbehave.osgi.services</module>
+				<module>org.jbehave.osgi.karaf</module>
 			</modules>
 		</profile>
 		<profile>
-			<id>sample-bnd</id>
+			<id>example-bnd</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-sample-fragment-trader-bnd</module>
+				<module>org.jbehave.osgi.examples/org.jbehave.osgi.examples.bnd.trader.fragment</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>example-tycho</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.examples/org.jbehave.osgi.examples.tycho</module>
 			</modules>
 		</profile>
 	</profiles>
