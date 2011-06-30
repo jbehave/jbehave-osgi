@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.swtbot.eclipse.ui.launcher.JunitLaunchConfig">
+<booleanAttribute key="append.args" value="true"/>
+<booleanAttribute key="askclear" value="false"/>
+<booleanAttribute key="automaticAdd" value="true"/>
+<booleanAttribute key="automaticValidate" value="false"/>
+<stringAttribute key="bootstrap" value=""/>
+<stringAttribute key="checked" value="[NONE]"/>
+<booleanAttribute key="clearConfig" value="true"/>
+<booleanAttribute key="clearws" value="true"/>
+<booleanAttribute key="clearwslog" value="false"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
+<booleanAttribute key="default" value="false"/>
+<stringAttribute key="deselected_workspace_plugins" value="com.swtbot.jbehave.test,jbehave.eclipse.core.model,jbehave.eclipse.mylin.ui,org.eclipse.swt.examples,org.eclipse.tycho.core,org.eclipse.tycho.embedder-api,org.eclipse.tycho.equinox-api,org.eclipse.tycho.equinox-launching,org.eclipse.tycho.surefire.junit4,org.eclipse.tycho.surefire.osgibooter,org.jbehave.eclipse.model.cdo.server,org.jbehave.osgi.equinox.commands,org.jbehave.osgi.equinox.commands.test,org.rcpmail,org.rcpmail.test"/>
+<booleanAttribute key="includeOptional" value="false"/>
+<stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.jbehave.osgi.examples.tycho.rcpmail.test/src/org/jbehave/osgi/examples/tycho/rcpmail/test/MyFirstTest.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
+<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+<stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
+<stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.jbehave.osgi.examples.tycho.rcpmail.test.MyFirstTest"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.jbehave.osgi.examples.tycho.rcpmail.test"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="pde.version" value="3.3"/>
+<stringAttribute key="product" value="org.jbehave.osgi.examples.tycho.rcpmail.product"/>
+<stringAttribute key="selected_target_plugins" value="ch.qos.logback.classic@default:default,ch.qos.logback.core@default:default,ch.qos.logback.slf4j@default:false,com.ibm.icu@default:default,com.springsource.org.apache.commons.collections@default:default,com.springsource.org.apache.commons.lang@default:default,com.thoughtworks.qdox@default:default,org.apache.ant@default:default,org.apache.aries.blueprint@default:default,org.apache.aries.proxy.api@default:default,org.apache.aries.proxy.impl@default:default,org.apache.aries.util@default:default,org.apache.commons.io@default:default,org.apache.log4j@default:default,org.easymock@default:default,org.eclipse.core.commands@default:default,org.eclipse.core.contenttype@default:default,org.eclipse.core.databinding.beans@default:default,org.eclipse.core.databinding.observable@default:default,org.eclipse.core.databinding.property@default:default,org.eclipse.core.databinding@default:default,org.eclipse.core.expressions@default:default,org.eclipse.core.filesystem.macosx@default:false,org.eclipse.core.filesystem@default:default,org.eclipse.core.jobs@default:default,org.eclipse.core.resources@default:default,org.eclipse.core.runtime.compatibility.auth@default:default,org.eclipse.core.runtime.compatibility.registry@default:false,org.eclipse.core.runtime.compatibility@default:default,org.eclipse.core.runtime@default:true,org.eclipse.equinox.app@default:default,org.eclipse.equinox.common@2:true,org.eclipse.equinox.ds@1:true,org.eclipse.equinox.launcher.cocoa.macosx.x86_64@default:false,org.eclipse.equinox.launcher@default:default,org.eclipse.equinox.p2.core@default:default,org.eclipse.equinox.p2.engine@default:default,org.eclipse.equinox.p2.metadata.repository@default:default,org.eclipse.equinox.p2.metadata@default:default,org.eclipse.equinox.p2.repository@default:default,org.eclipse.equinox.preferences@default:default,org.eclipse.equinox.registry@default:default,org.eclipse.equinox.security.macosx@default:false,org.eclipse.equinox.security@default:default,org.eclipse.equinox.servletbridge.extensionbundle@default:false,org.eclipse.equinox.simpleconfigurator@1:true,org.eclipse.equinox.util@default:default,org.eclipse.help@default:default,org.eclipse.jdt.junit.runtime@default:default,org.eclipse.jface.databinding@default:default,org.eclipse.jface.text@default:default,org.eclipse.jface@default:default,org.eclipse.net4j.jms.api@default:default,org.eclipse.osgi.services@default:default,org.eclipse.osgi@-1:true,org.eclipse.rcp@default:default,org.eclipse.swt.cocoa.macosx.x86_64@default:false,org.eclipse.swt@default:default,org.eclipse.swtbot.ant.optional.junit4@default:false,org.eclipse.swtbot.eclipse.core@default:default,org.eclipse.swtbot.eclipse.finder@default:default,org.eclipse.swtbot.eclipse.junit4.headless@default:default,org.eclipse.swtbot.eclipse.spy@default:default,org.eclipse.swtbot.forms.finder@default:default,org.eclipse.swtbot.junit4_x@default:default,org.eclipse.swtbot.swt.finder@default:default,org.eclipse.text@default:default,org.eclipse.ui.cocoa@default:false,org.eclipse.ui.forms@default:default,org.eclipse.ui.ide@default:default,org.eclipse.ui.workbench@default:default,org.eclipse.ui@default:default,org.eclipse.update.configurator@3:true,org.hamcrest.core@default:default,org.hamcrest.generator@default:default,org.hamcrest.integration@default:default,org.hamcrest.library@default:default,org.hamcrest.text@default:default,org.hamcrest@default:default,org.jbehave.osgi.services@default:default,org.junit*3.8.2.v3_8_2_v20100427-1100@default:default,org.junit*4.8.2.v4_8_2_v20110321-1705@default:default,org.junit4@default:default,org.objectweb.asm@default:default,org.slf4j.api@default:default"/>
+<stringAttribute key="selected_workspace_plugins" value="org.jbehave.osgi.examples.tycho.rcpmail.test@default:false,org.jbehave.osgi.examples.tycho.rcpmail@default:default"/>
+<booleanAttribute key="show_selected_only" value="false"/>
+<stringAttribute key="testApplication" value="org.jbehave.osgi.examples.tycho.rcpmail.application"/>
+<booleanAttribute key="tracing" value="false"/>
+<booleanAttribute key="useCustomFeatures" value="false"/>
+<booleanAttribute key="useDefaultConfig" value="true"/>
+<booleanAttribute key="useDefaultConfigArea" value="false"/>
+<booleanAttribute key="useProduct" value="true"/>
+</launchConfiguration>

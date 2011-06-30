@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="jbehave-example" sequenceNumber="9">
+<locations>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.forms.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit4.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
+<repository location="http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site"/>
+</location>
+<location path="${project_loc:/org.jbehave.osgi.equinox.repository}/target/repository" type="Directory"/>
+<location id="org.eclipse.rcp" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.jdt" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.pde" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.platform" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.equinox.p2.core.feature" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.equinox.p2.extras.feature" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.equinox.p2.rcp.feature" path="${eclipse_home}" type="Feature"/>
+<location id="org.eclipse.equinox.p2.user.ui" path="${eclipse_home}" type="Feature"/>
+</locations>
+</target>
