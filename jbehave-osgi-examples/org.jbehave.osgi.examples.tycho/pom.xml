@@ -19,7 +19,7 @@
 		<local-p2-repo>file:/${basedir}/org.jbehave.osgi.examples.tycho.repository/target/repository</local-p2-repo>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<jbehave-osgi-p2-repo>file://${basedir}/../../../org.jbehave.osgi.equinox/org.jbehave.osgi.equinox.repository/target/repository</jbehave-osgi-p2-repo>
+		<jbehave-osgi-p2-repo>file://${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/repository</jbehave-osgi-p2-repo>
 	</properties>
 
 
