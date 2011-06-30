@@ -11,11 +11,8 @@
 <booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
 <booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${workspace}"/>
-<mapAttribute key="org.eclipse.debug.core.environmentVariables">
-<mapEntry key="logback.configurationFile" value="${project_loc:org.jbehave.osgi}/logback-test.xml"/>
-</mapAttribute>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${project_loc:/org.jbehave.osgi}"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${project_loc:/org.jbehave.osgi.equinox}"/>
 </launchConfiguration>

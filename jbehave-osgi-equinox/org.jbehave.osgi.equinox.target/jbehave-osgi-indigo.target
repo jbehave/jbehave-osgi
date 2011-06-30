@@ -4,7 +4,6 @@
 <target name="jbehave-osgi-indigo" sequenceNumber="8">
 <locations>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.7.0.v20110502-7M7W8Z8eNV4Ulz-bhichboyz0Z5T"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="false" type="InstallableUnit">
