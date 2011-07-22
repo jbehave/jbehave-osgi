@@ -6,6 +6,7 @@
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
 		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>org.jbehave.osgi.examples</groupId>
@@ -42,10 +43,10 @@
 	</repositories>
 
 	<modules>
-		<module>org.jbehave.osgi.examples.tycho.features.rcpmail</module>
-		<module>org.jbehave.osgi.examples.tycho.rcpmail</module>
-		<module>org.jbehave.osgi.examples.tycho.rcpmail.test</module>
-		<module>org.jbehave.osgi.examples.tycho.repository</module>
+		<module>../org.jbehave.osgi.examples.tycho.features.rcpmail</module>
+		<module>../org.jbehave.osgi.examples.tycho.rcpmail</module>
+		<module>../org.jbehave.osgi.examples.tycho.rcpmail.test</module>
+		<module>../org.jbehave.osgi.examples.tycho.repository</module>
 	</modules>
 	<build>
 		<plugins>
@@ -66,7 +67,7 @@
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<resolver>p2</resolver>
-<!-- 					<environments> -->
+					<environments>
 <!-- 						<environment> -->
 <!-- 							<os>linux</os> -->
 <!-- 							<ws>gtk</ws> -->
@@ -87,12 +88,12 @@
 <!-- 							<ws>win32</ws> -->
 <!-- 							<arch>x86_64</arch> -->
 <!-- 						</environment> -->
-<!-- 						<environment> -->
-<!-- 							<os>macosx</os> -->
-<!-- 							<ws>cocoa</ws> -->
-<!-- 							<arch>x86_64</arch> -->
-<!-- 						</environment> -->
-<!-- 					</environments> -->
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
 				</configuration>
 			</plugin>
 			<plugin>
