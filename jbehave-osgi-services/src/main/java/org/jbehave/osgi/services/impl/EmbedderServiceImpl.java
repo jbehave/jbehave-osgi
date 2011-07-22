@@ -6,7 +6,6 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.osgi.services.EmbedderService;
-import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,11 +22,14 @@ public class EmbedderServiceImpl implements EmbedderService {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(EmbedderServiceImpl.class);
 
-	private BundleContext bundleContext;
 	private Embedder embedder;
 	private Boolean status = false;
 
 	public Embedder getEmbedder() {
+		if (embedder == null)
+		{
+			embedder = new Embedder();
+		}
 		return embedder;
 	}
 
@@ -65,14 +67,6 @@ public class EmbedderServiceImpl implements EmbedderService {
 		LOGGER.info("Stopping OSGi Embedder Service");
 		status = false;
 		embedder = null;
-	}
-
-	public BundleContext getBundleContext() {
-		return bundleContext;
-	}
-
-	public void setBundleContext(BundleContext bundleContext) {
-		this.bundleContext = bundleContext;
 	}
 
 	@Override

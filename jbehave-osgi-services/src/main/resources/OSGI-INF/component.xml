@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="start" deactivate="stop" name="org.jbehave.osgi.services">
+   <implementation class="org.jbehave.osgi.services.impl.EmbedderServiceImpl"/>
+   <service>
+      <provide interface="org.jbehave.osgi.services.EmbedderService"/>
+   </service>
+</scr:component>

@@ -8,6 +8,7 @@
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
 		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>org.jbehave.osgi.services</artifactId>
 	<name>JBehave OSGi : Services Bundle</name>
@@ -42,6 +43,8 @@
 						<Bundle-Version>1.1.0.qualifier</Bundle-Version>
 						<Export-Package>org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration, org.jbehave.osgi.reporters</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
+						<Service-Component>OSGI-INF/*.xml</Service-Component>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> 
 						<Import-Package>
 							!com.sun.org.apache.xml.internal.utils,
 							!com.sun.org.apache.xpath.internal,
