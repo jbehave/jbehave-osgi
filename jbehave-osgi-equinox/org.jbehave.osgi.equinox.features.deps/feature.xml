@@ -21,34 +21,6 @@
    </license>
 
    <plugin
-         id="org.apache.aries.proxy.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.aries.blueprint"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.aries.proxy.impl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.aries.util"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.springsource.org.apache.commons.lang"
          download-size="0"
          install-size="0"
@@ -77,6 +49,13 @@
          unpack="false"/>
 
    <plugin
+         id="org.hamcrest"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.hamcrest.library"
          download-size="0"
          install-size="0"
@@ -85,6 +64,13 @@
 
    <plugin
          id="org.hamcrest.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.ds"
          download-size="0"
          install-size="0"
          version="0.0.0"
