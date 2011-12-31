@@ -25,7 +25,7 @@ public class RCPmailCoreSteps {
 	@Given("JBehave RCP Mail application is running")
 	public void certifyRCPmailIsRunning() {
 
-		//TODO waiting for swtbot list anwer question about how to test aplication is on
+		//TODO waiting for swtbot list answer question about how to test application is on
 		currentViewCount = viewCount();
 		assertThat(currentViewCount, is(2));
 	}
@@ -40,7 +40,7 @@ public class RCPmailCoreSteps {
 	@Then("application shows another message view")
 	public void thenEnsureMessageViewIsVisible() {
 
-		bot.viewById("Message1");
+//		bot.viewById("Message1");
 		assertEquals(3, viewCount());
 	}
 	

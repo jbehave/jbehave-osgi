@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.equinox.features.core"
       label="JBehave Equinox Feature - Core (required)"
-      version="1.1.0.qualifier"
+      version="0.0.2.qualifier"
       provider-name="JBehave.org"
       os="linux,macosx,win32"
       arch="x86,x86_64">
@@ -23,12 +23,15 @@
          id="org.jbehave.osgi.equinox.features.deps"
          version="0.0.0"/>
 
-   <requires>
-      <import plugin="org.eclipse.osgi"/>
-   </requires>
-
    <plugin
          id="org.jbehave.osgi.equinox.commands"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jbehave.osgi.services"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 
@@ -17,7 +17,7 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGI Equinox : Parent POM</name>
 	<properties>
-		<tycho-version>0.13.0-SNAPSHOT</tycho-version>
+		<tycho-version>0.13.0</tycho-version>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>

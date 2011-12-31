@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>org.jbehave.osgi.services</artifactId>
@@ -28,6 +28,21 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -40,8 +55,8 @@
 					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>1.1.0.qualifier</Bundle-Version>
-						<Export-Package>org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration, org.jbehave.osgi.reporters</Export-Package>
+						<Bundle-Version>0.0.2.qualifier</Bundle-Version>
+						<Export-Package>org.apache.commons.lang.*,org.apache.commons.collections.*,org.apache.commons.io.*,org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration, org.jbehave.osgi.reporters</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
 						<Service-Component>OSGI-INF/*.xml</Service-Component>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> 
@@ -53,13 +68,9 @@
 							!javax.servlet.http, !javax.servlet.jsp, !javax.servlet.jsp.el,
 							!javax.servlet.jsp.tagext, !javax.swing,javax.swing.plaf,
 							javax.swing.tree, javax.xml.datatype,
-							javax.xml.namespace,
+							javax.xml.namespace, !groovy.lang,
 							javax.xml.parsers, javax.xml.stream, javax.xml.transform,
 							javax.xml.transform.sax, !net.sf.cglib.proxy, !nu.xom,
-							org.apache.commons.collections;version="[3.2,4)",
-							org.apache.commons.io;version="[1.4,2)",
-							org.apache.commons.lang;version="[2.5,3)",
-							org.apache.commons.lang.builder;version="[2.5,3)",
 							!org.apache.log, !org.apache.log4j,
 							!org.apache.tools.ant,
 							!org.apache.tools.ant.taskdefs, !org.apache.xml.utils,
@@ -78,7 +89,7 @@
 							org.w3c.dom, org.w3c.dom.traversal, org.xml.sax
 							,org.xml.sax.helpers, !org.zeroturnaround.javarebel, !sun.misc,
 							!sun.reflect</Import-Package>
-						<Embed-Dependency>jbehave-core;scope=compile;inline=false,xstream;scope=compile;inline=false,xpp3_min;scope=compile;inline=false,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false</Embed-Dependency>
+						<Embed-Dependency>commons-lang;scope=compile;inline=false,commons-io;scope=compile;inline=false,commons-collections;scope=compile;inline=false,jbehave-core;scope=compile;inline=false,xstream;scope=compile;inline=false,xpp3_min;scope=compile;inline=false,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false</Embed-Dependency>
 						<_exportcontents>org.jbehave.core.*</_exportcontents>
 						<!-- <excludeDependencies>*;optional=true</excludeDependencies> -->
 						<Embed-Directory>jars</Embed-Directory>

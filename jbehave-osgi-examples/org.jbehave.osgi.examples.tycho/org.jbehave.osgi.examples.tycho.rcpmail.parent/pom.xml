@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 
@@ -15,7 +15,7 @@
 	<name>JBehave-OSGi : Parent POM for examples built with Tycho</name>
 
 	<properties>
-		<tycho-version>0.13.0-SNAPSHOT</tycho-version>
+		<tycho-version>0.13.0</tycho-version>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<local-p2-repo>file:/${basedir}/org.jbehave.osgi.examples.tycho.repository/target/repository</local-p2-repo>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
@@ -108,17 +108,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>tycho</id>
-			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
-
 
 </project>

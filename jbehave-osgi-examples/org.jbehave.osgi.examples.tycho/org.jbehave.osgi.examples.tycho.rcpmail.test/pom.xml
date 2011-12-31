@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.tycho</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../org.jbehave.osgi.examples.tycho.rcpmail.parent/pom.xml</relativePath>
 	</parent>
 
@@ -102,32 +102,32 @@
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.junit4.headless</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.junit4_x</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.swt.finder</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
-							<version>2.0.4</version>
+							<version>2.0.5</version>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
