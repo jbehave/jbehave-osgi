@@ -12,7 +12,7 @@
 	<packaging>bundle</packaging>
 
 	<properties>
-		<jbehave-examples.version>3.5-SNAPSHOT</jbehave-examples.version>
+		<jbehave-examples.version>3.6-SNAPSHOT</jbehave-examples.version>
 	</properties>
 
 	<dependencies>
