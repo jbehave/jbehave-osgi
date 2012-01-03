@@ -12,7 +12,7 @@
 	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples.tycho</artifactId>
 	<packaging>pom</packaging>
-	<name>JBehave-OSGi : Parent POM for examples built with Tycho</name>
+	<name>JBehave OSGi Tycho Examples</name>
 
 	<properties>
 		<tycho-version>0.13.0</tycho-version>
