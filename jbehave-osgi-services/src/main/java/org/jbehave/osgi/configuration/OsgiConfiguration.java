@@ -16,10 +16,9 @@ import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 
 import com.thoughtworks.paranamer.NullParanamer;
 
-public class OsgiDefaultConfiguration extends Configuration {
+public class OsgiConfiguration extends Configuration {
 
-	public OsgiDefaultConfiguration() {
-
+	public OsgiConfiguration() {
 		useKeywords(new LocalizedKeywords());
 		useStoryControls(new StoryControls());
 		useStoryParser(new RegexStoryParser(keywords()));

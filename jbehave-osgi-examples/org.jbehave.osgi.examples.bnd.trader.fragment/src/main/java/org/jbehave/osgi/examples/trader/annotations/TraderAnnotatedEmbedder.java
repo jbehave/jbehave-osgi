@@ -25,7 +25,7 @@ import org.jbehave.examples.trader.steps.PriorityMatchingSteps;
 import org.jbehave.examples.trader.steps.SandpitSteps;
 import org.jbehave.examples.trader.steps.SearchSteps;
 import org.jbehave.examples.trader.steps.TraderSteps;
-import org.jbehave.osgi.configuration.OsgiDefaultConfiguration;
+import org.jbehave.osgi.configuration.OsgiConfiguration;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyDateConverter;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyEmbedder;
 import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
@@ -38,7 +38,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AnnotatedEmbedderRunner.class)
-@Configure(using = OsgiDefaultConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
+@Configure(using = OsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { TraderSteps.class, BeforeAfterSteps.class,
 		AndSteps.class, CalendarSteps.class, PriorityMatchingSteps.class,

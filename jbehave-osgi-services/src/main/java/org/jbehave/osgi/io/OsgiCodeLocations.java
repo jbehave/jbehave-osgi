@@ -1,6 +1,5 @@
 package org.jbehave.osgi.io;
 
-import java.io.File;
 import java.net.URL;
 
 import org.osgi.framework.BundleContext;
@@ -8,24 +7,22 @@ import org.osgi.framework.FrameworkUtil;
 
 public class OsgiCodeLocations {
 
-
 	/**
 	 * Creates a code location URL from a file path
 	 * 
-	 * @param filePath
-	 *            the file path
+	 * @param path
+	 *            the File path
 	 * @return A URL created from File
 	 * @throws InvalidCodeLocation
 	 *             if URL creation fails
 	 */
-	public static URL codeLocationFromPath(String filePath) {
+	public static URL codeLocationFromPath(String path) {
 		try {
 			
 			BundleContext bundleContext = FrameworkUtil.getBundle(OsgiCodeLocations.class).getBundleContext();
-			File base0 = bundleContext.getDataFile(filePath);
-			return base0.toURI().toURL();
+			return bundleContext.getDataFile(path).toURI().toURL();
 		} catch (Exception e) {
-			throw new InvalidCodeLocation(filePath);
+			throw new InvalidCodeLocation(path, e);
 		}
 	}
 
@@ -42,15 +39,15 @@ public class OsgiCodeLocations {
 		try {
 			return new URL(url);
 		} catch (Exception e) {
-			throw new InvalidCodeLocation(url);
+			throw new InvalidCodeLocation(url, e);
 		}
 	}
 
 	@SuppressWarnings("serial")
 	public static class InvalidCodeLocation extends RuntimeException {
 
-		public InvalidCodeLocation(String path) {
-			super(path);
+		public InvalidCodeLocation(String path, Throwable cause) {
+			super(path, cause);
 		}
 
 	}

@@ -18,61 +18,54 @@ import org.slf4j.LoggerFactory;
  */
 public class EmbedderServiceImpl implements EmbedderService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmbedderServiceImpl.class);
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(EmbedderServiceImpl.class);
+    private Embedder embedder;
+    private Boolean status = false;
 
-	private Embedder embedder;
-	private Boolean status = false;
+    public Embedder getEmbedder() {
+        if (embedder == null) {
+            embedder = new Embedder();
+        }
+        return embedder;
+    }
 
-	public Embedder getEmbedder() {
-		if (embedder == null)
-		{
-			embedder = new Embedder();
-		}
-		return embedder;
-	}
+    @Override
+    public boolean isStarted() {
+        return status;
+    }
 
-	@Override
-	public boolean isStarted() {
-		return status;
-	}
+    @Override
+    public void runStoriesWithAnnotatedEmbedderRunner(List<String> classNames) {
+        LOGGER.info("Running stories with annotated embedder runner using classes: '" + classNames + "'");
+        embedder.runStoriesWithAnnotatedEmbedderRunner(classNames);
+    }
 
-	@Override
-	public void runStoriesWithAnnotatedEmbedderRunner(List<String> classNames) {
-		LOGGER.info("Running stories with annotated embedder runner using classes: '"
-				+ classNames + "'");
-		embedder.runStoriesWithAnnotatedEmbedderRunner(classNames);
-	}
+    public void setEmbedder(Embedder embedder) {
+        this.embedder = embedder;
+        LOGGER.debug("Injected Embedder " + embedder);
+    }
 
-	public void setEmbedder(Embedder embedder) {
-		this.embedder = embedder;
-		LOGGER.debug("Injected Embedder " + embedder);
-	}
+    @Override
+    public void showStatus() {
+        System.out.println("OSGi Embedder Service is" + (isStarted() ? " " : " not ") + "started.");
+        LOGGER.info("OSGi Embedder Service is" + (isStarted() ? " " : " not ") + "started.");
+    }
 
-	@Override
-	public void showStatus() {
-		System.out.println("OSGi Embedder Service is"
-				+ (isStarted() ? " " : " not ") + "started.");
-		LOGGER.info("OSGi Embedder Service is" + (isStarted() ? " " : " not ")
-				+ "started.");
-	}
+    public void start() {
+        LOGGER.info("Starting OSGi Embedder Service");
+        status = true;
+    }
 
-	public void start() {
-		LOGGER.info("Starting OSGi Embedder Service");
-		status = true;
-	}
+    public void stop() {
+        LOGGER.info("Stopping OSGi Embedder Service");
+        status = false;
+        embedder = null;
+    }
 
-	public void stop() {
-		LOGGER.info("Stopping OSGi Embedder Service");
-		status = false;
-		embedder = null;
-	}
-
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this,
-				ToStringStyle.SHORT_PREFIX_STYLE);
-	}
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
 
 }

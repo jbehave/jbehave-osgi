@@ -1,80 +1,72 @@
 package org.jbehave.osgi.io;
 
-import static java.util.Arrays.asList;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
 import org.jbehave.core.io.StoryFinder;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.wiring.BundleWiring;
+
+import static java.util.Arrays.asList;
+import static org.osgi.framework.FrameworkUtil.getBundle;
 
 public class OsgiStoryFinder extends StoryFinder {
 
-	public OsgiStoryFinder() {
-	}
+    public OsgiStoryFinder() {
+        super();
+    }
 
-	public OsgiStoryFinder(String classNameExtension) {
-		super(classNameExtension);
-	}
+    public OsgiStoryFinder(String classNameExtension) {
+        super(classNameExtension);
+    }
 
-	public OsgiStoryFinder(Comparator<? super String> sortingComparator) {
-		super(sortingComparator);
-	}
+    public OsgiStoryFinder(Comparator<? super String> sortingComparator) {
+        super(sortingComparator);
+    }
 
-	/**
-	 * Finds paths from a base package, allowing for single include/exclude
-	 * pattern. Paths found are normalised by {@link
-	 * StoryFinder#normalise(List<String>)}.
-	 * 
-	 * @param searchInURL
-	 *            the base URL to search in
-	 * @param include
-	 *            the include pattern, or <code>""</code> if none
-	 * @param exclude
-	 *            the exclude pattern, or <code>""</code> if none
-	 * @return A List of paths found
-	 */
-	public List<String> findPaths(String searchPackage, String include,
-			String exclude) {
-		return sort(scan(searchPackage, asList(include), asList(exclude)));
-	}
+    /**
+     * Finds paths from a base package, allowing for single include/exclude
+     * pattern. Paths found are sorted by {@link StoryFinder#sort(List<String>)}
+     * .
+     * 
+     * @param searchInURL the base URL to search in
+     * @param include the include pattern, or <code>""</code> if none
+     * @param exclude the exclude pattern, or <code>""</code> if none
+     * @return A List of paths found
+     */
+    public List<String> findPaths(String searchPackage, String include, String exclude) {
+        return sort(scan(searchPackage, asList(include), asList(exclude)));
+    }
 
-	@Override
-	protected List<String> scan(String basedir, List<String> includes,
-			List<String> excludes) {
+    @Override
+    protected List<String> scan(String basedir, List<String> includes, List<String> excludes) {
 
-		List<String> scannedItens = new ArrayList<String>();
-		BundleContext ctx = FrameworkUtil.getBundle(getClass())
-				.getBundleContext();
-		BundleWiring wiring = ctx.getBundle().adapt(BundleWiring.class);
+        List<String> scanned = new ArrayList<String>();
 
-		if (includes != null) {
-			for (String filePattern : includes) {
-				Collection<String> foundIncludedFiles = wiring.listResources(
-						basedir, filePattern,
-						BundleWiring.LISTRESOURCES_RECURSE);
-				if (foundIncludedFiles != null && !foundIncludedFiles.isEmpty()) {
-					scannedItens.addAll(foundIncludedFiles);
-				}
-			}
-		}
+        BundleWiring wiring = getBundle(getClass()).getBundleContext().getBundle().adapt(BundleWiring.class);
 
-		if (excludes != null) {
-			for (String filePattern : excludes) {
-				Collection<String> foundExcludeFiles = wiring.listResources(
-						basedir, filePattern,
-						BundleWiring.LISTRESOURCES_RECURSE);
-				if (foundExcludeFiles != null && !foundExcludeFiles.isEmpty()) {
-					scannedItens.removeAll(foundExcludeFiles);
-				}
-			}
-		}
+        if (includes != null) {
+            for (String filePattern : includes) {
+                Collection<String> files = wiring.listResources(basedir, filePattern,
+                        BundleWiring.LISTRESOURCES_RECURSE);
+                if (files != null && !files.isEmpty()) {
+                    scanned.addAll(files);
+                }
+            }
+        }
 
-		return scannedItens;
-	}
+        if (excludes != null) {
+            for (String filePattern : excludes) {
+                Collection<String> files = wiring.listResources(basedir, filePattern,
+                        BundleWiring.LISTRESOURCES_RECURSE);
+                if (files != null && !files.isEmpty()) {
+                    scanned.removeAll(files);
+                }
+            }
+        }
+
+        return scanned;
+    }
 
 }
