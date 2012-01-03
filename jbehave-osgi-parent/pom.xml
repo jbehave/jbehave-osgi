@@ -6,7 +6,7 @@
 	<artifactId>org.jbehave.osgi</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>JBehave OSGi : Parent POM</name>
+	<name>JBehave OSGi</name>
 	<description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
 
 	<prerequisites>

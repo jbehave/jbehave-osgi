@@ -15,7 +15,7 @@
 
 	<artifactId>org.jbehave.osgi.equinox</artifactId>
 	<packaging>pom</packaging>
-	<name>JBehave OSGI Equinox : Parent POM</name>
+	<name>JBehave OSGI Equinox</name>
 	<properties>
 		<tycho-version>0.13.0</tycho-version>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>

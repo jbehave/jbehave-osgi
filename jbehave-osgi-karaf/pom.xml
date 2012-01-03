@@ -8,7 +8,7 @@
 		<relativePath>../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>org.jbehave.osgi.karaf</artifactId>
-	<name>JBehave OSGi Karaf : Parent POM</name>
+	<name>JBehave OSGi Karaf</name>
 	<packaging>pom</packaging>
 
 	<modules>
