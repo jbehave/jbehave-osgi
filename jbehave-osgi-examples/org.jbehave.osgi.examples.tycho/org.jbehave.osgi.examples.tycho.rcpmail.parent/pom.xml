@@ -15,7 +15,7 @@
 	<name>JBehave OSGi Tycho Examples</name>
 
 	<properties>
-		<tycho-version>0.13.0</tycho-version>
+		<tycho-version>0.14.0-SNAPSHOT</tycho-version>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<local-p2-repo>file:/${basedir}/org.jbehave.osgi.examples.tycho.repository/target/repository</local-p2-repo>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>

@@ -59,7 +59,8 @@
 						<Export-Package>org.apache.commons.lang.*,org.apache.commons.collections.*,org.apache.commons.io.*,org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration, org.jbehave.osgi.reporters</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl,com.thoughtworks.xstream.*,freemarker.*,com.thoughtworks.paranamer.*,org.xmlpull.*</Private-Package>
 						<Service-Component>OSGI-INF/*.xml</Service-Component>
-						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy> 
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
 						<Import-Package>
 							!com.sun.org.apache.xml.internal.utils,
 							!com.sun.org.apache.xpath.internal,

@@ -15,7 +15,13 @@
 	<name>JBehave-OSGi : RCPmail Example Application Test</name>
 	<packaging>eclipse-test-plugin</packaging>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 	<profiles>
 		<profile>
 			<id>macosx</id>
@@ -57,22 +63,26 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-					
+
 						<!-- <include>org.jbehave.osgi.examples.tycho.rcpmail.test.MyFirstTest</include> -->
-<!-- 						<include>**/*Embedder.*</include> -->
-						<include>**/*Tests.*</include>
+						<include>**/*Embedder.*</include>
+						<!-- <include>**/*Tests.*</include> -->
 					</includes>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
-					<!-- <product>org.eclipse.sdk.ide</product> -->
 					<product>org.jbehave.osgi.examples.tycho.rcpmail.product</product>
 					<showEclipseLog>true</showEclipseLog>
 					<argLine>${ui.test.vmargs}</argLine>
 					<failIfNoTests>false</failIfNoTests>
 					<application>org.jbehave.osgi.examples.tycho.rcpmail.application</application>
 					<bundleStartLevel>
+						<!-- <bundle> -->
+						<!-- <id>org.eclipse.osgi</id> -->
+						<!-- <level>-1</level> -->
+						<!-- <autoStart>true</autoStart> -->
+						<!-- </bundle> -->
 						<bundle>
-							<id>org.eclipse.equinox.commnon</id>
+							<id>org.eclipse.equinox.common</id>
 							<level>1</level>
 							<autoStart>true</autoStart>
 						</bundle>
@@ -93,7 +103,7 @@
 						</bundle>
 						<bundle>
 							<id>org.jbehave.osgi.services</id>
-							<level>4</level>
+							<level>2</level>
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
@@ -104,6 +114,26 @@
 					</bundleStartLevel>
 
 					<dependencies>
+<!-- 						<dependency> -->
+<!-- 							<type>eclipse-plugin</type> -->
+<!-- 							<artifactId>org.jbehave.osgi.examples.tycho.rcpmail</artifactId> -->
+<!-- 							<version>0.0.0</version> -->
+<!-- 						</dependency> -->
+<!-- 						<dependency> -->
+<!-- 							<type>eclipse-plugin</type> -->
+<!-- 							<artifactId>org.jbehave.osgi.examples.tycho.rcpmail.test</artifactId> -->
+<!-- 							<version>0.0.0</version> -->
+<!-- 						</dependency> -->
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.jbehave.osgi.services</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>org.jbehave.osgi.examples.tycho.features.rcpmail</artifactId>
+							<version>0.0.0</version>
+						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
@@ -139,26 +169,11 @@
 							<artifactId>org.hamcrest</artifactId>
 							<version>1.1.0</version>
 						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jbehave.osgi.examples.tycho.rcpmail</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.sdk.ide</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.ui.workbench.compatibility</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.ui</artifactId>
-							<version>0.0.0</version>
-						</dependency>
+						<!-- <dependency> -->
+						<!-- <type>p2-installable-unit</type> -->
+						<!-- <artifactId>org.eclipse.equinox.ds</artifactId> -->
+						<!-- </dependency> -->
+
 					</dependencies>
 				</configuration>
 			</plugin>
