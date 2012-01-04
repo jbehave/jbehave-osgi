@@ -5,7 +5,6 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.tycho</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
-		<relativePath>../org.jbehave.osgi.examples.tycho.rcpmail.parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>org.jbehave.osgi.examples.tycho.rcpmail</artifactId>
 	<packaging>eclipse-plugin</packaging>

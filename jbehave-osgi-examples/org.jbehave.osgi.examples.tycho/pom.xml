@@ -6,7 +6,6 @@
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
-		<relativePath>../../jbehave-osgi-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>org.jbehave.osgi.examples</groupId>
