@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.jbehave.osgi.examples.rcpmail.feature_0.0.2.qualifier.jar" id="org.jbehave.osgi.examples.rcpmail.feature" version="0.0.2.qualifier">
+      <category name="example_category_id"/>
+   </feature>
+   <category-def name="example_category_id" label="JBehave RCPmail">
+      <description>
+         This category contains the JBehave RCPmail features.
+      </description>
+   </category-def>
+</site>

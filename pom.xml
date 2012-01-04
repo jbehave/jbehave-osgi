@@ -94,21 +94,21 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>example-bnd</id>
+			<id>example-trader</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-examples/org.jbehave.osgi.examples.bnd.trader.fragment</module>
+				<module>jbehave-osgi-examples/trader/org.jbehave.osgi.examples.bnd.trader.fragment</module>
 			</modules>
 		</profile>
 		<profile>
-			<id>example-tycho</id>
+			<id>example-rcpmail-tycho</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-examples/org.jbehave.osgi.examples.tycho/org.jbehave.osgi.examples.tycho.rcpmail.parent</module>
+				<module>jbehave-osgi-examples/rcpmail</module>
 			</modules>
 		</profile>
 	</profiles>

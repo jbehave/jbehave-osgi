@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JBehave RCPmail Test
+Bundle-SymbolicName: org.jbehave.osgi.examples.rcpmail.test
+Bundle-Version: 0.0.2.qualifier
+Bundle-Vendor: JBehave.org
+Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
+Export-Package: org.jbehave.osgi.examples.rcpmail.test,
+ org.jbehave.osgi.examples.rcpmail.test.embedder,
+ org.jbehave.osgi.examples.rcpmail.test.steps
+Require-Bundle: org.eclipse.swtbot.eclipse.core;bundle-version="2.0.5",
+ org.eclipse.swtbot.eclipse.finder;bundle-version="2.0.5",
+ org.eclipse.swtbot.eclipse.junit4.headless;bundle-version="2.0.5",
+ org.eclipse.swtbot.forms.finder;bundle-version="2.0.5",
+ org.eclipse.swtbot.junit4_x;bundle-version="2.0.5",
+ org.eclipse.swtbot.swt.finder;bundle-version="2.0.5",
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.hamcrest.core;bundle-version="1.1.0",
+ org.hamcrest.integration;bundle-version="1.1.0",
+ org.jbehave.osgi.examples.rcpmail.application;bundle-version="0.0.2",
+ org.junit4;bundle-version="4.8.1"
+

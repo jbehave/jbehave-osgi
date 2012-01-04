@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jbehave.osgi.examples</groupId>
+		<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.jbehave.osgi.examples.rcpmail.test</artifactId>
+	<name>JBehave-OSGi : RCPmail Example Application Test</name>
+	<packaging>eclipse-test-plugin</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<profiles>
+		<profile>
+			<id>macosx</id>
+			<activation>
+				<os>
+					<name>mac os x</name>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</ui.test.vmargs>
+			</properties>
+		</profile>
+		<profile>
+			<id>other-os</id>
+			<activation>
+				<os>
+					<name>not-mac</name>
+					<family>!mac</family>
+				</os>
+			</activation>
+			<properties>
+				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/stories</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includes>
+
+						<!-- <include>org.jbehave.osgi.examples.rcpmail.application.test.MyFirstTest</include> -->
+						<include>**/*Embedder.*</include>
+						<!-- <include>**/*Tests.*</include> -->
+					</includes>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<product>org.jbehave.osgi.examples.rcpmail.application.product</product>
+					<showEclipseLog>true</showEclipseLog>
+					<argLine>${ui.test.vmargs}</argLine>
+					<failIfNoTests>false</failIfNoTests>
+					<application>org.jbehave.osgi.examples.rcpmail.application.application</application>
+					<bundleStartLevel>
+						<!-- <bundle> -->
+						<!-- <id>org.eclipse.osgi</id> -->
+						<!-- <level>-1</level> -->
+						<!-- <autoStart>true</autoStart> -->
+						<!-- </bundle> -->
+						<bundle>
+							<id>org.eclipse.equinox.common</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.simpleconfigurator</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.ds</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.events</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.jbehave.osgi.services</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.core.runtime</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
+
+					<dependencies>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.jbehave.osgi.services</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>org.jbehave.osgi.examples.rcpmail.feature</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.eclipse.junit4.headless</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.junit4_x</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.swt.finder</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
+							<version>2.0.5</version>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.hamcrest</artifactId>
+							<version>1.1.0</version>
+						</dependency>
+					</dependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.jbehave.osgi.examples.rcpmail.application.MailApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="org.jbehave.osgi.examples.rcpmail.application.Perspective"
+            id="org.jbehave.osgi.examples.rcpmail.application.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Message"
+            allowMultiple="true"
+            icon="icons/sample2.gif"
+            class="org.jbehave.osgi.examples.rcpmail.application.View"
+            id="org.jbehave.osgi.examples.rcpmail.application.view">
+      </view>
+      <view
+            name="Mailboxes"
+            allowMultiple="true"
+            icon="icons/sample3.gif"
+            class="org.jbehave.osgi.examples.rcpmail.application.NavigationView"
+            id="org.jbehave.osgi.examples.rcpmail.application.navigationView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Mail"
+            id="org.jbehave.osgi.examples.rcpmail.application.category">
+      </category>
+      <command
+            name="Open Mailbox"
+            description="Opens a mailbox"
+            categoryId="org.jbehave.osgi.examples.rcpmail.application.category"
+            id="org.jbehave.osgi.examples.rcpmail.application.open">
+      </command>
+      <command
+            name="Open Message Dialog"
+            description="Open a message dialog"
+            categoryId="org.jbehave.osgi.examples.rcpmail.application.category"
+            id="org.jbehave.osgi.examples.rcpmail.application.openMessage">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.jbehave.osgi.examples.rcpmail.application.open"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+2">
+      </key>
+      <key
+            commandId="org.jbehave.osgi.examples.rcpmail.application.openMessage"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+3">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+X">
+      </key>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.jbehave.osgi.examples.rcpmail.application.application"
+            name="JBehave RCPmail Product">
+         <property
+               name="appName"
+               value="JBehave RCPmail Product">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
