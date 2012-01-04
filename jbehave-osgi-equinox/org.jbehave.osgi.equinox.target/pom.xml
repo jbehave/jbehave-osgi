@@ -28,7 +28,7 @@
 								<artifact>
 									<file>jbehave-osgi-indigo.target</file>
 									<type>target</type>
-									<classifier>indigo</classifier>
+									<classifier>jbehave-osgi-indigo</classifier>
 								</artifact>
 							</artifacts>
 						</configuration>
