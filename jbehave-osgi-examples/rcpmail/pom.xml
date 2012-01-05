@@ -11,10 +11,10 @@
 	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
 	<packaging>pom</packaging>
-	<name>JBehave OSGi Tycho Examples</name>
+	<name>JBehave OSGi RCPmail Example</name>
 
 	<properties>
-		<tycho-version>0.14.0-SNAPSHOT</tycho-version>
+		<tycho-version>0.13.0</tycho-version>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
@@ -64,33 +64,6 @@
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<resolver>p2</resolver>
-					<environments>
-<!-- 						<environment> -->
-<!-- 							<os>linux</os> -->
-<!-- 							<ws>gtk</ws> -->
-<!-- 							<arch>x86</arch> -->
-<!-- 						</environment> -->
-<!-- 						<environment> -->
-<!-- 							<os>linux</os> -->
-<!-- 							<ws>gtk</ws> -->
-<!-- 							<arch>x86_64</arch> -->
-<!-- 						</environment> -->
-<!-- 						<environment> -->
-<!-- 							<os>win32</os> -->
-<!-- 							<ws>win32</ws> -->
-<!-- 							<arch>x86</arch> -->
-<!-- 						</environment> -->
-<!-- 						<environment> -->
-<!-- 							<os>win32</os> -->
-<!-- 							<ws>win32</ws> -->
-<!-- 							<arch>x86_64</arch> -->
-<!-- 						</environment> -->
-<!-- 						<environment> -->
-<!-- 							<os>macosx</os> -->
-<!-- 							<ws>cocoa</ws> -->
-<!-- 							<arch>x86_64</arch> -->
-<!-- 						</environment> -->
-					</environments>
 				</configuration>
 			</plugin>
 			<plugin>
