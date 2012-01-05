@@ -6,8 +6,8 @@
 		<artifactId>org.jbehave.osgi</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.jbehave.osgi.examples.bnd.trader.fragment</artifactId>
-	<name>JBehave OSGi : Example Trader Scenarios Fragment - BND</name>
+	<artifactId>org.jbehave.osgi.examples.trader</artifactId>
+	<name>JBehave OSGi : Example Trader Scenarios - BND</name>
 	<description>Builded using POM-FIRST method with BND Tool.</description>
 	<packaging>bundle</packaging>
 
@@ -37,7 +37,7 @@
 					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>1.1.0.qualifier</Bundle-Version>
+						<Bundle-Version>0.0.2.qualifier</Bundle-Version>
 						<Import-Package>org.hamcrest, org.jbehave.core, junit.framework,
 							org.apache.commons.lang, org.apache.commons.lang.builder,
 							org.jbehave.core.annotations, org.jbehave.core.configuration,
