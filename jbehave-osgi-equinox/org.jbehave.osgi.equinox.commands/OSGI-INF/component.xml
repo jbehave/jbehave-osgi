@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="Command Provider for JBehave Embedder Service">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="Command Provider for JBehave Embedder Service">
    <implementation class="org.jbehave.osgi.equinox.commands.CoreCommandProvider"/>
    <service>
       <provide interface="org.eclipse.osgi.framework.console.CommandProvider"/>
