@@ -84,22 +84,12 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>karaf</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-services</module>
-				<module>jbehave-osgi-karaf</module>
-			</modules>
-		</profile>
-		<profile>
 			<id>example-trader</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-examples/trader/org.jbehave.osgi.examples.bnd.trader.fragment</module>
+				<module>jbehave-osgi-examples/trader/org.jbehave.osgi.examples.trader</module>
 			</modules>
 		</profile>
 		<profile>
