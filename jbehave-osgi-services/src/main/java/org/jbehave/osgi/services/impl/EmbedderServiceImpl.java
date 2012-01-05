@@ -38,7 +38,7 @@ public class EmbedderServiceImpl implements EmbedderService {
     @Override
     public void runStoriesWithAnnotatedEmbedderRunner(List<String> classNames) {
         LOGGER.info("Running stories with annotated embedder runner using classes: '" + classNames + "'");
-        embedder.runStoriesWithAnnotatedEmbedderRunner(classNames);
+        getEmbedder().runStoriesWithAnnotatedEmbedderRunner(classNames);
     }
 
     public void setEmbedder(Embedder embedder) {

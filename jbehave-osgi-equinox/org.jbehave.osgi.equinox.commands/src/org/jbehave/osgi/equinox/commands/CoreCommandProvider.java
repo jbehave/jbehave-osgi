@@ -20,7 +20,6 @@ public class CoreCommandProvider implements
 		help.append("\r\n--- JBehave Equinox Commands ---\r\n");
 		help.append("\tjbStatus - JBehave OSGi EmbedderService status.\r\n");
 		help.append("\tjbRunStoriesWithAnnotatedEmbedder - Run Stories via Annotated Embedder.\r\n");
-//		help.append("\trun-stories-with-annotated-embedder - Run Stories via Annotated Embedder.\r\n");
 		help.append("\r\n");
 		return help.toString();
 	}
