@@ -11,7 +11,7 @@
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.rcpmail.product</artifactId>
-	<name>JBehave-OSGi : RCPmail Example Product and Repository</name>
+	<name>JBehave OSGi RCPmail Example : Product and Repository</name>
 	<packaging>eclipse-repository</packaging>
 
 	<build>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jbehave.osgi</groupId>
+        <artifactId>org.jbehave.osgi</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
+    <groupId>org.jbehave.osgi.examples</groupId>
+	<artifactId>org.jbehave.osgi.examples</artifactId>
+	<packaging>pom</packaging>
+    <name>JBehave OSGi Examples</name>
+    <description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
+  
+	<profiles>
+		<profile>
+			<id>trader</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>trader/org.jbehave.osgi.examples.trader</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>rcpmail</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>rcpmail</module>
+			</modules>
+		</profile>
+	</profiles>
+
+</project>

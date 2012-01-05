@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>org.jbehave.osgi</artifactId>
+		<groupId>org.jbehave.osgi.examples</groupId>
+		<artifactId>org.jbehave.osgi.examples</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi RCPmail Example</name>
+    <description>Example showing how to build an application and run JBehave stories via a MANIFEST-FIRST approach using Tycho.</description>
 
 	<properties>
 		<tycho-version>0.13.0</tycho-version>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -11,7 +10,7 @@
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.rcpmail.test</artifactId>
-	<name>JBehave-OSGi : RCPmail Example Application Test</name>
+	<name>JBehave OSGi RCPmail Example : Stories</name>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<dependencies>
@@ -62,10 +61,8 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-
 						<!-- <include>org.jbehave.osgi.examples.rcpmail.application.test.MyFirstTest</include> -->
 						<include>**/*Embedder.*</include>
-						<!-- <include>**/*Tests.*</include> -->
 					</includes>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>

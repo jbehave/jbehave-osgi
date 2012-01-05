@@ -64,7 +64,8 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>service</id>
+			<id>services</id>
+             <!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho)-->
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -78,29 +79,18 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<!-- can't run bnd in same reactor than tycho -->
-				<!-- <module>jbehave-osgi-services</module> -->
 				<module>jbehave-osgi-equinox</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>example-trader</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-examples/trader/org.jbehave.osgi.examples.trader</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>example-rcpmail-tycho</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-examples/rcpmail</module>
-			</modules>
-		</profile>
+        <profile>
+            <id>examples</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>jbehave-osgi-examples</module>
+            </modules>
+        </profile>
 	</profiles>
 
 	<developers />

@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>org.jbehave.osgi</artifactId>
+		<groupId>org.jbehave.osgi.examples</groupId>
+		<artifactId>org.jbehave.osgi.examples</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.examples.trader</artifactId>
-	<name>JBehave OSGi : Example Trader Scenarios - BND</name>
-	<description>Builded using POM-FIRST method with BND Tool.</description>
+	<name>JBehave OSGi Trader Example : Stories</name>
+    <description>Example showing how to run JBehave stories via a POM-FIRST approach using a BND tool.</description>
 	<packaging>bundle</packaging>
 
 	<properties>

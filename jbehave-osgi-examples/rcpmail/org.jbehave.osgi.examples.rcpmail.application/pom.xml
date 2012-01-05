@@ -8,5 +8,5 @@
 	</parent>
 	<artifactId>org.jbehave.osgi.examples.rcpmail.application</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>JBehave-OSGi : RCPmail Example Application</name>
+	<name>JBehave-OSGi RCPmail Example : Application</name>
 </project>
