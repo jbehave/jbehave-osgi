@@ -66,6 +66,20 @@
 							<autoStart>true</autoStart>
 						</bundle>
 					</bundleStartLevel>
+
+					<dependencies>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.jbehave.osgi.services</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
+
 					<excludes>
 						<!-- test mojo matches TestProject be default and treats it as PojoTest -->
 						<exclude>**/Test*.class</exclude>
@@ -83,5 +97,12 @@
 			<artifactId>org.jbehave.osgi.equinox.commands</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
 	</dependencies>
 </project>
