@@ -13,13 +13,6 @@
 	<name>JBehave OSGi RCPmail Example : Stories</name>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
 	<profiles>
 		<profile>
 			<id>macosx</id>
@@ -69,7 +62,7 @@
 					<product>org.jbehave.osgi.examples.rcpmail.application.product</product>
 					<showEclipseLog>true</showEclipseLog>
 					<argLine>${ui.test.vmargs}</argLine>
-					<failIfNoTests>false</failIfNoTests>
+					<failIfNoTests>true</failIfNoTests>
 					<application>org.jbehave.osgi.examples.rcpmail.application.application</application>
 					<bundleStartLevel>
 						<bundle>

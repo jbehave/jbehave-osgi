@@ -81,19 +81,21 @@
 					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Version>0.0.2.qualifier</Bundle-Version>
-						<Export-Package>org.jbehave.osgi.services,org.jbehave.osgi.io,org.jbehave.osgi.embedder,org.jbehave.osgi.configuration,
-							org.jbehave.osgi.reporters, org.jbehave.osgi.services.impl;x-friends:="org.jbehave.osgi.services.swtbot"</Export-Package>
+<!-- 						<Bundle-Version>0.0.2.qualifier</Bundle-Version> -->
+						<Export-Package>org.jbehave.osgi.services, org.jbehave.osgi.io,
+							org.jbehave.osgi.embedder, org.jbehave.osgi.configuration,
+							org.jbehave.osgi.reporters,
+							org.jbehave.osgi.services.impl;x-friends:="org.jbehave.osgi.services.swtbot"</Export-Package>
 						<Private-Package>org.jbehave.osgi.services.impl</Private-Package>
 						<Service-Component>OSGI-INF/*.xml</Service-Component>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
 						<Import-Package>
-							<!-- !org.xmlpull.mxp1;version="1.1.4c", -->
-							<!-- !org.xmlpull.v1;version="1.1.4c", -->
-							<!-- !com.thoughtworks.xstream;version="1.3.1", -->
-							<!-- !com.thoughtworks.paranamer;version="2.4", -->
-							<!-- !freemarker;version="2.3.16", -->
+							org.xmlpull.mxp1;version="1.1.4c",
+							org.xmlpull.v1;version="1.1.4c",
+							com.thoughtworks.xstream;version="1.3.1",
+							com.thoughtworks.paranamer;version="2.4",
+							freemarker;version="2.3.16",
 							!com.sun.org.apache.xml.internal.utils,
 							!com.sun.org.apache.xpath.internal,
 							!com.sun.org.apache.xpath.internal.objects,!javax.el,
@@ -117,38 +119,65 @@
 							!org.codehaus.jettison,
 							!org.codehaus.jettison.mapped,
 							!org.dom4j,!org.dom4j.io,!org.dom4j.tree,
-<!-- 							!org.hamcrest;version="1.1.0", -->
-<!-- 							!org.hamcrest.core;version="1.1.0", -->
+							org.hamcrest;version="1.1.0",
+							org.hamcrest.core;version="1.1.0",
 							!org.jaxen,
 							!org.jaxen.dom,
 							!org.jaxen.dom4j, !org.jaxen.jdom,
 							!org.jdom, !org.jdom.input,
 							!org.jdom.output,
-<!-- 							!org.jbehave.core;version="${jbehave.core.osgi.version}", -->
+							org.jbehave.core;version="${jbehave.core.osgi.version}",
 							org.osgi.framework.*,
 							!org.osgi.service.blueprint,
 							!org.joda.time,
 							!org.joda.time.format,
-<!-- 							!org.junit;version="4.8.2", -->
-<!-- 							!junit.framework;version="4.8.2", -->
-<!-- 							!org.junit.runner;version="4.8.2", -->
-<!-- 							!org.junit.runner.manipulation;version="4.8.2", -->
-<!-- 							!org.junit.runner.notification;version="4.8.2", -->
-<!-- 							!org.junit.runners;version="4.8.2", -->
-<!-- 							!org.junit.runners.model;version="4.8.2", -->
-							!org.mozilla.javascript, org.osgi.framework;version="[1.5,2)",
-							!org.python.core, !org.python.util, org.slf4j;version="[1.6,2)",
-							org.w3c.dom, org.w3c.dom.traversal, org.xml.sax,
-							!javax.xml.xpath, !org.easymock, !org.jmock.core,
-							,org.xml.sax.helpers, !org.zeroturnaround.javarebel, !sun.misc,
+							org.junit;version="4.8.2",
+							!junit.framework;version="4.8.2",
+							org.junit.runner;version="4.8.2",
+							org.junit.runner.manipulation;version="4.8.2",
+							org.junit.runner.notification;version="4.8.2",
+							org.junit.runners;version="4.8.2",
+							org.junit.runners.model;version="4.8.2",
+							!org.mozilla.javascript,
+							org.osgi.framework;version="[1.5,2)",
+							!org.python.core,
+							!org.python.util, org.slf4j;version="[1.6,2)",
+							org.w3c.dom,
+							org.w3c.dom.traversal, org.xml.sax,
+							!javax.xml.xpath,
+							!org.easymock, !org.jmock.core,
+							,org.xml.sax.helpers,
+							!org.zeroturnaround.javarebel, !sun.misc,
 							!sun.reflect
 						</Import-Package>
-						<Embed-Dependency>junit-dep;inline=false,hamcrest-integration;scope=compile;inline=false,hamcrest-library;scope=compile;inline=false,hamcrest-core;scope=compile;inline=false,commons-lang;scope=compile;inline=false,commons-io;scope=compile;inline=false,commons-collections;scope=compile;inline=false,jbehave-core;scope=compile;inline=false,xstream;scope=compile;inline=false,xpp3_min;scope=compile;inline=false,plexus-utils;scope=compile;inline=false,freemarker;scope=compile;inline=false,paranamer;scope=compile;inline=false</Embed-Dependency>
-						<_exportcontents>org.junit.*;version="4.8.2",org.hamcrest.*;version="1.1.0",org.jbehave.core.*;version="${jbehave.core.osgi.version}",com.thoughtworks.xstream.*;version="1.3.1",com.thoughtworks.paranamer.*;version="2.4",org.xmlpull.mxp1;version="1.1.4c",org.xmlpull.v1;version="1.1.4c",freemarker.*;version="2.3.16",org.apache.commons.lang.*;version="2.5.0",org.apache.commons.collections.*;version="3.2.1",org.apache.commons.io.*;version="2.1.0"</_exportcontents>
+						<Embed-Dependency>junit-dep;inline=false,
+							hamcrest-integration;scope=compile;inline=false,
+							hamcrest-library;scope=compile;inline=false,
+							hamcrest-core;scope=compile;inline=false,
+							commons-lang;scope=compile;inline=false,
+							commons-io;scope=compile;inline=false,
+							commons-collections;scope=compile;inline=false,
+							jbehave-core;scope=compile;inline=false,
+							xstream;scope=compile;inline=false,
+							xpp3_min;scope=compile;inline=false,
+							plexus-utils;scope=compile;inline=false,
+							freemarker;scope=compile;inline=false,
+							paranamer;scope=compile;inline=false</Embed-Dependency>
+						<_exportcontents>org.junit.*;version="4.8.2",
+							org.hamcrest.*;version="1.1.0",
+							org.jbehave.core.*;version="${jbehave.core.osgi.version}",
+							com.thoughtworks.xstream.*;version="1.3.1",
+							com.thoughtworks.paranamer.*;version="2.4",
+							org.xmlpull.mxp1;version="1.1.4c",
+							org.xmlpull.v1;version="1.1.4c",
+							freemarker.*;version="2.3.16",
+							org.apache.commons.lang.*;version="2.5.0",
+							org.apache.commons.collections.*;version="3.2.1",
+							org.apache.commons.io.*;version="2.1.0"</_exportcontents>
 						<Embed-Directory>jars</Embed-Directory>
 						<Embed-Transitive>true</Embed-Transitive>
 						<_nouses>true</_nouses>
-<!-- 						<Export-Service>org.jbehave.osgi.services.EmbedderService</Export-Service> -->
+						<!-- <Export-Service>org.jbehave.osgi.services.EmbedderService</Export-Service> -->
 					</instructions>
 				</configuration>
 			</plugin>

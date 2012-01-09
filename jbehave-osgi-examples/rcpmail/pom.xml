@@ -18,10 +18,18 @@
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<jbehave-osgi-p2-repo>file://${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/repository</jbehave-osgi-p2-repo>
+		<jbehave-osgi-p2-repo>jar:file:${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/org.jbehave.osgi.equinox.repository.zip!/</jbehave-osgi-p2-repo>
 	</properties>
 
 	<repositories>
+		<repository>
+			<id>jbehave-osgi-p2</id>
+			<layout>p2</layout>
+			<url>${jbehave-osgi-p2-repo}</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
@@ -31,11 +39,6 @@
 			<id>swtbot</id>
 			<layout>p2</layout>
 			<url>${swtbot-site}</url>
-		</repository>
-		<repository>
-			<id>jbehave-osgi-p2</id>
-			<layout>p2</layout>
-			<url>${jbehave-osgi-p2-repo}</url>
 		</repository>
 	</repositories>
 
