@@ -31,7 +31,7 @@
 					<!-- <argLine>${ui.test.vmargs}</argLine> -->
 					<bundleStartLevel>
 						<bundle>
-							<id>org.eclipse.equinox.commnon</id>
+							<id>org.eclipse.equinox.common</id>
 							<level>1</level>
 							<autoStart>true</autoStart>
 						</bundle>

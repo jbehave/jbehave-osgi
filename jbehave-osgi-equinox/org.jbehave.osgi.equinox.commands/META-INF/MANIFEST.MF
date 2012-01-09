@@ -1,16 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave OSGi Equinox : Commands Bundle
-Bundle-SymbolicName: org.jbehave.osgi.equinox.commands
+Bundle-SymbolicName: org.jbehave.osgi.equinox.commands;singleton:=true
 Bundle-Version: 0.0.2.qualifier
 Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: 
- org.apache.commons.collections;version="3.2.1",
- org.apache.commons.lang;version="2.5.0",
- org.eclipse.osgi.framework.console,
- org.jbehave.osgi.services,
+Import-Package: org.eclipse.osgi.framework.console,
  org.osgi.framework
 Export-Package: org.jbehave.osgi.equinox.commands
+Require-Bundle: org.jbehave.osgi.services;bundle-version="0.0.2"
 
