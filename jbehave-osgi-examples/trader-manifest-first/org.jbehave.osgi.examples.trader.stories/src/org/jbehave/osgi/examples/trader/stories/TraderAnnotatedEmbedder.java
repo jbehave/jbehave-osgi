@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.trader.annotations;
+package org.jbehave.osgi.examples.trader.stories;
 
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
@@ -26,12 +26,12 @@ import org.jbehave.examples.trader.steps.SandpitSteps;
 import org.jbehave.examples.trader.steps.SearchSteps;
 import org.jbehave.examples.trader.steps.TraderSteps;
 import org.jbehave.osgi.configuration.OsgiConfiguration;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyDateConverter;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyEmbedder;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyReportBuilder;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryControls;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryLoader;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyDateConverter;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyEmbedder;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyReportBuilder;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyStoryControls;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedEmbedder.MyStoryLoader;
 import org.jbehave.osgi.io.OsgiStoryFinder;
 import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.junit.Test;

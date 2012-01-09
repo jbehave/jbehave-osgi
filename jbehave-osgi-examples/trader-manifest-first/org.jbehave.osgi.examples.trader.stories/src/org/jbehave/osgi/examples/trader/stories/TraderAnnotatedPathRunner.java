@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.trader.annotations;
+package org.jbehave.osgi.examples.trader.stories;
 
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
@@ -13,6 +13,7 @@ import org.jbehave.core.annotations.UsingPaths;
 import org.jbehave.core.annotations.UsingSteps;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.embedder.StoryControls;
+import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.junit.AnnotatedPathRunner;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.reporters.StoryReporterBuilder;
@@ -24,11 +25,11 @@ import org.jbehave.examples.trader.steps.PriorityMatchingSteps;
 import org.jbehave.examples.trader.steps.SandpitSteps;
 import org.jbehave.examples.trader.steps.SearchSteps;
 import org.jbehave.examples.trader.steps.TraderSteps;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder.MyStoryLoader;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyDateConverter;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyRegexPrefixCapturingPatternParser;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyReportBuilder;
-import org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedPathRunner.MyStoryControls;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedPathRunner.MyDateConverter;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedPathRunner.MyRegexPrefixCapturingPatternParser;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedPathRunner.MyReportBuilder;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedPathRunner.MyStoryControls;
+import org.jbehave.osgi.examples.trader.stories.TraderAnnotatedPathRunner.MyStoryLoader;
 import org.junit.runner.RunWith;
 
 @RunWith(AnnotatedPathRunner.class)
@@ -48,6 +49,11 @@ public class TraderAnnotatedPathRunner {
         }
     }
 
+	public static class MyStoryLoader extends LoadFromClasspath {
+		public MyStoryLoader() {
+			super();
+		}
+	}
 
     public static class MyReportBuilder extends StoryReporterBuilder {
         public MyReportBuilder() {

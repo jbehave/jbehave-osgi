@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jbehave.osgi.examples</groupId>
+		<artifactId>org.jbehave.osgi.examples</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.jbehave.osgi.examples.trader.manifestfirst</artifactId>
+	<packaging>pom</packaging>
+	<name>JBehave OSGi Trader Example : MANIFEST-FIRST</name>
+
+	<properties>
+		<tycho-version>0.13.0</tycho-version>
+		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
+		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
+		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
+		<jbehave-osgi-p2-repo>file://${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/repository</jbehave-osgi-p2-repo>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+		</repository>
+		<repository>
+			<id>jbehave-osgi-p2</id>
+			<layout>p2</layout>
+			<url>${jbehave-osgi-p2-repo}</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- enable tycho build -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<extensions>true</extensions>
+				</plugin>
+
+				<!-- configure target platform resolution -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<pomDependencies>consider</pomDependencies>
+						<resolver>p2</resolver>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+			</plugin>
+
+		</plugins>
+		
+	</build>
+
+	<profiles>
+		<profile>
+			<!-- Tycho MANIFEST-FIRST building -->
+			<id>examples-manifest-first</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.examples.trader.product</module>
+				<module>org.jbehave.osgi.examples.trader.feature</module>
+				<module>org.jbehave.osgi.examples.trader.application</module>
+				<module>org.jbehave.osgi.examples.trader.stories</module>
+			</modules>
+		</profile>
+	</profiles>
+
+</project>

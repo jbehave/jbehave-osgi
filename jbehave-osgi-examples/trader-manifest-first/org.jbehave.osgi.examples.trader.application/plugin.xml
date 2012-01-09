@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.jbehave.osgi.examples.trader.application.JBehaveTraderServerApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.jbehave.osgi.examples.trader.application.application"
+            name="JBehave OSGi Equinox : Equinox Product">
+         <property
+               name="appName"
+               value="JBehave OSGi Equinox : Equinox Product">
+         </property>
+         <property
+               name="aboutText"
+               value="FEAST - BackOffice - Equinox Server with Remote Communication Support.">
+         </property>
+      </product>
+   </extension>
+
+
+
+</plugin>

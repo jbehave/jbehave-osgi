@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.jbehave.osgi.examples</groupId>
+		<artifactId>org.jbehave.osgi.examples.trader.pomfirst</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.jbehave.osgi.examples.trader.bundle.code</artifactId>
+	<name>JBehave OSGi Trader Example : Code Bundle</name>
+	<description>A bundle of JBehave Trader Example exporting only the application code.</description>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-trader-example</artifactId>
+			<version>${jbehave.core.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<unpackBundle>true</unpackBundle>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${jbehave-osgi.version}</Bundle-Version>
+						<Import-Package>org.jbehave.examples.trader.model,
+							org.jbehave.examples.trader.persistence,
+							org.jbehave.examples.trader.service, !junit.framework,
+							!org.apache.commons.lang, !org.apache.commons.lang.builder,
+							!org.hamcrest, !org.jbehave.core.annotations,
+							!org.jbehave.core.configuration, !org.jbehave.core.embedder,
+							!org.jbehave.core.failures, !org.jbehave.core.i18n,
+							!org.jbehave.core.io, !org.jbehave.core.junit,
+							!org.jbehave.core.model, !org.jbehave.core.parsers,
+							!org.jbehave.core.reporters, !org.jbehave.core.steps, !org.junit</Import-Package>
+						<Embed-Dependency>jbehave-trader-example;inline=false</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
+						<_exportcontents>org.jbehave.examples.trader.model,
+							org.jbehave.examples.trader.persistence,
+							org.jbehave.examples.trader.service</_exportcontents>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JBehave Trader Stories
+Bundle-SymbolicName: org.jbehave.osgi.examples.trader.stories
+Bundle-Version: 0.0.2.qualifier
+Bundle-Vendor: JBehave.org
+Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
+Require-Bundle: org.jbehave.osgi.examples.trader.application;bundle-version="0.0.2",
+ org.jbehave.osgi.examples.trader.bundle.code;visibility:=reexport,
+ org.junit4;bundle-version="4.8.1",
+ org.jbehave.osgi.examples.trader.bundle.embedders;visibility:=reexport
+Export-Package: org.jbehave.osgi.examples.trader.stories
