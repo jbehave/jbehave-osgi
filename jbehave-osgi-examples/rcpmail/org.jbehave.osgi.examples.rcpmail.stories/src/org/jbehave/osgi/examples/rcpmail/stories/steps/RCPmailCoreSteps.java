@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.rcpmail.test.steps;
+package org.jbehave.osgi.examples.rcpmail.stories.steps;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -11,7 +11,7 @@
 	<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi RCPmail Example</name>
-    <description>Example showing how to build an application and run JBehave stories via a MANIFEST-FIRST approach using Tycho.</description>
+	<description>Example showing how to build an application and run JBehave stories via a MANIFEST-FIRST approach using Tycho.</description>
 
 	<properties>
 		<tycho-version>0.13.0</tycho-version>
@@ -39,12 +39,30 @@
 		</repository>
 	</repositories>
 
-	<modules>
-		<module>org.jbehave.osgi.examples.rcpmail.application</module>
-		<module>org.jbehave.osgi.examples.rcpmail.feature</module>
-		<module>org.jbehave.osgi.examples.rcpmail.test</module>
-		<module>org.jbehave.osgi.examples.rcpmail.product</module>
-	</modules>
+	<profiles>
+		<profile>
+			<id>examples-pom-first</id>
+			<!-- this is here just to maintenance -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+			</modules>
+		</profile>
+		<profile>
+			<id>examples-manifest-first</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.examples.rcpmail.application</module>
+				<module>org.jbehave.osgi.examples.rcpmail.feature</module>
+				<module>org.jbehave.osgi.examples.rcpmail.stories</module>
+				<module>org.jbehave.osgi.examples.rcpmail.product</module>
+			</modules>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 

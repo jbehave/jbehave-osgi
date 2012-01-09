@@ -9,7 +9,7 @@
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.jbehave.osgi.examples.rcpmail.test</artifactId>
+	<artifactId>org.jbehave.osgi.examples.rcpmail.stories</artifactId>
 	<name>JBehave OSGi RCPmail Example : Stories</name>
 	<packaging>eclipse-test-plugin</packaging>
 
@@ -72,11 +72,11 @@
 					<failIfNoTests>false</failIfNoTests>
 					<application>org.jbehave.osgi.examples.rcpmail.application.application</application>
 					<bundleStartLevel>
-						<!-- <bundle> -->
-						<!-- <id>org.eclipse.osgi</id> -->
-						<!-- <level>-1</level> -->
-						<!-- <autoStart>true</autoStart> -->
-						<!-- </bundle> -->
+						<bundle>
+							<id>org.eclipse.osgi</id>
+							<level>-1</level>
+							<autoStart>true</autoStart>
+						</bundle>
 						<bundle>
 							<id>org.eclipse.equinox.common</id>
 							<level>1</level>
@@ -99,7 +99,7 @@
 						</bundle>
 						<bundle>
 							<id>org.jbehave.osgi.services</id>
-							<level>2</level>
+							<level>4</level>
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
@@ -149,11 +149,6 @@
 							<type>p2-installable-unit</type>
 							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
 							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.hamcrest</artifactId>
-							<version>1.1.0</version>
 						</dependency>
 					</dependencies>
 				</configuration>

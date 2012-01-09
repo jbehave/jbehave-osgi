@@ -2,36 +2,73 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.jbehave.osgi</groupId>
-        <artifactId>org.jbehave.osgi</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
-    </parent>
-    <groupId>org.jbehave.osgi.examples</groupId>
+	<parent>
+		<groupId>org.jbehave.osgi</groupId>
+		<artifactId>org.jbehave.osgi</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples</artifactId>
 	<packaging>pom</packaging>
-    <name>JBehave OSGi Examples</name>
-    <description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
-  
+	<name>JBehave OSGi Examples</name>
+	<description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
+
 	<profiles>
 		<profile>
-			<id>trader</id>
+			<id>example-rcpmail</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-			<modules>
-				<module>trader/org.jbehave.osgi.examples.trader</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>rcpmail</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
 			<modules>
 				<module>rcpmail</module>
 			</modules>
 		</profile>
-	</profiles>
+		<profile>
+			<id>examples-pom-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>trader-pom-first</module>
+			</modules>
+		</profile>
 
+		<profile>
+			<id>examples-manifest-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>trader-manifest-first</module>
+				<module>rcpmail</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>example-trader-pom-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>clean, install</defaultGoal>
+			</build>
+			<modules>
+				<module>trader-pom-first</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>example-trader-manifest-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>trader-manifest-first</module>
+			</modules>
+		</profile>
+
+	</profiles>
 </project>

@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.rcpmail.test.embedder;
+package org.jbehave.osgi.examples.rcpmail.stories.embedder;
 
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
@@ -18,14 +18,14 @@ import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.steps.ParameterConverters.DateConverter;
 import org.jbehave.osgi.configuration.OsgiConfiguration;
 import org.jbehave.osgi.embedder.OsgiEmbedder;
-import org.jbehave.osgi.examples.rcpmail.test.SwtbotAnnotatedEmbedderRunner;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyDateConverter;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyEmbedder;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyReportBuilder;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyStoryControls;
-import org.jbehave.osgi.examples.rcpmail.test.embedder.RCPmailAnnotatedEmbedder.MyStoryLoader;
-import org.jbehave.osgi.examples.rcpmail.test.steps.RCPmailCoreSteps;
+import org.jbehave.osgi.examples.rcpmail.runner.SwtbotAnnotatedEmbedderRunner;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyDateConverter;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyEmbedder;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyReportBuilder;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyStoryControls;
+import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyStoryLoader;
+import org.jbehave.osgi.examples.rcpmail.stories.steps.RCPmailCoreSteps;
 import org.jbehave.osgi.io.OsgiStoryFinder;
 import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.junit.Test;
@@ -34,7 +34,7 @@ import org.junit.runner.RunWith;
 @RunWith(SwtbotAnnotatedEmbedderRunner.class)
 @Configure(using = OsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
-@UsingSteps(instances = { RCPmailCoreSteps.class, SWTBotLifeCycle.class })
+@UsingSteps(instances = { RCPmailCoreSteps.class })
 public class RCPmailAnnotatedEmbedder extends InjectableEmbedder {
 
     @Test

@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.rcpmail.test;
+package org.jbehave.osgi.examples.rcpmail.runner;
 
 import org.eclipse.swtbot.swt.finder.junit.ScreenshotCaptureListener;
 import org.jbehave.core.junit.AnnotatedEmbedderRunner;

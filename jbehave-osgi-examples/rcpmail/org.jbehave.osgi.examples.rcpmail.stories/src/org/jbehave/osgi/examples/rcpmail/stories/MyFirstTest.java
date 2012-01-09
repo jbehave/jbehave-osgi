@@ -1,4 +1,4 @@
-package org.jbehave.osgi.examples.rcpmail.test;
+package org.jbehave.osgi.examples.rcpmail.stories;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
