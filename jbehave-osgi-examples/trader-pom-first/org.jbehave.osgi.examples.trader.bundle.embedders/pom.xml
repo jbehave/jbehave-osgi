@@ -33,25 +33,13 @@
 					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${jbehave-osgi.version}</Bundle-Version>
-						<!-- <Import-Package>org.jbehave.examples.trader.*,junit.framework, -->
-						<!-- org.apache.commons.lang, org.apache.commons.lang.builder, -->
-						<!-- org.hamcrest, org.jbehave.core, org.jbehave.core.annotations, -->
-						<!-- org.jbehave.core.configuration, org.jbehave.core.embedder, -->
-						<!-- org.jbehave.core.failures, org.jbehave.core.i18n, -->
-						<!-- org.jbehave.core.io, org.jbehave.core.junit, -->
-						<!-- org.jbehave.core.model, org.jbehave.core.parsers, -->
-						<!-- org.jbehave.core.reporters, org.jbehave.core.steps, org.junit, -->
-						<!-- org.junit.runner, org.jbehave.osgi.configuration, -->
-						<!-- org.jbehave.osgi.io, org.jbehave.osgi.reporters</Import-Package> -->
-						<!-- <Export-Package>org.jbehave.osgi.examples.trader.annotations.*</Export-Package> -->
 						<Embed-Dependency>jbehave-trader-example;inline=true</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 						<_exportcontents>org.jbehave.examples.trader,
 							org.jbehave.examples.trader.converters,
 							org.jbehave.examples.trader.steps,
 							org.jbehave.examples.trader.stories</_exportcontents>
-<!-- 						<_nouses>true</_nouses> -->
+						<_nouses>true</_nouses>
 					</instructions>
 				</configuration>
 			</plugin>

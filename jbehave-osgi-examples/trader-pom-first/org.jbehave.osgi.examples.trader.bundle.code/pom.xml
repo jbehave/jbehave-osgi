@@ -17,6 +17,11 @@
 			<artifactId>jbehave-trader-example</artifactId>
 			<version>${jbehave.core.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -28,17 +33,6 @@
 					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${jbehave-osgi.version}</Bundle-Version>
-						<Import-Package>org.jbehave.examples.trader.model,
-							org.jbehave.examples.trader.persistence,
-							org.jbehave.examples.trader.service, !junit.framework,
-							!org.apache.commons.lang, !org.apache.commons.lang.builder,
-							!org.hamcrest, !org.jbehave.core.annotations,
-							!org.jbehave.core.configuration, !org.jbehave.core.embedder,
-							!org.jbehave.core.failures, !org.jbehave.core.i18n,
-							!org.jbehave.core.io, !org.jbehave.core.junit,
-							!org.jbehave.core.model, !org.jbehave.core.parsers,
-							!org.jbehave.core.reporters, !org.jbehave.core.steps, !org.junit</Import-Package>
 						<Embed-Dependency>jbehave-trader-example;inline=false</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 						<_exportcontents>org.jbehave.examples.trader.model,
