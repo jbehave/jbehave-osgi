@@ -14,6 +14,7 @@
 	</prerequisites>
 
 	<properties>
+		<jbehave-osgi.version>0.0.2.qualifier</jbehave-osgi.version>
 		<jbehave.core.version>3.6-SNAPSHOT</jbehave.core.version>
 		<jbehave.core.osgi.version>3.6.qualifier</jbehave.core.osgi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,16 +60,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-
-		</plugins>
 	</build>
 	<profiles>
 		<profile>
 			<id>services</id>
-             <!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho)-->
+			<!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho) -->
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
 				<module>jbehave-osgi-services</module>
@@ -83,15 +81,66 @@
 				<module>jbehave-osgi-equinox</module>
 			</modules>
 		</profile>
-        <profile>
-            <id>examples</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>jbehave-osgi-examples</module>
-            </modules>
-        </profile>
+		<profile>
+			<id>example-rcpmail</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>examples-pom-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>examples-manifest-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>example-trader-pom-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>example-trader-manifest-first</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+			</modules>
+		</profile>
 	</profiles>
 
 	<developers />
