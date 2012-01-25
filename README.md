@@ -60,6 +60,7 @@ After open the file you just need to click on "Set as Target Platform" link and 
 #### Running Stories using an Equinox Launcher:
 
 1) Setup OSGi Framework Launcher
+
 Once your workspace/target platform is set up you can setup the Equinox launcher, choosing the bundles and tests fragments that must be installed when the Equinox is launched.  
 We provided one launcher sample named run_jbehave-osgi_equinox_runtime where we selected org.jbehave.osgi.sample.fragment.trader.bnd test fragment.
 
@@ -91,3 +92,20 @@ You should see:
 
     osgi> jbRunStoriesWithAnnotatedEmbedder org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder
     
+    
+    
+### Running the examples    
+   
+#### RCP Product Example
+
+    mvn clean verify -P example-rcpmail
+
+#### Equinox Product Example
+
+1) You first need to install the _POM-First_ projects
+
+    mvn clean install -P examples-pom-first
+
+2) Then you need just build the _MANIFEST-First projects
+
+    mvn clean verify -P example-manifest-first
