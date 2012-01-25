@@ -88,8 +88,13 @@
 
 					<dependencies>
 						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jbehave.osgi.services</artifactId>
+							<type>eclipse-feature</type>
+							<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>org.jbehave.osgi.equinox.features.deps</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 						<dependency>
@@ -107,7 +112,6 @@
 							<artifactId>org.jbehave.osgi.examples.trader.bundle.code</artifactId>
 							<version>0.0.0</version>
 						</dependency>
-
 					</dependencies>
 				</configuration>
 			</plugin>

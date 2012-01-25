@@ -103,6 +103,6 @@
 			<artifactId>org.jbehave.osgi.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-	
+
 	</dependencies>
 </project>
