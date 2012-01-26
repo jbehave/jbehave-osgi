@@ -12,6 +12,10 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGi Trader Example : POM-FIRST</name>
 
+	<properties>
+		<trader-example-version>3.6-SNAPSHOT</trader-example-version>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>examples-pom-first</id>

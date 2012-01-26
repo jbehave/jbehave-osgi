@@ -14,9 +14,8 @@
 	</prerequisites>
 
 	<properties>
-		<jbehave-osgi.version>0.0.2.qualifier</jbehave-osgi.version>
 		<jbehave.core.version>3.6-beta-3</jbehave.core.version>
-<!-- 		<jbehave.core.osgi.version>3.6.0.qualifier</jbehave.core.osgi.version> -->
+		<jbehave.core.osgi.version>3.6.0.qualifier</jbehave.core.osgi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

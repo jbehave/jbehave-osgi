@@ -103,6 +103,12 @@
 					</bundleStartLevel>
 
 					<dependencies>
+
+						<dependency>
+							<type>instalable-unit</type>
+							<artifactId>org.eclipse.osgi</artifactId>
+							<version>0.0.0</version>
+						</dependency>
 						<dependency>
 							<type>eclipse-feature</type>
 							<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>

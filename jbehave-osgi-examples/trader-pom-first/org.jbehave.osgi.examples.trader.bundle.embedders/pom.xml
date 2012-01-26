@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-trader-example</artifactId>
-			<version>${jbehave.core.version}</version>
+			<version>${trader-example-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
