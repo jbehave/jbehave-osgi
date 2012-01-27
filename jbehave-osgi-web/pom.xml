@@ -265,7 +265,7 @@
 						</Embed-Dependency>
 						<_exportcontents>
 							org.jbehave.web.selenium,
-							!org.jbehave.web.selenium.optional, *
+							!org.jbehave.web.selenium.pico, *
 						</_exportcontents>
 						<Embed-Transitive>true</Embed-Transitive>
 						<Embed-Directory>jars</Embed-Directory>
