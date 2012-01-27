@@ -19,6 +19,10 @@
       [Enter License Description here.]
    </license>
 
+   <includes
+         id="org.jbehave.osgi.equinox.features.deps"
+         version="0.0.0"/>
+
    <plugin
          id="org.jbehave.osgi.equinox.commands"
          download-size="0"
