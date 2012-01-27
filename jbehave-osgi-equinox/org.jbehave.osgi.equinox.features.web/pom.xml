@@ -6,25 +6,14 @@
 		<artifactId>org.jbehave.osgi.equinox</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>
-	<name>JBehave OSGI Equinox : Core Feature</name>
+	<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
+	<name>JBehave OSGI Equinox : Web Support Feature</name>
 	<packaging>eclipse-feature</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
+			<artifactId>org.jbehave.osgi.web</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.commands</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.features.deps</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-feature</type>
 		</dependency>
 	</dependencies>
 </project>

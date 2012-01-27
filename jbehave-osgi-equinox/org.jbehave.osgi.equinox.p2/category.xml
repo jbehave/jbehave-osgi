@@ -6,6 +6,9 @@
    <feature url="features/org.jbehave.osgi.equinox.features.deps_0.0.2.qualifier.jar" id="org.jbehave.osgi.equinox.features.deps" version="0.0.2.qualifier" os="linux,macosx,win32" arch="x86,x86_64">
       <category name="jbehave_equinox_category_id"/>
    </feature>
+   <feature url="features/org.jbehave.osgi.equinox.features.web_0.0.2.qualifier.jar" id="org.jbehave.osgi.equinox.features.web" version="0.0.2.qualifier" os="linux,macosx,win32" arch="x86,x86_64">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
    <category-def name="jbehave_equinox_category_id" label="JBehave OSGi : Equinox">
       <description>
          JBehave OSGi : Equinox

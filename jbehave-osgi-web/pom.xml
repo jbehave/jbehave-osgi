@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.jbehave.osgi</groupId>
+		<artifactId>org.jbehave.osgi</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.jbehave.osgi.web</artifactId>
+	<name>JBehave OSGi : Web Support Bundle</name>
+	<description>Provides OSGi bridge to JBehave-Web-Selenium.</description>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<jbehave-web-selenium>3.5-SNAPSHOT</jbehave-web-selenium>
+		<!-- <jbehave-web-selenium>3.5-beta-3</jbehave-web-selenium> -->
+		<selenium.version>2.17.0</selenium.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.web</groupId>
+			<artifactId>jbehave-web-selenium</artifactId>
+			<version>${jbehave-web-selenium}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-iphone-driver</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-android-driver</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.seleniumhq.selenium</groupId> -->
+		<!-- <artifactId>selenium-iphone-driver</artifactId> -->
+		<!-- <version>${selenium.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.seleniumhq.selenium</groupId> -->
+		<!-- <artifactId>selenium-android-driver</artifactId> -->
+		<!-- <version>${selenium.version}</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium.fluent</groupId>
+			<artifactId>fluent-selenium</artifactId>
+			<version>1.0-beta-4</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- ie -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>platform</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
+		<!-- firefox -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<!-- htmlunit -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.9</version>
+			<exclusions>
+				<!-- Exclude httpclient here, because htmlunit 2.8 depends on httpclient 
+					4.0.1 but Selenium uses httpclient 4.0.2 -->
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1.2</version>
+			<exclusions>
+				<!-- Exclude commons-codec here, because httpclient 4.0.2 depends commons-codec 
+					1.3 but HtmlUnit uses commons-codec 1.4 -->
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+
+
+		<!-- remote-driver -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>10.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.w3c.css</groupId>
+			<artifactId>sac</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<unpackBundle>true</unpackBundle>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+						<Import-Package>
+							!geb, !groovy.lang, !javax.swing,
+							!javax.swing.*,
+							!org.codehaus.groovy.reflection, !org.codehaus.groovy.runtime,
+							!org.codehaus.groovy.runtime.callsite,
+							!org.codehaus.groovy.runtime.typehandling,
+							!org.codehaus.groovy.runtime.wrappers,
+							!org.picocontainer,
+							!org.picocontainer.injectors,
+							!org.apache.avalon.framework.logger,
+							!org.apache.log,
+							!org.apache.xml.resolver,
+							!org.apache.xml.resolver.readers,
+							!net.sf.cglib.asm.util,
+							!org.codehaus.aspectwerkz.hook,
+							!org.testng.*,
+							!sun.io,
+							!sun.misc,
+							!org.openqa.selenium.android, *
+						</Import-Package>
+						<!-- <Export-Package> -->
+						<!-- org.jbehave.osgi.web -->
+						<!-- </Export-Package> -->
+						<!-- <Private-Package>org.jbehave.osgi.services.impl</Private-Package> -->
+						<!-- <Service-Component>OSGI-INF/*.xml</Service-Component> -->
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<!-- <Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI> -->
+						<Embed-Dependency>
+							jbehave-web-selenium;scope=compile;inline=false,
+							selenium-support;scope=compile;inline=false,
+							selenium-remote-driver;scope=compile;inline=false,
+							selenium-api;scope=compile;inline=false,
+							selenium-firefox-driver;scope=compile;inline=false,
+							selenium-ie-driver;scope=compile;inline=false,
+							selenium-htmlunit-driver;scope=compile;inline=false,
+							selenium-java;scope=compile;inline=false,
+							selenium-chrome-driver;scope=compile;inline=false,
+							guava;scope=compile;inline=false,
+							fluent-selenium;scope=compile;inline=false,
+							cglib-nodep;scope=compile;inline=false,
+							jna;scope=compile;inline=false,
+							json;scope=compile;inline=false,
+							httpclient;scope=compile;inline=false,
+							httpcore;scope=compile;inline=false,
+							httpmime;scope=compile;inline=false,
+							nekohtml;scope=compile;inline=false,
+							xalan;scope=compile;inline=false,
+							xercesImpl;scope=compile;inline=false,
+							xml-apis;scope=compile;inline=false,
+							serializer;scope=compile;inline=false,
+							commons-exec;scope=compile;inline=false,
+							commons-logging;scope=compile;inline=false,
+							sac;scope=compile;inline=false,
+							commons-codec;scope=compile;inline=false,
+							commons-io;scope=compile;inline=false,
+							jsr305;scope=compile;inline=false,
+							htmlunit;scope=compile;inline=false,
+							htmlunit-core-js;scope=compile;inline=false,
+							cssparser;scope=compile;inline=false,
+							platform;scope=compile;inline=false,
+							selenium-java;scope=compile;inline=false
+						</Embed-Dependency>
+						<_exportcontents>
+							org.jbehave.web.selenium,
+							!org.jbehave.web.selenium.optional, *
+						</_exportcontents>
+						<Embed-Transitive>true</Embed-Transitive>
+						<Embed-Directory>jars</Embed-Directory>
+						<_nouses>true</_nouses>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

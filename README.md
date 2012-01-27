@@ -2,13 +2,13 @@
 
 JBehave OGSi was created to be able to execute JBehave stories inside an OSGi environment.
 
-For now it can be used with an Eclipse Equinox container, including RCP products.
+For now it can be used together with Tycho to test bundles deployed in an Eclipse Equinox container, RCP products using SWTBot and Web Applications (as Vaadin) deployed as a bundle.
 
-It is composed by 2 basic components: 
+It is composed by 3 basic components: 
 
-- org.jbehave.osgi.services, that wraps the JBehave Core API and expose its functionalities to the OSGi Container;
+- org.jbehave.osgi.services, that wraps the JBehave Core API and exposes its functionalities a service to the OSGi Container;
+- org.jbehave.osgi.web, that wraps the wraps the JBehave Selenium API and let it be used with the core service;
 - org.jbehave.osgi.equinox, which supply Equinox specifics features, a console commands and a P2 repository.
- 
  
 ##JBehave for Equinox
 
@@ -16,25 +16,28 @@ It is composed by 2 basic components:
 
 * because we are using Wiring API that is part of OSGI R4.3, this module will be supported only by Indigo (3.7).
 
-The two basic components uses different approach to be built. 
-Equinox components is built using Eclipse Tycho, that uses _MANIFEST-first_ approach.
-While JBehave OSGi Service is built using Maven Bundle Plugin, that uses _POM-first_ approach.
+The JBehave-OSGi components uses different approach to being built.
+ 
+Equinox components are built using Eclipse Tycho, which uses a _MANIFEST-first_ approach. This mean that all information needed in the build is taken from the bundle manifest.
+
+While JBehave-OSGi Service ans Web are built using Maven Bundle Plugin, which uses _POM-first_ approach. This mean that all information needed in the build is taken from the bundle manifest.
 Its not possible to run both methods in same maven reactor (the same maven running job), so you must to split the build into two phases.
+
 
 First build the _POM-first_ projects:
  
-1) Go to root folder where you have cloned the project
+1) Go to the root folder where you have cloned the project:
 
 	cd /myprojects/jbehave-osgi
 
-2) Start the maven profile *service*
+2) Start the maven profile named **services**
 
 	mvn clean install -P services
 	
-This will install the JBehave OSGi Service in the local maven repository.
+This will install the JBehave-OSGi Service and Web components in the local maven repository.
 	
 	
-Then build the _MANIFEST-first_ projects.
+Then build the _MANIFEST-first_ projects:
 
 1) Go to root folder where you have cloned the project
 
@@ -44,11 +47,11 @@ Then build the _MANIFEST-first_ projects.
 
 	mvn clean verify -P equinox
 
-This will create a P2 repository in the folder: 
+This will create a P2 repository in the following folder: 
 
-     org.jbehave.osgi.equinox.repository/target/repository 
+     /myprojects/jbehave-osgi/org.jbehave.osgi.equinox.repository/target/repository 
      
-In this repository will contained the Core feature and all bundles dependencies needed for JBehave-OSGi to be executed on Equinox.
+This P2 repository will contain all components and all bundles dependencies needed for JBehave-OSGi to be executed on Equinox.
 
 
     
@@ -56,11 +59,11 @@ In this repository will contained the Core feature and all bundles dependencies 
    
 #### RCP Product Example
 
-1) Go to root folder where you have cloned the project
+1) Go to root folder where you have cloned the project:
 
 	cd /myprojects/jbehave-osgi
 	
-2) Start the maven build  
+2) Start the maven build:
 
     mvn clean verify -P example-rcpmail
  
@@ -72,17 +75,17 @@ If everything goes right, you could see the generated RCP product in this folder
 
 #### Trader Equinox Server Example
 
-This example reuses code from Trader example, so you have to ensure that it was built before.
+This example reuses code from Trader example, so you must to ensure that this project was properly built before.
 
-1) Go to root folder where you have cloned the project
+1) Go to root folder where you have cloned the project:
 
 	cd /myprojects/jbehave-osgi
 
-2) You must to install the _POM-First_ projects, the ones that uses *Maven Bundle Plugin*:
+2) You must to install the _POM-First_ projects:
 
     mvn clean install -P examples-pom-first
 
-2) Then you need just build the _MANIFEST-First projects, the ones that uses *Tycho*:
+2) Then you need build the _MANIFEST-First_ projects:
 
     mvn clean verify -P example-manifest-first
 

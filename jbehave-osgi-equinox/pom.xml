@@ -33,7 +33,8 @@
 		<module>org.jbehave.osgi.equinox.commands.test</module>
 		<module>org.jbehave.osgi.equinox.features.core</module>
 		<module>org.jbehave.osgi.equinox.features.deps</module>
-		<module>org.jbehave.osgi.equinox.repository</module>
+		<module>org.jbehave.osgi.equinox.features.web</module>
+		<module>org.jbehave.osgi.equinox.p2</module>
 		<module>org.jbehave.osgi.equinox.target</module>
 	</modules>
 

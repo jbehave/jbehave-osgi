@@ -6,7 +6,7 @@
 		<groupId>org.jbehave.osgi</groupId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.jbehave.osgi.equinox.repository</artifactId>
+	<artifactId>org.jbehave.osgi.equinox.p2</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>JBehave OSGI Equinox : P2 Repository</name>
 
@@ -60,6 +60,12 @@
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>
+			<version>${project.version}</version>
+			<type>eclipse-feature</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
 			<version>${project.version}</version>
 			<type>eclipse-feature</type>
 		</dependency>
