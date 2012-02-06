@@ -31,52 +31,66 @@ import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * This embedder was created to run the JBehave stories that tests a Eclipse RCP
+ * application using the SWTBot test framework.
+ * <p>
+ * I needed to use specifics OSGi story finder {@link OsgiStoryFinder} and report builder {@link OsgiStoryReporterBuilder}. 
+ * <p>
+ * To to be able to capture screens when errors happens in test I needed to create a specific EmbedderRunner, {@link SwtbotAnnotatedEmbedderRunner}.
+ * 
+ * @author cvgaviao
+ * 
+ */
+
 @RunWith(SwtbotAnnotatedEmbedderRunner.class)
 @Configure(using = OsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { RCPmailCoreSteps.class })
 public class RCPmailAnnotatedEmbedder extends InjectableEmbedder {
 
-    @Test
-    public void run() {
-        List<String> storyPaths = new OsgiStoryFinder().findPaths("/stories/rcpmail", "*.story", "");
-        injectedEmbedder().runStoriesAsPaths(storyPaths);
-    }
+	@Test
+	public void run() {
+		List<String> storyPaths = new OsgiStoryFinder().findPaths(
+				"/stories/rcpmail", "*.story", "");
+		injectedEmbedder().runStoriesAsPaths(storyPaths);
+	}
 
-    public static class MyEmbedder extends OsgiEmbedder {
-        public MyEmbedder() {
-        }
-    }
+	public static class MyEmbedder extends OsgiEmbedder {
+		public MyEmbedder() {
+		}
+	}
 
-    public static class MyStoryControls extends StoryControls {
-        public MyStoryControls() {
-            doDryRun(false);
-            doSkipScenariosAfterFailure(false);
-        }
-    }
+	public static class MyStoryControls extends StoryControls {
+		public MyStoryControls() {
+			doDryRun(false);
+			doSkipScenariosAfterFailure(false);
+		}
+	}
 
-    public static class MyStoryLoader extends LoadFromClasspath {
-        public MyStoryLoader() {
-            super();
-        }
-    }
+	public static class MyStoryLoader extends LoadFromClasspath {
+		public MyStoryLoader() {
+			super();
+		}
+	}
 
-    public static class MyReportBuilder extends OsgiStoryReporterBuilder {
-        public MyReportBuilder() {
-            this.withFormats(CONSOLE, TXT, HTML, XML).withDefaultFormats();
-        }
-    }
+	public static class MyReportBuilder extends OsgiStoryReporterBuilder {
+		public MyReportBuilder() {
+			this.withFormats(CONSOLE, TXT, HTML, XML).withDefaultFormats();
+		}
+	}
 
-    public static class MyRegexPrefixCapturingPatternParser extends RegexPrefixCapturingPatternParser {
-        public MyRegexPrefixCapturingPatternParser() {
-            super("%");
-        }
-    }
+	public static class MyRegexPrefixCapturingPatternParser extends
+			RegexPrefixCapturingPatternParser {
+		public MyRegexPrefixCapturingPatternParser() {
+			super("%");
+		}
+	}
 
-    public static class MyDateConverter extends DateConverter {
-        public MyDateConverter() {
-            super(new SimpleDateFormat("yyyy-MM-dd"));
-        }
-    }
+	public static class MyDateConverter extends DateConverter {
+		public MyDateConverter() {
+			super(new SimpleDateFormat("yyyy-MM-dd"));
+		}
+	}
 
 }
