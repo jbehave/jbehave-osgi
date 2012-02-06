@@ -81,66 +81,6 @@
 				<module>jbehave-osgi-equinox</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>example-rcpmail</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>jbehave-osgi-examples</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>examples-pom-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>jbehave-osgi-examples</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>examples-manifest-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>jbehave-osgi-examples</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>example-trader-pom-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>jbehave-osgi-examples</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>example-trader-manifest-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>jbehave-osgi-examples</module>
-			</modules>
-		</profile>
 	</profiles>
 
 	<developers />

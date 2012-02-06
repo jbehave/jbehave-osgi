@@ -16,6 +16,13 @@ import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 
 import com.thoughtworks.paranamer.NullParanamer;
 
+
+/**
+ * Because the classLoading specificities of OSGi we can't use the common Configuration of JBehave.
+ *  
+ * @author cvgaviao
+ *
+ */
 public class OsgiConfiguration extends Configuration {
 
 	public OsgiConfiguration() {

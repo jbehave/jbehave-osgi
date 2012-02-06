@@ -9,7 +9,7 @@
 
 	<artifactId>org.jbehave.osgi.services.test</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	<name>JBehave OSGi Equinox : Commands Bundle Tests</name>
+	<name>JBehave OSGi : Core Bundle Tests</name>
 
 	<properties>
 		<local-p2-site>file:/${basedir}/../behave-osgi-equinox-repository/target/repository</local-p2-site>
