@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.shiroini;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Fragment-Host: org.apache.shiro.core;bundle-version="1.2.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName

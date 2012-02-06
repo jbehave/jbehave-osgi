@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="indigo_building_local_ide" sequenceNumber="31">
+<locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.7.1.R37x_v20110907-7M7W8h8eNV4Vrz-hz01A7SL_MhZP"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.jbehave.osgi.equinox.features.core.feature.group" version="0.0.2.201201272044"/>
+<unit id="org.jbehave.osgi.equinox.features.deps.feature.group" version="0.0.2.201201272044"/>
+<unit id="org.jbehave.osgi.equinox.features.web.feature.group" version="0.0.2.201201272044"/>
+<repository location="http://cvgaviao.github.com/jbehave-osgi/repository"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.c4biz.osgiutils.feature.equinox.indigo.feature.group" version="0.0.1.201202061836"/>
+<unit id="com.c4biz.osgiutils.feature.vaadin.jetty.shiro.feature.group" version="0.0.1.201202061836"/>
+<repository location="http://cvgaviao.github.com/osgi-utils/p2/indigo/"/>
+</location>
+</locations>
+</target>

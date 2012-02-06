@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JBehave Trader Stories
+Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.integration_tests;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Vendor: JBehave.org
+Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
+Require-Bundle: org.junit;bundle-version="4.8.2",
+ org.eclipse.osgi;bundle-version="3.7.1",
+ org.jbehave.osgi.web;bundle-version="0.0.2",
+ javax.servlet;bundle-version="3.0.0"
+Export-Package: com.c4biz.osgiutils.examples.vaadin_shiro.it.embedders,
+ com.c4biz.osgiutils.examples.vaadin_shiro.it.steps

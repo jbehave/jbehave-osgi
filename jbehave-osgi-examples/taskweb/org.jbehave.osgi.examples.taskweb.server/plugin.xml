@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.jbehave.osgi.examples.taskweb.server.EquinoxServer">
+         </run>
+      </application>
+   </extension>
+      
+   <extension
+         id="productweb"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.jbehave.osgi.examples.taskweb.server.application"
+            name="Task Manager Web Example: Equinox Vaadin Product">
+         <property
+               name="appName"
+               value="Task Manager Web Example: Equinox Vaadin Product">
+         </property>
+      </product>
+   </extension>
+
+
+
+</plugin>

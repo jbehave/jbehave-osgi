@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.configuration;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Localization: OSGI-INF/l10n/bundle
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.6.0"
+Bundle-ActivationPolicy: lazy
+Fragment-Host: com.c4biz.osgiutils.configuration.manager;bundle-version="0.0.1"
