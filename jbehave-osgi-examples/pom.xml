@@ -26,6 +26,20 @@
 				<module>rcpmail</module>
 			</modules>
 		</profile>
+
+		<profile>
+			<id>example-taskweb</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>taskweb</module>
+			</modules>
+		</profile>
+
 		<profile>
 			<id>examples-pom-first</id>
 			<activation>
