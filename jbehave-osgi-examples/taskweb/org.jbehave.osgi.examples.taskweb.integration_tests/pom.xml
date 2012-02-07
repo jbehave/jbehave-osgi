@@ -48,23 +48,48 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
+							<id>com.c4biz.osgiutils.vaadin6.shiro</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
 							<id>org.eclipse.equinox.ds</id>
 							<level>2</level>
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.eclipse.equinox.events</id>
-							<level>2</level>
-							<autoStart>true</autoStart>
-						</bundle>
-						<bundle>
-							<id>org.jbehave.osgi.services</id>
+							<id>org.apache.shiro.core</id>
 							<level>3</level>
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.eclipse.core.runtime</id>
-							<level>4</level>
+							<id>org.apache.shiro.quartz</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.apache.shiro.web</id>
+							<level>3</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.cm</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>com.c4biz.osgiutils.configuration.manager</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.eclipse.equinox.log</id>
+							<level>1</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>com.c4biz.osgiutils.logging.reader</id>
+							<level>1</level>
 							<autoStart>true</autoStart>
 						</bundle>
 					</bundleStartLevel>

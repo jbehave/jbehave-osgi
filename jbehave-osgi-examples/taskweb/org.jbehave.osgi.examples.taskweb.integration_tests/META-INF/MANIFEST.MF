@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: JBehave Trader Stories
+Bundle-Name: JBehave TaskWeb Integration Tests
 Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.integration_tests;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: JBehave.org
@@ -9,6 +9,19 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.osgi;bundle-version="3.7.1",
  org.jbehave.osgi.web;bundle-version="0.0.2",
- javax.servlet;bundle-version="3.0.0"
+ javax.servlet;bundle-version="3.0.0",
+ com.c4biz.osgiutils.assertions;bundle-version="0.0.1",
+ org.eclipse.equinox.cm;bundle-version="1.0.300",
+ org.eclipse.equinox.ds;bundle-version="1.3.1",
+ org.eclipse.equinox.log;bundle-version="1.2.200",
+ org.eclipse.equinox.simpleconfigurator;bundle-version="1.0.200",
+ com.c4biz.osgiutils.vaadin6.shiro;bundle-version="0.0.1",
+ org.apache.shiro.core;bundle-version="1.2.0",
+ org.apache.shiro.web;bundle-version="1.2.0",
+ org.apache.shiro.quartz;bundle-version="1.2.0",
+ com.c4biz.osgiutils.configuration.manager;bundle-version="0.0.1",
+ com.c4biz.osgiutils.logging.reader;bundle-version="0.0.1"
 Export-Package: com.c4biz.osgiutils.examples.vaadin_shiro.it.embedders,
  com.c4biz.osgiutils.examples.vaadin_shiro.it.steps
+Import-Package: org.eclipse.core.runtime.adaptor,
+ org.jbehave.core.annotations;version="3.6.0.qualifier"

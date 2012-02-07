@@ -37,15 +37,11 @@
       <plugin id="com.c4biz.osgiutils.configuration.manager" autoStart="true" startLevel="2" />
       <plugin id="com.c4biz.osgiutils.logging.reader" autoStart="true" startLevel="1" />
       <plugin id="com.c4biz.osgiutils.vaadin6.shiro" autoStart="true" startLevel="4" />
-      <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="3" />
-      <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="3" />
-      <plugin id="org.apache.felix.gogo.shell" autoStart="true" startLevel="3" />
       <plugin id="org.apache.shiro.core" autoStart="true" startLevel="3" />
       <plugin id="org.apache.shiro.quartz" autoStart="true" startLevel="3" />
       <plugin id="org.apache.shiro.web" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.log" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
