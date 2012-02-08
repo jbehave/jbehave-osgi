@@ -40,7 +40,7 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<module>org.jbehave.osgi.examples.taskweb.application</module>
+				<module>org.jbehave.osgi.examples.taskweb.vaadin</module>
 				<module>org.jbehave.osgi.examples.taskweb.configuration</module>
 				<module>org.jbehave.osgi.examples.taskweb.feature</module>
 				<module>org.jbehave.osgi.examples.taskweb.integration_tests</module>
