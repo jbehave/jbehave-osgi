@@ -14,12 +14,6 @@
 	<description>Provides OSGi bridge to JBehave-Web-Selenium.</description>
 	<packaging>bundle</packaging>
 
-	<properties>
-		<jbehave-web-selenium>3.5-SNAPSHOT</jbehave-web-selenium>
-		<!-- <jbehave-web-selenium>3.5-beta-3</jbehave-web-selenium> -->
-		<selenium.version>2.17.0</selenium.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
@@ -221,11 +215,9 @@
 							!sun.misc,
 							!org.openqa.selenium.android, *
 						</Import-Package>
-						<!-- <Export-Package> -->
-						<!-- org.jbehave.osgi.web -->
-						<!-- </Export-Package> -->
-						<!-- <Private-Package>org.jbehave.osgi.services.impl</Private-Package> -->
-						<!-- <Service-Component>OSGI-INF/*.xml</Service-Component> -->
+						<Export-Package>
+							org.jbehave.osgi.web
+						</Export-Package>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<!-- <Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI> -->
 						<Embed-Dependency>
