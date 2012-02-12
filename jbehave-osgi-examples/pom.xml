@@ -13,6 +13,19 @@
 	<name>JBehave OSGi Examples</name>
 	<description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tycho-version>0.14.0</tycho-version>
+	</properties>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tycho-0.14.0-staged</id>
+			<url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-004/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<profiles>
 		<profile>
 			<id>example-rcpmail</id>

@@ -14,8 +14,6 @@
 	<description>Example showing how to build an application and run JBehave stories via a MANIFEST-FIRST approach using Tycho.</description>
 
 	<properties>
-		<tycho-version>0.13.0</tycho-version>
-		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
 		<jbehave-osgi-p2-repo>jar:file:${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/org.jbehave.osgi.equinox.repository.zip!/</jbehave-osgi-p2-repo>
