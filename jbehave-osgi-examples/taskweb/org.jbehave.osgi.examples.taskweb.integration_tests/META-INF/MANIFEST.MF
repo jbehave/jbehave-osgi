@@ -2,13 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave TaskWeb Integration Tests
 Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.integration_tests;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.0.2.qualifier
 Bundle-Vendor: JBehave.org
 Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
 Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.osgi;bundle-version="3.7.1",
- org.jbehave.osgi.web;bundle-version="0.0.2",
  javax.servlet;bundle-version="3.0.0",
  com.c4biz.osgiutils.assertions;bundle-version="0.0.1",
  org.eclipse.equinox.cm;bundle-version="1.0.300",
@@ -20,8 +19,10 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.apache.shiro.web;bundle-version="1.2.0",
  org.apache.shiro.quartz;bundle-version="1.2.0",
  com.c4biz.osgiutils.configuration.manager;bundle-version="0.0.1",
- com.c4biz.osgiutils.logging.reader;bundle-version="0.0.1"
-Export-Package: com.c4biz.osgiutils.examples.vaadin_shiro.it.embedders,
- com.c4biz.osgiutils.examples.vaadin_shiro.it.steps
+ com.c4biz.osgiutils.logging.reader;bundle-version="0.0.1",
+ org.jbehave.osgi.web;bundle-version="0.0.2"
+Export-Package: org.jbehave.osgi.examples.taskweb.integration_tests.embedders,
+ org.jbehave.osgi.examples.taskweb.integration_tests.pages,
+ org.jbehave.osgi.examples.taskweb.integration_tests.steps
 Import-Package: org.eclipse.core.runtime.adaptor,
- org.jbehave.core.annotations;version="3.6.0.qualifier"
+ org.jbehave.core.annotations;version="3.6.0"

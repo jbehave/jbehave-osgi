@@ -33,55 +33,84 @@ import com.vaadin.ui.Window;
 public class TaskManagerApp extends Application implements
 		HttpServletRequestListener {
 
+	// Logout Listener is defined for the application
+	@SuppressWarnings("serial")
+	public static class LogoutListener implements Button.ClickListener {
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			getInstance().logout();
+		}
+	}
+
+	@SuppressWarnings("serial")
+	public static class LoginListener implements Button.ClickListener {
+		
+		@Override
+		public void buttonClick(ClickEvent event) {
+			getInstance().showLoginSubWindow();
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
-
-	private LogService logService;
-
-	private static ThreadLocal<TaskManagerApp> currentApplication = new ThreadLocal<TaskManagerApp>();
-
-	@Override
-	public void init() {
-
-		final Window mainFirstWindow = new Window("Guess It!");
-		setMainWindow(mainFirstWindow);
-		setTheme("chameleon");
-		mainFirstWindow.setWidth("300px");
-
-		// mainFirstWindow.setContent(new LoginScreen(get()));
-
-		// set the current application on thread local
-		set(this);
-
-	}
-	
-	protected void activate(ComponentContext context,
-			Map<String, Object> properties) {
-
-		getLogService().log(LogService.LOG_DEBUG,
-				"Activating GuessIt Application OSGi Component.");
-	}
-
-	protected void deactivate(ComponentContext context,
-			Map<String, Object> properties) {
-
-		getLogService().log(LogService.LOG_DEBUG,
-				"Deactivating GuessIt Application OSGi Component.");
-	}
 
 	/**
 	 * @return the current application instance
 	 */
-	public static TaskManagerApp get() {
+	public static TaskManagerApp getInstance() {
 		return currentApplication.get();
 	}
 
 	/**
 	 * Set the current application instance
 	 */
-	public static void set(TaskManagerApp application) {
-		if (get() == null) {
+	public static void setInstance(TaskManagerApp application) {
+		if (getInstance() == null) {
 			currentApplication.set(application);
 		}
+	}
+
+	private LogService logService;
+	private HomePage homePage = new HomePage();
+	private Window mainWindow;
+	private LoginSubWindow loginSubWindow;
+
+	private static ThreadLocal<TaskManagerApp> currentApplication = new ThreadLocal<TaskManagerApp>();
+
+	protected void activate(ComponentContext context,
+			Map<String, Object> properties) {
+
+		getLogService().log(LogService.LOG_DEBUG,
+				"Activating TaskWeb Application OSGi Component.");
+	}
+
+	protected void bindLogService(LogService logService) {
+		this.logService = logService;
+		getLogService().log(LogService.LOG_DEBUG, "Binded LogService.");
+	}
+
+	protected void deactivate(ComponentContext context,
+			Map<String, Object> properties) {
+
+		getLogService().log(LogService.LOG_DEBUG,
+				"Deactivating TaskWeb Application OSGi Component.");
+	}
+
+	protected LogService getLogService() {
+		return logService;
+	}
+
+	@Override
+	public void init() {
+
+		mainWindow = new Window("JBehave TaskWeb!");
+		setTheme("cvgaviao");
+		setMainWindow(mainWindow);
+		mainWindow.setContent(homePage);
+
+		// set the current application on thread local
+		setInstance(this);
+
 	}
 
 	public void login(String username, String password) {
@@ -100,7 +129,7 @@ public class TaskManagerApp extends Application implements
 		currentUser.login(token);
 
 		// no error found
-		get().setUser(currentUser);
+		getInstance().setUser(currentUser);
 
 	}
 
@@ -112,36 +141,7 @@ public class TaskManagerApp extends Application implements
 		if (currentUser.isAuthenticated()) {
 			currentUser.logout();
 
-			get().setUser(null);
-		}
-	}
-
-	public void onRequestStart(HttpServletRequest request,
-			HttpServletResponse response) {
-		getLogService().log(LogService.LOG_DEBUG, "onRequestStart reached.");
-
-		// Set current application object as thread-local to make it easy
-		// accessible
-		set(this);
-
-		if (getMainWindow() == null)
-			return;
-
-		// Authentication: check if user is found, otherwise send to login page
-		Subject currentUser = SecurityUtils.getSubject();
-
-		if (!currentUser.isAuthenticated()) {
-
-			ComponentContainer currentContent = get().getMainWindow()
-					.getContent();
-
-			if (!LoginScreen.class.isAssignableFrom(currentContent.getClass())) {
-
-				get().getMainWindow().setContent(new LoginScreen());
-			}
-
-		} else {
-			setUser(currentUser);
+			getInstance().setUser(null);
 		}
 	}
 
@@ -150,7 +150,7 @@ public class TaskManagerApp extends Application implements
 		getLogService().log(LogService.LOG_DEBUG, "onRequestEnd reached");
 
 		// Clean up thread-local app
-		set(null);
+		setInstance(null);
 
 		// Clear authentication context
 		// Authentication.setAuthenticatedUserId(null);
@@ -160,29 +160,60 @@ public class TaskManagerApp extends Application implements
 
 	}
 
-	protected void bindLogService(LogService logService) {
-		this.logService = logService;
-		getLogService().log(LogService.LOG_DEBUG, "Binded LogService.");
+	public void onRequestStart(HttpServletRequest request,
+			HttpServletResponse response) {
+		getLogService().log(LogService.LOG_DEBUG, "onRequestStart reached.");
+
+		// Set current application object as thread-local to make it easy
+		// accessible
+		setInstance(this);
+
+		if (getMainWindow() == null)
+			return;
+
+		ComponentContainer currentContent = getInstance().getMainWindow()
+				.getContent();
+
+		if (HomePage.class.isAssignableFrom(currentContent.getClass()))
+			return;
+
+		// Authentication: check if user is found, otherwise send to home page
+		Subject currentUser = SecurityUtils.getSubject();
+		
+		if (currentContent != null && !currentUser.isAuthenticated()) {
+
+			mainWindow.setContent(homePage);
+			
+			getInstance().getMainWindow()
+			.showNotification("You need to authenticate again !");
+
+		} else {
+			setUser(currentUser);
+		}
 	}
 
-	protected LogService getLogService() {
-		return logService;
+	public void showLoginSubWindow() {
+
+		loginSubWindow = new LoginSubWindow();        
+        if (loginSubWindow.getParent() == null) {
+        	mainWindow.addWindow(loginSubWindow);
+        }
+        // Center the window
+        loginSubWindow.center();
+	}
+	
+	public void closeLoginSubWindow()
+	{
+		if (loginSubWindow != null && loginSubWindow.getParent() != null)
+		{
+			mainWindow.removeWindow(loginSubWindow);
+		}
 	}
 
 	protected void unbindLogService(LogService logService) {
 		if (this.logService == logService) {
 			getLogService().log(LogService.LOG_DEBUG, "Unbinded LogService.");
 			this.logService = null;
-		}
-	}
-
-	// Logout Listener is defined for the application
-	public static class LogoutListener implements Button.ClickListener {
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void buttonClick(ClickEvent event) {
-			get().logout();
 		}
 	}
 }

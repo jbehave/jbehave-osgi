@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Task Manager Web Example: Equinox Vaadin Product" uid="com.c4biz.osgiutils.examples.vaadin-shiro.product" id="org.jbehave.osgi.examples.taskweb.server.productweb" application="org.jbehave.osgi.examples.taskweb.server.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Task Manager Web Example: Equinox Vaadin Product" uid="com.c4biz.osgiutils.examples.vaadin-shiro.product" id="org.jbehave.osgi.examples.taskweb.server.productweb" application="org.jbehave.osgi.examples.taskweb.server.application" version="0.0.2.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -30,7 +30,7 @@
    </plugins>
 
    <features>
-      <feature id="org.jbehave.osgi.examples.taskweb.feature" version="0.0.1.qualifier"/>
+      <feature id="org.jbehave.osgi.examples.taskweb.feature" version="0.0.2.qualifier"/>
    </features>
 
    <configurations>

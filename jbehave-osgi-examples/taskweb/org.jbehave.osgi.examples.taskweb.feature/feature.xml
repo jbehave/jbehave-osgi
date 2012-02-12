@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.examples.taskweb.feature"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.0.2.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -18,10 +18,6 @@
    </license>
 
    <includes
-         id="org.eclipse.equinox.executable"
-         version="0.0.0"/>
-
-   <includes
          id="com.c4biz.osgiutils.feature.cm.indigo"
          version="0.0.0"/>
 
@@ -30,15 +26,19 @@
          version="0.0.0"/>
 
    <includes
-         id="com.c4biz.osgiutils.feature.vaadin.jetty.shiro"
-         version="0.0.0"/>
-
-   <includes
          id="com.c4biz.osgiutils.feature.equinox.indigo"
          version="0.0.0"/>
 
+   <includes
+         id="com.c4biz.osgiutils.feature.vaadin.jetty.shiro.indigo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.equinox.executable"
+         version="0.0.0"/>
+
    <plugin
-         id="org.jbehave.osgi.examples.taskweb.application"
+         id="org.jbehave.osgi.examples.taskweb.vaadin"
          download-size="0"
          install-size="0"
          version="0.0.0"
