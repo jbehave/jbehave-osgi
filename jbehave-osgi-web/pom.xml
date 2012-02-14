@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.2</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.web</artifactId>
 	<name>JBehave OSGi : Web Support Bundle</name>
@@ -111,11 +111,11 @@
 		</dependency>
 
 		<!-- firefox -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.0.1</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-io</groupId> -->
+<!-- 			<artifactId>commons-io</artifactId> -->
+<!-- 			<version>2.0.1</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-exec</artifactId>
@@ -149,16 +149,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>xerces</groupId> -->
+<!-- 			<artifactId>xercesImpl</artifactId> -->
+<!-- 			<version>2.9.1</version> -->
+<!-- 		</dependency> -->
 
 
 		<!-- remote-driver -->
@@ -167,21 +162,21 @@
 			<artifactId>cglib-nodep</artifactId>
 			<version>2.1_3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20080701</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>10.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.w3c.css</groupId>
-			<artifactId>sac</artifactId>
-			<version>1.3</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.json</groupId> -->
+<!-- 			<artifactId>json</artifactId> -->
+<!-- 			<version>20080701</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.google.guava</groupId> -->
+<!-- 			<artifactId>guava</artifactId> -->
+<!-- 			<version>10.0.1</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.w3c.css</groupId> -->
+<!-- 			<artifactId>sac</artifactId> -->
+<!-- 			<version>1.3</version> -->
+<!-- 		</dependency> -->
 
 	</dependencies>
 
@@ -206,17 +201,14 @@
 							!org.picocontainer.injectors,
 							!org.apache.avalon.framework.logger,
 							!org.apache.log,
-							!org.apache.xml.resolver,
-							!org.apache.xml.resolver.readers,
 							!net.sf.cglib.asm.util,
 							!org.codehaus.aspectwerkz.hook,
 							!org.testng.*,
-							!sun.io,
 							!sun.misc,
-							!org.openqa.selenium.android, *
+							!org.openqa.selenium.android, org.apache.tools.ant.*;resolution:=optional,*
 						</Import-Package>
 						<Export-Package>
-							org.jbehave.osgi.web
+							org.jbehave.osgi.web.*
 						</Export-Package>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<!-- <Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI> -->
@@ -234,20 +226,14 @@
 							fluent-selenium;scope=compile;inline=false,
 							cglib-nodep;scope=compile;inline=false,
 							jna;scope=compile;inline=false,
-							json;scope=compile;inline=false,
 							httpclient;scope=compile;inline=false,
 							httpcore;scope=compile;inline=false,
 							httpmime;scope=compile;inline=false,
 							nekohtml;scope=compile;inline=false,
-							xalan;scope=compile;inline=false,
-							xercesImpl;scope=compile;inline=false,
-							xml-apis;scope=compile;inline=false,
 							serializer;scope=compile;inline=false,
 							commons-exec;scope=compile;inline=false,
 							commons-logging;scope=compile;inline=false,
-							sac;scope=compile;inline=false,
 							commons-codec;scope=compile;inline=false,
-							commons-io;scope=compile;inline=false,
 							jsr305;scope=compile;inline=false,
 							htmlunit;scope=compile;inline=false,
 							htmlunit-core-js;scope=compile;inline=false,
@@ -256,8 +242,9 @@
 							selenium-java;scope=compile;inline=false
 						</Embed-Dependency>
 						<_exportcontents>
-							org.jbehave.web.selenium,
-							!org.jbehave.web.selenium.pico, *
+							org.jbehave.web.selenium, org.seleniumhq.selenium.fluent,
+							!org.jbehave.web.selenium.pico, com.thoughtworks.selenium.*,
+							org.openqa.selenium.*, com.google.common.*
 						</_exportcontents>
 						<Embed-Transitive>true</Embed-Transitive>
 						<Embed-Directory>jars</Embed-Directory>

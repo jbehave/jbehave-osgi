@@ -4,11 +4,17 @@
 	<parent>
 		<artifactId>org.jbehave.osgi.equinox</artifactId>
 		<groupId>org.jbehave.osgi</groupId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.2</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.equinox.p2</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>JBehave OSGI Equinox : P2 Repository</name>
+
+	<properties>
+		<from-repo>${project.build.directory}/repository</from-repo>
+		<base-to-repo>/Users/cvgaviao/Development/C4Biz_Projects/JBehave/jbehave-osgi-publish-p2</base-to-repo>
+		<to-repo>${base-to-repo}/p2/indigo</to-repo>
+	</properties>
 
 	<build>
 		<plugins>
@@ -54,6 +60,29 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<configuration>
+							<target>
+								<delete>
+									<fileset includes="**/*" dir="${to-repo}" />
+								</delete>
+								<!-- <delete dir="${to-repo}" /> -->
+								<copy todir="${to-repo}">
+									<fileset dir="${from-repo}" includes="**/*" />
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -66,12 +95,6 @@
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-feature</type>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.features.deps</artifactId>
 			<version>${project.version}</version>
 			<type>eclipse-feature</type>
 		</dependency>
