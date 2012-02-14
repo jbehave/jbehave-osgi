@@ -15,8 +15,6 @@
 
 	<properties>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
-		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<jbehave-osgi-p2-repo>jar:file:${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/org.jbehave.osgi.equinox.repository.zip!/</jbehave-osgi-p2-repo>
 	</properties>
 
 	<repositories>
@@ -58,7 +56,7 @@
 			<modules>
 				<module>org.jbehave.osgi.examples.rcpmail.application</module>
 				<module>org.jbehave.osgi.examples.rcpmail.feature</module>
-				<module>org.jbehave.osgi.examples.rcpmail.stories</module>
+				<module>org.jbehave.osgi.examples.rcpmail.integration_tests</module>
 				<module>org.jbehave.osgi.examples.rcpmail.product</module>
 			</modules>
 		</profile>

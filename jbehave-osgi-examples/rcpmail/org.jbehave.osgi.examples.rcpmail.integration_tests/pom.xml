@@ -9,8 +9,8 @@
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.jbehave.osgi.examples.rcpmail.stories</artifactId>
-	<name>JBehave OSGi RCPmail Example : Stories</name>
+	<artifactId>org.jbehave.osgi.examples.rcpmail.integration_tests</artifactId>
+	<name>JBehave OSGi RCPmail Example : Integration Tests Stories</name>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<profiles>
