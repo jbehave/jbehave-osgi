@@ -12,14 +12,6 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGi Trader Example : MANIFEST-FIRST</name>
 
-	<properties>
-		<tycho-version>0.13.0</tycho-version>
-		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
-		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
-		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<jbehave-osgi-p2-repo>file://${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.repository/target/repository</jbehave-osgi-p2-repo>
-	</properties>
-
 	<repositories>
 		<repository>
 			<id>eclipse</id>
@@ -97,7 +89,7 @@
 				<module>org.jbehave.osgi.examples.trader.product</module>
 				<module>org.jbehave.osgi.examples.trader.feature</module>
 				<module>org.jbehave.osgi.examples.trader.application</module>
-				<module>org.jbehave.osgi.examples.trader.stories</module>
+				<module>org.jbehave.osgi.examples.trader.integration_tests</module>
 			</modules>
 		</profile>
 	</profiles>

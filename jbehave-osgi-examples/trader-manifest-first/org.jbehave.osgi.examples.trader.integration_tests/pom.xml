@@ -9,8 +9,8 @@
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.jbehave.osgi.examples.trader.stories</artifactId>
-	<name>JBehave OSGi Trader Example : Stories</name>
+	<artifactId>org.jbehave.osgi.examples.trader.integration_tests</artifactId>
+	<name>JBehave OSGi Trader Example : IT Stories</name>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<dependencies>
@@ -90,11 +90,6 @@
 						<dependency>
 							<type>eclipse-feature</type>
 							<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>eclipse-feature</type>
-							<artifactId>org.jbehave.osgi.equinox.features.deps</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 						<dependency>
