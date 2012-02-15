@@ -7,6 +7,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.equinox.app;version="1.1.0",
- org.osgi.framework,
+Import-Package: org.osgi.framework,
  org.osgi.service.event
+Export-Package: org.jbehave.osgi.examples.taskweb.server
+Require-Bundle: org.eclipse.equinox.app;bundle-version="1.3.100"

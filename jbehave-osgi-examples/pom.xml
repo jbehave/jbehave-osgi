@@ -16,15 +16,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho-version>0.14.0</tycho-version>
+		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
+		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
+		<jbehave-osgi-p2-repo>http://cvgaviao.github.com/jbehave-osgi/p2/</jbehave-osgi-p2-repo>
 	</properties>
-
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>tycho-0.14.0-staged</id>
-			<url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-004/</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<profiles>
 		<profile>
