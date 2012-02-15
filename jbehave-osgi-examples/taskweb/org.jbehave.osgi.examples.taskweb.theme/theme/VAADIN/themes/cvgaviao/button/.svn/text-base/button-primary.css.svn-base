@@ -1,0 +1,54 @@
+/**************************
+ * Primary style
+ **************************/
+.v-button-primary:focus {
+	background-position: 0 -54px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-primary:focus .v-button-wrap {
+	background-position: right -81px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-primary:active,
+.v-pressed.v-button-primary {
+	background-position: 0 -108px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-primary:active .v-button-wrap,
+.v-pressed.v-button-primary .v-button-wrap {
+	background-position: right -135px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-primary:active .v-button-caption,
+.v-pressed.v-button-primary .v-button-caption {
+	color: #d9e2ec;
+	}
+
+.v-button-primary,
+.v-disabled.v-button-primary {
+	background: transparent url(img/button-sprites.png);
+	}
+
+.v-button-primary .v-button-wrap,
+.v-disabled.v-button-primary .v-button-wrap {
+	padding: 5px 20px 0 13px;
+	background: transparent url(img/button-sprites.png) right -27px;
+	}
+
+.v-button-primary .v-button-caption {
+	color: #fff;
+	text-shadow: 0 -1px 1px #434547;
+	font-weight: bold;
+	}
+
+
+/********************************
+ * "with-icon" style
+ ********************************/
+.v-button-primary.with-icon .v-button-wrap {
+	padding-left: 8px;
+	}

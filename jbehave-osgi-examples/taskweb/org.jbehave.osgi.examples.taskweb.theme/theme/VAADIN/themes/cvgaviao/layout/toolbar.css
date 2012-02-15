@@ -1,0 +1,135 @@
+.v-csslayout-toolbar {
+	border-top: 1px solid #e7e9e9;
+	border-bottom: 1px solid #848686;
+	background: #b5b7b7 url(img/toolbar-bg.png) repeat-x;
+	}
+
+.v-csslayout-toolbar-invert {
+	border-top: 1px solid #a2a6ab;
+	border-bottom: 1px solid #3a3c3f;
+	background: #696d73 url(img/toolbar-invert-bg.png) repeat-x;
+	}
+
+.v-csslayout-toolbar .v-csslayout-margin,
+.v-csslayout-toolbar-invert .v-csslayout-margin {
+	padding: 6px 0 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	}
+
+
+/********************************
+ * "left" & "right" styles
+ ********************************/
+.v-csslayout-toolbar .v-csslayout-left,
+.v-csslayout-toolbar-invert .v-csslayout-left {
+	float: left;
+	margin: -6px 0 -5px;
+	}
+
+.v-csslayout-toolbar .v-csslayout-right,
+.v-csslayout-toolbar-invert .v-csslayout-right {
+	float: right;
+	margin: -6px 0 -5px;
+	}
+
+
+/********************************
+ * Labels inside toolbar
+ ********************************/
+.v-csslayout-toolbar .v-label,
+.v-csslayout-toolbar-invert .v-label {
+	float: left;
+	padding: 1px 10px;
+	width: auto !important;
+	white-space: nowrap;
+	color: #3d3e3e;
+	}
+
+.v-csslayout-toolbar-invert .v-label {
+	color: #e1e2e5;
+	text-shadow: 0 1px 0 #54575b;
+	}
+
+.v-csslayout-toolbar .v-label-h1,
+.v-csslayout-toolbar-invert .v-label-h1 {
+	padding: 0 20px 0 15px;
+	font-size: 16px;
+	line-height: 32px;
+	margin: -6px 0 -5px 0;
+	color: #222;
+	text-shadow: 0 1px 0 #e7e9e9;
+	border-right: 1px solid #959696;
+	}
+
+.v-csslayout-toolbar-invert .v-label-h1 {
+	border-right-color: #575b61;
+	color: #fff;
+	font-weight: normal;
+	text-shadow: 0 1px 2px #3a3c3f;
+	}
+
+
+/********************************
+ * Buttons inside toolbar
+ ********************************/
+.v-csslayout-toolbar .v-button,
+.v-csslayout-toolbar .v-nativebutton,
+.v-csslayout-toolbar-invert .v-button,
+.v-csslayout-toolbar-invert .v-nativebutton {
+	float: left;
+	display: inline;
+	margin-right: 8px;
+	text-shadow: 0 1px 0 #e7e9e9;
+	}
+
+.v-csslayout-toolbar .v-button-borderless .v-button-caption,
+.v-csslayout-toolbar-invert .v-button-borderless .v-button-caption {
+	color: #222;
+	font-size: 11px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #e7e9e9;
+	}
+
+.v-csslayout-toolbar-invert .v-button-borderless .v-button-caption {
+	color: #fff;
+	text-shadow: 0 1px 0 #3a3c3f;
+	}
+	
+.v-csslayout-toolbar .v-nativebutton,
+.v-csslayout-toolbar-invert .v-nativebutton {
+	border: none;
+	border-left: 1px solid #e7e9e9;
+	border-right: 1px solid #959696;
+	background: transparent;
+	margin: -6px 0 -5px 0;
+	padding: 0 10px;
+	height: 32px;
+	line-height: 32px;
+	text-shadow: 0 1px 0 #e7e9e9;
+	}
+
+.v-csslayout-toolbar .v-nativebutton:focus,
+.v-csslayout-toolbar-invert .v-nativebutton:focus {
+	outline: none;
+	}
+
+.v-csslayout-toolbar-invert .v-nativebutton {
+	border-left-color: #a2a6ab;
+	border-right-color: #575b61;
+	text-shadow: 0 1px 0 #3a3c3f;
+	}
+
+.v-csslayout-toolbar-invert .v-nativebutton-caption {
+	color: #fff;
+	font-size: 13px;
+	}
+
+.v-csslayout-toolbar .v-nativebutton:active {
+	background-color: #b6b9b9;
+	}
+
+.v-csslayout-toolbar-invert .v-nativebutton:active {
+	background-color: #696d73;
+	}	
+	

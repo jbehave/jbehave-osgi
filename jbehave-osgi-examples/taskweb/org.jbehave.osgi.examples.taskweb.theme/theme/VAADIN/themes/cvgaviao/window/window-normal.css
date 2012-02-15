@@ -1,0 +1,103 @@
+.v-window-wrap {
+	border-color: #303030;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-bottom-left-radius: 1px;
+	-webkit-border-bottom-right-radius: 1px;
+	-moz-border-radius-bottomleft: 1px;
+	-moz-border-radius-bottomright: 1px;
+	overflow: hidden;
+	}
+
+.v-window-wrap {
+	border-color: rgba(0,0,0,.4);
+	}
+
+.v-window-wrap2 {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-bottom-left-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-bottomright: 0;
+	overflow: hidden;
+	}
+
+.v-window-outerheader {
+	height: auto;
+	padding: 5px 25px 0;
+	height: 20px;
+	background: transparent url(img/header-bg.png) repeat-x;
+	text-align: center;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-topleft: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	overflow: hidden;
+	border: none;
+	border-top: 1px solid #adafaf;
+	border-bottom: 1px solid #5b5d5e;
+	}
+
+.v-window-outerheader {
+	border-top-color: rgba(155,157,158,.8);
+	border-bottom-color: rgba(53,55,56,.8);
+}
+
+.v-window-header {
+	font-size: 13px;
+	font-weight: normal;
+	line-height: normal;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0,0,0,.5);
+	}
+
+.v-window-closebox {
+	top: 7px;
+	right: 6px;
+	cursor: default;
+	background: transparent url(img/close-btn.png) no-repeat 0 0;
+	}
+
+.v-window-closebox:hover {
+	background: transparent url(img/close-btn.png) no-repeat 0 -16px;
+	}
+
+.v-window-closebox:active {
+	background: transparent url(img/close-btn.png) no-repeat 0 -32px;
+	}
+
+.v-ie6 .v-window-closebox {
+	background: transparent url(img/close-btn-ie6.png) no-repeat 0 0;
+	}
+
+.v-window-contents {
+	border: none;
+	background: #dfe0e2;
+	}
+
+.v-window-contents {
+	background-color: rgba(231,232,234,.87);
+	}
+
+.v-window-footer {
+	background: transparent;
+	border: none;
+	height: 0;
+	overflow: visible;
+	position: static;
+	}
+
+.v-window-resizebox {
+	position: absolute;
+	width: 12px;
+	height: 11px;
+	bottom: -1px;
+	right: 0;
+	background: transparent url(img/resizer.png) no-repeat 0 0;
+	}
+
+.v-ie6 .v-window-resizebox {
+	background-image: url(../../reindeer/window/img/black/resize-ie6.png);
+	}

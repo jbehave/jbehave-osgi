@@ -1,0 +1,38 @@
+.v-button-small:focus {
+	background-position: 0 -364px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-small:focus .v-button-wrap {
+	background-position: right -384px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-small:active,
+.v-button-small.v-pressed {
+	background-position: 0 -404px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-small:active .v-button-wrap,
+.v-button-small.v-pressed .v-button-wrap {
+	background-position: right -424px;
+	background-image: url(img/button-sprites.png);
+	}
+
+.v-button-small,
+.v-disabled.v-button-small {
+	height: 20px;
+	background: transparent url(img/button-sprites.png) 0 -324px;
+	}
+
+.v-button-small .v-button-wrap,
+.v-disabled.v-button-small .v-button-wrap {
+	height: 16px;
+	padding: 4px 12px 0 5px;
+	background: transparent url(img/button-sprites.png) right -344px;
+	}
+
+.v-button-small .v-button-wrap .v-button-caption {
+	line-height: normal;
+	}

@@ -1,0 +1,42 @@
+.v-window-black .v-window-wrap2 {
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	background-color: #36393a;
+	}
+
+.v-window-black .v-window-wrap2 {
+	background-color: rgba(54,57,58,.93);
+	}
+
+.v-window-black .v-window-outerheader {
+	padding: 6px 25px 0;
+	height: 21px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-topleft: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-top-left-radius: 7px;
+	background: transparent url(img/black-header-bg.png) repeat-x 0 0;
+	}
+
+.v-window-black .v-window-header {
+	font-size: 12px;
+	line-height: normal;
+	color: #dddfe1;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+	}
+
+.v-window-black .v-window-closebox {
+	top: 6px;
+	}
+
+.v-window-black .v-window-footer {
+	background: transparent;
+	border: none;
+	height: 0;
+	position: static;
+	}
+
+.v-window-black .v-window-resizebox {
+	bottom: -2px;
+	}

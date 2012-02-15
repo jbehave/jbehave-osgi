@@ -1,0 +1,22 @@
+@import "toolbar.css";
+@import "menu.css";
+
+.v-orderedlayout-white,
+.v-verticallayout-white,
+.v-horizontallayout-white,
+.v-gridlayout-white,
+.v-csslayout-white,
+.v-formlayout-white,
+.v-splitpanel-second-container-white {
+	background-color: #fff;
+	}
+
+.v-orderedlayout-blue,
+.v-verticallayout-blue,
+.v-horizontallayout-blue,
+.v-gridlayout-blue,
+.v-csslayout-blue,
+.v-formlayout-blue,
+.v-splitpanel-first-container-blue {
+	background-color: #bcd0de;
+	}

@@ -1,0 +1,12 @@
+.v-button-icon-only .v-button-caption {
+	display: none;
+	}
+
+.v-button-icon-only .v-icon {
+	margin: 0;
+	}
+
+.v-button-icon-only .v-button-wrap {
+	padding-left: 0;
+	padding-right: 7px;
+	}

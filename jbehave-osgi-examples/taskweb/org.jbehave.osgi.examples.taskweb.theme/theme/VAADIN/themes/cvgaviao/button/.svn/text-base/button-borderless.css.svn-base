@@ -1,0 +1,32 @@
+.v-button-borderless:focus,
+.v-button-borderless:focus .v-button-wrap,
+.v-button-borderless:active,
+.v-pressed.v-button-borderless,
+.v-button-borderless:active .v-button-wrap,
+.v-pressed.v-button-borderless .v-button-wrap,
+.v-button-borderless,
+.v-disabled.v-button-borderless,
+.v-button-borderless .v-button-wrap,
+.v-disabled.v-button-borderless .v-button-wrap {
+	background: transparent;
+	height: auto;
+	padding: 0;
+	opacity: 1;
+	}
+
+.v-button-borderless {
+	cursor: pointer;
+	}
+
+.v-button-borderless .v-button-caption {
+	color: #222;
+	font-size: 12px;
+	text-shadow: none;
+	font-weight: normal;
+	display: inline;
+	padding: 0;
+	}
+
+.v-button-borderless:active {
+	opacity: .6;
+	}
