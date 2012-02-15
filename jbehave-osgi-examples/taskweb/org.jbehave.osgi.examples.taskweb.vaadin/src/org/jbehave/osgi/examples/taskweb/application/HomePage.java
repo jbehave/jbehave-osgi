@@ -1,6 +1,5 @@
 package org.jbehave.osgi.examples.taskweb.application;
 
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
@@ -17,10 +16,11 @@ public class HomePage extends VerticalLayout {
 	private static final long serialVersionUID = -5562643818682670675L;
 
 	private Button loginButton;
+	private Button helpButton;
 	private Panel panelNews;
 	private Panel panelPeople;
 	private VerticalLayout glueLayout;
-	private HorizontalLayout toolbar;
+	private Layout toolbar;
 	private HorizontalLayout headerTitle;
 	private HorizontalLayout header;
 	private HorizontalLayout panels;
@@ -32,6 +32,7 @@ public class HomePage extends VerticalLayout {
 		setSizeFull();
 
 		addComponent(getHeader());
+		addComponent(getToolbar());
 
 		CssLayout margin = new CssLayout();
 		margin.setMargin(false, true, true, true);
@@ -69,9 +70,7 @@ public class HomePage extends VerticalLayout {
 			header = new HorizontalLayout();
 			header.setWidth("100%");
 			header.addComponent(getHeaderTitle());
-			header.addComponent(getToolbar());
 			header.setExpandRatio(getHeaderTitle(), 1.0f);
-			header.setExpandRatio(getToolbar(), 2.0f);
 		}
 		return header;
 	}
@@ -84,16 +83,15 @@ public class HomePage extends VerticalLayout {
 			panelNews
 					.addComponent(new NewsItem(
 							"This is a Vaadin example application running in a Equinox / Jetty 8.1 OSGi Http environment !!!"));
-			panelNews
-					.addComponent(new NewsItem(
-							"Security is being handled by Apache Shiro framework."));
+			panelNews.addComponent(new NewsItem(
+					"Security is being handled by Apache Shiro framework."));
 			panelNews
 					.addComponent(new NewsItem(
 							"And the coolest thing is that now you can use JBehave inside a OSGi environment."
 									+ " You can test both headless Equinox servers as Visual RCP products."));
 			panelNews
 					.addComponent(new NewsItem(
-							"Plus, you can use JBehave Web to do integration tests in your Vaadin Application !!!"));
+							"Plus, you can use JBehave Web for doing integration tests on your Vaadin web application !!!"));
 
 		}
 		return panelNews;
@@ -107,8 +105,7 @@ public class HomePage extends VerticalLayout {
 			Label ll = new Label(
 					"These are the users that you can use to enter in the application: ");
 			ll.setStyleName(Reindeer.LABEL_H2);
-			panelPeople
-					.addComponent(ll);
+			panelPeople.addComponent(ll);
 
 			Table peopleTable = new Table();
 			peopleTable.setEditable(false);
@@ -135,9 +132,8 @@ public class HomePage extends VerticalLayout {
 		if (headerTitle == null) {
 			headerTitle = new HorizontalLayout();
 			headerTitle.setWidth("100%");
-			headerTitle.setMargin(true);
-			headerTitle.setSpacing(true);
-			// headerTitle.setStyleName(Reindeer.LAYOUT_BLACK);
+			headerTitle.setMargin(true, true, false, true);
+			headerTitle.setSpacing(false);
 
 			CssLayout titleLayout = new CssLayout();
 			H1 title = new H1("JBehave TaskWeb");
@@ -154,15 +150,29 @@ public class HomePage extends VerticalLayout {
 
 	private Layout getToolbar() {
 		if (toolbar == null) {
-			toolbar = new HorizontalLayout();
+			toolbar = new CssLayout();
 			toolbar.setWidth("100%");
-			toolbar.setMargin(true);
-			toolbar.setSpacing(true);
+			toolbar.setMargin(false);
+			toolbar.addStyleName("toolbar-invert");
+
+			CssLayout right = new CssLayout();
+			right.setSizeUndefined();
+			right.addStyleName("right");
+			toolbar.addComponent(right);
+
 			loginButton = new Button("Log in",
 					new TaskManagerApp.LoginListener());
 			loginButton.setStyleName(Reindeer.BUTTON_DEFAULT);
-			toolbar.addComponent(loginButton);
-			toolbar.setComponentAlignment(loginButton, Alignment.MIDDLE_RIGHT);
+			loginButton.setDebugId("loginButton");
+			right.addComponent(loginButton);
+			// toolbar.setComponentAlignment(loginButton,
+			// Alignment.MIDDLE_RIGHT);
+			helpButton = new Button("Help", new TaskManagerApp.HelpListener());
+			helpButton.setStyleName(Reindeer.BUTTON_DEFAULT);
+			helpButton.setDebugId("helpButton");
+			right.addComponent(helpButton);
+			// toolbar.setComponentAlignment(helpButton,
+			// Alignment.MIDDLE_RIGHT);
 		}
 		return toolbar;
 	}

@@ -27,7 +27,7 @@ public class LoginSubWindow extends Window {
 	private static boolean loginSucceed = false;
 
 	public LoginSubWindow() {
-
+		setDebugId("loginDialog");
 		setStyleName("login");
 		setCaption("TaskWeb Login");
 		setHeight("230px");
@@ -35,8 +35,9 @@ public class LoginSubWindow extends Window {
 		setResizable(false);
 		LoginForm loginForm = new LoginForm();
 		loginForm.setStyleName("login");
-		loginForm.setPasswordCaption("Password");
-		loginForm.setUsernameCaption("User");
+		loginForm.setDebugId("loginForm");
+//		loginForm.setPasswordCaption("Password");
+//		loginForm.setUsernameCaption("User");
 		// loginForm.setLoginButtonCaption("Do it !!!");
 		loginForm
 				.addListener(new MyLoginListener(TaskManagerApp.getInstance()));

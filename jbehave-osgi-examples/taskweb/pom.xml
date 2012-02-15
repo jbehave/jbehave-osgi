@@ -39,7 +39,7 @@
 				<module>org.jbehave.osgi.examples.taskweb.vaadin</module>
 				<module>org.jbehave.osgi.examples.taskweb.configuration</module>
 				<module>org.jbehave.osgi.examples.taskweb.feature</module>
-<!-- 				<module>org.jbehave.osgi.examples.taskweb.integration_tests</module> -->
+				<module>org.jbehave.osgi.examples.taskweb.integration_tests</module>
 				<module>org.jbehave.osgi.examples.taskweb.product</module>
 				<module>org.jbehave.osgi.examples.taskweb.server</module>
 				<module>org.jbehave.osgi.examples.taskweb.shiroini</module>

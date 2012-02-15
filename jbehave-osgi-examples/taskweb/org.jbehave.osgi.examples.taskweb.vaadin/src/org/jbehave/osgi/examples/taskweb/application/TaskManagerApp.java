@@ -27,11 +27,23 @@ import com.vaadin.Application;
 import com.vaadin.terminal.gwt.server.HttpServletRequestListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Window;
 
 public class TaskManagerApp extends Application implements
 		HttpServletRequestListener {
+
+	@SuppressWarnings("serial")
+	public static class HelpListener implements ClickListener {
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			getInstance().getMainWindow()
+			.showNotification("Need to create a help !");
+		}
+
+	}
 
 	// Logout Listener is defined for the application
 	@SuppressWarnings("serial")

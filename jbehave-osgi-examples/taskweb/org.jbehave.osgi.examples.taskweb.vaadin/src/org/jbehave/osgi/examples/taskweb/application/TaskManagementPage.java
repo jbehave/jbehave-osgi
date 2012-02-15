@@ -37,7 +37,7 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 
 	public TaskManagementPage() {
 		super();
-
+		setDebugId("taskManagement");
 	}
 
 	public Component getCenterComponent() {
