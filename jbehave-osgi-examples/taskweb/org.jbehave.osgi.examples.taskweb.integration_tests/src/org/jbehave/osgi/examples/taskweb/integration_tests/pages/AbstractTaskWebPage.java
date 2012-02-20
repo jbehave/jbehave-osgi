@@ -1,45 +1,54 @@
 package org.jbehave.osgi.examples.taskweb.integration_tests.pages;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-
-import org.jbehave.web.selenium.FluentWebDriverPage;
+import org.jbehave.web.selenium.WebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AbstractTaskWebPage extends FluentWebDriverPage {
+public class AbstractTaskWebPage extends WebDriverPage {
 
 	public AbstractTaskWebPage(WebDriverProvider driverProvider) {
 		super(driverProvider);
 	}
 
-	public void found(String text) {
-		found(getPageSource(), text);
+	public WebElement findElementWithWait(final By by, long timeOutInSeconds) {
+		WebElement myDynamicElement = (new WebDriverWait(webDriver(),
+				timeOutInSeconds)).until(new ExpectedCondition<WebElement>() {
+			public WebElement apply(WebDriver d) {
+				return d.findElement(by);
+			}
+		});
+
+		return myDynamicElement;
 	}
 
-	public void found(String pageSource, String text) {
-		if (!pageSource.contains(escapeHtml(text))) {
-			fail("Text: '" + text + "' not found in page '" + pageSource + "'");
-		}
+	public void waitUntilElementIsEnabled(final By by,
+			final long timeOutInSeconds) {
+		new WebDriverWait(webDriver(), timeOutInSeconds)
+				.until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(by).isEnabled();
+					}
+				});
 	}
 
-	public void found(List<String> texts) {
-		for (String text : texts) {
-			found(text);
-		}
+	public void waitUntilElementIsDisabled(final By by,
+			final long timeOutInSeconds) {
+		new WebDriverWait(webDriver(), timeOutInSeconds)
+		.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(by).isEnabled();
+			}
+		});
 	}
 
-	public void notFound(String text) {
-		notFound(getPageSource(), text);
+	public void waitElementBePresent(final By by, long timeOutInSeconds) {
+		WebDriverWait wait = new WebDriverWait(webDriver(), timeOutInSeconds);
+		wait.until(ExpectedConditions.presenceOfElementLocated(by));
 	}
 
-	public void notFound(String pageSource, String text) {
-		assertThat(pageSource.contains(escapeHtml(text)), is(false));
-	}
-
-	private String escapeHtml(String text) {
-		return text.replace("<", "&lt;").replace(">", "&gt;");
-	}
 }

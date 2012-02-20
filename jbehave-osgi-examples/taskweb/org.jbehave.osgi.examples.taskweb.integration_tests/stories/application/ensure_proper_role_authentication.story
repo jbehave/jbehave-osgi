@@ -5,27 +5,42 @@ In order to secure the business data used in the company
 As the stack holder
 I want that only authorized users be able to use the application
 
-Scenario: Not authorized user must be forwarded to login
-
-
 Scenario: Authorized user logs in the application
 
 Given the user is on home page
-And there is no active session
-When the user calls the application using the URL "http://localhost:8888"
-Then the login page is showed
+And the login button is enabled
+When the user clicks in login button
+Then the login button is disabled
+And the login dialog is presented
 
-When the user authenticate with a userID <userID> and password <password>
-Then the AuthenticatedHome page is showed
-!-- And the welcome message <welcome> is presented  
-!-- And the user main role <role> is presented   
+
+When the user authenticates with a userID <userID> and password <password>
+Then the TaskManagement page is presented
+And the user main role <role> description is presented 
+
+When the user clicks in logout button
+Then the user is forwarded to the home page
+And the login button is enabled
 
 Examples:
-|role|userID|password|welcome|
-|admin|admin|admin|Welcome admin|
-|-- user|danilo|demo|Welcome danilo --|
-|-- manager|cvgaviao|demo|Welcome cvgaviao --|
-|-- accounting|lana|demo|Welcome lana --|
+|role|userID|password|
+|admin|admin|demo|
+|-- consultant|dan|demo --|
+|-- manager|cvgaviao|demo --|
+
+Scenario: User cancels the login attempt
+
+Given the user is on home page
+And login button is enabled
+When the user clicks in login button
+Then the login dialog is presented
+And login button is disabled
+
+When the chooses to cancel the login
+Then the login dialog is closed
+And the notification "" is displayed
+And login button is enabled
+
 
 
 

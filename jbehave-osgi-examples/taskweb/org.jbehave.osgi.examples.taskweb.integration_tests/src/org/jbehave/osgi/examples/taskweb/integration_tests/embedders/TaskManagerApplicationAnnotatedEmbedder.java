@@ -38,9 +38,9 @@ import org.jbehave.osgi.io.OsgiStoryFinder;
 import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.jbehave.osgi.web.SeleniumOsgiConfiguration;
 import org.jbehave.web.selenium.ContextView;
+import org.jbehave.web.selenium.FirefoxWebDriverProvider;
 import org.jbehave.web.selenium.LocalFrameContextView;
 import org.jbehave.web.selenium.PerStoriesWebDriverSteps;
-import org.jbehave.web.selenium.PropertyWebDriverProvider;
 import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 import org.jbehave.web.selenium.WebDriverProvider;
@@ -53,13 +53,13 @@ import com.google.common.util.concurrent.MoreExecutors;
 
 @RunWith(AnnotatedEmbedderRunner.class)
 @Configure(using = MyOsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
-@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = true, verboseFailures = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
-//@UsingPaths("")
+@UsingEmbedder(systemProperties = "JBEHAVE_WEBDRIVER_FIREFOX_PROFILE=jbehave", embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false, verboseFailures = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+//@UsingPaths(storyFinder=OsgiStoryFinder.class, includes="*.story", searchIn = "/stories/application")
 @UsingSteps(instances = { MyLifeCycleSteps.class,
 		MyInjectedAuthenticationSteps.class, MyScreenshotOnFailureSteps.class })
 public class TaskManagerApplicationAnnotatedEmbedder extends InjectableEmbedder {
 
-	private static final WebDriverProvider staticDriverProvider = new PropertyWebDriverProvider();
+	private static final WebDriverProvider staticDriverProvider = new FirefoxWebDriverProvider();
 	private static WebDriverSteps lifecycleSteps = new PerStoriesWebDriverSteps(
 			staticDriverProvider);
 	private static final TaskWebPageFactory pages = new TaskWebPageFactory(

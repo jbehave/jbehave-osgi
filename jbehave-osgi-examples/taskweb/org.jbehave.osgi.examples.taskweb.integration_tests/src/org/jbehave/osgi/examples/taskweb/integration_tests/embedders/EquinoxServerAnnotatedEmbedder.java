@@ -11,6 +11,7 @@ import java.util.List;
 import org.jbehave.core.InjectableEmbedder;
 import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
+import org.jbehave.core.annotations.UsingPaths;
 import org.jbehave.core.annotations.UsingSteps;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.embedder.StoryControls;
@@ -38,6 +39,7 @@ import org.junit.runner.RunWith;
 @RunWith(AnnotatedEmbedderRunner.class)
 @Configure(using = MyOsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, verboseFailures=true, ignoreFailureInStories = false, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+//@UsingPaths(storyFinder=OsgiStoryFinder.class, includes="*.story", searchIn = "/stories/server_product")
 @UsingSteps(instances = { EquinoxVerificationSteps.class})
 public class EquinoxServerAnnotatedEmbedder extends InjectableEmbedder {
 

@@ -13,28 +13,28 @@ package org.jbehave.osgi.examples.taskweb.integration_tests.pages;
 
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-public class LoginPage extends AbstractTaskWebPage {
+public class TaskManagementPage extends AbstractTaskWebPage {
 
-	public LoginPage(WebDriverProvider driverProvider) {
+	public TaskManagementPage(WebDriverProvider driverProvider) {
 		super(driverProvider);
 	}
 
-	public void loginDialogIsPresented() {
-
-		findElementWithWait(By.id("loginDialog"), 15);
+	public void pageIsPresented() {
+		waitElementBePresent(By.id("taskSplitPanel"), 5);
+		waitElementBePresent(By.id("taskAccordion"), 5);
 	}
 
-	public void authenticateWith(String userID, String password) {
-				
-		findElementWithWait(By.id("loginUser"), 5).sendKeys(userID);
-		findElementWithWait(By.id("loginPassword"), 5).sendKeys(password);
-		findElementWithWait(By.id("loginButton"), 5).click();
-	}
-	
+	public void roleDescriptionIsPresented(String role) {
 
-	public void verifyLoginCancelation() {
-		// Alert alert = driver.switchTo().alert();
+		assertThat(findElementWithWait(By.id("roleDescription"), 5).getText(),
+				equalTo("Logged in as " + role));
+	}
+
+	public void clicksLogoutButton() {
+		findElementWithWait(By.id("logoutButton"), 5).click();
 	}
 
 }

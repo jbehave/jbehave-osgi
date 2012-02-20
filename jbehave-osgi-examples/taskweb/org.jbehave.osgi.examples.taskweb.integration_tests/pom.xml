@@ -73,6 +73,16 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
+							<id>org.eclipse.equinox.events</id>
+							<level>2</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
+							<id>org.jbehave.osgi.services</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+						<bundle>
 							<id>org.eclipse.equinox.cm</id>
 							<level>2</level>
 							<autoStart>true</autoStart>
@@ -92,34 +102,14 @@
 							<level>1</level>
 							<autoStart>true</autoStart>
 						</bundle>
+						<bundle>
+							<id>org.eclipse.core.runtime</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
 					</bundleStartLevel>
 
 					<dependencies>
-						<dependency>
-							<type>p2-instalable-unit</type>
-							<artifactId>org.jbehave.osgi.examples.taskweb.feature</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>eclipse-plugin</type>
-							<artifactId>org.jbehave.osgi.examples.taskweb.integration_tests</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-instalable-unit</type>
-							<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-instalable-unit</type>
-							<artifactId>com.c4biz.osgiutils.feature.vaadin.jetty.shiro</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-instalable-unit</type>
-							<artifactId>com.c4biz.osgiutils.feature.cm.indigo</artifactId>
-							<version>0.0.0</version>
-						</dependency>
 					</dependencies>
 				</configuration>
 			</plugin>

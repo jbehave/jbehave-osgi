@@ -7,22 +7,26 @@ Bundle-Vendor: JBehave.org
 Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
 Require-Bundle: org.junit;bundle-version="4.8.2",
- org.eclipse.osgi;bundle-version="3.7.1",
- javax.servlet;bundle-version="3.0.0",
  com.c4biz.osgiutils.assertions;bundle-version="0.0.1",
+ org.hamcrest;bundle-version="1.1.0",
+ org.hamcrest.core;bundle-version="1.1.0",
  org.eclipse.equinox.cm;bundle-version="1.0.300",
  org.eclipse.equinox.ds;bundle-version="1.3.1",
+ com.c4biz.osgiutils.logging.reader;bundle-version="0.0.1",
  org.eclipse.equinox.log;bundle-version="1.2.200",
- org.eclipse.equinox.simpleconfigurator;bundle-version="1.0.200",
+ org.eclipse.equinox.common;bundle-version="3.6.0",
  com.c4biz.osgiutils.vaadin6.shiro;bundle-version="0.0.1",
  org.apache.shiro.core;bundle-version="1.2.0",
- org.apache.shiro.web;bundle-version="1.2.0",
  org.apache.shiro.quartz;bundle-version="1.2.0",
+ org.apache.shiro.web;bundle-version="1.2.0",
+ org.eclipse.equinox.simpleconfigurator;bundle-version="1.0.200",
  com.c4biz.osgiutils.configuration.manager;bundle-version="0.0.1",
- com.c4biz.osgiutils.logging.reader;bundle-version="0.0.1",
+ org.eclipse.ant.core;bundle-version="3.2.300",
+ org.eclipse.core.variables;bundle-version="3.2.500",
+ org.eclipse.osgi.services;bundle-version="3.3.0",
+ org.eclipse.osgi.util;bundle-version="3.2.200",
  org.jbehave.osgi.web;bundle-version="0.0.2"
 Export-Package: org.jbehave.osgi.examples.taskweb.integration_tests.embedders,
  org.jbehave.osgi.examples.taskweb.integration_tests.pages,
  org.jbehave.osgi.examples.taskweb.integration_tests.steps
-Import-Package: org.eclipse.core.runtime.adaptor,
- org.jbehave.core.annotations;version="3.6.0"
+Import-Package: org.eclipse.core.runtime.adaptor
