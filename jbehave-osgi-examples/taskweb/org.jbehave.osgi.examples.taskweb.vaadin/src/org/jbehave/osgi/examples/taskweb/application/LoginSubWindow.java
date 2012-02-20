@@ -11,54 +11,88 @@
  *******************************************************************************/
 package org.jbehave.osgi.examples.taskweb.application;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.jbehave.osgi.examples.taskweb.application.LoginComponent.LoginEventType;
 
-import com.vaadin.ui.LoginForm;
-import com.vaadin.ui.LoginForm.LoginEvent;
 import com.vaadin.ui.Window;
 
 @SuppressWarnings("serial")
 public class LoginSubWindow extends Window {
 
-	private static boolean loginSucceed = false;
+	private TaskManagerApp app;
+	private LoginComponent loginComponent;
+	private LoginComponent.LoginAttemptListener loginAttemptListener;
+	private boolean loginEventProcessed = false;
 
-	public LoginSubWindow() {
-		setDebugId("loginDialog");
+	public LoginSubWindow(final TaskManagerApp app) {
+		this.app = app;
+
 		setStyleName("login");
 		setCaption("TaskWeb Login");
-		setHeight("230px");
-		setWidth("250px");
+		setHeight("170px");
+		setWidth("340px");
 		setResizable(false);
-		LoginForm loginForm = new LoginForm();
-		loginForm.setStyleName("login");
-		loginForm.setDebugId("loginForm");
-//		loginForm.setPasswordCaption("Password");
-//		loginForm.setUsernameCaption("User");
-		// loginForm.setLoginButtonCaption("Do it !!!");
-		loginForm
-				.addListener(new MyLoginListener(TaskManagerApp.getInstance()));
-		addComponent(loginForm);
+		setDebugId("loginDialog");
+
+		addComponent(getLoginComponent());
 
 		addListener(new Window.CloseListener() {
 
 			public void windowClose(CloseEvent e) {
 
-				if (loginSucceed) {
-					TaskManagerApp.getInstance().getMainWindow()
-							.showNotification("Login well succeed.");
-				} else {
-					TaskManagerApp.getInstance().getMainWindow()
-							.showNotification("Login canceled.");
-				}
+				if (loginEventProcessed == false && app.getUser() == null)
+					getLoginComponent().notifyLoginCancelEvent();
+
+				loginComponent.removeListener(getLoginAttemptListener());
+				loginComponent = null;
 			}
 		});
 	}
 
-	private static class MyLoginListener implements LoginForm.LoginListener {
+	private LoginComponent getLoginComponent() {
+		if (loginComponent == null) {
+			loginComponent = new LoginComponent();
+			loginComponent.addListener(getLoginAttemptListener());
+		}
+		return loginComponent;
+	}
+
+	public void login(String username, String password, Boolean rememberMe) {
+		UsernamePasswordToken token;
+
+		token = new UsernamePasswordToken(username, password);
+		// ”Remember Me” built-in, just do this:
+		token.setRememberMe(rememberMe);
+
+		// With most of Shiro, you'll always want to make sure you're working
+		// with the currently executing user,
+		// referred to as the subject
+		Subject currentUser = SecurityUtils.getSubject();
+
+		// Authenticate
+		currentUser.login(token);
+
+		// no error found
+		app.setUser(currentUser);
+
+	}
+
+	private LoginComponent.LoginAttemptListener getLoginAttemptListener() {
+		if (loginAttemptListener == null) {
+			loginAttemptListener = new MyLoginListener(app);
+		}
+		return loginAttemptListener;
+	}
+
+	private class MyLoginListener implements
+			LoginComponent.LoginAttemptListener {
 		private TaskManagerApp app;
 
 		public MyLoginListener(TaskManagerApp app) {
@@ -66,40 +100,38 @@ public class LoginSubWindow extends Window {
 		}
 
 		@Override
-		public void onLogin(LoginEvent event) {
-			String username = event.getLoginParameter("username");
-			String password = event.getLoginParameter("password");
+		public void onLoginEvent(LoginComponent.LoginEvent event) {
 
-			try {
-				app.login(username, password);
+			loginEventProcessed = true;
 
-				loginSucceed = true;
+			if (event.getType() == LoginEventType.ATTEMPT) {
 
-				// close the login window
-				app.closeLoginSubWindow();
+				String username = (String) event.getLoginParameter("username");
+				String password = (String) event.getLoginParameter("password");
+				Boolean rememberMe = (Boolean) event
+						.getLoginParameter("rememberMe");
 
-				// Switch to the protected view
-				app.getMainWindow().setContent(new TaskManagementPage());
+				try {
+					login(username, password, rememberMe);
 
-			} catch (UnknownAccountException uae) {
-				app.getMainWindow().showNotification("Invalid User",
-						Notification.TYPE_ERROR_MESSAGE);
-			} catch (IncorrectCredentialsException ice) {
-				app.getMainWindow().showNotification("Invalid User",
-						Notification.TYPE_ERROR_MESSAGE);
-			} catch (LockedAccountException lae) {
-				app.getMainWindow().showNotification("Invalid User",
-						Notification.TYPE_ERROR_MESSAGE);
-			} catch (ExcessiveAttemptsException eae) {
-				app.getMainWindow().showNotification("Invalid User",
-						Notification.TYPE_ERROR_MESSAGE);
-			} catch (AuthenticationException ae) {
-				app.getMainWindow().showNotification("Invalid User",
-						Notification.TYPE_ERROR_MESSAGE);
-			} catch (Exception ex) {
-				app.getMainWindow().showNotification(
-						"Exception " + ex.getMessage(),
-						Notification.TYPE_ERROR_MESSAGE);
+					// close the login window
+					app.loginWellSucceded();
+
+				} catch (UnknownAccountException uae) {
+					app.loginBadlySucceded("Invalid User");
+				} catch (IncorrectCredentialsException ice) {
+					app.loginBadlySucceded("Invalid User");
+				} catch (LockedAccountException lae) {
+					app.loginBadlySucceded("Blocked User");
+				} catch (ExcessiveAttemptsException eae) {
+					app.loginBadlySucceded("Blocked User");
+				} catch (AuthenticationException ae) {
+					app.loginBadlySucceded("Authentication Error");
+				} catch (Exception ex) {
+					app.loginBadlySucceded("Exception: " + ex.getMessage());
+				}
+			} else if (event.getType() == LoginEventType.CANCEL) {
+				app.loginCancelled();
 			}
 		}
 	}

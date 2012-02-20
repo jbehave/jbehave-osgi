@@ -37,12 +37,12 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 
 	public TaskManagementPage() {
 		super();
-		setDebugId("taskManagement");
 	}
 
 	public Component getCenterComponent() {
 		if (splitPanel == null) {
 			splitPanel = new HorizontalSplitPanel();
+			splitPanel.setDebugId("taskSplitPanel");
 			splitPanel.addComponent(getSplitPanelLeftComponent());
 			splitPanel.addComponent(getSplitPanelRightComponent());
 			splitPanel.setSplitPosition(30, Sizeable.UNITS_PERCENTAGE);
@@ -56,6 +56,7 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 			personalTasksPanel = new TaskGroup();
 			teamTasksPanel = new TaskGroup();
 			taskAccordion = new Accordion();
+			taskAccordion.setDebugId("taskAccordion");
 
 			if (getCurrentUser().hasRole("admin")) {
 				Tab tabAdm = taskAccordion.addTab(adminTasksPanel,
@@ -102,8 +103,6 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 		public TaskGroup() {
 			super();
 			setMargin(false);
-//			setSpacing(true);
-//			setStyleName(Reindeer.LAYOUT_WHITE);
 			setStyleName(Runo.CSSLAYOUT_SHADOW);
 			setSizeFull();
 		}

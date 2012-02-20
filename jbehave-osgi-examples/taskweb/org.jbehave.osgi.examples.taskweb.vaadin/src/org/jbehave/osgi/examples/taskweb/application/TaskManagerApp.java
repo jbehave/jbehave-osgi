@@ -18,51 +18,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.log.LogService;
 
 import com.vaadin.Application;
 import com.vaadin.terminal.gwt.server.HttpServletRequestListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.Window.Notification;
 
 public class TaskManagerApp extends Application implements
 		HttpServletRequestListener {
-
-	@SuppressWarnings("serial")
-	public static class HelpListener implements ClickListener {
-
-		@Override
-		public void buttonClick(ClickEvent event) {
-			getInstance().getMainWindow()
-			.showNotification("Need to create a help !");
-		}
-
-	}
-
-	// Logout Listener is defined for the application
-	@SuppressWarnings("serial")
-	public static class LogoutListener implements Button.ClickListener {
-
-		@Override
-		public void buttonClick(ClickEvent event) {
-			getInstance().logout();
-		}
-	}
-
-	@SuppressWarnings("serial")
-	public static class LoginListener implements Button.ClickListener {
-		
-		@Override
-		public void buttonClick(ClickEvent event) {
-			getInstance().showLoginSubWindow();
-		}
-	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -83,10 +50,11 @@ public class TaskManagerApp extends Application implements
 	}
 
 	private LogService logService;
-	private HomePage homePage = new HomePage();
-	private Window mainWindow;
-	private LoginSubWindow loginSubWindow;
 
+	private HomePage homePage;
+	private Window taskWebWindow;
+	private LoginSubWindow loginSubWindow;
+	private TaskManagementPage taskManagementPage;
 	private static ThreadLocal<TaskManagerApp> currentApplication = new ThreadLocal<TaskManagerApp>();
 
 	protected void activate(ComponentContext context,
@@ -115,46 +83,84 @@ public class TaskManagerApp extends Application implements
 	@Override
 	public void init() {
 
-		mainWindow = new Window("JBehave TaskWeb!");
 		setTheme("cvgaviao");
-		setMainWindow(mainWindow);
-		mainWindow.setContent(homePage);
 
-		// set the current application on thread local
-		setInstance(this);
+		setMainWindow(getTaskWebWindow());
+
+		getTaskWebWindow().setContent(getHomePage());
+
+	}
+	
+	private Window getTaskWebWindow(){
+		if (taskWebWindow == null)
+		{
+			taskWebWindow = new Window("JBehave TaskWeb!");
+		}
+		return taskWebWindow;
+	}
+	
+	
+	private HomePage getHomePage() {
+		if (homePage == null)
+		{
+			homePage = new HomePage();
+		}
+		return homePage;
+	}
+
+	public void loginCancelled() {
+		getTaskWebWindow().removeWindow(loginSubWindow);
+		loginSubWindow = null;
+		if (getUser() != null) {
+			getMainWindow().showNotification("Login well succeed.");
+		} else {
+			getMainWindow().showNotification("Login canceled.");
+		}
+		getHomePage().enableLoginButton();
 
 	}
 
-	public void login(String username, String password) {
-		UsernamePasswordToken token;
+	public void loginWellSucceded() {
+		getTaskWebWindow().removeWindow(loginSubWindow);
 
-		token = new UsernamePasswordToken(username, password);
-		// ”Remember Me” built-in, just do this:
-		token.setRememberMe(true);
+		// Switch to the protected view
+		getMainWindow().setContent(getTaskManagementPage());
 
-		// With most of Shiro, you'll always want to make sure you're working
-		// with the currently executing user,
-		// referred to as the subject
-		Subject currentUser = SecurityUtils.getSubject();
+		loginSubWindow = null;
+	}
 
-		// Authenticate
-		currentUser.login(token);
+	public void loginBadlySucceded(String message) {
+		getTaskWebWindow().removeWindow(loginSubWindow);
+		
+		getMainWindow().showNotification(message, Notification.TYPE_ERROR_MESSAGE);
+		getHomePage().enableLoginButton();
+		
+		loginSubWindow = null;
+	}
 
-		// no error found
-		getInstance().setUser(currentUser);
-
+	private TaskManagementPage getTaskManagementPage() {
+		if (taskManagementPage == null)
+		{
+			taskManagementPage = new TaskManagementPage();
+		}
+		return taskManagementPage;
 	}
 
 	public void logout() {
-		getMainWindow().getApplication().close();
 
 		Subject currentUser = SecurityUtils.getSubject();
 
-		if (currentUser.isAuthenticated()) {
-			currentUser.logout();
+		currentUser.logout();
 
-			getInstance().setUser(null);
-		}
+		getInstance().setUser(null);
+		
+		getInstance().close();
+		
+		homePage = null;
+		
+		loginSubWindow = null;
+		
+		taskManagementPage = null;
 	}
 
 	public void onRequestEnd(HttpServletRequest request,
@@ -191,13 +197,13 @@ public class TaskManagerApp extends Application implements
 
 		// Authentication: check if user is found, otherwise send to home page
 		Subject currentUser = SecurityUtils.getSubject();
-		
+
 		if (currentContent != null && !currentUser.isAuthenticated()) {
 
-			mainWindow.setContent(homePage);
-			
-			getInstance().getMainWindow()
-			.showNotification("You need to authenticate again !");
+			taskWebWindow.setContent(getHomePage());
+
+			getInstance().getMainWindow().showNotification(
+					"You need to authenticate again !");
 
 		} else {
 			setUser(currentUser);
@@ -206,19 +212,13 @@ public class TaskManagerApp extends Application implements
 
 	public void showLoginSubWindow() {
 
-		loginSubWindow = new LoginSubWindow();        
-        if (loginSubWindow.getParent() == null) {
-        	mainWindow.addWindow(loginSubWindow);
-        }
-        // Center the window
-        loginSubWindow.center();
-	}
-	
-	public void closeLoginSubWindow()
-	{
-		if (loginSubWindow != null && loginSubWindow.getParent() != null)
-		{
-			mainWindow.removeWindow(loginSubWindow);
+		if (loginSubWindow == null) {
+			loginSubWindow = new LoginSubWindow(this);
+			if (loginSubWindow.getParent() == null) {
+				taskWebWindow.addWindow(loginSubWindow);
+			}
+			// Center the window
+			loginSubWindow.center();
 		}
 	}
 

@@ -9,20 +9,78 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Reindeer;
 
 public class HomePage extends VerticalLayout {
 
-	private static final long serialVersionUID = -5562643818682670675L;
+	@SuppressWarnings("serial")
+	public static class H1 extends Label {
+		public H1(String caption) {
+			super(caption);
+			setSizeUndefined();
+			setStyleName(Reindeer.LABEL_H1);
+		}
+	}
 
-	private Button loginButton;
+	@SuppressWarnings("serial")
+	public static class H2 extends Label {
+		public H2(String caption) {
+			super(caption);
+			setSizeUndefined();
+			setStyleName(Reindeer.LABEL_H2);
+		}
+	}
+	@SuppressWarnings("serial")
+	public static class HelpListener implements ClickListener {
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			TaskManagerApp.getInstance().getMainWindow().showNotification(
+					"Need to create a help !");
+		}
+
+	}
+	@SuppressWarnings("serial")
+	public class LoginClickListener implements Button.ClickListener {
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			TaskManagerApp.getInstance().showLoginSubWindow();
+			
+		}
+	}
+	@SuppressWarnings("serial")
+	public static class NewsItem extends Label {
+		public NewsItem(String caption) {
+			super(caption);
+			setStyleName("bubble");
+		}
+	}
+	@SuppressWarnings("serial")
+	public static class SmallText extends Label {
+		public SmallText(String caption) {
+			super(caption);
+			setStyleName(Reindeer.LABEL_SMALL);
+		}
+	}
+	private static final long serialVersionUID = -5562643818682670675L;
+	private Button loginAttemptButton;
 	private Button helpButton;
 	private Panel panelNews;
+
+	
 	private Panel panelPeople;
+
 	private VerticalLayout glueLayout;
+
 	private Layout toolbar;
+
 	private HorizontalLayout headerTitle;
+
 	private HorizontalLayout header;
+
 	private HorizontalLayout panels;
 
 	public HomePage() {
@@ -42,6 +100,72 @@ public class HomePage extends VerticalLayout {
 		setExpandRatio(margin, 1);
 	}
 
+	public void enableLoginButton() {
+		loginAttemptButton.setEnabled(true);
+	}
+
+	private Component getGlueLayout() {
+		if (glueLayout == null) {
+			glueLayout = new VerticalLayout();
+			glueLayout.setSizeFull();
+		}
+		return glueLayout;
+	}
+	
+	private Layout getHeader() {
+		if (header == null) {
+			header = new HorizontalLayout();
+			header.setWidth("100%");
+			header.addComponent(getHeaderTitle());
+			header.setExpandRatio(getHeaderTitle(), 1.0f);
+		}
+		return header;
+	}
+
+	private Layout getHeaderTitle() {
+		if (headerTitle == null) {
+			headerTitle = new HorizontalLayout();
+			headerTitle.setWidth("100%");
+			headerTitle.setMargin(true, true, false, true);
+			headerTitle.setSpacing(false);
+
+			CssLayout titleLayout = new CssLayout();
+			H1 title = new H1("JBehave TaskWeb");
+			titleLayout.addComponent(title);
+			SmallText description = new SmallText(
+					"A Vaadin OSGi Example. Click on Login button to call the login form.");
+			description.setSizeUndefined();
+			titleLayout.addComponent(description);
+
+			headerTitle.addComponent(titleLayout);
+		}
+		return headerTitle;
+	}
+
+	private Panel getNewsPanel() {
+		if (panelNews == null) {
+			panelNews = new Panel("News");
+			panelNews.setDebugId("panelNews");
+			panelNews.setStyleName("news");
+			panelNews.setSizeFull();
+			panelNews
+					.addComponent(new NewsItem(
+							"This is a Vaadin example application running in a Equinox / Jetty 8.1 OSGi Http environment !!!"));
+			panelNews.addComponent(new NewsItem(
+					"Security is being handled by Apache Shiro framework."));
+
+			panelNews
+			.addComponent(new NewsItem(
+					"You can use JBehave-Web to create integration tests for your Vaadin web application !!!"));
+			
+			panelNews
+					.addComponent(new NewsItem(
+							"And the coolest thing is that now you can use JBehave inside a OSGi environment."
+									+ " You can test both headless Equinox servers as Visual RCP products."));
+		}
+		return panelNews;
+	}
+
 	private Layout getPanels() {
 		if (panels == null) {
 			panels = new HorizontalLayout();
@@ -57,53 +181,14 @@ public class HomePage extends VerticalLayout {
 		return panels;
 	}
 
-	private Component getGlueLayout() {
-		if (glueLayout == null) {
-			glueLayout = new VerticalLayout();
-			glueLayout.setSizeFull();
-		}
-		return glueLayout;
-	}
-
-	private Layout getHeader() {
-		if (header == null) {
-			header = new HorizontalLayout();
-			header.setWidth("100%");
-			header.addComponent(getHeaderTitle());
-			header.setExpandRatio(getHeaderTitle(), 1.0f);
-		}
-		return header;
-	}
-
-	private Panel getNewsPanel() {
-		if (panelNews == null) {
-			panelNews = new Panel("News");
-			panelNews.setStyleName("news");
-			panelNews.setSizeFull();
-			panelNews
-					.addComponent(new NewsItem(
-							"This is a Vaadin example application running in a Equinox / Jetty 8.1 OSGi Http environment !!!"));
-			panelNews.addComponent(new NewsItem(
-					"Security is being handled by Apache Shiro framework."));
-			panelNews
-					.addComponent(new NewsItem(
-							"And the coolest thing is that now you can use JBehave inside a OSGi environment."
-									+ " You can test both headless Equinox servers as Visual RCP products."));
-			panelNews
-					.addComponent(new NewsItem(
-							"Plus, you can use JBehave Web for doing integration tests on your Vaadin web application !!!"));
-
-		}
-		return panelNews;
-	}
-
 	private Panel getPeoplePanel() {
 		if (panelPeople == null) {
 			panelPeople = new Panel("People");
 			panelPeople.setStyleName("people");
 			panelPeople.setSizeFull();
+			panelPeople.setDebugId("panelPeople");
 			Label ll = new Label(
-					"These are the users that you can use to enter in the application: ");
+					"Below are the users that you can use to enter in the application: ");
 			ll.setStyleName(Reindeer.LABEL_H2);
 			panelPeople.addComponent(ll);
 
@@ -128,26 +213,6 @@ public class HomePage extends VerticalLayout {
 		return panelPeople;
 	}
 
-	private Layout getHeaderTitle() {
-		if (headerTitle == null) {
-			headerTitle = new HorizontalLayout();
-			headerTitle.setWidth("100%");
-			headerTitle.setMargin(true, true, false, true);
-			headerTitle.setSpacing(false);
-
-			CssLayout titleLayout = new CssLayout();
-			H1 title = new H1("JBehave TaskWeb");
-			titleLayout.addComponent(title);
-			SmallText description = new SmallText(
-					"A Vaadin OSGi Example. Click on Login button to call the login form.");
-			description.setSizeUndefined();
-			titleLayout.addComponent(description);
-
-			headerTitle.addComponent(titleLayout);
-		}
-		return headerTitle;
-	}
-
 	private Layout getToolbar() {
 		if (toolbar == null) {
 			toolbar = new CssLayout();
@@ -160,54 +225,19 @@ public class HomePage extends VerticalLayout {
 			right.addStyleName("right");
 			toolbar.addComponent(right);
 
-			loginButton = new Button("Log in",
-					new TaskManagerApp.LoginListener());
-			loginButton.setStyleName(Reindeer.BUTTON_DEFAULT);
-			loginButton.setDebugId("loginButton");
-			right.addComponent(loginButton);
-			// toolbar.setComponentAlignment(loginButton,
-			// Alignment.MIDDLE_RIGHT);
-			helpButton = new Button("Help", new TaskManagerApp.HelpListener());
-			helpButton.setStyleName(Reindeer.BUTTON_DEFAULT);
+			loginAttemptButton = new Button("Log in",
+					new LoginClickListener());
+			loginAttemptButton.setStyleName(Reindeer.BUTTON_SMALL);
+			loginAttemptButton.setDebugId("loginAttemptButton");
+			loginAttemptButton.setDisableOnClick(true);
+			
+			helpButton = new Button("Help", new HelpListener());
+			helpButton.setStyleName(Reindeer.BUTTON_SMALL);
 			helpButton.setDebugId("helpButton");
+
+			right.addComponent(loginAttemptButton);
 			right.addComponent(helpButton);
-			// toolbar.setComponentAlignment(helpButton,
-			// Alignment.MIDDLE_RIGHT);
 		}
 		return toolbar;
-	}
-
-	@SuppressWarnings("serial")
-	public static class H1 extends Label {
-		public H1(String caption) {
-			super(caption);
-			setSizeUndefined();
-			setStyleName(Reindeer.LABEL_H1);
-		}
-	}
-
-	@SuppressWarnings("serial")
-	public static class H2 extends Label {
-		public H2(String caption) {
-			super(caption);
-			setSizeUndefined();
-			setStyleName(Reindeer.LABEL_H2);
-		}
-	}
-
-	@SuppressWarnings("serial")
-	public static class SmallText extends Label {
-		public SmallText(String caption) {
-			super(caption);
-			setStyleName(Reindeer.LABEL_SMALL);
-		}
-	}
-
-	@SuppressWarnings("serial")
-	public static class NewsItem extends Label {
-		public NewsItem(String caption) {
-			super(caption);
-			setStyleName("bubble");
-		}
 	}
 }

@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2012, Cristiano Gavião - C4Biz
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Cristiano Gavião - initial API and implementation
+ *******************************************************************************/
 package org.jbehave.osgi.examples.taskweb.application;
 
 import org.apache.shiro.SecurityUtils;
@@ -13,6 +24,7 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.themes.Reindeer;
 
 @SuppressWarnings("serial")
@@ -78,16 +90,16 @@ public abstract class AbstractAuthenticatedCommonPage extends VerticalLayout {
 			headerTitle.setSizeFull();
 			headerTitle.setMargin(true);
 			headerTitle.setSpacing(true);
-			// headerTitle.setStyleName(Reindeer.LAYOUT_BLACK);
 
 			CssLayout titleLayout = new CssLayout();
 			HomePage.H1 title = new HomePage.H1("JBehave TaskWeb");
 			titleLayout.addComponent(title);
 			headerTitle.addComponent(titleLayout);
-			SmallText description = new SmallText("Logged in as "
+			SmallText roleDescription = new SmallText("Logged in as "
 					+ currentUser.getPrincipal().toString());
-			description.setSizeUndefined();
-			titleLayout.addComponent(description);
+			roleDescription.setSizeUndefined();
+			roleDescription.setDebugId("roleDescription");
+			titleLayout.addComponent(roleDescription);
 		}
 		return headerTitle;
 	}
@@ -101,10 +113,8 @@ public abstract class AbstractAuthenticatedCommonPage extends VerticalLayout {
 		return mainMenuBar;
 	}
 
-	public Component getCenterComponent()
-	{
-		if (centerComponent == null)
-		{
+	public Component getCenterComponent() {
+		if (centerComponent == null) {
 			centerComponent = (Panel) new Panel();
 			centerComponent.setSizeFull();
 		}
@@ -117,9 +127,15 @@ public abstract class AbstractAuthenticatedCommonPage extends VerticalLayout {
 			toolbar.setSizeFull();
 			toolbar.setMargin(true);
 			toolbar.setSpacing(true);
-			logoutButton = new Button("Logout",
-					new TaskManagerApp.LogoutListener());
+			logoutButton = new Button("Log out", new Button.ClickListener() {
+
+				@Override
+				public void buttonClick(ClickEvent event) {
+					TaskManagerApp.getInstance().logout();
+				}
+			});
 			logoutButton.setStyleName(Reindeer.BUTTON_DEFAULT);
+			logoutButton.setDebugId("logoutButton");
 			toolbar.addComponent(logoutButton);
 			toolbar.setComponentAlignment(logoutButton, Alignment.BOTTOM_RIGHT);
 		}
