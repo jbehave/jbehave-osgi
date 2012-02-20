@@ -15,12 +15,11 @@ import com.c4biz.osgiutils.assertions.services.ServiceAssert;
 
 @SuppressWarnings("restriction")
 public class EquinoxVerificationSteps {
-	
+
 	private BundleContext bc;
-	
+
 	@BeforeStories
-	public void setup()
-	{
+	public void setup() {
 		bc = FrameworkUtil.getBundle(EquinoxVerificationSteps.class)
 				.getBundleContext();
 		ServiceAssert.init(bc);
@@ -32,13 +31,17 @@ public class EquinoxVerificationSteps {
 		Assert.assertTrue(EclipseStarter.isRunning());
 	}
 
-	@Then("all needed bundles are active: %table")
-	public void ensureNeededBundlesAreActive(ExamplesTable table) {
+	@Then("all needed bundles are installed: %table")
+	public void ensureNeededBundlesAreInstalled(ExamplesTable table) {
 
 		for (Map<String, String> row : table.getRows()) {
 			String bundleName = row.get("bundleName");
+			int asterix = bundleName.indexOf("*");
+			if (asterix > 0) {
+				bundleName = bundleName.substring(0, asterix);
+			}
 			BundleAssert.assertBundleAvailable(bundleName
-					+ " bundle is not active.", bundleName);
+					+ " bundle is not installed.", bundleName);
 		}
 	}
 
