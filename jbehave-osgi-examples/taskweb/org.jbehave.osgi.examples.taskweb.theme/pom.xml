@@ -9,6 +9,6 @@
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.taskweb.theme</artifactId>
-	<name>Task Manager Web Example : Chameleon theme fragment</name>
+	<name>Task Manager Web Example : My theme fragment</name>
 	<packaging>eclipse-plugin</packaging>
 </project>

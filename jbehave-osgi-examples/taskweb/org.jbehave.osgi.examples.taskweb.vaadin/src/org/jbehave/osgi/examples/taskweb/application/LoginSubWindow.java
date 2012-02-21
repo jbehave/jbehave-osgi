@@ -30,6 +30,7 @@ public class LoginSubWindow extends Window {
 	private LoginComponent loginComponent;
 	private LoginComponent.LoginAttemptListener loginAttemptListener;
 	private boolean loginEventProcessed = false;
+	private CloseListener windowCloseListener;
 
 	public LoginSubWindow(final TaskManagerApp app) {
 		this.app = app;
@@ -43,23 +44,38 @@ public class LoginSubWindow extends Window {
 
 		addComponent(getLoginComponent());
 
-		addListener(new Window.CloseListener() {
+
+	}
+
+	@Override
+	public void attach() {
+		super.attach();
+
+		getLoginComponent().addLoginAttemptListener(getLoginAttemptListener());
+		
+		windowCloseListener = new Window.CloseListener() {
 
 			public void windowClose(CloseEvent e) {
 
 				if (loginEventProcessed == false && app.getUser() == null)
 					getLoginComponent().notifyLoginCancelEvent();
 
-				loginComponent.removeListener(getLoginAttemptListener());
 				loginComponent = null;
 			}
-		});
+		};
+		addListener(windowCloseListener);
 	}
-
+	
+	@Override
+	public void detach() {
+		getLoginComponent().removeLoginAttemptListener(getLoginAttemptListener());
+		removeListener(windowCloseListener);
+		super.detach();
+	}
+	
 	private LoginComponent getLoginComponent() {
 		if (loginComponent == null) {
 			loginComponent = new LoginComponent();
-			loginComponent.addListener(getLoginAttemptListener());
 		}
 		return loginComponent;
 	}

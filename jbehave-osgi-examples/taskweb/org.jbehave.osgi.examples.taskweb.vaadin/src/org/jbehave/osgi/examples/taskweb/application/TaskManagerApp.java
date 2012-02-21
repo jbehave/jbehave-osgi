@@ -93,6 +93,12 @@ public class TaskManagerApp extends Application implements
 
 	}
 	
+	@Override
+	public String getVersion() {
+
+		return "0.0.2-SNAPHOT";
+	}
+	
 	private Window getTaskWebWindow(){
 		if (taskWebWindow == null)
 		{
@@ -116,7 +122,7 @@ public class TaskManagerApp extends Application implements
 		if (getUser() != null) {
 			getMainWindow().showNotification("Login well succeed.");
 		} else {
-			getMainWindow().showNotification("Login canceled.");
+			getMainWindow().showNotification("Login canceled !");
 		}
 		getHomePage().enableLoginButton();
 
@@ -156,11 +162,14 @@ public class TaskManagerApp extends Application implements
 
 		getInstance().setUser(null);
 		
-		getTaskWebWindow().setContent(getHomePage());
-				
 		loginSubWindow = null;
 		
+		homePage = null;
+		
 		taskManagementPage = null;
+
+		getTaskWebWindow().setContent(getHomePage());
+		
 	}
 
 	public void onRequestEnd(HttpServletRequest request,

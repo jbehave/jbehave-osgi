@@ -1,6 +1,8 @@
 package org.jbehave.osgi.examples.taskweb.application;
 
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -9,8 +11,6 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Reindeer;
 
 public class HomePage extends VerticalLayout {
@@ -32,25 +32,28 @@ public class HomePage extends VerticalLayout {
 			setStyleName(Reindeer.LABEL_H2);
 		}
 	}
+
 	@SuppressWarnings("serial")
 	public static class HelpListener implements ClickListener {
 
 		@Override
 		public void buttonClick(ClickEvent event) {
-			TaskManagerApp.getInstance().getMainWindow().showNotification(
-					"Need to create a help !");
+			TaskManagerApp.getInstance().getMainWindow()
+					.showNotification("Need to create a help !");
 		}
 
 	}
+
 	@SuppressWarnings("serial")
 	public class LoginClickListener implements Button.ClickListener {
 
 		@Override
 		public void buttonClick(ClickEvent event) {
 			TaskManagerApp.getInstance().showLoginSubWindow();
-			
+
 		}
 	}
+
 	@SuppressWarnings("serial")
 	public static class NewsItem extends Label {
 		public NewsItem(String caption) {
@@ -58,6 +61,7 @@ public class HomePage extends VerticalLayout {
 			setStyleName("bubble");
 		}
 	}
+
 	@SuppressWarnings("serial")
 	public static class SmallText extends Label {
 		public SmallText(String caption) {
@@ -65,12 +69,12 @@ public class HomePage extends VerticalLayout {
 			setStyleName(Reindeer.LABEL_SMALL);
 		}
 	}
+
 	private static final long serialVersionUID = -5562643818682670675L;
 	private Button loginAttemptButton;
 	private Button helpButton;
 	private Panel panelNews;
 
-	
 	private Panel panelPeople;
 
 	private VerticalLayout glueLayout;
@@ -82,6 +86,7 @@ public class HomePage extends VerticalLayout {
 	private HorizontalLayout header;
 
 	private HorizontalLayout panels;
+	private LoginClickListener loginClickListener;
 
 	public HomePage() {
 
@@ -100,8 +105,23 @@ public class HomePage extends VerticalLayout {
 		setExpandRatio(margin, 1);
 	}
 
+	@Override
+	public void attach() {
+		super.attach();
+		
+		loginClickListener = new LoginClickListener();
+		getLoginAttemptButton().addListener(loginClickListener);
+		
+	}
+
+	@Override
+	public void detach() {
+		getLoginAttemptButton().removeListener(loginClickListener);
+		super.detach();
+	}
+
 	public void enableLoginButton() {
-		loginAttemptButton.setEnabled(true);
+		getLoginAttemptButton().setEnabled(true);
 	}
 
 	private Component getGlueLayout() {
@@ -111,7 +131,7 @@ public class HomePage extends VerticalLayout {
 		}
 		return glueLayout;
 	}
-	
+
 	private Layout getHeader() {
 		if (header == null) {
 			header = new HorizontalLayout();
@@ -155,9 +175,9 @@ public class HomePage extends VerticalLayout {
 					"Security is being handled by Apache Shiro framework."));
 
 			panelNews
-			.addComponent(new NewsItem(
-					"You can use JBehave-Web to create integration tests for your Vaadin web application !!!"));
-			
+					.addComponent(new NewsItem(
+							"You can use JBehave-Web to create integration tests for your Vaadin web application !!!"));
+
 			panelNews
 					.addComponent(new NewsItem(
 							"And the coolest thing is that now you can use JBehave inside a OSGi environment."
@@ -225,19 +245,31 @@ public class HomePage extends VerticalLayout {
 			right.addStyleName("right");
 			toolbar.addComponent(right);
 
-			loginAttemptButton = new Button("Log in",
-					new LoginClickListener());
-			loginAttemptButton.setStyleName(Reindeer.BUTTON_SMALL);
-			loginAttemptButton.setDebugId("loginAttemptButton");
-			loginAttemptButton.setDisableOnClick(true);
-			
-			helpButton = new Button("Help", new HelpListener());
-			helpButton.setStyleName(Reindeer.BUTTON_SMALL);
-			helpButton.setDebugId("helpButton");
 
-			right.addComponent(loginAttemptButton);
-			right.addComponent(helpButton);
+			right.addComponent(getLoginAttemptButton());
+			right.addComponent(getHelpButton());
 		}
 		return toolbar;
 	}
+	
+	private Button getHelpButton(){
+		if (helpButton == null)
+		{
+			helpButton = new Button("Help", new HelpListener());
+			helpButton.setStyleName(Reindeer.BUTTON_SMALL);
+			helpButton.setDebugId("helpButton");
+		}
+		return helpButton;
+	}
+
+	private Button getLoginAttemptButton() {
+		if (loginAttemptButton == null) {
+			loginAttemptButton = new Button("Log in");
+			loginAttemptButton.setStyleName(Reindeer.BUTTON_SMALL);
+			loginAttemptButton.setDebugId("loginAttemptButton");
+			loginAttemptButton.setDisableOnClick(true);
+		}
+		return loginAttemptButton;
+	}
+
 }

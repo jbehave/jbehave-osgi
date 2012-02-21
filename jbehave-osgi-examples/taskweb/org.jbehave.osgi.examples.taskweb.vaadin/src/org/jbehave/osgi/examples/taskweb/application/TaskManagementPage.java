@@ -17,6 +17,7 @@ import com.vaadin.terminal.Sizeable;
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Panel;
@@ -34,6 +35,7 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 	private TaskGroup teamTasksPanel;
 	private HorizontalSplitPanel splitPanel;
 	private Panel rightPanel;
+	private ClickListener detailTaskClickListener;
 
 	public TaskManagementPage() {
 		super();
@@ -115,15 +117,44 @@ public class TaskManagementPage extends AbstractAuthenticatedCommonPage {
 			setWidth("100%");
 			setHeight("45px");
 			setIcon(new ThemeResource("../runo/icons/32/document-add.png"));
-			addListener(new Button.ClickListener() {
-
-				@Override
-				public void buttonClick(ClickEvent event) {
-					getSplitPanelRightComponent().setCaption(
-							event.getButton().getCaption());
-				}
-			});
 		}
+		
+		@Override
+		public void attach() {
+			super.attach();
+			addListener(getDetailTaskClickListener());
+		}
+		
+		@Override
+		public void detach() {
+			removeListener(getDetailTaskClickListener());
+			super.detach();
+		}
+
+		private ClickListener getDetailTaskClickListener() {
+			if (detailTaskClickListener == null) {
+				detailTaskClickListener = new Button.ClickListener() {
+					
+					@Override
+					public void buttonClick(ClickEvent event) {
+						getSplitPanelRightComponent().setCaption(
+								event.getButton().getCaption());
+					}
+				};
+			}
+			return detailTaskClickListener;
+		}
+	}
+
+	@Override
+	public void detach() {
+		taskAccordion = null;
+		adminTasksPanel = null;
+		personalTasksPanel = null;
+		teamTasksPanel = null;
+		splitPanel = null;
+		rightPanel = null;
+		super.detach();
 	}
 
 }

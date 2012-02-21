@@ -9,6 +9,10 @@
 	<version>1.0.0</version>
 	<description>Stories verifying behavior of jbehave taskweb vaadin-osgi example application, using the WebDriver API of Selenium 2.</description>
 
+	<properties>
+		<selenium.version>2.19.0</selenium.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.web</groupId>
@@ -16,16 +20,9 @@
 			<version>3.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.seleniumhq.selenium.fluent</groupId>
-			<artifactId>fluent-selenium</artifactId>
-			<version>1.0-beta-4</version>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-java</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
