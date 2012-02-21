@@ -43,7 +43,7 @@ public class TaskManagerApp extends Application implements
 	/**
 	 * Set the current application instance
 	 */
-	public static void setInstance(TaskManagerApp application) {
+	private static void setInstance(TaskManagerApp application) {
 		if (getInstance() == null) {
 			currentApplication.set(application);
 		}

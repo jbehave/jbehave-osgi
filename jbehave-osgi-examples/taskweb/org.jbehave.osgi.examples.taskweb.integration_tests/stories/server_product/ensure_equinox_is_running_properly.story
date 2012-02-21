@@ -15,7 +15,7 @@ Then all needed bundles are installed:
 |ch.qos.logback.slf4j*1.0.0.v20120123-1500|default|false|
 |com.c4biz.osgiutils.configuration.manager|2|true|
 |com.c4biz.osgiutils.jdk.deps|default|false|
-|com.c4biz.osgiutils.logging.reader|1|true|
+|-- com.c4biz.osgiutils.logging.reader|1|true --|
 |com.c4biz.osgiutils.vaadin6.shiro|4|true|
 |com.vaadin|default|default|
 |javax.el|default|default|

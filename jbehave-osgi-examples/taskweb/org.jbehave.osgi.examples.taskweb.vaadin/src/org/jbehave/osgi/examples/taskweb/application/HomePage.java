@@ -3,6 +3,7 @@ package org.jbehave.osgi.examples.taskweb.application;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Window.Notification;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -34,12 +35,15 @@ public class HomePage extends VerticalLayout {
 	}
 
 	@SuppressWarnings("serial")
-	public static class HelpListener implements ClickListener {
+	public class HelpListener implements ClickListener {
 
 		@Override
 		public void buttonClick(ClickEvent event) {
-			TaskManagerApp.getInstance().getMainWindow()
-					.showNotification("Need to create a help !");
+			TaskManagerApp
+					.getInstance()
+					.getMainWindow()
+					.showNotification("Help was not implemented yet !",
+							Notification.TYPE_WARNING_MESSAGE);
 		}
 
 	}
@@ -87,6 +91,7 @@ public class HomePage extends VerticalLayout {
 
 	private HorizontalLayout panels;
 	private LoginClickListener loginClickListener;
+	private ClickListener helpClickListener;
 
 	public HomePage() {
 
@@ -108,15 +113,21 @@ public class HomePage extends VerticalLayout {
 	@Override
 	public void attach() {
 		super.attach();
-		
+
 		loginClickListener = new LoginClickListener();
+		helpClickListener = new HelpListener();
+		getHelpButton().addListener(helpClickListener);
 		getLoginAttemptButton().addListener(loginClickListener);
-		
+
 	}
 
 	@Override
 	public void detach() {
 		getLoginAttemptButton().removeListener(loginClickListener);
+		getHelpButton().removeListener(helpClickListener);
+		
+		loginAttemptButton = null;
+		helpClickListener = null;
 		super.detach();
 	}
 
@@ -245,17 +256,15 @@ public class HomePage extends VerticalLayout {
 			right.addStyleName("right");
 			toolbar.addComponent(right);
 
-
 			right.addComponent(getLoginAttemptButton());
 			right.addComponent(getHelpButton());
 		}
 		return toolbar;
 	}
-	
-	private Button getHelpButton(){
-		if (helpButton == null)
-		{
-			helpButton = new Button("Help", new HelpListener());
+
+	private Button getHelpButton() {
+		if (helpButton == null) {
+			helpButton = new Button("Help");
 			helpButton.setStyleName(Reindeer.BUTTON_SMALL);
 			helpButton.setDebugId("helpButton");
 		}

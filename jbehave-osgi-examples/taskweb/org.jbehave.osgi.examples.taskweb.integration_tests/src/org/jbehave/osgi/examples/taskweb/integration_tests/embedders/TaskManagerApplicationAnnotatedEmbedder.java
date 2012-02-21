@@ -1,9 +1,6 @@
 package org.jbehave.osgi.examples.taskweb.integration_tests.embedders;
 
-import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
-import static org.jbehave.core.reporters.Format.TXT;
-import static org.jbehave.core.reporters.Format.XML;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -136,7 +133,7 @@ public class TaskManagerApplicationAnnotatedEmbedder extends InjectableEmbedder 
 
 	public static class MyReportBuilder extends OsgiStoryReporterBuilder {
 		public MyReportBuilder() {
-			this.withFormats(CONSOLE, TXT, HTML, XML).withDefaultFormats();
+			this.withFormats(HTML).withDefaultFormats().withFailureTrace(true);
 		}
 	}
 
