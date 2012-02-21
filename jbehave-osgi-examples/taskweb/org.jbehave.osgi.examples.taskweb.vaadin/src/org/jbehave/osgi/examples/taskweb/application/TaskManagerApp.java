@@ -74,6 +74,8 @@ public class TaskManagerApp extends Application implements
 
 		getLogService().log(LogService.LOG_DEBUG,
 				"Deactivating TaskWeb Application OSGi Component.");
+		logService = null;
+		currentApplication = null;
 	}
 
 	protected LogService getLogService() {
@@ -154,10 +156,8 @@ public class TaskManagerApp extends Application implements
 
 		getInstance().setUser(null);
 		
-		getInstance().close();
-		
-		homePage = null;
-		
+		getTaskWebWindow().setContent(getHomePage());
+				
 		loginSubWindow = null;
 		
 		taskManagementPage = null;
