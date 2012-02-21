@@ -53,7 +53,8 @@ import com.google.common.util.concurrent.MoreExecutors;
 
 @RunWith(AnnotatedEmbedderRunner.class)
 @Configure(using = MyOsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
-@UsingEmbedder(systemProperties = "JBEHAVE_WEBDRIVER_FIREFOX_PROFILE=jbehave", embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false, verboseFailures = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false, verboseFailures = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+//@UsingEmbedder(systemProperties = "JBEHAVE_WEBDRIVER_FIREFOX_PROFILE=jbehave", embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = false, ignoreFailureInView = false, verboseFailures = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 //@UsingPaths(storyFinder=OsgiStoryFinder.class, includes="*.story", searchIn = "/stories/application")
 @UsingSteps(instances = { MyLifeCycleSteps.class,
 		MyInjectedAuthenticationSteps.class, MyScreenshotOnFailureSteps.class })
