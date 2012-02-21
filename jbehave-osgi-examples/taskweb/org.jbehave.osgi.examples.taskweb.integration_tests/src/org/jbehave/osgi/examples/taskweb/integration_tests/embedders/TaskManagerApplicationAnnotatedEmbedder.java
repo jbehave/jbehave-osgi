@@ -133,7 +133,7 @@ public class TaskManagerApplicationAnnotatedEmbedder extends InjectableEmbedder 
 
 	public static class MyReportBuilder extends OsgiStoryReporterBuilder {
 		public MyReportBuilder() {
-			this.withFormats(HTML).withDefaultFormats().withFailureTrace(true);
+			this.withFormats(HTML).withFailureTrace(true);
 		}
 	}
 
