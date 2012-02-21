@@ -37,4 +37,8 @@ public class LoginPage extends AbstractTaskWebPage {
 		// Alert alert = driver.switchTo().alert();
 	}
 
+	public void cancelLoginByClickingCloseButton() {
+		findElementWithWait(By.id("cancelButton"), 5).click();
+	}
+
 }

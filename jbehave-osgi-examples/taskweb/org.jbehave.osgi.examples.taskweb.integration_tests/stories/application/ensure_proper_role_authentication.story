@@ -31,15 +31,15 @@ Examples:
 Scenario: User cancels the login attempt
 
 Given the user is on home page
-And login button is enabled
+And the login button is enabled
 When the user clicks in login button
 Then the login dialog is presented
-And login button is disabled
+And the login button is disabled
 
-When the chooses to cancel the login
+When the user chooses to cancel the login
 Then the login dialog is closed
-And the notification "" is displayed
-And login button is enabled
+And the notification "Login canceled !" is displayed
+And the login button is enabled
 
 
 

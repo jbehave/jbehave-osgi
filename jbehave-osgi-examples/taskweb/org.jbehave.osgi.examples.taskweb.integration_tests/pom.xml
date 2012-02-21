@@ -68,11 +68,6 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>com.c4biz.osgiutils.logging.reader</id>
-							<level>2</level>
-							<autoStart>false</autoStart>
-						</bundle>
-						<bundle>
 							<id>org.eclipse.equinox.events</id>
 							<level>2</level>
 							<autoStart>true</autoStart>

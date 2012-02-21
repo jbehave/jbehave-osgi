@@ -23,8 +23,8 @@ public class TaskManagementPage extends AbstractTaskWebPage {
 	}
 
 	public void pageIsPresented() {
-		waitElementBePresent(By.id("taskSplitPanel"), 5);
-		waitElementBePresent(By.id("taskAccordion"), 5);
+		waitUntilElementBePresent(By.id("taskSplitPanel"), 5);
+		waitUntilElementBePresent(By.id("taskAccordion"), 5);
 	}
 
 	public void roleDescriptionIsPresented(String role) {

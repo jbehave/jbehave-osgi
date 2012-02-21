@@ -80,4 +80,21 @@ public class AuthenticationSteps extends AbstractTaskWebSteps {
 	public void userClicksOnLogoutButton() {
 		getPages().taskManagement().clicksLogoutButton();
 	}
+	
+	@When("the user chooses to cancel the login")
+	public void whenTheUserChoosesToCancelTheLogin() {
+	  getPages().login().cancelLoginByClickingCloseButton();
+	}
+
+	@Then("the login dialog is closed")
+	public void thenTheLoginDialogIsClosed() {
+	  getPages().home().assertLoginDialogWasClosed();
+	}
+
+	@Then("the notification \"$message\" is displayed")
+	public void thenTheNotificationLoginCanceledIsDisplayed(String message) {
+		getPages().home().assertNotificationWasDisplayed(message);
+	}
+
+
 }

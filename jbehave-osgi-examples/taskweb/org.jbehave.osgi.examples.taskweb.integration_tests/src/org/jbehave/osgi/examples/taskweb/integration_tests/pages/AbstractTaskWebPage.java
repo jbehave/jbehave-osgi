@@ -39,16 +39,47 @@ public class AbstractTaskWebPage extends WebDriverPage {
 	public void waitUntilElementIsDisabled(final By by,
 			final long timeOutInSeconds) {
 		new WebDriverWait(webDriver(), timeOutInSeconds)
-		.until(new ExpectedCondition<Boolean>() {
+				.until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(by).isEnabled();
+					}
+				});
+	}
+
+	public void waitUntilElementBePresent(final By by, long timeOutInSeconds) {
+		WebDriverWait wait = new WebDriverWait(webDriver(), timeOutInSeconds);
+		wait.until(ExpectedConditions.presenceOfElementLocated(by));
+	}
+
+	public void waitUntilDialogBeClosed(final String dialogId) {
+		WebDriverWait wait = new WebDriverWait(webDriver(), 5);
+		wait.until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
-				return d.findElement(by).isEnabled();
+				try {
+					return d.findElement(By.id(dialogId)) == null;					
+				} catch (Exception e) {
+					return true;
+				}
 			}
 		});
 	}
 
-	public void waitElementBePresent(final By by, long timeOutInSeconds) {
+	public void waitUntilNotificationAppears(final String notificationMessage,
+			long timeOutInSeconds) {
 		WebDriverWait wait = new WebDriverWait(webDriver(), timeOutInSeconds);
-		wait.until(ExpectedConditions.presenceOfElementLocated(by));
+		wait.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				By by = By.cssSelector("v-Notification");
+
+				return d.findElement(by).getText().equals(notificationMessage);
+			}
+		});
+	}
+
+	public void waitAndClickOnCurrentNotification() {
+		WebElement myDynamicElement = findElementWithWait(
+				By.cssSelector("v-Notification"), 5);
+		myDynamicElement.click();
 	}
 
 }
