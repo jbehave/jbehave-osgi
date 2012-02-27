@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.jbehave.osgi.equinox.features.core_0.0.2.qualifier.jar" id="org.jbehave.osgi.equinox.features.core" version="0.0.2.qualifier" os="linux,macosx,win32" arch="x86,x86_64">
+   <feature id="org.jbehave.osgi.equinox.features.core" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
-   <feature url="features/org.jbehave.osgi.equinox.features.web_0.0.2.qualifier.jar" id="org.jbehave.osgi.equinox.features.web" version="0.0.2.qualifier" os="linux,macosx,win32" arch="x86,x86_64">
+   <feature id="org.jbehave.osgi.equinox.features.web" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.core.source" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.web.source" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
    <category-def name="jbehave_equinox_category_id" label="JBehave OSGi : Equinox">
       <description>
-         JBehave OSGi : Equinox
+         JBehave OSGi : Eclipse Equinox Distribution
       </description>
    </category-def>
 </site>

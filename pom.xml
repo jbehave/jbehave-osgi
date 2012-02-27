@@ -14,10 +14,11 @@
 	</prerequisites>
 
 	<properties>
-		
-		<!-- This is the version of the next realease to generated. It is used by tycho-version-plugin -->
+
+		<!-- This is the version of the next realease to generated. It is used 
+			by tycho-version-plugin -->
 		<next-release>0.0.3-SNAPSHOT</next-release>
-				
+
 		<tycho-version>0.14.0</tycho-version>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
 		<jbehave.core.version>3.6-SNAPSHOT</jbehave.core.version>
@@ -70,7 +71,7 @@
 		</pluginManagement>
 	</build>
 	<profiles>
-			<profile>
+		<profile>
 			<id>prepare-for-next-release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -103,7 +104,7 @@
 				<module>jbehave-osgi-web</module>
 			</modules>
 		</profile>
-	
+
 		<profile>
 			<id>services</id>
 			<!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho) -->

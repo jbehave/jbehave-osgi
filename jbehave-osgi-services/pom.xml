@@ -10,8 +10,8 @@
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.services</artifactId>
-	<name>JBehave OSGi : Services Bundle</name>
-	<description>Provides OSGi Services to interface to JBehave.</description>
+	<name>JBehave OSGi : Core Services Bundle</name>
+	<description>Provides OSGi services used to interact with JBehave core features.</description>
 	<packaging>bundle</packaging>
 
 	<dependencies>
@@ -151,6 +151,46 @@
 						<Embed-Transitive>true</Embed-Transitive>
 						<!-- <_nouses>true</_nouses> -->
 					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>parse-version</id>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- enable source bundle generation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+							<Bundle-Name>${project.name}</Bundle-Name>
+							<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
+							<Bundle-Vendor>${organization.name}</Bundle-Vendor>
+							<Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
+							<Eclipse-SourceBundle>${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
