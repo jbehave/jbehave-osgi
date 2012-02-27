@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jbehave.osgi</groupId>
 	<artifactId>org.jbehave.osgi</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi</name>
 	<description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
@@ -14,10 +14,17 @@
 	</prerequisites>
 
 	<properties>
+		
+		<!-- This is the version of the next realease to generated. It is used by tycho-version-plugin -->
+		<next-release>0.0.3-SNAPSHOT</next-release>
+				
+		<tycho-version>0.14.0</tycho-version>
+		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
 		<jbehave.core.version>3.6-SNAPSHOT</jbehave.core.version>
 		<jbehave.core.osgi.version>3.6.0.qualifier</jbehave.core.osgi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jbehave-web-selenium>3.5-SNAPSHOT</jbehave-web-selenium>
+		<jbehave-web-version>3.5-SNAPSHOT</jbehave-web-version>
+		<jbehave-core-version>3.6-SNAPSHOT</jbehave-core-version>
 		<selenium.version>2.19.0</selenium.version>
 	</properties>
 
@@ -63,6 +70,40 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+			<profile>
+			<id>prepare-for-next-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>org.eclipse.tycho:tycho-versions-plugin:set-version</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-versions-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>change-next-release</id>
+								<goals>
+									<goal>set-version</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<newVersion>${next-release}</newVersion>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+				<module>jbehave-osgi-equinox</module>
+				<module>jbehave-osgi-services</module>
+				<module>jbehave-osgi-web</module>
+			</modules>
+		</profile>
+	
 		<profile>
 			<id>services</id>
 			<!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho) -->

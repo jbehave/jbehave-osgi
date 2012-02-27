@@ -7,7 +7,6 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.taskweb</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.taskweb.integration_tests</artifactId>
@@ -88,7 +87,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>com.c4biz.osgiutils.vaadin6.shiro</id>
+							<id>com.c4biz.osgiutils.vaadin.equinox.shiro</id>
 							<level>4</level>
 							<autoStart>true</autoStart>
 						</bundle>

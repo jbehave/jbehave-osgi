@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.equinox.features.core"
       label="JBehave Equinox Feature - Core (required)"
-      version="0.0.2"
+      version="0.0.3.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">

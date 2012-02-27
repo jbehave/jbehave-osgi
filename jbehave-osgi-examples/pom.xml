@@ -7,6 +7,7 @@
 		<artifactId>org.jbehave.osgi</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
+
 	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples</artifactId>
 	<packaging>pom</packaging>
@@ -14,11 +15,9 @@
 	<description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>0.14.0</tycho-version>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
-		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-		<jbehave-osgi-p2-repo>http://cvgaviao.github.com/jbehave-osgi/p2/</jbehave-osgi-p2-repo>
+		<jbehave-osgi-p2-repo>http://cvgaviao.github.com/jbehave-osgi/p2/indigo</jbehave-osgi-p2-repo>
+		<osgi-utils-p2-repo>http://cvgaviao.github.com/osgi-utils/p2/indigo/</osgi-utils-p2-repo>
 	</properties>
 
 	<profiles>
@@ -91,6 +90,5 @@
 				<module>trader-manifest-first</module>
 			</modules>
 		</profile>
-
 	</profiles>
 </project>

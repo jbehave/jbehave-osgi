@@ -116,11 +116,6 @@
 						</dependency>
 						<dependency>
 							<type>eclipse-feature</type>
-							<artifactId>org.jbehave.osgi.equinox.features.deps</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>eclipse-feature</type>
 							<artifactId>org.jbehave.osgi.examples.rcpmail.feature</artifactId>
 							<version>0.0.0</version>
 						</dependency>

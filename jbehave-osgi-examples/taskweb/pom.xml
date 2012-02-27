@@ -49,6 +49,30 @@
 		</profile>
 	</profiles>
 
+	<repositories>
+		<repository>
+			<id>jbehave-osgi</id>
+			<url>${jbehave-osgi-p2-repo}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>osgi-utils</id>
+			<url>${osgi-utils-p2-repo}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
 	<build>
 		<resources>
 			<resource>
@@ -93,17 +117,6 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>target-platform-configuration</artifactId>
 					<version>${tycho-version}</version>
-					<configuration>
-						<resolver>p2</resolver>
-						<target>
-							<artifact>
-								<groupId>${project.groupId}</groupId>
-								<artifactId>org.jbehave.osgi.examples.taskweb.target</artifactId>
-								<version>${project.version}</version>
-								<classifier>taskweb_indigo_building_tycho</classifier>
-							</artifact>
-						</target>
-					</configuration>
 				</plugin>
 
 				<plugin>

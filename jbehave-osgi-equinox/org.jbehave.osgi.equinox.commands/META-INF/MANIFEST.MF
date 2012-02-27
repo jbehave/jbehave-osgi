@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave OSGi Equinox : Commands Bundle
 Bundle-SymbolicName: org.jbehave.osgi.equinox.commands;singleton:=true
-Bundle-Version: 0.0.2
+Bundle-Version: 0.0.3.qualifier
 Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

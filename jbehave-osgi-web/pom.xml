@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>org.jbehave.osgi</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.web</artifactId>
 	<name>JBehave OSGi : Web Support Bundle</name>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>org.jbehave.web</groupId>
 			<artifactId>jbehave-web-selenium</artifactId>
-			<version>${jbehave-web-selenium}</version>
+			<version>${jbehave-web-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>

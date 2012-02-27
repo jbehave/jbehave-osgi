@@ -5,16 +5,12 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.taskweb</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.taskweb.product</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>Task Manager Web Example : Vaadin Embedded in Equinox with Jetty Product</name>
 
-	<properties>
-		<product-id>client.product.rcp</product-id>
-	</properties>
 
 	<dependencies>
 		<dependency>
