@@ -44,7 +44,7 @@ public class TaskManagerApp extends Application implements
 	 * Set the current application instance
 	 */
 	private static void setInstance(TaskManagerApp application) {
-		if (getInstance() == null) {
+		if (currentApplication.get() == null) {
 			currentApplication.set(application);
 		}
 	}
@@ -60,6 +60,7 @@ public class TaskManagerApp extends Application implements
 	protected void activate(ComponentContext context,
 			Map<String, Object> properties) {
 
+		
 		getLogService().log(LogService.LOG_DEBUG,
 				"Activating TaskWeb Application OSGi Component.");
 	}

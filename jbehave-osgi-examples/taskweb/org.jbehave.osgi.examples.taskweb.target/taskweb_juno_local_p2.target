@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="taskweb_juno_local_p2" sequenceNumber="2">
+<locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.jbehave.osgi.equinox.features.core.feature.group" version="0.0.2"/>
+<unit id="org.jbehave.osgi.equinox.features.web.feature.group" version="0.0.2"/>
+<repository location="file:/Users/cvgaviao/Development/C4Biz_Projects/JBehave/jbehave-osgi-publish-p2/p2/indigo/"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.c4biz.osgiutils.feature.assertions.feature.group" version="0.0.5.201202261627"/>
+<unit id="com.c4biz.osgiutils.feature.logging.juno.feature.group" version="0.0.5.201202261627"/>
+<unit id="com.c4biz.osgiutils.feature.vaadin.jetty.shiro.juno.feature.group" version="0.0.5.201202261627"/>
+<unit id="com.c4biz.osgiutils.feature.cm.juno.feature.group" version="0.0.5.201202261627"/>
+<repository location="file:/Users/cvgaviao/Development/C4Biz_Projects/OsgiUtilities/OSGi-Utils-Web/p2/juno/"/>
+</location>
+</locations>
+</target>

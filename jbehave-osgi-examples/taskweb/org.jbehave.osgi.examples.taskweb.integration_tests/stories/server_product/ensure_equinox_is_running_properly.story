@@ -16,7 +16,7 @@ Then all needed bundles are installed:
 |com.c4biz.osgiutils.configuration.manager|2|true|
 |com.c4biz.osgiutils.jdk.deps|default|false|
 |-- com.c4biz.osgiutils.logging.reader|1|true --|
-|com.c4biz.osgiutils.vaadin6.shiro|4|true|
+|com.c4biz.osgiutils.vaadin.equinox.shiro|4|true|
 |com.vaadin|default|default|
 |javax.el|default|default|
 |javax.servlet*3.0.0.v201112011016|default|default|
