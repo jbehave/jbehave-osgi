@@ -6,14 +6,20 @@
 		<artifactId>org.jbehave.osgi.equinox</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
-	<name>JBehave OSGI Equinox : Web Support Feature</name>
+	<artifactId>org.jbehave.osgi.equinox.features.examples.deps</artifactId>
+	<name>JBehave OSGI Equinox : Examples POM_FIRST Dependencies Feature</name>
 	<packaging>eclipse-feature</packaging>
 	<dependencies>
 		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.web</artifactId>
+			<groupId>org.jbehave.osgi.examples</groupId>
+			<artifactId>org.jbehave.osgi.examples.trader.bundle.code</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi.examples</groupId>
+			<artifactId>org.jbehave.osgi.examples.trader.bundle.embedders</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 	</dependencies>
 </project>
