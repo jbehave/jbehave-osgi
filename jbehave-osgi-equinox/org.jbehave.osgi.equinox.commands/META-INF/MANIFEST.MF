@@ -7,6 +7,8 @@ Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.jbehave.osgi.equinox.commands
-Require-Bundle: org.jbehave.osgi.services;bundle-version="0.0.2",
- org.eclipse.osgi;bundle-version="3.7.1"
+Import-Package: org.apache.commons.collections,
+ org.apache.commons.lang,
+ org.eclipse.osgi.framework.console,
+ org.jbehave.osgi.services
 

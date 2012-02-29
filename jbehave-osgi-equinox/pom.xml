@@ -16,8 +16,7 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGI Equinox</name>
 	<properties>
-		<tycho-version>0.14.0</tycho-version>
-		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
+		<tycho-version>0.14.1</tycho-version>
 		<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>
 		<!-- Only will work on Indigo(3.7) and later because Helios(3.6) doesn't 
@@ -35,6 +34,7 @@
 		<module>org.jbehave.osgi.equinox.features.web</module>
 		<module>org.jbehave.osgi.equinox.features.core.source</module>
 		<module>org.jbehave.osgi.equinox.features.web.source</module>
+		<module>org.jbehave.osgi.equinox.features.examples.deps</module>
 		<module>org.jbehave.osgi.equinox.p2</module>
 	</modules>
 
@@ -152,11 +152,6 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 				<extensions>true</extensions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
 			</plugin>
 
 			<!-- configure target platform resolution -->

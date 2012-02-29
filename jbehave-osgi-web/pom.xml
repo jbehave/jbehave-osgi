@@ -195,6 +195,8 @@
 						<Embed-Transitive>true</Embed-Transitive>
 						<Embed-Directory>jars</Embed-Directory>
 						<_nouses>true</_nouses>
+						<_sources>false</_sources>
+						<_snapshot>${build.timestamp}</_snapshot>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -209,9 +211,11 @@
 						<goals>
 							<goal>parse-version</goal>
 						</goals>
+						<phase>validate</phase>
 					</execution>
 				</executions>
 			</plugin>
+
 			<!-- enable source bundle generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -227,14 +231,18 @@
 					</execution>
 				</executions>
 				<configuration>
+					<excludeResources>true</excludeResources>
+					<excludes>
+						<exclude>**/jars/**</exclude>
+					</excludes>
 					<archive>
 						<manifestEntries>
 							<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 							<Bundle-Name>${project.name}</Bundle-Name>
 							<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
 							<Bundle-Vendor>${organization.name}</Bundle-Vendor>
-							<Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
-							<Eclipse-SourceBundle>${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+							<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}</Bundle-Version>
+							<Eclipse-SourceBundle>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}";roots:="."</Eclipse-SourceBundle>
 						</manifestEntries>
 					</archive>
 				</configuration>

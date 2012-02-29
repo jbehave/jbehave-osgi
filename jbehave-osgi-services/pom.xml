@@ -147,12 +147,14 @@
 							org.apache.commons.collections.*;version="3.2.1",
 							org.apache.commons.io.*;version="2.1.0"
 						</_exportcontents>
+						<_sources>false</_sources>
+						<_snapshot>${build.timestamp}</_snapshot>
 						<Embed-Directory>jars</Embed-Directory>
 						<Embed-Transitive>true</Embed-Transitive>
-						<!-- <_nouses>true</_nouses> -->
 					</instructions>
 				</configuration>
 			</plugin>
+			<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -163,9 +165,11 @@
 						<goals>
 							<goal>parse-version</goal>
 						</goals>
+						<phase>validate</phase>
 					</execution>
 				</executions>
 			</plugin>
+
 			<!-- enable source bundle generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -181,14 +185,18 @@
 					</execution>
 				</executions>
 				<configuration>
+					<excludeResources>true</excludeResources>
+					<excludes>
+						<exclude>**/jars/**</exclude>
+					</excludes>
 					<archive>
 						<manifestEntries>
 							<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 							<Bundle-Name>${project.name}</Bundle-Name>
 							<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
 							<Bundle-Vendor>${organization.name}</Bundle-Vendor>
-							<Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
-							<Eclipse-SourceBundle>${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+							<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}</Bundle-Version>
+							<Eclipse-SourceBundle>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}";roots:="."</Eclipse-SourceBundle>
 						</manifestEntries>
 					</archive>
 				</configuration>
