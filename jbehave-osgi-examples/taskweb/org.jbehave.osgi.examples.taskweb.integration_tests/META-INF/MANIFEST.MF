@@ -9,6 +9,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit;bundle-version="4.8.2",
  com.c4biz.osgiutils.vaadin.equinox.shiro;bundle-version="0.0.5",
  com.c4biz.osgiutils.configuration.manager;bundle-version="0.0.5",
+ com.c4biz.osgiutils.assertions;bundle-version="0.0.6";visibility:=reexport,
  ch.qos.logback.classic;bundle-version="1.0.0",
  ch.qos.logback.core;bundle-version="1.0.0",
  com.vaadin;bundle-version="6.7.5",
@@ -52,8 +53,7 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.core.variables;bundle-version="3.2.500",
  org.jbehave.osgi.web;bundle-version="0.0.2",
  org.jbehave.osgi.examples.taskweb.server;bundle-version="0.0.2",
- org.jbehave.osgi.examples.taskweb.vaadin;bundle-version="0.0.2",
- com.c4biz.osgiutils.assertions;bundle-version="0.0.6"
+ org.jbehave.osgi.examples.taskweb.vaadin;bundle-version="0.0.2"
 Export-Package: org.jbehave.osgi.examples.taskweb.integration_tests.embedders,
  org.jbehave.osgi.examples.taskweb.integration_tests.pages,
  org.jbehave.osgi.examples.taskweb.integration_tests.steps
