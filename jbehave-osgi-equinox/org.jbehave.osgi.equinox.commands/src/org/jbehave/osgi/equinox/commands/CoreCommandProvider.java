@@ -3,8 +3,6 @@ package org.jbehave.osgi.equinox.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.eclipse.osgi.framework.console.CommandProvider;
 import org.jbehave.osgi.services.EmbedderService;
@@ -36,7 +34,7 @@ public class CoreCommandProvider implements
 
 		EmbedderService embedderService = getEmbedderService();
 		if (embedderService.isStarted()) {
-			if (CollectionUtils.isNotEmpty(includes)) {
+			if (!includes.isEmpty()) {
 				embedderService.runStoriesWithAnnotatedEmbedderRunner(includes);
 			} else {
 				intp.println("One or more Annotated Embedder class should be informed.");
@@ -62,7 +60,7 @@ public class CoreCommandProvider implements
 		List<String> list = new ArrayList<String>();
 		if (csv != null) {
 			for (String string : csv.split(",")) {
-				if (StringUtils.isNotEmpty(string)) {
+				if (!string.isEmpty()) {
 					list.add(string);
 				}
 			}
