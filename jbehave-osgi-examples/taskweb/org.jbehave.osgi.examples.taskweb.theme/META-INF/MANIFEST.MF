@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.jbehave.osgi.examples.taskweb.theme;singleton:=true
-Bundle-Version: 0.0.2.qualifier
-Bundle-Vendor: %providerName
-Fragment-Host: com.vaadin;bundle-version="6.7.5"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-Name: %pluginName
-Bundle-ClassPath: theme/

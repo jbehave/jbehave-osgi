@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" factory="com.vaadin.Application/taskweb" name="Tasks">
-   <implementation class="org.jbehave.osgi.examples.taskweb.application.TaskManagerApp"/>
-   <reference bind="bindLogService" cardinality="1..1" interface="org.osgi.service.log.LogService" name="LogServiceCoreConfig" policy="static" unbind="unbindLogService"/>
-   
-</scr:component>
