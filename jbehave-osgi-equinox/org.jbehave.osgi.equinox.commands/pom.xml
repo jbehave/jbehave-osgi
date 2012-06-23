@@ -6,7 +6,7 @@
 
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>org.jbehave.osgi.equinox</artifactId>
+		<artifactId>jbehave-osgi-equinox</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
@@ -15,20 +15,29 @@
 	<name>JBehave OSGi Equinox : Commands Bundle</name>
 	<description>Provides OSGi Commands that interfaces with the JBehave OSGi services.</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 			</plugin>
-
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<resolver>p2</resolver>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
 </project>

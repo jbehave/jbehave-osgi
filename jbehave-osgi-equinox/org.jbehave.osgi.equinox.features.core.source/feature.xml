@@ -25,7 +25,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.jbehave.osgi.services.source"
+         id="org.jbehave.osgi.core.source"
          download-size="0"
          install-size="0"
          version="0.0.0"

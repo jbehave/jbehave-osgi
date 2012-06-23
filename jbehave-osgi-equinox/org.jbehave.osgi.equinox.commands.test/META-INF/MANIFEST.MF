@@ -1,12 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave OSGi Equinox : Commands Bundle Tests
-Bundle-SymbolicName: org.jbehave.osgi.services.test
+Bundle-SymbolicName: org.jbehave.osgi.equinox.commands.test
 Bundle-Version: 0.0.3.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Fragment-Host: org.jbehave.osgi.equinox.commands;bundle-version="0.0.2"
 Import-Package: 
- org.jbehave.osgi.services;version="0.0.2",
  org.osgi.framework;version="1.6.0"
 Export-Package: org.jbehave.osgi.equinox.commands.test
 Require-Bundle: org.junit;bundle-version="4.8.2",

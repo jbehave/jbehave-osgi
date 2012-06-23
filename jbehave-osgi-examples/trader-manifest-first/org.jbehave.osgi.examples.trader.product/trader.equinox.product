@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="JBehave OSGi Equinox : Equinox Product" uid="org.jbehave.osgi.examples.trader.product" id="org.jbehave.osgi.examples.trader.application.product" application="org.jbehave.osgi.examples.trader.application.application" version="0.0.2.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="JBehave OSGi Equinox : Trader Equinox Product Demo" uid="org.jbehave.osgi.examples.trader.product" id="org.jbehave.osgi.examples.trader.application.product" application="org.jbehave.osgi.examples.trader.application.application" version="0.0.2.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <text>

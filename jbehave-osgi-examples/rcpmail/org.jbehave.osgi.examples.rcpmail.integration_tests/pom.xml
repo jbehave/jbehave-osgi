@@ -91,7 +91,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.jbehave.osgi.services</id>
+							<id>org.jbehave.osgi.core</id>
 							<level>4</level>
 							<autoStart>true</autoStart>
 						</bundle>

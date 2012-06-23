@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>org.jbehave.osgi.equinox</artifactId>
+		<artifactId>jbehave-osgi-equinox</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.jbehave.osgi.services.test</artifactId>
+	<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 	<name>JBehave OSGi Equinox : Commands Bundle Tests</name>
 
@@ -24,7 +24,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-						<include>org.jbehave.osgi.services.test.CoreCommandProviderTest</include>
+						<include>org.jbehave.osgi.equinox.commands.test.CoreCommandProviderTest</include>
 					</includes>
 					<failIfNoTests>false</failIfNoTests>
 					<showEclipseLog>true</showEclipseLog>
@@ -51,7 +51,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.jbehave.osgi.services</id>
+							<id>org.jbehave.osgi.core</id>
 							<level>4</level>
 							<autoStart>true</autoStart>
 						</bundle>
@@ -70,12 +70,12 @@
 					<dependencies>
 						<dependency>
 							<type>p2-installable-unit</type>
-							<artifactId>org.jbehave.osgi.services</artifactId>
+							<artifactId>org.jbehave.osgi.core</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 						<dependency>
 							<type>eclipse-plugin</type>
-							<artifactId>org.jbehave.osgi.services.test</artifactId>
+							<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
@@ -100,7 +100,7 @@
 
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

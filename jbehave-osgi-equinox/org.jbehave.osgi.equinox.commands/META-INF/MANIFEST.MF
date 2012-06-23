@@ -8,5 +8,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.jbehave.osgi.equinox.commands
 Import-Package: org.eclipse.osgi.framework.console,
- org.jbehave.osgi.services
-
+ org.jbehave.osgi.core.service
+Bundle-Vendor: JBehave.org

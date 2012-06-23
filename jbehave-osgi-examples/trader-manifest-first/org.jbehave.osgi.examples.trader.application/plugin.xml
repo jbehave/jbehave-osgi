@@ -21,11 +21,11 @@
             name="JBehave OSGi Equinox : Equinox Product">
          <property
                name="appName"
-               value="JBehave OSGi Equinox : Equinox Product">
+               value="JBehave OSGi Equinox : Trader Equinox Product">
          </property>
          <property
                name="aboutText"
-               value="FEAST - BackOffice - Equinox Server with Remote Communication Support.">
+               value="JBehave OSGi - Trader Equinox Product.">
          </property>
       </product>
    </extension>

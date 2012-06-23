@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>org.jbehave.osgi.equinox</artifactId>
 		<groupId>org.jbehave.osgi</groupId>
+		<artifactId>jbehave-osgi-equinox</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.equinox.p2</artifactId>
@@ -66,10 +66,9 @@
 					<name>P2_BASE_FOLDER</name>
 				</property>
 			</activation>
-			<properties>			
+			<properties>
 				<from-repo>${project.build.directory}/repository</from-repo>
-				<to_repo_base>${P2_BASE_FOLDER}</to_repo_base>
-				<to-repo>${to_repo_base}/p2/indigo</to-repo>
+				<to_repo_final>${P2_BASE_FOLDER}/${to-repo}</to_repo_final>
 			</properties>
 			<build>
 				<plugins>
@@ -81,11 +80,12 @@
 								<phase>verify</phase>
 								<configuration>
 									<target>
-										<delete>
-											<fileset includes="**/*" dir="${to-repo}" />
+										<delete includeemptydirs="true" failonerror="false">
+											<fileset includes="**/*" dir="${to_repo_final}" />
 										</delete>
-										<!-- <delete dir="${to-repo}" /> -->
-										<copy todir="${to-repo}">
+										<delete dir="${to_repo_final}" />
+										<mkdir dir="${to_repo_final}" />
+										<copy todir="${to_repo_final}">
 											<fileset dir="${from-repo}" includes="**/*" />
 										</copy>
 									</target>
@@ -114,23 +114,23 @@
 			<version>${project.version}</version>
 			<type>eclipse-feature</type>
 		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.features.core.source</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-feature</type>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.features.web.source</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-feature</type>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.features.examples.deps</artifactId>
-			<version>${project.version}</version>
-			<type>eclipse-feature</type>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.jbehave.osgi</groupId> -->
+		<!-- <artifactId>org.jbehave.osgi.equinox.features.core.source</artifactId> -->
+		<!-- <version>${project.version}</version> -->
+		<!-- <type>eclipse-feature</type> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.jbehave.osgi</groupId> -->
+		<!-- <artifactId>org.jbehave.osgi.equinox.features.web.source</artifactId> -->
+		<!-- <version>${project.version}</version> -->
+		<!-- <type>eclipse-feature</type> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.jbehave.osgi</groupId> -->
+		<!-- <artifactId>org.jbehave.osgi.equinox.features.examples.deps</artifactId> -->
+		<!-- <version>${project.version}</version> -->
+		<!-- <type>eclipse-feature</type> -->
+		<!-- </dependency> -->
 	</dependencies>
 </project>

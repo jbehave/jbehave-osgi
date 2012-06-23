@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jbehave.osgi</groupId>
-	<artifactId>org.jbehave.osgi</artifactId>
+	<artifactId>jbehave-osgi</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi</name>
@@ -19,14 +19,15 @@
 			by tycho-version-plugin -->
 		<next-release>0.0.3-SNAPSHOT</next-release>
 
-		<jbehave.core.version>3.6-SNAPSHOT</jbehave.core.version>
-		<jbehave.core.osgi.version>3.6.0.qualifier</jbehave.core.osgi.version>
+		<jbehave.core.version>3.6.7</jbehave.core.version>
+		<jbehave.core.osgi.version>3.6.7</jbehave.core.osgi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jbehave-web-version>3.5-SNAPSHOT</jbehave-web-version>
-		<jbehave-core-version>3.6-SNAPSHOT</jbehave-core-version>
-		<selenium.version>2.19.0</selenium.version>
-		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-		<build.timestamp>${maven.build.timestamp}</build.timestamp>
+		<jbehave-web-version>3.5.3</jbehave-web-version>
+		<selenium.version>2.21.0</selenium.version>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
+		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
+		<tycho-version>0.15.0</tycho-version>
 	</properties>
 
 	<dependencyManagement>
@@ -100,20 +101,18 @@
 			<modules>
 				<module>jbehave-osgi-examples</module>
 				<module>jbehave-osgi-equinox</module>
-				<module>jbehave-osgi-services</module>
-				<module>jbehave-osgi-web</module>
+				<module>jbehave-osgi-bundles</module>
 			</modules>
 		</profile>
 
 		<profile>
-			<id>services</id>
-			<!-- NOTE: we can't run services (bnd) in same reactor of equinox (tycho) -->
+			<id>bundles</id>
+			<!-- NOTE: we can't build the bundles (bnd) in same maven reactor than equinox (tycho) -->
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>jbehave-osgi-services</module>
-				<module>jbehave-osgi-web</module>
+				<module>jbehave-osgi-bundles</module>
 			</modules>
 		</profile>
 		<profile>

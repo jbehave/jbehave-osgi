@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>org.jbehave.osgi.equinox</artifactId>
+		<artifactId>jbehave-osgi-equinox</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.equinox.features.core.source</artifactId>
@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 			<classifier>sources</classifier>
 		</dependency>

@@ -8,11 +8,14 @@
 <listAttribute key="M2_PROPERTIES"/>
 <stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
 <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
-<booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="true"/>
+<booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
 <booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${workspace}"/>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="logback.configurationFile" value="${project_loc:jbehave-osgi/jbehave-osgi-equinox}/logback-test.xml"/>
+</mapAttribute>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:/org.jbehave.osgi}"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${project_loc:/jbehave-osgi}"/>
 </launchConfiguration>

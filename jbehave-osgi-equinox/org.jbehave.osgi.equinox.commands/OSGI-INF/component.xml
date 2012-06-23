@@ -4,5 +4,5 @@
    <service>
       <provide interface="org.eclipse.osgi.framework.console.CommandProvider"/>
    </service>
-   <reference bind="setEmbedderService" cardinality="1..1" interface="org.jbehave.osgi.services.EmbedderService" name="EmbedderService" policy="static" unbind="unsetEmbedderService"/>
+   <reference bind="setEmbedderService" cardinality="1..1" interface="org.jbehave.osgi.core.service.EmbedderService" name="EmbedderService" policy="static" unbind="unsetEmbedderService"/>
 </scr:component>

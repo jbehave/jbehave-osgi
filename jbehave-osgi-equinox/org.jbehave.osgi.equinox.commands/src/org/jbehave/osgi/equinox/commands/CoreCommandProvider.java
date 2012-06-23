@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.eclipse.osgi.framework.console.CommandProvider;
-import org.jbehave.osgi.services.EmbedderService;
+import org.jbehave.osgi.core.service.EmbedderService;
 
 public class CoreCommandProvider implements
 		CommandProvider {

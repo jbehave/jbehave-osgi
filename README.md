@@ -2,19 +2,17 @@
 
 JBehave OGSi was created to be able to execute JBehave stories inside an OSGi environment.
 
-For now it can be used together with Tycho to test bundles deployed in an Eclipse Equinox container, RCP products using SWTBot and Web Applications (as Vaadin) deployed as a bundle.
+For now it can be used together with Tycho to test bundles deployed in an Eclipse Equinox container, RCP products using SWTBot deployed as bundles.
 
 It is composed by 3 basic components: 
 
-- org.jbehave.osgi.services, that wraps the JBehave Core API and exposes its functionalities a service to the OSGi Container;
-- org.jbehave.osgi.web, that wraps the wraps the JBehave Selenium API and let it be used with the core service;
-- org.jbehave.osgi.equinox, which supply Equinox specifics features, a console commands and a P2 repository.
+- jbehave-osgi-bundles/org.jbehave.osgi.core, that wraps the JBehave Core API and exposes its functionalities as a service to the OSGi container;
+- jbehave-osgi-bundles/org.jbehave.osgi.web, that wraps the wraps the JBehave Web API and let it be used with the core service;
+- jbehave-osgi-equinox, which supply Equinox specifics features, as the console command.
  
-##JBehave for Equinox
+## Bulding JBehave for OSGi
 
-### Building JBehave-OSGi for Equinox
-
-* because we are using Wiring API that is part of OSGI R4.3, this module will be supported only by Indigo (3.7).
+* the minimum OSGI version needed is 4.3.
 
 The JBehave-OSGi components uses different approach to being built.
  
@@ -32,9 +30,9 @@ First build the _POM-first_ projects:
 
 2) Start the maven profile named **services**
 
-	mvn clean install -P services
+	mvn clean install -P bundles
 	
-This will install the JBehave-OSGi Service and Web components in the local maven repository.
+This will install the JBehave-OSGi Core and Web bundles in the local maven repository.
 	
 	
 Then build the _MANIFEST-first_ projects:

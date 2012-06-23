@@ -19,7 +19,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

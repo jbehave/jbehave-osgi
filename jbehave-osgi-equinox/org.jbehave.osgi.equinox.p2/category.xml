@@ -6,9 +6,6 @@
    <feature id="org.jbehave.osgi.equinox.features.web" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
-   <feature id="org.jbehave.osgi.equinox.features.examples.deps" version="0.0.0">
-      <category name="jbehave_equinox_category_id"/>
-   </feature>
    <category-def name="jbehave_equinox_category_id" label="JBehave OSGi : Equinox">
       <description>
          JBehave OSGi : Eclipse Equinox Distribution

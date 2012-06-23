@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.services</artifactId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -75,7 +75,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.jbehave.osgi.services</id>
+							<id>org.jbehave.osgi.core</id>
 							<level>3</level>
 							<autoStart>true</autoStart>
 						</bundle>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="jbehave-osgi-indigo_post_tycho_build" sequenceNumber="22">
+<locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.c4biz.osgiutils.feature.derby.feature.group" version="0.0.7.201203011738"/>
+<unit id="com.c4biz.osgiutils.feature.equinox.indigo.feature.group" version="0.0.7.201203011738"/>
+<unit id="com.c4biz.osgiutils.feature.assertions.feature.group" version="0.0.7.201203011738"/>
+<repository location="file:/Users/cvgaviao/Development/C4Biz_Projects/OsgiUtilities/osgi-utils/com.c4biz.osgiutils.p2.indigo/target/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.dbaccess.feature.feature.group" version="1.1.0.201202221656"/>
+<repository location="https://hudson.eclipse.org/hudson/job/gemini-dbaccess/lastSuccessfulBuild/artifact/gemini.dbaccess.updatesite/target/site/"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.201203011752"/>
+<repository location="file:/Users/cvgaviao/Development/Development_Eclipse/org.eclipse.gemini.jpa/org.eclipse.gemini.jpa.updatesite/target/repository/"/>
+</location>
+</locations>
+</target>
