@@ -5,7 +5,12 @@ import java.net.URL;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
-public class OsgiCodeLocations {
+/**
+ * 
+ * @author Cristiano Gavião
+ *
+ */
+public class CodeLocationsOsgi {
 
 	/**
 	 * Creates a code location URL from a file path
@@ -19,7 +24,7 @@ public class OsgiCodeLocations {
 	public static URL codeLocationFromPath(String path) {
 		try {
 			
-			BundleContext bundleContext = FrameworkUtil.getBundle(OsgiCodeLocations.class).getBundleContext();
+			BundleContext bundleContext = FrameworkUtil.getBundle(CodeLocationsOsgi.class).getBundleContext();
 			return bundleContext.getDataFile(path).toURI().toURL();
 		} catch (Exception e) {
 			throw new InvalidCodeLocation(path, e);

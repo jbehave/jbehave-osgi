@@ -1,5 +1,7 @@
 package org.jbehave.osgi.core.io;
 
+import static org.osgi.framework.FrameworkUtil.getBundle;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -8,43 +10,35 @@ import java.util.List;
 import org.jbehave.core.io.StoryFinder;
 import org.osgi.framework.wiring.BundleWiring;
 
-import static java.util.Arrays.asList;
-import static org.osgi.framework.FrameworkUtil.getBundle;
+/**
+ * 
+ * @author Cristiano Gavião
+ *
+ */
+public class StoryFinderOsgi extends StoryFinder {
 
-public class OsgiStoryFinder extends StoryFinder {
-
-    public OsgiStoryFinder() {
+	private final Class<?> testClass;
+	
+    public StoryFinderOsgi(Class<?> testClass) {
         super();
+        this.testClass = testClass;
     }
 
-    public OsgiStoryFinder(String classNameExtension) {
+    public StoryFinderOsgi(String classNameExtension, Class<?> testClass) {
         super(classNameExtension);
+        this.testClass = testClass;
     }
 
-    public OsgiStoryFinder(Comparator<? super String> sortingComparator) {
+    public StoryFinderOsgi(Comparator<? super String> sortingComparator, Class<?> testClass) {
         super(sortingComparator);
-    }
-
-    /**
-     * Finds paths from a base package, allowing for single include/exclude
-     * pattern. Paths found are sorted by {@link StoryFinder#sort(List<String>)}
-     * .
-     * 
-     * @param searchInURL the base URL to search in
-     * @param include the include pattern, or <code>""</code> if none
-     * @param exclude the exclude pattern, or <code>""</code> if none
-     * @return A List of paths found
-     */
-    public List<String> findPaths(String searchPackage, String include, String exclude) {
-        return sort(scan(searchPackage, asList(include), asList(exclude)));
+        this.testClass = testClass;
     }
 
     @Override
     protected List<String> scan(String basedir, List<String> includes, List<String> excludes) {
 
         List<String> scanned = new ArrayList<String>();
-
-        BundleWiring wiring = getBundle(getClass()).getBundleContext().getBundle().adapt(BundleWiring.class);
+        BundleWiring wiring = getBundle(testClass).adapt(BundleWiring.class);
 
         if (includes != null) {
             for (String filePattern : includes) {
