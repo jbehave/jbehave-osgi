@@ -3,10 +3,28 @@
    <feature id="org.jbehave.osgi.equinox.features.core" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
+   <feature id="org.jbehave.osgi.equinox.features.core.source" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
    <feature id="org.jbehave.osgi.equinox.features.web" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
-   <category-def name="jbehave_equinox_category_id" label="JBehave OSGi : Equinox">
+   <feature id="org.jbehave.osgi.equinox.features.web.source" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.interactive" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.interactive.source" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.swtbot" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <feature id="org.jbehave.osgi.equinox.features.swtbot.source" version="0.0.0">
+      <category name="jbehave_equinox_category_id"/>
+   </feature>
+   <category-def name="jbehave_equinox_category_id" label="JBehave OSGi">
       <description>
          JBehave OSGi : Eclipse Equinox Distribution
       </description>

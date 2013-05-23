@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi-equinox</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.equinox.features.core</artifactId>
 	<name>JBehave OSGI Equinox : Core Feature</name>
@@ -13,12 +13,115 @@
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.equinox.commands</artifactId>
-			<version>${project.version}</version>
+			<artifactId>org.jbehave.osgi.core</artifactId>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.hamcrest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tychoExtrasVersion}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<labelSuffix> (source)</labelSuffix>
+					<excludes>
+						<plugin id="javax.xml.stream" />
+						<plugin id="org.apache.servicemix.bundles.xmlpull" />
+						<plugin id="org.apache.servicemix.bundles.xstream" />
+						<plugin id="org.apache.servicemix.bundles.hamcrest" />
+						<plugin id="org.apache.servicemix.bundles.woodstox" />
+						<plugin id="org.apache.servicemix.bundles.paranamer" />
+						<plugin id="org.apache.servicemix.bundles.freemarker" />
+						<plugin id="org.apache.servicemix.bundles.xpp3" />
+						<plugin id="org.apache.felix.gogo.command" />
+						<plugin id="org.apache.felix.gogo.runtime" />
+						<plugin id="org.apache.felix.gogo.shell" />
+						<plugin id="javax.xml" />
+						<plugin id="org.apache.commons.io" />
+						<plugin id="org.apache.commons.collections" />
+						<plugin id="com.sun.xml.bind.extra" />
+						<plugin id="com.sun.xml.bind" />
+						<plugin id="com.ctc.wstx" />
+						<plugin id="slf4j.api" />
+						<plugin id="ch.qos.logback.core" />
+						<plugin id="ch.qos.logback.classic" />
+						<plugin id="ch.qos.logback.slf4j" />
+						<plugin id="com.google.guava" />
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- workaround while bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=398250 
+					is not fixed -->
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>attached-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

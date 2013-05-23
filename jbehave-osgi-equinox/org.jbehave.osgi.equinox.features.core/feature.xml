@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.equinox.features.core"
       label="JBehave Equinox Feature - Core (required)"
-      version="0.0.3.qualifier"
+      version="1.0.0.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">
@@ -18,16 +18,17 @@
    </license>
 
    <requires>
-      <import plugin="org.hamcrest" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.core" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.library" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.integration" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest.text" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.junit" version="4.8.2" match="equivalent"/>
+      <import plugin="org.junit" version="4.11.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guava" version="14.0.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.felix.gogo.command"/>
+      <import plugin="org.apache.felix.gogo.runtime"/>
+      <import plugin="org.apache.felix.gogo.shell"/>
+      <import plugin="org.eclipse.equinox.console"/>
+      <import plugin="org.hamcrest.core" version="1.3.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
-         id="org.jbehave.osgi.equinox.commands"
+         id="com.google.guava"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -41,21 +42,98 @@
          unpack="false"/>
 
    <plugin
-         id="org.hamcrest.integration"
+         id="org.apache.commons.io"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.hamcrest.text"
+         id="org.apache.commons.collections"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
-         id="org.hamcrest"
+         id="org.apache.commons.lang"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.commons.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="javax.xml.stream"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="javax.inject"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.xmlpull"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.xpp3"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="javax.xml"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.xstream"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.paranamer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.freemarker"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="slf4j.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="ch.qos.logback.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="ch.qos.logback.classic"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.hamcrest.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -69,7 +147,14 @@
          unpack="false"/>
 
    <plugin
-         id="org.hamcrest.core"
+         id="org.hamcrest.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.hamcrest.integration"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -79,49 +164,6 @@
          id="org.junit"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.thoughtworks.xstream"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="javax.xml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="javax.xml.stream"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.xmlpull"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="javax.inject"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.log4j"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
 </feature>

@@ -4,64 +4,16 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi-equinox</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.equinox.p2</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>JBehave OSGI Equinox : P2 Repository</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-publisher-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<publishArtifacts>true</publishArtifacts>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<includeAllDependencies>false</includeAllDependencies>
-					<createArtifactRepository>true</createArtifactRepository>
-					<compress>true</compress>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/repository</outputDirectory>
-							<resources>
-								<resource>
-									<directory>.</directory>
-									<includes>
-										<include>index.html</include>
-										<!-- <include>web/*</include> -->
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
 	<profiles>
 		<profile>
 			<id>deploy-p2</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
 				<property>
 					<name>P2_BASE_FOLDER</name>
 				</property>
@@ -114,23 +66,11 @@
 			<version>${project.version}</version>
 			<type>eclipse-feature</type>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.core.source</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- <type>eclipse-feature</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.web.source</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- <type>eclipse-feature</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.examples.deps</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- <type>eclipse-feature</type> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.equinox.features.interactive</artifactId>
+			<version>${project.version}</version>
+			<type>eclipse-feature</type>
+		</dependency>
 	</dependencies>
 </project>

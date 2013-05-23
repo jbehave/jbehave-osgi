@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.equinox.features.web"
       label="JBehave Equinox Feature - Web Support"
-      version="0.0.3.qualifier"
+      version="1.0.0.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">
@@ -17,25 +17,13 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="org.jbehave.osgi.equinox.features.core"
-         version="0.0.0"/>
-
    <requires>
-      <import plugin="org.apache.commons.io" version="2.0.1" match="equivalent"/>
-      <import plugin="org.w3c.css.sac" version="1.3.0" match="equivalent"/>
-      <import plugin="org.apache.xalan" version="2.7.1" match="equivalent"/>
+      <import feature="org.jbehave.osgi.equinox.features.core" version="0.0.0"/>
+      <import feature="org.eclipse.equinox.server.jetty" version="1.1.0.v20130429-1600"/>
    </requires>
 
    <plugin
          id="org.jbehave.osgi.web"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.io"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -56,14 +44,42 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.xalan"
+         id="org.apache.xml.resolver"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.apache.xml.resolver"
+         id="org.apache.servicemix.bundles.bcel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.xalan"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.servicemix.bundles.xerces"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.servicemix.specs.stax-api-1.2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.servicemix.specs.jaxp-api-1.4"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -77,17 +93,63 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.xerces"
+         id="com.ning.async-http-client"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
-         id="javax.xml"
+         id="org.jboss.netty"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.httpcomponents.httpclient"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.httpcomponents.httpcore"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.commons.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.commons.exec"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.commons.codec"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.commons.lang3"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.google.guava"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.jetty.websocket"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

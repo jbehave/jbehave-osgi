@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.jbehave.osgi.equinox.features.web.source"
-      label="JBehave Equinox Feature - Web Support Source"
-      version="0.0.3.qualifier"
+      id="org.jbehave.osgi.equinox.features.swtbot"
+      label="JBehave Equinox Feature - SwtBot Extensions Feature"
+      version="1.0.0.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">
@@ -17,8 +17,12 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import feature="org.eclipse.swtbot" version="2.1.1.201305121230"/>
+   </requires>
+
    <plugin
-         id="org.jbehave.osgi.web.source"
+         id="org.jbehave.osgi.equinox.swtbot"
          download-size="0"
          install-size="0"
          version="0.0.0"
