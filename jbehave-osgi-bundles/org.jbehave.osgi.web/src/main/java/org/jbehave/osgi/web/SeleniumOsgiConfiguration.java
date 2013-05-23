@@ -1,6 +1,6 @@
 package org.jbehave.osgi.web;
 
-import org.jbehave.osgi.core.configuration.OsgiConfiguration;
+import org.jbehave.osgi.core.configuration.ConfigurationOsgi;
 import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.WebDriverProvider;
 
@@ -9,13 +9,14 @@ import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.condition.ConditionRunner;
 import com.thoughtworks.selenium.condition.JUnitConditionRunner;
 
-public class SeleniumOsgiConfiguration extends OsgiConfiguration {
+public class SeleniumOsgiConfiguration extends ConfigurationOsgi {
 
 	private Selenium selenium;
 	private SeleniumContext seleniumContext;
 	private WebDriverProvider driverProvider;
 
-    public SeleniumOsgiConfiguration() {
+    public SeleniumOsgiConfiguration(ClassLoader classLoader) {
+    	super(classLoader);
     }
 
     public Selenium selenium() {
