@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.rcpmail.integration_tests</artifactId>
@@ -118,36 +118,6 @@
 							<type>eclipse-feature</type>
 							<artifactId>org.jbehave.osgi.examples.rcpmail.feature</artifactId>
 							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.eclipse.core</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.eclipse.junit4.headless</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.junit4_x</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.swt.finder</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.swtbot.eclipse.finder</artifactId>
-							<version>2.0.5</version>
 						</dependency>
 					</dependencies>
 				</configuration>

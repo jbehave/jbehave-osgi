@@ -13,12 +13,14 @@ import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.annotations.UsingSteps;
 import org.jbehave.core.embedder.StoryControls;
-import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.steps.ParameterConverters.DateConverter;
-import org.jbehave.osgi.configuration.OsgiConfiguration;
-import org.jbehave.osgi.embedder.OsgiEmbedder;
-import org.jbehave.osgi.examples.rcpmail.runner.SwtbotAnnotatedEmbedderRunner;
+import org.jbehave.osgi.core.configuration.ConfigurationOsgi;
+import org.jbehave.osgi.core.embedder.EmbedderOsgi;
+import org.jbehave.osgi.core.io.LoadFromBundleClasspath;
+import org.jbehave.osgi.core.io.StoryFinderOsgi;
+import org.jbehave.osgi.core.reporters.StoryReporterBuilderOsgi;
+import org.jbehave.osgi.equinox.swtbot.junit.SwtbotAnnotatedEmbedderRunner;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyDateConverter;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyEmbedder;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyRegexPrefixCapturingPatternParser;
@@ -26,8 +28,6 @@ import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedd
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyStoryControls;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedEmbedder.MyStoryLoader;
 import org.jbehave.osgi.examples.rcpmail.stories.steps.RCPmailCoreSteps;
-import org.jbehave.osgi.io.OsgiStoryFinder;
-import org.jbehave.osgi.reporters.OsgiStoryReporterBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -39,25 +39,26 @@ import org.junit.runner.RunWith;
  * <p>
  * To to be able to capture screens when errors happens in test I needed to create a specific EmbedderRunner, {@link SwtbotAnnotatedEmbedderRunner}.
  * 
- * @author cvgaviao
+ * @author Cristiano Gavião
  * 
  */
 
 @RunWith(SwtbotAnnotatedEmbedderRunner.class)
-@Configure(using = OsgiConfiguration.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
-@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+@Configure(using = ConfigurationOsgi.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
+@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = false, ignoreFailureInStories = false, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { RCPmailCoreSteps.class })
 public class RCPmailAnnotatedEmbedder extends InjectableEmbedder {
 
 	@Test
 	public void run() {
-		List<String> storyPaths = new OsgiStoryFinder().findPaths(
+		List<String> storyPaths = new StoryFinderOsgi(this.getClass()).findPaths(
 				"/stories/rcpmail", "*.story", "");
 		injectedEmbedder().runStoriesAsPaths(storyPaths);
 	}
 
-	public static class MyEmbedder extends OsgiEmbedder {
-		public MyEmbedder() {
+	public static class MyEmbedder extends EmbedderOsgi {
+		public MyEmbedder(Class<?> loadFromBundleClass) {
+			super(loadFromBundleClass);
 		}
 	}
 
@@ -68,13 +69,13 @@ public class RCPmailAnnotatedEmbedder extends InjectableEmbedder {
 		}
 	}
 
-	public static class MyStoryLoader extends LoadFromClasspath {
-		public MyStoryLoader() {
-			super();
+	public static class MyStoryLoader extends LoadFromBundleClasspath {
+		public MyStoryLoader(Class<?> loadFromBundleClass) {
+			super(loadFromBundleClass);
 		}
 	}
 
-	public static class MyReportBuilder extends OsgiStoryReporterBuilder {
+	public static class MyReportBuilder extends StoryReporterBuilderOsgi {
 		public MyReportBuilder() {
 			this.withFormats(CONSOLE, TXT, HTML, XML).withDefaultFormats();
 		}

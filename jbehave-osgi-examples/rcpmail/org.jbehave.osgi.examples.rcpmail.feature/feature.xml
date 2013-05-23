@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.examples.rcpmail.feature"
       label="JBehave Examples: RCPmail"
-      version="0.0.2.qualifier"
+      version="1.0.0.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">

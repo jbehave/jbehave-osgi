@@ -2,9 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave RCPmail IT Stories
 Bundle-SymbolicName: org.jbehave.osgi.examples.rcpmail.integration_tests;singleton:=true
-Bundle-Version: 0.0.2.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: JBehave.org
-Fragment-Host: org.jbehave.osgi.services;bundle-version="0.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
 Export-Package: org.jbehave.osgi.examples.rcpmail.stories,
  org.jbehave.osgi.examples.rcpmail.stories.embedder,
@@ -12,13 +11,16 @@ Export-Package: org.jbehave.osgi.examples.rcpmail.stories,
 Require-Bundle: 
  org.eclipse.ui,
  org.eclipse.core.runtime,
- org.hamcrest;bundle-version="1.1.0",
- org.hamcrest.core;bundle-version="1.1.0",
- org.jbehave.osgi.examples.rcpmail.application;bundle-version="0.0.2",
- org.eclipse.swtbot.eclipse.core;bundle-version="2.0.5",
- org.eclipse.swtbot.eclipse.finder;bundle-version="2.0.5",
- org.eclipse.swtbot.eclipse.junit4.headless;bundle-version="2.0.5",
- org.eclipse.swtbot.forms.finder;bundle-version="2.0.5",
- org.eclipse.swtbot.junit4_x;bundle-version="2.0.5",
- org.eclipse.swtbot.swt.finder;bundle-version="2.0.5",
- org.junit4;bundle-version="4.8.1"
+ org.jbehave.osgi.examples.rcpmail.application,
+ org.eclipse.swtbot.eclipse.core;bundle-version="2.1.0",
+ org.eclipse.swtbot.eclipse.finder;bundle-version="2.1.0",
+ org.eclipse.swtbot.eclipse.junit.headless;bundle-version="2.1.0",
+ org.eclipse.swtbot.forms.finder;bundle-version="2.1.0",
+ org.eclipse.swtbot.junit4_x;bundle-version="2.1.0",
+ org.eclipse.swtbot.swt.finder;bundle-version="2.1.0",
+ org.junit;bundle-version="4.11.0",
+ org.jbehave.osgi.core;bundle-version="1.0.0",
+ org.jbehave.osgi.equinox.swtbot;bundle-version="1.0.0",
+ org.hamcrest.library;bundle-version="1.1.0"
+JBehave-Embedders: 
+Import-Package: com.thoughtworks.paranamer;version="2.5.2"

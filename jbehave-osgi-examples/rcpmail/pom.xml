@@ -5,38 +5,13 @@
 	<parent>
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>jbehave-osgi-examples</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.rcpmail</artifactId>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi RCPmail Example</name>
 	<description>Example showing how to build an application and run JBehave stories via a MANIFEST-FIRST approach using Tycho.</description>
-
-	<properties>
-		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
-	</properties>
-
-	<repositories>
-		<repository>
-			<id>jbehave-osgi-p2</id>
-			<layout>p2</layout>
-			<url>${jbehave-osgi-p2-repo}</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>eclipse</id>
-			<layout>p2</layout>
-			<url>${eclipse-site}</url>
-		</repository>
-		<repository>
-			<id>swtbot</id>
-			<layout>p2</layout>
-			<url>${swtbot-site}</url>
-		</repository>
-	</repositories>
 
 	<profiles>
 		<profile>
@@ -69,7 +44,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
 
@@ -77,7 +51,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<resolver>p2</resolver>
@@ -86,7 +59,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<source>1.6</source>

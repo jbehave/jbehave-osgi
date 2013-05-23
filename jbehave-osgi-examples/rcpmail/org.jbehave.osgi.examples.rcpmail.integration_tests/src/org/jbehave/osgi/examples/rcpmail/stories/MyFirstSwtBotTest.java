@@ -35,16 +35,11 @@ public class MyFirstSwtBotTest {
 		bot.menu("File").menu("Open Another Message View").click();
 		
 		assertEquals(3, viewCount());
+		bot.viewByTitle("Message").close();
+		assertEquals(2, viewCount());
 	}
 
 	
-	@Test
-	public void ClosesAllMessageWindows() throws Exception {
-		bot.viewByTitle("Message").close();
-		bot.viewByTitle("Message1").close();
-
-		assertEquals(1, viewCount());
-	}
 
 	@Test
 	public void MyMailBoxContainsDrafts() throws Exception {
@@ -72,18 +67,11 @@ public class MyFirstSwtBotTest {
 		return bot.views().size();
 	}
 
-//	@Test
-//	public void testApplicationWindow() throws Exception {
-//		assertThat("Shell is null", bot.shell("RCP Product"),
-//				is(notNullValue()));
-//	}
-
-
 	@Test
 	public void testOpenMessage() throws Exception {
-		SWTBotMenu file = bot.menu("File").menu("Open Message");
+		SWTBotMenu file = bot.menu("&File").menu("Open Message");
 		file.click();
-		bot.shell("Open").bot().button("OK").click();
+		bot.activeShell().bot().button("OK").click();
 	}
 
 
