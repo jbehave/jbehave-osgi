@@ -7,7 +7,7 @@ For now it can be used together with Tycho to test bundles deployed in an Eclips
 It is composed by 3 basic components: 
 
 - jbehave-osgi-bundles/org.jbehave.osgi.core, that wraps the JBehave Core API and exposes its functionalities as a service to the OSGi container;
-- jbehave-osgi-bundles/org.jbehave.osgi.web, that wraps the wraps the JBehave Web API and let it be used with the core service;
+- jbehave-osgi-bundles/org.jbehave.osgi.web, that wraps the JBehave Web API and let it be used together with the core service;
 - jbehave-osgi-equinox, which supply Equinox specifics features, as the console command.
  
 ## Bulding JBehave for OSGi

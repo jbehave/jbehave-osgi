@@ -4,15 +4,17 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jbehave-osgi-bundles</artifactId>
 	<packaging>pom</packaging>
+	<name>JBehave OSGi : Pom-First Bundles</name>
 
 	<modules>
 		<module>org.jbehave.osgi.core</module>
 		<module>org.jbehave.osgi.web</module>
+		<module>org.jbehave.osgi.interactive</module>
 	</modules>
 
 	<build>
@@ -24,37 +26,20 @@
 					<version>${maven-bundle-plugin.version}</version>
 					<extensions>true</extensions>
 					<configuration>
+						<!-- that unpack is reaaaaly needed -->
 						<unpackBundle>true</unpackBundle>
 						<instructions>
 							<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
-							<Embed-Directory>jars</Embed-Directory>
-							<Embed-Transitive>true</Embed-Transitive>
+							<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
 							<_failok>true</_failok>
-							<_nouses>true</_nouses>
-							<_nodefaultversion>true</_nodefaultversion>
+<!-- 							<_nouses>true</_nouses> -->
 							<_snapshot>${osgi-version-qualifier}</_snapshot>
-							<_sources>false</_sources>
 							<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-							<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
 							<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
 						</instructions>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<id>p2-metadata</id>
-							<goals>
-								<goal>p2-metadata</goal>
-								<goal>update-local-index</goal>
-							</goals>
-							<phase>package</phase>
-						</execution>
-					</executions>
-				</plugin>
+
 				<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -68,12 +53,34 @@
 							</goals>
 							<phase>validate</phase>
 						</execution>
+						<execution>
+							<id>jbehave-core-version</id>
+							<goals>
+								<goal>parse-version</goal>
+							</goals>
+							<phase>validate</phase>
+							<configuration>
+								<propertyPrefix>jbehave.core</propertyPrefix>
+								<versionString>${jbehave.core.version}</versionString>
+							</configuration>
+						</execution>
+						<execution>
+							<id>jbehave-web-version</id>
+							<goals>
+								<goal>parse-version</goal>
+							</goals>
+							<phase>validate</phase>
+							<configuration>
+								<propertyPrefix>jbehave.web</propertyPrefix>
+								<versionString>${jbehave.web.version}</versionString>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.1.2</version>
+					<version>2.2.1</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
@@ -93,9 +100,9 @@
 								<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 								<Bundle-Name>${project.name}</Bundle-Name>
 								<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
-								<Bundle-Vendor>${organization.name}</Bundle-Vendor>
+								<Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
 								<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}</Bundle-Version>
-								<Eclipse-SourceBundle>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}";roots:="."</Eclipse-SourceBundle>
+								<Eclipse-SourceBundle>${project.artifactId};version="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}";roots:="."</Eclipse-SourceBundle>
 							</manifestEntries>
 						</archive>
 					</configuration>
@@ -114,20 +121,7 @@
 			<properties>
 				<osgi-version-qualifier>qualifier</osgi-version-qualifier>
 			</properties>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-bundle-plugin</artifactId>
-							<configuration>
-								<!-- PDE does not honour custom manifest location -->
-<!-- 								<manifestLocation>META-INF</manifestLocation> -->
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
+
 		</profile>
 	</profiles>
 </project>

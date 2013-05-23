@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jbehave.osgi</groupId>
 	<artifactId>jbehave-osgi</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi</name>
 	<description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
@@ -15,19 +15,19 @@
 
 	<properties>
 
-		<!-- This is the version of the next realease to generated. It is used 
+		<!-- This is the version of the next release to be generated. It is used 
 			by tycho-version-plugin -->
-		<next-release>0.0.3-SNAPSHOT</next-release>
+		<next-release>1.0.0</next-release>
 
-		<jbehave.core.version>3.6.7</jbehave.core.version>
-		<jbehave.core.osgi.version>3.6.7</jbehave.core.osgi.version>
+		<jbehave.core.version>4.0-SNAPSHOT</jbehave.core.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jbehave-web-version>3.5.3</jbehave-web-version>
-		<selenium.version>2.21.0</selenium.version>
+		<jbehave.web.version>3.5.5</jbehave.web.version>
+		<selenium.version>2.32.0</selenium.version>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
 		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
-		<tycho-version>0.15.0</tycho-version>
+		<tycho-version>0.17.0</tycho-version>
+		<tychoExtrasVersion>0.17.0</tychoExtrasVersion>
 	</properties>
 
 	<dependencyManagement>
@@ -38,16 +38,106 @@
 				<version>${jbehave.core.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-web</artifactId>
+				<version>${jbehave.web.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.6.4</version>
+				<version>1.7.3</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
-				<version>4.3.0</version>
+				<version>4.3.1</version>
 				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>4.3.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>3.0.10</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
+				<version>2.5.2_1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
+				<version>1.4.4_2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
+				<version>1.1.4c_6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
+				<version>1.1.3.1_2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
+				<version>2.3.19_1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.hamcrest</artifactId>
+				<version>1.3_1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>14.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.interactive</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.core</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.web</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.interactive</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -62,7 +152,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
+					<version>3.1</version>
 					<configuration>
 						<source>1.6</source>
 						<target>1.6</target>
@@ -72,6 +162,26 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+		<profile>
+			<id>bundles</id>
+			<!-- NOTE: we can't build the bundles (bnd) in same maven reactor than 
+				equinox (tycho) -->
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-bundles</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-equinox</module>
+			</modules>
+		</profile>
 		<profile>
 			<id>prepare-for-next-release</id>
 			<activation>
@@ -99,35 +209,23 @@
 				</plugins>
 			</build>
 			<modules>
+				<module>jbehave-osgi-bundles</module>
+				<module>jbehave-osgi-equinox</module>
 				<module>jbehave-osgi-examples</module>
-				<module>jbehave-osgi-equinox</module>
-				<module>jbehave-osgi-bundles</module>
-			</modules>
-		</profile>
-
-		<profile>
-			<id>bundles</id>
-			<!-- NOTE: we can't build the bundles (bnd) in same maven reactor than equinox (tycho) -->
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-bundles</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>equinox</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-equinox</module>
 			</modules>
 		</profile>
 	</profiles>
 
-	<developers />
-	<contributors />
+	<organization>
+		<name>JBehave.org</name>
+		<url>www.jbehave.org</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>Cristiano Gavião</id>
+			<name>Cristiano Gavião</name>
+		</developer>
+	</developers>
 
 	<scm>
 		<connection>scm:git:git://git.codehaus.org/jbehave-osgi.git</connection>
