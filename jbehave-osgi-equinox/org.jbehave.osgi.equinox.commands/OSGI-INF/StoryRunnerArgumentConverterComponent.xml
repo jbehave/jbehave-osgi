@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.jbehave.osgi.equinox.commands.converters.StoryRunnerArgumentConverter">
+   <implementation class="org.jbehave.osgi.equinox.commands.converters.StoryRunnerArgumentConverter"/>
+   <reference bind="bindStoryRunnerService" cardinality="1..n" interface="org.jbehave.osgi.interactive.services.StoryRunnerService" name="JBehaveRunnerServices" policy="dynamic" unbind="unbindStoryRunnerService"/>
+   <service>
+      <provide interface="org.apache.felix.service.command.Converter"/>
+   </service>
+</scr:component>

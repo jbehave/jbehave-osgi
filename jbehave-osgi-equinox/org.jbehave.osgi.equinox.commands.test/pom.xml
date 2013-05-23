@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi-equinox</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
@@ -24,11 +24,11 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-						<include>org.jbehave.osgi.equinox.commands.test.CoreCommandProviderTest</include>
+						<include>**/*Test.java</include>
 					</includes>
-					<failIfNoTests>false</failIfNoTests>
+					<failIfNoTests>true</failIfNoTests>
 					<showEclipseLog>true</showEclipseLog>
-					<!-- <argLine>${ui.test.vmargs}</argLine> -->
+					<argLine>-ea</argLine><!-- <argLine>${ui.test.vmargs}</argLine> -->
 					<bundleStartLevel>
 						<bundle>
 							<id>org.eclipse.equinox.common</id>
@@ -69,20 +69,20 @@
 
 					<dependencies>
 						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jbehave.osgi.core</artifactId>
+							<type>eclipse-plugin</type>
+							<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 						<dependency>
 							<type>eclipse-plugin</type>
-							<artifactId>org.jbehave.osgi.equinox.commands.test</artifactId>
+							<artifactId>org.apache.servicemix.bundles.hamcrest</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
 
 					<excludes>
 						<!-- test mojo matches TestProject be default and treats it as PojoTest -->
-						<exclude>**/Test*.class</exclude>
+						<!-- <exclude>**/Test*.class</exclude> -->
 					</excludes>
 					<useUIHarness>false</useUIHarness>
 					<useUIThread>false</useUIThread>
@@ -92,6 +92,7 @@
 
 	</build>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.equinox.commands</artifactId>
@@ -103,6 +104,12 @@
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>
+				org.apache.servicemix.bundles.hamcrest
+			</artifactId>
+			<version>1.3_1</version>
+		</dependency>
 	</dependencies>
 </project>
