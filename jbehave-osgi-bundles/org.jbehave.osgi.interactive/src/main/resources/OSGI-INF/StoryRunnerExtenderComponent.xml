@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" configuration-policy="optional" deactivate="deactivate" immediate="true" name="org.jbehave.osgi.interactive.components.StoryRunnerServiceExtenderComponent">
+   <implementation class="org.jbehave.osgi.interactive.components.StoryRunnerServiceExtenderComponent"/>
+   <reference bind="bindLogService" cardinality="0..1" interface="org.osgi.service.log.LogService" name="LogService_Embedder" policy="dynamic" unbind="unbindLogService"/>
+   <reference bind="bindConfigurationAdmin" cardinality="1..1" interface="org.osgi.service.cm.ConfigurationAdmin" name="ConfigurationAdmin_Embedder" policy="static" unbind="unbindConfigurationAdmin"/>
+   <property name="component.description" value="JBehave StoryRunner Extender Component"/>
+   <property name="service.logToConsole" type="Boolean" value="true"/>
+   <property name="service.logToService" type="Boolean" value="true"/>
+   <property name="extender.manifestHeader" type="String" value="JBehave-StoryRunner"/>
+   <property name="extender.bundleProperty" type="String" value="serviceStoryBundle"/>
+   <property name="extender.itemProperty" type="String" value="serviceStoryClass"/>
+   <property name="extender.itemClassifierProperty" type="String" value="serviceStoryType"/>
+   <property name="extender.targetComponentService" type="String" value="org.jbehave.osgi.interactive.components.StoryRunnerServiceComponent"/>
+</scr:component>
