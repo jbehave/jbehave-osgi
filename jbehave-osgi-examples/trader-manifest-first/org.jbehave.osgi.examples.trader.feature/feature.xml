@@ -2,7 +2,7 @@
 <feature
       id="org.jbehave.osgi.examples.trader.feature"
       label="JBehave Examples: Trader"
-      version="0.0.2.qualifier"
+      version="1.0.0.qualifier"
       provider-name="JBehave.org">
 
    <description url="http://www.example.com/description">
@@ -67,13 +67,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.equinox.log"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.util"
          download-size="0"
          install-size="0"
@@ -130,68 +123,53 @@
          unpack="false"/>
 
    <plugin
-         id="org.jbehave.osgi.core"
+         id="org.eclipse.equinox.console"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.jbehave.osgi.equinox.commands"
+         id="org.apache.felix.gogo.command"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.slf4j.api"
+         id="org.apache.felix.gogo.runtime"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="ch.qos.logback.slf4j"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="ch.qos.logback.classic"
+         id="org.apache.felix.gogo.shell"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="ch.qos.logback.core"
+         id="org.jbehave.osgi.examples.trader.it"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.jbehave.osgi.examples.trader.bundle.code"
+         id="org.jbehave.osgi.examples.trader.it.steps1"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.jbehave.osgi.examples.trader.stories"
+         id="org.jbehave.osgi.examples.trader.it.steps2"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         fragment="true"
          unpack="false"/>
-
-   <plugin
-         id="org.jbehave.osgi.examples.trader.bundle.embedders"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="org.junit"

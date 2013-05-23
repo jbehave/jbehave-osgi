@@ -1,11 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.jbehave.osgi.examples.trader.application;singleton:=true
-Bundle-Version: 0.0.2.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Import-Package: org.osgi.framework;version="1.6.0"
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0"
+Export-Package: org.jbehave.osgi.examples.trader.model,
+ org.jbehave.osgi.examples.trader.persistence,
+ org.jbehave.osgi.examples.trader.service
+Import-Package: org.eclipse.equinox.app;version="1.1.0", org.apache.commons.lang.builder

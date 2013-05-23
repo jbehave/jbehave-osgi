@@ -18,14 +18,14 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.jbehave.osgi.examples.trader.application.application"
-            name="JBehave OSGi Equinox : Equinox Product">
+            name="JBehave OSGi Equinox : Trader Equinox Product Demo">
          <property
                name="appName"
-               value="JBehave OSGi Equinox : Trader Equinox Product">
+               value="JBehave OSGi Equinox : Trader Equinox Product Demo">
          </property>
          <property
                name="aboutText"
-               value="JBehave OSGi - Trader Equinox Product.">
+               value="JBehave OSGi Equinox : Trader Equinox Product Demo.">
          </property>
       </product>
    </extension>
