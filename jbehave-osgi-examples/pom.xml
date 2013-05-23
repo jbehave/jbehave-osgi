@@ -5,7 +5,8 @@
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi-equinox</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../jbehave-osgi-equinox/pom.xml</relativePath>
 	</parent>
 
 	<groupId>org.jbehave.osgi.examples</groupId>
@@ -16,9 +17,22 @@
 
 	<properties>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
-		<jbehave-osgi-p2-repo>http://cvgaviao.github.com/jbehave-osgi/p2/indigo</jbehave-osgi-p2-repo>
-		<osgi-utils-p2-repo>http://cvgaviao.github.com/osgi-utils/p2/indigo/</osgi-utils-p2-repo>
+<!-- 		<jbehave-osgi-p2-repo>file:///Users/cvgaviao/Development/C4Biz_Projects/JBehave/jbehave-osgi-p2/p2</jbehave-osgi-p2-repo> -->
+		<jbehave-osgi-p2-repo>http://jbehave.github.com/jbehave-osgi/p2</jbehave-osgi-p2-repo>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>${swtbot-site}</url>
+		</repository>
+		<repository>
+			<id>jbehave-osgi-p2</id>
+			<layout>p2</layout>
+			<url>${jbehave-osgi-p2-repo}</url>
+		</repository>
+	</repositories>
 
 	<profiles>
 		<profile>
@@ -35,29 +49,6 @@
 		</profile>
 
 		<profile>
-			<id>example-taskweb</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>taskweb</module>
-			</modules>
-		</profile>
-
-		<profile>
-			<id>examples-pom-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>trader-pom-first</module>
-			</modules>
-		</profile>
-
-		<profile>
 			<id>examples-manifest-first</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -69,22 +60,9 @@
 		</profile>
 
 		<profile>
-			<id>example-trader-pom-first</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>clean, install</defaultGoal>
-			</build>
-			<modules>
-				<module>trader-pom-first</module>
-			</modules>
-		</profile>
-
-		<profile>
 			<id>example-trader-manifest-first</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
 				<module>trader-manifest-first</module>
