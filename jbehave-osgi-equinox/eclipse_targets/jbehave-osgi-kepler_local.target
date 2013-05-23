@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="jbehave-osgi-kepler-local" sequenceNumber="53">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.core.sdk.feature.group" version="3.8.0.v20130312-1605"/>
+<unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="3.8.0.v20130308-1450"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location path="${project_loc:/jbehave-osgi-equinox}/org.jbehave.osgi.equinox.p2/target/repository" type="Directory"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201305121230"/>
+<repository location="http://download.eclipse.org/technology/swtbot/snapshots"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.pde.source.feature.group" version="3.9.0.v20130502-0800"/>
+<unit id="org.eclipse.core.runtime.feature.feature.group" version="1.1.0.v20130429-1813"/>
+<unit id="org.eclipse.equinox.server.jetty.feature.group" version="1.1.0.v20130429-1600"/>
+<unit id="org.eclipse.jdt.source.feature.group" version="3.9.0.v20130502-0800"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+</locations>
+<includeBundles>
+<plugin id="org.eclipse.swtbot.swt.finder"/>
+<plugin id="org.eclipse.jetty.http"/>
+<plugin id="org.eclipse.jetty.server.source"/>
+<plugin id="javax.servlet"/>
+<plugin id="org.hamcrest.core.source" version="1.3.0.v201303031735"/>
+<plugin id="org.eclipse.equinox.cm"/>
+<plugin id="org.apache.servicemix.bundles.bcel"/>
+<plugin id="org.apache.commons.io"/>
+<plugin id="org.eclipse.osgi.source" version="3.9.0.v20130410-1557"/>
+<plugin id="org.hamcrest.library.source" version="1.3.0.v201305221000"/>
+<plugin id="org.eclipse.equinox.console"/>
+<plugin id="org.eclipse.osgi.services.source" version="3.3.100.v20130225-1645"/>
+<plugin id="org.eclipse.jdt.junit.runtime.source"/>
+<plugin id="org.eclipse.equinox.util.source" version="1.0.400.v20130307-2007"/>
+<plugin id="org.eclipse.equinox.util" version="1.0.500.v20130404-1337"/>
+<plugin id="org.eclipse.equinox.app.source" version="1.3.100.v20130327-1442"/>
+<plugin id="org.apache.httpcomponents.httpcore"/>
+<plugin id="org.eclipse.core.runtime.source"/>
+<plugin id="org.eclipse.equinox.cm.source"/>
+<plugin id="org.w3c.css.sac"/>
+<plugin id="org.apache.commons.collections"/>
+<plugin id="org.hamcrest.integration.source" version="1.3.0.v201305210900"/>
+<plugin id="org.eclipse.osgi.util.source"/>
+<plugin id="org.eclipse.osgi.services.source" version="3.3.100.v20130327-1440"/>
+<plugin id="org.apache.servicemix.bundles.paranamer"/>
+<plugin id="org.eclipse.jetty.continuation.source"/>
+<plugin id="org.apache.felix.gogo.runtime"/>
+<plugin id="com.google.guava"/>
+<plugin id="org.eclipse.equinox.common.source" version="3.6.200.v20130402-1505"/>
+<plugin id="org.eclipse.osgi.util"/>
+<plugin id="org.eclipse.equinox.console.source"/>
+<plugin id="org.json"/>
+<plugin id="org.apache.commons.lang"/>
+<plugin id="org.eclipse.equinox.preferences" version="3.5.100.v20130422-1538"/>
+<plugin id="org.eclipse.core.variables.source"/>
+<plugin id="org.eclipse.equinox.transforms.hook"/>
+<plugin id="javax.inject.source"/>
+<plugin id="org.eclipse.equinox.preferences.source" version="3.5.100.v20130422-1538"/>
+<plugin id="org.apache.commons.logging"/>
+<plugin id="org.eclipse.equinox.simpleconfigurator.source" version="1.0.400.v20130327-2119"/>
+<plugin id="org.eclipse.equinox.registry.source" version="3.5.300.v20130225-1702"/>
+<plugin id="org.apache.felix.gogo.shell.source"/>
+<plugin id="org.eclipse.jetty.continuation"/>
+<plugin id="org.eclipse.equinox.common.source" version="3.6.100.v20130225-1702"/>
+<plugin id="org.apache.servicemix.bundles.xmlpull"/>
+<plugin id="org.eclipse.jdt.junit.runtime"/>
+<plugin id="javax.servlet.source"/>
+<plugin id="org.jboss.netty"/>
+<plugin id="org.junit" version="4.11.0.v201303080030"/>
+<plugin id="org.eclipse.osgi" version="3.9.0.v20130410-1557"/>
+<plugin id="org.eclipse.equinox.app" version="1.3.100.v20130327-1442"/>
+<plugin id="org.eclipse.pde.junit.runtime.source"/>
+<plugin id="org.eclipse.equinox.registry.source" version="3.5.300.v20130327-1442"/>
+<plugin id="javax.inject"/>
+<plugin id="org.eclipse.osgi.services" version="3.3.100.v20130327-1440"/>
+<plugin id="javax.xml.stream"/>
+<plugin id="org.eclipse.equinox.app.source" version="1.3.100.v20130225-1702"/>
+<plugin id="org.eclipse.jetty.util.source"/>
+<plugin id="org.apache.log4j"/>
+<plugin id="org.apache.servicemix.bundles.xerces"/>
+<plugin id="org.eclipse.equinox.preferences.source" version="3.5.0.v20130225-1702"/>
+<plugin id="org.eclipse.jetty.io.source"/>
+<plugin id="org.eclipse.equinox.registry" version="3.5.300.v20130327-1442"/>
+<plugin id="org.eclipse.equinox.transforms.hook.source"/>
+<plugin id="org.apache.servicemix.bundles.freemarker"/>
+<plugin id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+<plugin id="org.eclipse.core.jobs"/>
+<plugin id="org.apache.xml.resolver"/>
+<plugin id="org.apache.httpcomponents.httpclient"/>
+<plugin id="org.eclipse.equinox.event"/>
+<plugin id="org.eclipse.jetty.http.source"/>
+<plugin id="org.eclipse.jetty.websocket"/>
+<plugin id="org.eclipse.equinox.simpleconfigurator.source" version="1.0.400.v20130225-1856"/>
+<plugin id="org.apache.commons.codec"/>
+<plugin id="org.eclipse.jetty.io"/>
+<plugin id="org.eclipse.core.expressions"/>
+<plugin id="javax.xml"/>
+<plugin id="org.apache.commons.exec"/>
+<plugin id="org.apache.felix.gogo.command"/>
+<plugin id="org.eclipse.core.expressions.source"/>
+<plugin id="org.eclipse.equinox.event.source"/>
+<plugin id="org.hamcrest.integration.source" version="1.3.0.v201305210900"/>
+<plugin id="org.apache.commons.logging.source"/>
+<plugin id="org.eclipse.osgi.source" version="3.9.0.v20130305-2200"/>
+<plugin id="org.eclipse.core.runtime"/>
+<plugin id="org.apache.servicemix.bundles.xpp3"/>
+<plugin id="org.apache.felix.gogo.shell"/>
+<plugin id="org.eclipse.equinox.ds.source" version="1.4.100.v20130327-1442"/>
+<plugin id="org.apache.servicemix.bundles.xalan"/>
+<plugin id="org.apache.felix.gogo.runtime.source"/>
+<plugin id="slf4j.api"/>
+<plugin id="org.eclipse.core.contenttype"/>
+<plugin id="org.hamcrest.generator" version="1.3.0.v201305210900"/>
+<plugin id="org.hamcrest.library" version="1.3.0.v201305221000"/>
+<plugin id="org.hamcrest.core" version="1.1.0.v20090501071000"/>
+<plugin id="org.eclipse.equinox.concurrent"/>
+<plugin id="org.eclipse.equinox.ds" version="1.4.100.v20130327-1442"/>
+<plugin id="org.eclipse.equinox.ds.source" version="1.4.100.v20130308-1450"/>
+<plugin id="org.eclipse.core.jobs.source"/>
+<plugin id="org.apache.servicemix.bundles.xstream"/>
+<plugin id="org.hamcrest.generator.source" version="1.3.0.v201305210900"/>
+<plugin id="org.eclipse.core.variables"/>
+<plugin id="org.eclipse.jetty.util"/>
+<plugin id="org.apache.felix.gogo.command.source"/>
+<plugin id="org.eclipse.pde.junit.runtime"/>
+<plugin id="org.eclipse.jetty.server"/>
+<plugin id="org.eclipse.equinox.concurrent.source"/>
+<plugin id="ch.qos.logback.core"/>
+<plugin id="org.eclipse.equinox.common" version="3.6.200.v20130402-1505"/>
+<plugin id="org.eclipse.equinox.util.source" version="1.0.500.v20130404-1337"/>
+<plugin id="ch.qos.logback.classic"/>
+<plugin id="org.eclipse.equinox.simpleconfigurator" version="1.0.400.v20130327-2119"/>
+<plugin id="org.hamcrest.integration" version="1.3.0.v201305210900"/>
+<plugin id="org.w3c.css.sac.source"/>
+<plugin id="org.eclipse.swtbot.junit4_x"/>
+<plugin id="org.apache.commons.lang.source"/>
+<plugin id="org.apache.servicemix.specs.jaxp-api-1.4"/>
+<plugin id="org.eclipse.core.contenttype.source"/>
+<plugin id="org.apache.commons.lang3"/>
+</includeBundles>
+</target>
