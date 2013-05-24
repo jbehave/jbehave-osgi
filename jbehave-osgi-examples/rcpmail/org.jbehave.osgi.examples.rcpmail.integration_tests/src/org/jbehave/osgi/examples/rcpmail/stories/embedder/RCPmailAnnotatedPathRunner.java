@@ -19,7 +19,7 @@ import org.jbehave.osgi.core.embedder.EmbedderOsgi;
 import org.jbehave.osgi.core.io.LoadFromBundleClasspath;
 import org.jbehave.osgi.core.io.StoryFinderOsgi;
 import org.jbehave.osgi.core.reporters.StoryReporterBuilderOsgi;
-import org.jbehave.osgi.equinox.swtbot.junit.SwtbotAnnotatedEmbedderRunner;
+import org.jbehave.osgi.equinox.swtbot.junit.SwtbotAnnotatedPathRunner;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedPathRunner.MyDateConverter;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedPathRunner.MyEmbedder;
 import org.jbehave.osgi.examples.rcpmail.stories.embedder.RCPmailAnnotatedPathRunner.MyRegexPrefixCapturingPatternParser;
@@ -40,13 +40,13 @@ import org.junit.runner.RunWith;
  * <p>
  * In order to be able to capture screens when errors happen in test was needed
  * to use a specific Junit runner for SWTBot see
- * {@link SwtbotAnnotatedEmbedderRunner}.
+ * {@link SwtbotAnnotatedPathRunner}.
  * 
  * @author Cristiano Gavião
  * 
  */
 
-@RunWith(SwtbotAnnotatedEmbedderRunner.class)
+@RunWith(SwtbotAnnotatedPathRunner.class)
 @Configure(using = ConfigurationOsgi.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
 @UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = false, ignoreFailureInStories = false, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { RCPmailCoreSteps.class })
