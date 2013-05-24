@@ -44,7 +44,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(AnnotatedEmbedderRunner.class)
 @Configure(using = ConfigurationOsgi.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class, parameterConverters = { MyDateConverter.class })
-@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
+@UsingEmbedder(embedder = MyEmbedder.class, generateViewAfterStories = false, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { TraderSteps.class, BeforeAfterSteps.class,
 		AndSteps.class, CalendarSteps.class, PriorityMatchingSteps.class,
 		SandpitSteps.class, SearchSteps.class })
