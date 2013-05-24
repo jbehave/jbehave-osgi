@@ -102,8 +102,10 @@ In order to work with the examples we recommend you to use Eclipse with M2e plug
 
 3) Setup the _Target Platform_ of the new workspace:
 
-    - Go to /jbehave-osgi-examples/eclipse_targets folder and open the jbehave-osgi-examples-kepler_remote.target. The eclipse will resolve its contents.
-    - After Eclipse has been resolved the target definition file click in the _Set as Target Platform_ link. Eclipse must resolve all compile errors.
+    - Go to /jbehave-osgi-examples/eclipse_targets folder and open the jbehave-osgi-examples-kepler_remote.target. 
+      The eclipse will resolve its contents.
+    - After Eclipse has been resolved the target definition file click in the _Set as Target Platform_ link. 
+      Eclipse must resolve all compile errors.
 
 
 ### Running the test examples using PDE's Junit Plug-in
@@ -142,7 +144,9 @@ In order to work with the examples we recommend you to use Eclipse with M2e plug
 Now you will be able execute your stories inside an OSGi container in an interactive way using the org.jbehave.osgi.interactive bundle.
 
 What interactive means? 
+
 It means that after you run your OSGi container and have installed the org.jbehave.osgi.interactive bundle, every time you install and activate a test bundle containing a JBehave-StoryRunner manifest header a StoryRunner service will be created for every AnnotatedPathRunner based Embedder specified.
+
 This way you can use the provided GoGo commands in the console to interact with those StoryRunner services. For while we are providing a Equinox specific commands.
 
 Take a look in the org.jbehave.osgi.examples.trader.it project manifest:
