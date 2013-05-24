@@ -1,26 +1,31 @@
 #JBehave OGSi
 
-JBehave OGSi was created to be able to execute JBehave stories inside an OSGi environment.
+JBehave OGSi was created to able to execute JBehave BDD like stories inside any OSGi environment. 
+You can use it to test any kind of OSGi applications that requires to be executed inside a OSGi Container as an Eclipse RCP/SWT applications, OSGi Services, etc.
+It can be used with:    
+   - Tycho or Pax-Exam in a Maven building;
+   - inside any IDE that provides a Junit OSGi environment as Eclipse PDE JUnit Plug-in Test;
+   - Interactively inside any OSGi Container that uses Felix GoGo commands (for now only Equinox command is being provided);
 
-For now it can be used together with Tycho to test bundles deployed in an Eclipse Equinox container, RCP products using SWTBot deployed as bundles.
-
-It is composed by 3 basic components: 
+It is composed by these components: 
 
 - jbehave-osgi-bundles/org.jbehave.osgi.core, that wraps the JBehave Core API and exposes its functionalities;
 - jbehave-osgi-bundles/org.jbehave.osgi.web, that wraps the JBehave Web API and let it be used together with the JBehave-OSGi Core;
 - jbehave-osgi-bundles/org.jbehave.osgi.interactive that provides a way to interactively run stories in any OSGi container.
 - jbehave-osgi-equinox, which supply Equinox specifics features, as the Felix GoGo based console command that works with JBehave OSGi Interactive.
 
+* the minimum OSGI version needed is 4.3.
 
  
 ## Bulding JBehave for OSGi
+
+
+### Get the sources
 
 1) Clone the JBehave-OSGi git repository into your machine:
 
 	git clone git://github.com/jbehave/jbehave-osgi.git
 
-
-* the minimum OSGI version needed is 4.3.
 
 The JBehave-OSGi components uses different approach to being built.
  
@@ -29,10 +34,10 @@ This means that all information needed in the build is taken from the POM file a
 
 Equinox components are built using Eclipse Tycho, which uses a _MANIFEST-first_ approach. This mean that all information needed in the build is taken from the bundle manifest.
 
-Its not possible to run both building methods using the same maven reactor (in the same maven running job), so you must to split the build into two phases.
+Its not possible to run both building methods together in the same Maven reactor (in the same running job), so you must to split the build into two phases.
 
 
-First build the _POM-first_ projects:
+### First build the _POM-first_ projects:
  
 2) Go to the root folder where you have cloned the project:
 
@@ -45,7 +50,7 @@ First build the _POM-first_ projects:
 This will install the JBehave-OSGi Core, Interactive and Web bundles in your local maven repository.
 	
 	
-Then build the _MANIFEST-first_ projects:
+### Then build the _MANIFEST-first_ projects:
 
 4) Go to root folder where you have cloned the project
 
@@ -62,9 +67,10 @@ This will create a P2 repository in the following folder:
 This P2 repository will contain all components and all bundles dependencies needed for JBehave-OSGi to be executed on Equinox.
 
 
-## Setup Eclipse Development Environment
 
-In order to work with the code we recommend you to use Eclipse with M2e and its Tycho plug-in installed.
+## Setup Eclipse Development Environment for the JBehave-OSGi
+
+In order to work with the code we recommend you to use Eclipse with M2e plus Tycho plug-in installed.
 
 1) Create a new Eclipse workspace and name it jbehave-osgi
 
@@ -72,99 +78,60 @@ In order to work with the code we recommend you to use Eclipse with M2e and its 
 
 3) Setup the _Target Platform_ of the new workspace:
 
-    - Go to /jbehave-osgi/jbehave-osgi-equinox/eclipse_targets folder and open the jbehave-osgi-kepler_local.target. The eclipse will resolve it.
+    - Go to /jbehave-osgi/jbehave-osgi-equinox/eclipse_targets folder and open the jbehave-osgi-kepler_local.target. The eclipse will resolve its contents.
     - After Eclipse has been resolved the target definition file click in the _Set as Target Platform_ link. Eclipse must resolve all compile errors.
 
 
   
-## Running the examples    
+## Working with the examples
+
+We provided a series of OSGi project to exemplify how you could benefit from JBehave-OSGi. Each provided example has an Eclipse launcher file to easily start it.
+
+
+### Setup Eclipse Development Environment for the provided Examples
+
+In order to work with the examples we recommend you to use Eclipse with M2e plus Tycho plug-in installed.
+
+1) Create a new Eclipse workspace and name it jbehave-osgi-examples
+
+2) Import the examples projects using the _Maven Import_ into the new workspace. You should see compile errors due to the missing dependencies.
+
+3) Setup the _Target Platform_ of the new workspace:
+
+    - Go to /jbehave-osgi-examples/eclipse_targets folder and open the jbehave-osgi-examples-kepler_remote.target. The eclipse will resolve its contents.
+    - After Eclipse has been resolved the target definition file click in the _Set as Target Platform_ link. Eclipse must resolve all compile errors.
+
+
+### Running the test examples using PDE's Junit Plug-in
+
+#### Trader Equinox Server Test Examples
+
+1) Go to menu "Run", then "Run Configurations..."
+2) Select TraderAnnotatedEmbedderRunnerOsgi or TraderAnnotatedPathRunnerOsgi launchers.
+
    
-#### RCP Product Example
+#### RCP Product Test with SWTBot Examples
 
-1) Go to root folder where you have cloned the project:
-
-	cd /myprojects/jbehave-osgi
-	
-2) Start the maven build:
-
-    mvn clean verify -P example-rcpmail
- 
-Now the build will start and the JBehave stories will be executed in the building.    
-If everything goes right, you could see the generated RCP product in this folder:
-
-	/myprojects/jbehave-osgi/jbehave-osgi-examples/rcpmail/org.jbehave.osgi.examples.rcpmail.product/target/products    
+1) Go to menu "Run", then "Run Configurations..."
+2) Select RCPmailAnnotatedEmbedderRunner or RCPmailAnnotatedPathRunner launchers.
 
 
-#### Trader Equinox Server Example
 
-This example reuses code from Trader example, so you must to ensure that this project was properly built before.
+### Running the test examples using M2e/Maven with Tycho
 
-1) Go to root folder where you have cloned the project:
+#### Trader Equinox Server Test Example
 
-	cd /myprojects/jbehave-osgi
+1) Go to menu "Run", then "Run Configurations..."
+2) Select build_jbehave-osgi_example_trader launchers.
 
-2) You must to install the _POM-First_ projects:
+   
+#### RCP Product Test with SWTBot Example
 
-    mvn clean install -P examples-pom-first
+1) Go to menu "Run", then "Run Configurations..."
+2) Selectbuild_jbehave-osgi_example_rcpmail launchers.
 
-2) Then you need build the _MANIFEST-First_ projects:
-
-    mvn clean verify -P example-manifest-first
 
     
-### Using JBehave-OSGi for Equinox
-
-When developing OSGi or RCP projects in Eclipse PDE, it's recommended that you create one workspace for each set of related projects, setting up one Target Platform for it, selecting only the necessary set of bundles that it needs to run the application and its tests properly.
-
-You can run the BDD tests in a Equinox environment using three different ways: 
-
-1) using Tycho-Surefire plugin as part of a Maven/Tycho building;
-2) using a PDE's JUnit Plug-in Test launcher;
-3) using JBehave OSGi commands at the console of some running Equinox container;
-
-And to be able to use it you must add org.jbehave.osgi.services bundle to the Target Platform of your project or install it in some running container.
+### Using JBehave-OSGi Interactive Service for Equinox
 
 
-#### Setup JBehave-OSGi in a Target Platform
-
-
-#### Installing JBehave-OSGi in a running Equinox container
-
- 
- 
-
-#### Running Stories using an Equinox Launcher:
-
-1) Setup OSGi Framework Launcher
-
-Once your workspace/target platform is set up you can setup the Equinox launcher, choosing the bundles and tests fragments that must be installed when the Equinox is launched.  
-We provided one launcher sample named run_jbehave-osgi_equinox_runtime where we selected org.jbehave.osgi.sample.fragment.trader.bnd test fragment.
-
-- Go to menu "Run", then "Debug Configurations". 
-- Select run_jbehave-osgi_equinox_runtime launcher.
-- Check if only the necessary projects is selected on Workspace. 
-- Ensure that all dependencies needed is selected on Target Platform clicking on "Validate Bundles". 
-- If no problem were detected click on "Debug" button. That will start your Equinox instance with debug support (check the Console View).
-
-2) After launching Equinox you can test JBehave OSGi Services with this commands:
-
-    osgi> help
-    
-You should see the JBehave help (with others too):
-
-	--- JBehave Equinox Commands ---
-	jbStatus - JBehave OSGi EmbedderService status.
-	jbRunStoriesWithAnnotatedEmbedder - Run Stories via Annotated Embedder. 
-	
-Then you could try the service status:
-
-    osgi> jbStatus
-    
-You should see:
-
-     OSGi Embedder Service is started.      
-
-3) Run the stories via the Embedder
-
-    osgi> jbRunStoriesWithAnnotatedEmbedder org.jbehave.osgi.examples.trader.annotations.TraderAnnotatedEmbedder
-     
