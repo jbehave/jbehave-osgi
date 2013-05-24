@@ -7,7 +7,7 @@ import java.util.List;
  * @author Cristiano Gavião
  *
  */
-public class EmbedderModel {
+public class EmbedderDTO {
 
 	private String embedderClass;
 	private boolean batch;
@@ -24,7 +24,7 @@ public class EmbedderModel {
 	private String systemProperties;
 	private List<String> stepClasses;
 
-	public EmbedderModel() {
+	public EmbedderDTO() {
 	}
 
 	public String getEmbedderClass() {

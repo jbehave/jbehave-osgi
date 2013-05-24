@@ -7,14 +7,14 @@ import java.util.List;
  * @author Cristiano Gavião
  *
  */
-public class StorySearchModel {
+public class StorySearchDTO {
 
 	private String searchIn;
 	private List<String> includes;
 	private List<String> excludes;
 	private String storyFinder;
 
-	public StorySearchModel() {
+	public StorySearchDTO() {
 	}
 
 	public String getSearchIn() {

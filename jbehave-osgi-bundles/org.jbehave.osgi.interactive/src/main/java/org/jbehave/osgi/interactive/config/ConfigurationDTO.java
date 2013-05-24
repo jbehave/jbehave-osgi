@@ -7,7 +7,7 @@ import java.util.List;
  * @author Cristiano Gavião
  *
  */
-public class ConfigurationModel {
+public class ConfigurationDTO {
 
 	private String configurationClass;
 
@@ -49,7 +49,7 @@ public class ConfigurationModel {
 
 	private String storyReporterBuilder;
 
-	public ConfigurationModel() {
+	public ConfigurationDTO() {
 	}
 
 	public String getConfigurationClass() {

@@ -38,19 +38,19 @@ public class EmbedderPropertiesBuilder {
 	}
 
 	/**
-	 * Builds a ConfigurationModel instance based on annotation
+	 * Builds a ConfigurationDTO instance based on annotation
 	 * {@link Configure} found in the annotated object instance
 	 * 
-	 * @return A ConfigurationModel instance
+	 * @return A ConfigurationDTO instance
 	 */
-	private ConfigurationModel buildConfigurationModel()
+	private ConfigurationDTO buildConfigurationModel()
 			throws AnnotationRequired {
 
 		if (!finder.isAnnotationPresent(Configure.class)) {
 			return null;
 		}
 
-		ConfigurationModel configuration = new ConfigurationModel();
+		ConfigurationDTO configuration = new ConfigurationDTO();
 		configuration.setConfigurationClass(finder.getAnnotatedValue(
 				Configure.class, Class.class, "using").getName());
 		configuration.setKeywords(finder.getAnnotatedValue(Configure.class,
@@ -93,40 +93,40 @@ public class EmbedderPropertiesBuilder {
 		return configuration;
 	}
 
-	private EmbedderModel buildEmbedderModel() {
+	private EmbedderDTO buildEmbedderModel() {
 		if (!finder.isAnnotationPresent(UsingEmbedder.class)) {
 			return null;
 		}
-		EmbedderModel embedderModel = new EmbedderModel();
-		embedderModel.setEmbedderClass(finder.getAnnotatedValue(
+		EmbedderDTO embedderDTO = new EmbedderDTO();
+		embedderDTO.setEmbedderClass(finder.getAnnotatedValue(
 				UsingEmbedder.class, Class.class, "embedder").getName());
-		embedderModel.setBatch(finder.getAnnotatedValue(UsingEmbedder.class,
+		embedderDTO.setBatch(finder.getAnnotatedValue(UsingEmbedder.class,
 				Boolean.class, "batch"));
-		embedderModel.setSkip(finder.getAnnotatedValue(UsingEmbedder.class,
+		embedderDTO.setSkip(finder.getAnnotatedValue(UsingEmbedder.class,
 				Boolean.class, "skip"));
-		embedderModel
+		embedderDTO
 				.setGenerateViewAfterStories(finder.getAnnotatedValue(
 						UsingEmbedder.class, Boolean.class,
 						"generateViewAfterStories"));
-		embedderModel.setIgnoreFailureInStories(finder.getAnnotatedValue(
+		embedderDTO.setIgnoreFailureInStories(finder.getAnnotatedValue(
 				UsingEmbedder.class, Boolean.class, "ignoreFailureInStories"));
-		embedderModel.setIgnoreFailureInView(finder.getAnnotatedValue(
+		embedderDTO.setIgnoreFailureInView(finder.getAnnotatedValue(
 				UsingEmbedder.class, Boolean.class, "ignoreFailureInView"));
-		embedderModel.setVerboseFailures(finder.getAnnotatedValue(
+		embedderDTO.setVerboseFailures(finder.getAnnotatedValue(
 				UsingEmbedder.class, Boolean.class, "verboseFailures"));
-		embedderModel.setVerboseFiltering(finder.getAnnotatedValue(
+		embedderDTO.setVerboseFiltering(finder.getAnnotatedValue(
 				UsingEmbedder.class, Boolean.class, "verboseFiltering"));
-		embedderModel.setStoryTimeoutInSecs(finder.getAnnotatedValue(
+		embedderDTO.setStoryTimeoutInSecs(finder.getAnnotatedValue(
 				UsingEmbedder.class, Long.class, "storyTimeoutInSecs"));
-		embedderModel.setThreads(finder.getAnnotatedValue(UsingEmbedder.class,
+		embedderDTO.setThreads(finder.getAnnotatedValue(UsingEmbedder.class,
 				Integer.class, "threads"));
-		embedderModel.setMetaFilters(finder.getAnnotatedValues(
+		embedderDTO.setMetaFilters(finder.getAnnotatedValues(
 				UsingEmbedder.class, String.class, "metaFilters"));
-		embedderModel.setSystemProperties(finder.getAnnotatedValue(
+		embedderDTO.setSystemProperties(finder.getAnnotatedValue(
 				UsingEmbedder.class, String.class, "systemProperties"));
-		embedderModel.setStepClasses(stepClasses());
+		embedderDTO.setStepClasses(stepClasses());
 
-		return embedderModel;
+		return embedderDTO;
 	}
 
 	public Dictionary<String, Object> buildEmbedderProperties() {
@@ -151,21 +151,21 @@ public class EmbedderPropertiesBuilder {
 		return embedder;
 	}
 
-	private StorySearchModel buildStorySearchModel() {
+	private StorySearchDTO buildStorySearchModel() {
 		if (!finder.isAnnotationPresent(UsingPaths.class)) {
 			return null;
 		}
-		StorySearchModel storySearchModel = new StorySearchModel();
-		storySearchModel.setSearchIn(finder.getAnnotatedValue(UsingPaths.class,
+		StorySearchDTO storySearchDTO = new StorySearchDTO();
+		storySearchDTO.setSearchIn(finder.getAnnotatedValue(UsingPaths.class,
 				String.class, "searchIn"));
-		storySearchModel.setStoryFinder(finder.getAnnotatedValue(
+		storySearchDTO.setStoryFinder(finder.getAnnotatedValue(
 				UsingPaths.class, Class.class, "storyFinder").getName());
-		storySearchModel.setIncludes(finder.getAnnotatedValues(
+		storySearchDTO.setIncludes(finder.getAnnotatedValues(
 				UsingPaths.class, String.class, "includes"));
-		storySearchModel.setExcludes(finder.getAnnotatedValues(
+		storySearchDTO.setExcludes(finder.getAnnotatedValues(
 				UsingPaths.class, String.class, "excludes"));
 
-		return storySearchModel;
+		return storySearchDTO;
 	}
 
 	private List<String> parameterConverters() {
