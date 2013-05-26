@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JBehave OSGi Trader Step Classes 1
+Bundle-SymbolicName: org.jbehave.osgi.examples.trader.equinox.it.steps1
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: JBehave.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
+Import-Package: org.apache.commons.lang,
+ org.apache.commons.lang.builder,
+ org.hamcrest;version="1.3.0";core=split;mandatory:=core,
+ org.jbehave.osgi.examples.trader.model,
+ org.jbehave.osgi.examples.trader.persistence,
+ org.jbehave.osgi.examples.trader.service,
+ org.junit;version="4.11.0"
+Bundle-ActivationPolicy: lazy
+0JBehave-StepFactory: org.jbehave.osgi.examples.trader.it.steps1.*
+Export-Package: org.jbehave.osgi.examples.trader.it.steps1,
+ org.jbehave.osgi.examples.trader.it.steps1.converters
+Require-Bundle: org.jbehave.osgi.core;bundle-version="1.0.0"

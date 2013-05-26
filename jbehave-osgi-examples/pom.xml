@@ -4,9 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jbehave.osgi</groupId>
-		<artifactId>jbehave-osgi-equinox</artifactId>
+		<artifactId>jbehave-osgi</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../jbehave-osgi-equinox/pom.xml</relativePath>
 	</parent>
 
 	<groupId>org.jbehave.osgi.examples</groupId>
@@ -17,7 +16,6 @@
 
 	<properties>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
-<!-- 		<jbehave-osgi-p2-repo>file:///Users/cvgaviao/Development/C4Biz_Projects/JBehave/jbehave-osgi-p2/p2</jbehave-osgi-p2-repo> -->
 		<jbehave-osgi-p2-repo>http://jbehave.github.com/jbehave-osgi/p2</jbehave-osgi-p2-repo>
 	</properties>
 
@@ -44,28 +42,33 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<module>rcpmail</module>
+				<module>rcpmail-tycho-swtbot</module>
 			</modules>
 		</profile>
 
 		<profile>
-			<id>examples-manifest-first</id>
+			<id>example-trader-equinox</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
 			<modules>
-				<module>trader-manifest-first</module>
-				<module>rcpmail</module>
+				<module>trader-equinox-tycho</module>
 			</modules>
 		</profile>
 
 		<profile>
-			<id>example-trader-manifest-first</id>
+			<id>example-trader-felix</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
 			<modules>
-				<module>trader-manifest-first</module>
+				<module>trader-felix-pomfirst-paxexam</module>
 			</modules>
 		</profile>
 	</profiles>

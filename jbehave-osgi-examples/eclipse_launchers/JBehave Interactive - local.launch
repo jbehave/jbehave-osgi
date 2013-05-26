@@ -176,5 +176,4 @@
 </mapAttribute>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.jbehave.osgi.examples.trader.application@default:default,org.jbehave.osgi.examples.trader.it.steps1@default:default,org.jbehave.osgi.examples.trader.it.steps2@default:default,org.jbehave.osgi.examples.trader.it@default:true"/>
 </launchConfiguration>
