@@ -26,9 +26,9 @@ import org.jbehave.osgi.core.embedder.EmbedderOsgi;
 import org.jbehave.osgi.core.io.StoryFinderOsgi;
 import org.jbehave.osgi.core.reporters.StoryReporterBuilderOsgi;
 import org.jbehave.osgi.examples.trader.pomfirst.bundle.service.TradingService;
-import org.jbehave.osgi.examples.trader.pomfirst.paxexam.steps1.BeforeAfterSteps;
-import org.jbehave.osgi.examples.trader.pomfirst.paxexam.steps1.TraderSteps;
-import org.junit.Assert;
+import org.jbehave.osgi.examples.trader.pomfirst.jbehave.steps1.AndSteps;
+import org.jbehave.osgi.examples.trader.pomfirst.jbehave.steps1.BeforeAfterSteps;
+import org.jbehave.osgi.examples.trader.pomfirst.jbehave.steps1.TraderSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Option;
@@ -58,8 +58,8 @@ public class TraderEmbedderOsgiForPaxExam {
 						"org.apache.servicemix.bundles.freemarker", "2.3.19_1"),
 				mavenBundle("org.apache.xmlcommons",
 						"com.springsource.org.apache.xmlcommons", "1.3.4"),
-//						mavenBundle("org.apache.servicemix.specs",
-//								"org.apache.servicemix.specs.jaxp-api-1.4", "2.2.0"),
+				// mavenBundle("org.apache.servicemix.specs",
+				// "org.apache.servicemix.specs.jaxp-api-1.4", "2.2.0"),
 				mavenBundle("commons-lang", "commons-lang", "2.6"),
 				mavenBundle("commons-collections", "commons-collections",
 						"3.2.1"),
@@ -71,30 +71,34 @@ public class TraderEmbedderOsgiForPaxExam {
 						"1.0.0-SNAPSHOT"),
 				url("reference:file:"
 						+ PathUtils.getBaseDir()
-						+ "/../org.jbehave.osgi.examples.trader.pomfirst.bundle/target/org.jbehave.osgi.examples.trader.pomfirst.bundle-1.0.0-SNAPSHOT.jar"),
+						+ "/../org.jbehave.osgi.examples.trader.pomfirst.bundle/target/classes"),
+				url("reference:file:"
+						+ PathUtils.getBaseDir()
+						+ "/../org.jbehave.osgi.examples.trader.pomfirst.jbehave/target/classes"),
 				junitBundles());
 	}
 
 	@Test
-	public void run() {
+	public void run() throws Exception {
 
-		Assert.assertTrue(true);
-
-		List<String> storyPaths = new StoryFinderOsgi(this.getClass())
-				.findPaths("/org/jbehave/osgi/examples/trader/pomfirst/paxexam/stories",
+		List<String> storyPaths = new StoryFinderOsgi(AndSteps.class)
+				.findPaths(
+						"/org/jbehave/osgi/examples/trader/pomfirst/jbehave/stories",
 						new String[] { "*.story" }, new String[] {
 								"examples_table_loaded*",
 								"given_relative_path_story.story",
 								"step_composition.story" });
-
 		System.err.println(storyPaths);
+		System.err.println("BC:" + AndSteps.class.getClassLoader());
+		System.err.println("This:" + this.getClass().getClassLoader());
 
-		EmbedderOsgi embedderOsgi = new EmbedderOsgi(this.getClass());
-		embedderOsgi.useConfiguration(configuration());
-		embedderOsgi.useStepsFactory(stepsFactory());
+		EmbedderOsgi embedderOsgi = new EmbedderOsgi(AndSteps.class);
+		embedderOsgi.useConfiguration(configuration(AndSteps.class));
+		embedderOsgi.useStepsFactory(stepsFactory(AndSteps.class));
 		embedderOsgi.useEmbedderControls(embedderControls());
 
 		embedderOsgi.runStoriesAsPaths(storyPaths);
+
 	}
 
 	public EmbedderControls embedderControls() {
@@ -102,12 +106,10 @@ public class TraderEmbedderOsgiForPaxExam {
 				.doIgnoreFailureInView(true);
 	}
 
-	public Configuration configuration() {
-		Class<? extends TraderEmbedderOsgiForPaxExam> embedderClass = this
-				.getClass();
-		return new ConfigurationOsgi(this.getClass())
+	public Configuration configuration(Class<?> testClass) {
+		return new ConfigurationOsgi(testClass)
 				.useStoryReporterBuilder(
-						new StoryReporterBuilderOsgi(embedderClass)
+						new StoryReporterBuilderOsgi(testClass)
 								.withDefaultFormats()
 								.withFormats(CONSOLE, TXT, HTML, XML)
 								.withCrossReference(new CrossReference()))
@@ -127,9 +129,9 @@ public class TraderEmbedderOsgiForPaxExam {
 				.useStepMonitor(new SilentStepMonitor());
 	}
 
-	public InjectableStepsFactory stepsFactory() {
-		return new InstanceStepsFactory(configuration(), new TraderSteps(
-				new TradingService()), new BeforeAfterSteps());
+	public InjectableStepsFactory stepsFactory(Class<?> testClass) {
+		return new InstanceStepsFactory(configuration(testClass),
+				new TraderSteps(new TradingService()), new BeforeAfterSteps());
 	}
 
 }

@@ -14,6 +14,7 @@
 
 	<modules>
 		<module>org.jbehave.osgi.examples.trader.pomfirst.bundle</module>
+		<module>org.jbehave.osgi.examples.trader.pomfirst.jbehave</module>
 		<module>org.jbehave.osgi.examples.trader.pomfirst.paxexam</module>
 	</modules>
 
@@ -22,6 +23,11 @@
 			<dependency>
 				<groupId>org.jbehave.osgi.examples</groupId>
 				<artifactId>org.jbehave.osgi.examples.trader.pomfirst.bundle</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi.examples</groupId>
+				<artifactId>org.jbehave.osgi.examples.trader.pomfirst.jbehave</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
