@@ -1,33 +1,35 @@
 package org.jbehave.osgi.core.io;
 
+import java.io.File;
 import java.net.URL;
 
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
 /**
  * 
  * @author Cristiano Gavião
- *
+ * 
  */
 public class CodeLocationsOsgi {
 
 	/**
-	 * Creates a code location URL from a file path
+	 * Creates a code location URL from a class
 	 * 
-	 * @param path
-	 *            the File path
-	 * @return A URL created from File
+	 * @param codeLocationClass
+	 *            the class
+	 * @return A URL created from Class
 	 * @throws InvalidCodeLocation
 	 *             if URL creation fails
 	 */
-	public static URL codeLocationFromPath(String path) {
+	public static URL codeLocationFromClass(Class<?> codeLocationClass) {
+		File file = null;
 		try {
 			
-			BundleContext bundleContext = FrameworkUtil.getBundle(CodeLocationsOsgi.class).getBundleContext();
-			return bundleContext.getDataFile(path).toURI().toURL();
+			file = FrameworkUtil.getBundle(
+					codeLocationClass).getBundleContext().getDataFile("");
+			return file.toURI().toURL();
 		} catch (Exception e) {
-			throw new InvalidCodeLocation(path, e);
+			throw new InvalidCodeLocation(file.getAbsolutePath(), e);
 		}
 	}
 

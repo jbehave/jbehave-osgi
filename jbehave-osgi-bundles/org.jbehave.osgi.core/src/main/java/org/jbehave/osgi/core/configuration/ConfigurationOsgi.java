@@ -34,11 +34,6 @@ public class ConfigurationOsgi extends Configuration {
 
 	public ConfigurationOsgi(Class<?> loadFromBundleClass) {
 
-		this(loadFromBundleClass.getClassLoader());
-	}
-
-	public ConfigurationOsgi(ClassLoader classLoader) {
-
 		useKeywords(new LocalizedKeywords());
 		useStoryControls(new StoryControls());
 		useStoryParser(new RegexStoryParser(keywords()));
@@ -51,13 +46,13 @@ public class ConfigurationOsgi extends Configuration {
 		useStepdocReporter(new PrintStreamStepdocReporter());
 		useParanamer(new NullParanamer());
 		useViewGenerator(new FreemarkerViewGenerator());
-		useStoryReporterBuilder(new StoryReporterBuilderOsgi());
-
+		useStoryReporterBuilder(new StoryReporterBuilderOsgi(loadFromBundleClass));
+		
 		useStepPatternParser(new RegexPrefixCapturingPatternParser());
 		useParameterControls(new ParameterControls());
 		useParameterConverters(new ParameterConverters());
 		useDefaultStoryReporter(new ConsoleOutput());
 		usePathCalculator(new AbsolutePathCalculator());
-		useStoryLoader(new LoadFromBundleClasspath(classLoader));
+		useStoryLoader(new LoadFromBundleClasspath(loadFromBundleClass.getClassLoader()));
 	}
 }

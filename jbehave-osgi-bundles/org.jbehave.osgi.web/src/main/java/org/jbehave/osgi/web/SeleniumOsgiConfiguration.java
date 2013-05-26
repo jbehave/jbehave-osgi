@@ -15,8 +15,8 @@ public class SeleniumOsgiConfiguration extends ConfigurationOsgi {
 	private SeleniumContext seleniumContext;
 	private WebDriverProvider driverProvider;
 
-    public SeleniumOsgiConfiguration(ClassLoader classLoader) {
-    	super(classLoader);
+    public SeleniumOsgiConfiguration(Class<?> loadFromBundleClass) {
+    	super(loadFromBundleClass);
     }
 
     public Selenium selenium() {
