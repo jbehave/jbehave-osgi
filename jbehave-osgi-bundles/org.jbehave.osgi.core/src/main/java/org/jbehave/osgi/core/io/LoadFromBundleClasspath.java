@@ -21,7 +21,7 @@ public class LoadFromBundleClasspath extends LoadFromClasspath {
 	}
 	    
     protected InputStream resourceAsStream(String resourcePath) {
-        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(resourcePath);
+        InputStream stream = classLoader.getResourceAsStream(resourcePath);
         if (stream == null) {
             throw new StoryResourceNotFound(resourcePath, classLoader);
         }
