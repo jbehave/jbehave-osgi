@@ -17,6 +17,7 @@
 	<properties>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
 		<jbehave-osgi-p2-repo>http://jbehave.github.com/jbehave-osgi/p2</jbehave-osgi-p2-repo>
+		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
 	</properties>
 
 	<repositories>

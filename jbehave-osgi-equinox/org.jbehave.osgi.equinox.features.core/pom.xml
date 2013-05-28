@@ -26,20 +26,14 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.0.13</version>
-		</dependency>
+			</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
-		</dependency>
+			</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.hamcrest</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>

@@ -13,7 +13,6 @@
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.web</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
@@ -26,11 +25,13 @@
 			<version>${project.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
-
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-exec</artifactId>
-			<version>1.1</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -18,7 +18,8 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.swtbot" version="2.1.1.201305121230"/>
+      <import feature="org.eclipse.swtbot" version="2.1.1" match="greaterOrEqual"/>
+      <import feature="org.jbehave.osgi.equinox.features.core" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
