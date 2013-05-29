@@ -4,6 +4,7 @@ import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
 import static org.jbehave.core.reporters.Format.TXT;
 import static org.jbehave.core.reporters.Format.XML;
+import static org.ops4j.pax.exam.CoreOptions.frameworkProperty;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
@@ -48,6 +49,8 @@ public class TraderEmbedderOsgiForPaxExam {
 	public Option[] config() {
 
 		return options(
+				frameworkProperty("org.osgi.framework.system.packages.extra")
+						.value("org.ops4j.pax.exam;version=3.0.3,org.ops4j.pax.exam.options;version=3.0.3,org.ops4j.pax.exam.util;version=3.0.3,org.w3c.dom.traversal"),
 				mavenBundle("org.apache.servicemix.bundles",
 						"org.apache.servicemix.bundles.xstream", "1.4.4_2"),
 				mavenBundle("org.apache.servicemix.bundles",
@@ -56,10 +59,6 @@ public class TraderEmbedderOsgiForPaxExam {
 						"org.apache.servicemix.bundles.xmlpull", "1.1.3.1_2"),
 				mavenBundle("org.apache.servicemix.bundles",
 						"org.apache.servicemix.bundles.freemarker", "2.3.19_1"),
-				mavenBundle("org.apache.xmlcommons",
-						"com.springsource.org.apache.xmlcommons", "1.3.4"),
-				// mavenBundle("org.apache.servicemix.specs",
-				// "org.apache.servicemix.specs.jaxp-api-1.4", "2.2.0"),
 				mavenBundle("commons-lang", "commons-lang", "2.6"),
 				mavenBundle("commons-collections", "commons-collections",
 						"3.2.1"),
@@ -88,9 +87,6 @@ public class TraderEmbedderOsgiForPaxExam {
 								"examples_table_loaded*",
 								"given_relative_path_story.story",
 								"step_composition.story" });
-		System.err.println(storyPaths);
-		System.err.println("BC:" + AndSteps.class.getClassLoader());
-		System.err.println("This:" + this.getClass().getClassLoader());
 
 		EmbedderOsgi embedderOsgi = new EmbedderOsgi(AndSteps.class);
 		embedderOsgi.useConfiguration(configuration(AndSteps.class));

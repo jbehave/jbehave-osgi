@@ -15,6 +15,8 @@
 	<description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
 		<jbehave-osgi-p2-repo>http://jbehave.github.com/jbehave-osgi/p2</jbehave-osgi-p2-repo>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
@@ -48,7 +50,7 @@
 		</profile>
 
 		<profile>
-			<id>example-trader-equinox</id>
+			<id>example-trader-tycho-equinox</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -61,7 +63,7 @@
 		</profile>
 
 		<profile>
-			<id>example-trader-felix</id>
+			<id>example-trader-paxexam-felix</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -69,7 +71,20 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<module>trader-felix-pomfirst-paxexam</module>
+				<module>trader-pomfirst-paxexam</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>example-trader-paxexam-equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>trader-pomfirst-paxexam</module>
 			</modules>
 		</profile>
 	</profiles>
