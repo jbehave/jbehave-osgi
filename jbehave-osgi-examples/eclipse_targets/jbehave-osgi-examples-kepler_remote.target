@@ -2,9 +2,9 @@
 <?pde version="3.8"?><target name="jbehave-osgi-examples-kepler-remote" sequenceNumber="43">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201305121230"/>
-<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.1.1.201305121230"/>
-<unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201305121230"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201305281433"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.1.1.201305281433"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201305281433"/>
 <repository location="http://download.eclipse.org/technology/swtbot/snapshots"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -22,14 +22,14 @@
 <repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.jbehave.osgi.equinox.features.core.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.web.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.web.source.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.interactive.source.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.core.source.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.swtbot.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.swtbot.source.feature.group" version="1.0.0.201305251832"/>
-<unit id="org.jbehave.osgi.equinox.features.interactive.feature.group" version="1.0.0.201305251832"/>
+<unit id="org.jbehave.osgi.equinox.features.core.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.web.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.web.source.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.interactive.source.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.core.source.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.swtbot.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.swtbot.source.feature.group" version="1.0.0.201305282004"/>
+<unit id="org.jbehave.osgi.equinox.features.interactive.feature.group" version="1.0.0.201305282004"/>
 <repository location="http://jbehave.github.com/jbehave-osgi/p2"/>
 </location>
 </locations>

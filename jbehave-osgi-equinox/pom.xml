@@ -14,7 +14,7 @@
 	<properties>
 		<eclipse-site>http://download.eclipse.org/releases/kepler</eclipse-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
-		<orbit-site>http://build.eclipse.org/orbit/committers/orbit-I/20130522192325/I20130522192325/repository/</orbit-site>
+		<orbit-site>http://build.eclipse.org/orbit/committers/orbit-I/20130528180513/I20130528180513/repository/</orbit-site>
 	</properties>
 
 	<repositories>
