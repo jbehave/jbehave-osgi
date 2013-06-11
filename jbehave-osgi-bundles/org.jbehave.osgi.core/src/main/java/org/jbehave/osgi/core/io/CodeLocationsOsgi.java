@@ -3,6 +3,7 @@ package org.jbehave.osgi.core.io;
 import java.io.File;
 import java.net.URL;
 
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
 /**
@@ -24,9 +25,14 @@ public class CodeLocationsOsgi {
 	public static URL codeLocationFromClass(Class<?> codeLocationClass) {
 		File file = null;
 		try {
-			
-			file = FrameworkUtil.getBundle(
-					codeLocationClass).getBundleContext().getDataFile("");
+			BundleContext bc = FrameworkUtil.getBundle(codeLocationClass)
+					.getBundleContext();
+			if (bc == null)
+				throw new RuntimeException(
+						"The bundle that contains the class "
+								+ codeLocationClass
+								+ " not started. You must set its Bundle-ActivationPolicy to lazy !");
+			file = bc.getDataFile("");
 			return file.toURI().toURL();
 		} catch (Exception e) {
 			throw new InvalidCodeLocation(file.getAbsolutePath(), e);
