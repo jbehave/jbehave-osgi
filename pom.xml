@@ -26,8 +26,8 @@
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
 		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
-		<tycho-version>0.17.0</tycho-version>
-		<tychoExtrasVersion>0.17.0</tychoExtrasVersion>
+		<tycho-version>0.18.0</tycho-version>
+		<tychoExtrasVersion>0.18.0</tychoExtrasVersion>
 	</properties>
 
 	<dependencyManagement>
