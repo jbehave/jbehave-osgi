@@ -10,14 +10,15 @@ import org.jbehave.osgi.core.configuration.ConfigurationOsgi;
 /**
  * 
  * @author Cristiano Gavião
- * 
  */
 public class EmbedderOsgi extends Embedder {
 
 	public EmbedderOsgi(Class<?> loadFromBundleClass) {
 		super(new StoryMapper(), new PerformableTree(),
-				new PrintStreamEmbedderMonitor(), new ConfigurationOsgi(
-						loadFromBundleClass));
+				new PrintStreamEmbedderMonitor());
+		
+		useConfiguration(new ConfigurationOsgi(
+				loadFromBundleClass));
 		useClassLoader(new EmbedderClassLoader(
 				loadFromBundleClass.getClassLoader()));
 		useEmbedderFailureStrategy(new ThrowingRunningStoriesFailed());
