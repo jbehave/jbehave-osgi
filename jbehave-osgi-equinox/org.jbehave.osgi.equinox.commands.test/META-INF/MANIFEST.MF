@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JBehave OSGi Equinox : Commands Bundle Tests
+Bundle-SymbolicName: org.jbehave.osgi.equinox.commands.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+55Fragment-Host: org.jbehave.osgi.core;bundle-version="1.0.0"
+Import-Package: 
+ org.osgi.framework;version="1.6.0"
+Export-Package: org.jbehave.osgi.equinox.commands.test
+Require-Bundle: org.junit;bundle-version="4.11.0",
+ org.apache.felix.gogo.shell;bundle-version="[0.10.0,0.11.0)",
+ org.apache.felix.gogo.command;bundle-version="[0.10.0,0.11.0)",
+ org.apache.felix.gogo.runtime;bundle-version="[0.10.0,0.11.0)",
+ ch.qos.logback.classic;bundle-version="1.0.13",
+ ch.qos.logback.core;bundle-version="1.0.13",
+ slf4j.api;bundle-version="1.7.5",
+ com.google.guava,
+ javax.inject,
+ org.apache.commons.collections,
+ org.apache.commons.io,
+ org.apache.commons.lang,
+ org.apache.servicemix.bundles.freemarker,
+ org.apache.servicemix.bundles.paranamer,
+ org.apache.servicemix.bundles.xstream,
+ org.eclipse.equinox.cm,
+ org.eclipse.equinox.console,
+ org.eclipse.equinox.ds,
+ org.eclipse.equinox.event,
+ org.eclipse.osgi.services,
+ org.eclipse.core.runtime,
+ org.eclipse.equinox.common,
+ org.eclipse.equinox.util,
+ org.hamcrest.core,
+ org.hamcrest.integration,
+ org.jbehave.osgi.core;bundle-version="1.0.0"

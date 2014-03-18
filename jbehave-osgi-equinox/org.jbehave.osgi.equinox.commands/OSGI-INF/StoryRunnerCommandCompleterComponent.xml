@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.jbehave.osgi.equinox.commands.completers.StoryRunnerCompleter">
    <implementation class="org.jbehave.osgi.equinox.commands.completers.StoryRunnerCompleter"/>
-   <reference bind="bindStoryRunnerService" cardinality="1..n" interface="org.jbehave.osgi.interactive.services.StoryRunnerService" name="JBehaveRunnerServices" policy="dynamic" unbind="unbindStoryRunnerService"/>
+   <reference bind="bindStoryRunnerService" cardinality="1..n" interface="org.jbehave.osgi.core.services.StoryRunnerService" name="JBehaveRunnerServices" policy="dynamic" unbind="unbindStoryRunnerService"/>
    <service>
       <provide interface="org.eclipse.equinox.console.completion.common.Completer"/>
    </service>
