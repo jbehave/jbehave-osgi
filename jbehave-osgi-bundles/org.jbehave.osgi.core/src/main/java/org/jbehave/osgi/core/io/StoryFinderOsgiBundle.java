@@ -1,13 +1,12 @@
 package org.jbehave.osgi.core.io;
 
-import static org.osgi.framework.FrameworkUtil.getBundle;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
 import org.jbehave.core.io.StoryFinder;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.wiring.BundleWiring;
 
 /**
@@ -15,30 +14,26 @@ import org.osgi.framework.wiring.BundleWiring;
  * @author Cristiano Gavião
  *
  */
-public class StoryFinderOsgi extends StoryFinder {
+public class StoryFinderOsgiBundle extends StoryFinder {
 
-	private final Class<?> testClass;
+	private final Bundle ownerBundle;
 	
-    public StoryFinderOsgi(Class<?> testClass) {
+    public StoryFinderOsgiBundle(Bundle ownerBundle) {
         super();
-        this.testClass = testClass;
+        this.ownerBundle = ownerBundle;
     }
 
-    public StoryFinderOsgi(String classNameExtension, Class<?> testClass) {
-        super(classNameExtension);
-        this.testClass = testClass;
-    }
-
-    public StoryFinderOsgi(Comparator<? super String> sortingComparator, Class<?> testClass) {
+    public StoryFinderOsgiBundle(Comparator<? super String> sortingComparator, Bundle ownerBundle) {
         super(sortingComparator);
-        this.testClass = testClass;
+        this.ownerBundle = ownerBundle;
     }
+
 
     @Override
     protected List<String> scan(String basedir, List<String> includes, List<String> excludes) {
 
         List<String> scanned = new ArrayList<String>();
-        BundleWiring wiring = getBundle(testClass).adapt(BundleWiring.class);
+        BundleWiring wiring = ownerBundle.adapt(BundleWiring.class);
 
         if (includes != null) {
             for (String filePattern : includes) {

@@ -3,8 +3,8 @@ package org.jbehave.osgi.core.io;
 import java.io.File;
 import java.net.URL;
 
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
 
 /**
  * 
@@ -12,6 +12,15 @@ import org.osgi.framework.FrameworkUtil;
  * 
  */
 public class CodeLocationsOsgi {
+
+	@SuppressWarnings("serial")
+	public static class InvalidCodeLocation extends RuntimeException {
+
+		public InvalidCodeLocation(String path, Throwable cause) {
+			super(path, cause);
+		}
+
+	}
 
 	/**
 	 * Creates a code location URL from a class
@@ -22,16 +31,16 @@ public class CodeLocationsOsgi {
 	 * @throws InvalidCodeLocation
 	 *             if URL creation fails
 	 */
-	public static URL codeLocationFromClass(Class<?> codeLocationClass) {
+	public static URL bundleDataFolder(Bundle ownerBundle) {
 		File file = null;
 		try {
-			BundleContext bc = FrameworkUtil.getBundle(codeLocationClass)
+			BundleContext bc = ownerBundle
 					.getBundleContext();
 			if (bc == null)
 				throw new RuntimeException(
-						"The bundle that contains the class "
-								+ codeLocationClass
-								+ " not started. You must set its Bundle-ActivationPolicy to lazy !");
+						"The bundle "
+								+ ownerBundle
+								+ " was not started. You must incluse a Bundle-ActivationPolicy =lazy in its manifest !");
 			file = bc.getDataFile("");
 			return file.toURI().toURL();
 		} catch (Exception e) {
@@ -54,14 +63,5 @@ public class CodeLocationsOsgi {
 		} catch (Exception e) {
 			throw new InvalidCodeLocation(url, e);
 		}
-	}
-
-	@SuppressWarnings("serial")
-	public static class InvalidCodeLocation extends RuntimeException {
-
-		public InvalidCodeLocation(String path, Throwable cause) {
-			super(path, cause);
-		}
-
 	}
 }

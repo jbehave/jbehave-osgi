@@ -10,104 +10,144 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jbehave.osgi.core</artifactId>
-	<name>JBehave OSGi : Core Bundle</name>
-	<description>OSGi wrapper to JBehave core features.</description>
+	<name>JBehave OSGi : Core Services Bundle</name>
+	<description>Provides OSGi services for JBehave core features.</description>
 	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.runtime</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>paranamer</artifactId>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.core.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.thoughtworks.xstream</groupId>
+					<artifactId>xstream</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>paranamer</artifactId>
+					<groupId>com.thoughtworks.paranamer</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>freemarker</artifactId>
+					<groupId>org.freemarker</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xmlpull</artifactId>
+					<groupId>xmlpull</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xpp3_min</artifactId>
+					<groupId>xpp3</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-io</artifactId>
+					<groupId>commons-io</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-collections</artifactId>
+					<groupId>commons-collections</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.xstream</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.specs</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.specs.jaxp-api-1.4</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.freemarker</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.google.guava</groupId> -->
-<!-- 			<artifactId>guava</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.plexus</groupId> -->
-<!-- 			<artifactId>plexus-utils</artifactId> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
 				<configuration>
+					<!-- that unpack is reaaaaly needed -->
+					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Export-Package>org.jbehave.osgi.core.*</Export-Package>
-						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
-<!-- 						<Import-Package> -->
-<!-- 							groovy.lang.*;resolution:=optional, -->
-<!-- 							javax.inject.*;resolution:=optional, -->
-<!-- 							org.junit.*;version="4.11.0", -->
-<!-- 							!org.hamcrest.*, -->
-<!-- 							* -->
-<!-- 						</Import-Package> -->
-<!-- 						<Required-Bundle>org.hamcrest.core;bundle-version="1.3.0"</Required-Bundle> -->
+						<Import-Package>
+							groovy.lang.*;resolution:=optional,
+							javax.inject.*;resolution:=optional,
+							org.junit.*;version="4.11.0",
+							!org.hamcrest.*,
+							*
+						</Import-Package>
+						<Require-Bundle>org.hamcrest.integration;bundle-version="1.3.0"</Require-Bundle>
 						<Embed-Dependency>
-<!-- 							jbehave-core;scope=compile;inline=true, -->
+							jbehave-core;scope=compile;inline=true,
 							plexus-utils;scope=compile;inline=false
 						</Embed-Dependency>
 						<_exportcontents>
-<!-- 							org.jbehave.core.*;version="${jbehave.core.osgiVersion}", -->
+							org.jbehave.core.*;version="${jbehave.core.osgiVersion}",
 							org.codehaus.plexus.util.*;version="3.0.10"
 						</_exportcontents>
 					</instructions>
 				</configuration>
 			</plugin>
 
-			<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-scr-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-to-pde</id>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- enable source bundle generation -->
@@ -117,4 +157,23 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>in-eclipse</id>
+			<!-- activated only when running in m2e (eclipse) -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
