@@ -16,6 +16,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.fragment.jdk</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<classifier>sources</classifier>
 		</dependency>
@@ -26,11 +31,11 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
@@ -46,6 +51,10 @@
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.woodstox</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -74,6 +83,7 @@
 				<configuration>
 					<labelSuffix> (source)</labelSuffix>
 					<excludes>
+						<plugin id="org.jbehave.osgi.fragment.jdk" />
 						<plugin id="javax.xml.stream" />
 						<plugin id="org.apache.servicemix.bundles.xmlpull" />
 						<plugin id="org.apache.servicemix.bundles.xstream" />
@@ -85,6 +95,8 @@
 						<plugin id="org.apache.felix.gogo.command" />
 						<plugin id="org.apache.felix.gogo.runtime" />
 						<plugin id="org.apache.felix.gogo.shell" />
+						<plugin id="org.apache.commons.logging" />
+						<plugin id="org.hamcrest.core" />
 						<plugin id="javax.xml" />
 						<plugin id="org.apache.commons.io" />
 						<plugin id="org.apache.commons.collections" />
