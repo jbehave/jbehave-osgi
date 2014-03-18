@@ -25,7 +25,6 @@ public class RCPmailCoreSteps {
 	@Given("JBehave RCP Mail application is running")
 	public void certifyRCPmailIsRunning() {
 
-		//TODO waiting for swtbot list answer question about how to test application is on
 		currentViewCount = viewCount();
 		assertThat(currentViewCount, is(2));
 	}

@@ -53,6 +53,9 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+                    <systemProperties>
+                        <jbehave.osgi.outputdir>${project.build.directory}</jbehave.osgi.outputdir>
+                    </systemProperties>
 					<includes>
 						<!-- <include>org.jbehave.osgi.examples.rcpmail.application.test.MyFirstTest</include> -->
 						<include>**/*RCPmailAnnotatedPathRunner.java</include>
@@ -76,7 +79,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 						<bundle>
-							<id>org.eclipse.equinox.simpleconfigurator</id>
+							<id>org.eclipse.equinox.cm</id>
 							<level>1</level>
 							<autoStart>true</autoStart>
 						</bundle>
