@@ -15,6 +15,10 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.jbehave.osgi</groupId>
+            <artifactId>org.jbehave.osgi.logging</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -45,8 +49,16 @@
 			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<artifactId>commons-io</artifactId>
+			<groupId>commons-io</groupId>
 		</dependency>
 	</dependencies>
 	<build>

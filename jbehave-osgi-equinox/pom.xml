@@ -10,22 +10,42 @@
 
 	<artifactId>jbehave-osgi-equinox</artifactId>
 	<packaging>pom</packaging>
-	<name>JBehave OSGI Equinox</name>
+	<name>JBehave OSGI : Equinox Distribution</name>
 	<properties>
-		<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
 		<jetty-site>http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.14.v20131031</jetty-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/</orbit-site>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>kepler</id>
+			<activation>
+				<property>
+					<name>jbehave.osgi.distr.equinox</name>
+					<value>kepler</value>
+				</property>
+			</activation>
+			<properties>
+				<eclipse-site>http://download.eclipse.org/releases/kepler</eclipse-site>
+			</properties>
+		</profile>
+		<profile>
+			<id>luna</id>
+			<activation>
+				<property>
+					<name>jbehave.osgi.distr.equinox</name>
+					<value>luna</value>
+				</property>
+			</activation>
+			<properties>
+				<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.jbehave.osgi</groupId>
-				<artifactId>org.jbehave.osgi.equinox.features.web</artifactId>
-				<version>${project.version}</version>
-				<type>eclipse-feature</type>
-			</dependency>
 			<dependency>
 				<groupId>org.jbehave.osgi</groupId>
 				<artifactId>org.jbehave.osgi.web</artifactId>
@@ -35,6 +55,28 @@
 				<groupId>org.jbehave.osgi</groupId>
 				<artifactId>org.jbehave.osgi.core</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.paxexam</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.paxexam</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.logging</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.logging</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 			<dependency>
 				<groupId>org.jbehave.osgi</groupId>
@@ -155,37 +197,6 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>features</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<modules>
-				<module>org.jbehave.osgi.equinox.commands</module>
-				<module>org.jbehave.osgi.equinox.commands.test</module>
-				<module>org.jbehave.osgi.equinox.swtbot</module>
-				<module>org.jbehave.osgi.equinox.features.core</module>
-				<module>org.jbehave.osgi.equinox.features.web</module>
-				<module>org.jbehave.osgi.equinox.features.swtbot</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>p2</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<to-repo>p2</to-repo>
-			</properties>
-			<modules>
-				<module>org.jbehave.osgi.equinox.p2</module>
-			</modules>
-		</profile>
-	</profiles>
-
 </project>

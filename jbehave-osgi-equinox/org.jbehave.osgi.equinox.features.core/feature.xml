@@ -24,7 +24,10 @@
       <import plugin="org.hamcrest.generator" version="1.3.0" match="equivalent"/>
       <import plugin="org.hamcrest.integration" version="1.3.0" match="equivalent"/>
       <import plugin="org.hamcrest.library" version="1.3.0" match="equivalent"/>
-   </requires>
+      <import plugin="org.apache.commons.collections" version="3.2.1" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.io" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.felix.gogo.runtime" version="0.10.0" match="greaterOrEqual"/>
+s   </requires>
 
    <plugin
          id="com.google.guava"
@@ -35,6 +38,13 @@
 
    <plugin
          id="org.jbehave.osgi.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jbehave.osgi.logging"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -63,12 +73,6 @@
 
    <plugin
          id="org.apache.commons.lang"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.apache.commons.logging"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

@@ -16,12 +16,25 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.paxexam</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.fragment.jdk</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
 			<classifier>sources</classifier>
 		</dependency>
 		<dependency>
@@ -63,6 +76,14 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<artifactId>commons-io</artifactId>
+			<groupId>commons-io</groupId>
 		</dependency>
 	</dependencies>
 	<build>

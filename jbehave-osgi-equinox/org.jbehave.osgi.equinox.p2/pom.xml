@@ -15,12 +15,12 @@
 			<id>deploy-p2</id>
 			<activation>
 				<property>
-					<name>P2_BASE_FOLDER</name>
+					<name>jbehave.osgi.distr.p2.location</name>
 				</property>
 			</activation>
 			<properties>
 				<from-repo>${project.build.directory}/repository</from-repo>
-				<to_repo_final>${P2_BASE_FOLDER}/${to-repo}</to_repo_final>
+				<to_repo_final>${jbehave.osgi.distr.p2.location}</to_repo_final>
 			</properties>
 			<build>
 				<plugins>
@@ -63,6 +63,15 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.jbehave.osgi</groupId>
+            <artifactId>org.jbehave.osgi.logging</artifactId>
+			<classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.jbehave.osgi</groupId>
+            <artifactId>org.jbehave.osgi.logging</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.fragment.jdk</artifactId>
@@ -77,22 +86,6 @@
 			<artifactId>org.jbehave.osgi.web</artifactId>
 			<classifier>sources</classifier>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.core</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.web</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- <type>eclipse-feature</type> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.jbehave.osgi</groupId> -->
-		<!-- <artifactId>org.jbehave.osgi.equinox.features.swtbot</artifactId> -->
-		<!-- <version>${project.version}</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -137,10 +130,10 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.freemarker</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.specs</groupId>
 			<artifactId>org.apache.servicemix.specs.stax-api-1.2</artifactId>
@@ -152,6 +145,34 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<artifactId>commons-collections</artifactId>
+			<groupId>commons-collections</groupId>
+		</dependency>
+		<dependency>
+			<artifactId>jna</artifactId>
+			<groupId>net.java.dev.jna</groupId>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+		</dependency>
+		<dependency>
+			<artifactId>commons-io</artifactId>
+			<groupId>commons-io</groupId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-osgi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore-osgi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
 	</dependencies>
 </project>
