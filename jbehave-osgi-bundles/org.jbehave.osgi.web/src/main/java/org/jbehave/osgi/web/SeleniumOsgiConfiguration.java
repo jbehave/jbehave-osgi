@@ -3,6 +3,7 @@ package org.jbehave.osgi.web;
 import org.jbehave.osgi.core.configuration.ConfigurationOsgi;
 import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.osgi.framework.Bundle;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
@@ -11,62 +12,7 @@ import com.thoughtworks.selenium.condition.JUnitConditionRunner;
 
 public class SeleniumOsgiConfiguration extends ConfigurationOsgi {
 
-	private Selenium selenium;
-	private SeleniumContext seleniumContext;
-	private WebDriverProvider driverProvider;
-
-    public SeleniumOsgiConfiguration(Class<?> loadFromBundleClass) {
-    	super(loadFromBundleClass);
-    }
-
-    public Selenium selenium() {
-        synchronized (this) {
-            if (selenium == null) {
-                selenium = defaultSelenium();
-            }
-        }
-        return selenium;
-    }
-
-    public SeleniumOsgiConfiguration useSelenium(Selenium selenium){
-        this.selenium = selenium;
-        return this;
-    }
-    
-    public SeleniumContext seleniumContext() {
-        synchronized (this) {
-            if (seleniumContext == null) {
-                seleniumContext = new SeleniumContext();
-            }
-        }
-        return seleniumContext;
-    }
-
-    public SeleniumOsgiConfiguration useSeleniumContext(SeleniumContext seleniumContext) {
-        this.seleniumContext = seleniumContext;
-        return this;
-    }
-    
-    public WebDriverProvider webDriverProvider() {
-        return driverProvider;
-    }
-
-    public SeleniumOsgiConfiguration useWebDriverProvider(WebDriverProvider webDriverProvider){
-        this.driverProvider = webDriverProvider;
-        return this;
-    }
-    
-    /**
-     * Creates default Selenium instance: {@link DefaultSelenium("localhost",
-     * 4444, "*firefox", "http://localhost:8080")}
-     * 
-     * @return A Selenium instance
-     */
-    public static Selenium defaultSelenium() {
-        return new DefaultSelenium("localhost", 4444, "*firefox", "http://localhost:8080");
-    }
-
-    /**
+	/**
      * Creates default ConditionRunner: {@link JUnitConditionRunner(selenium,
      * 10, 100, 1000)}.
      * 
@@ -76,6 +22,62 @@ public class SeleniumOsgiConfiguration extends ConfigurationOsgi {
      */
     public static ConditionRunner defaultConditionRunner(Selenium selenium) {
         return new JUnitConditionRunner(selenium, 10, 100, 1000);
+    }
+
+	/**
+     * Creates default Selenium instance: {@link DefaultSelenium("localhost",
+     * 4444, "*firefox", "http://localhost:8080")}
+     * 
+     * @return A Selenium instance
+     */
+    public static Selenium defaultSelenium() {
+        return new DefaultSelenium("localhost", 4444, "*firefox", "http://localhost:8080");
+    }
+	private Selenium selenium;
+	private SeleniumContext seleniumContext;
+
+
+    private WebDriverProvider driverProvider;
+
+    public SeleniumOsgiConfiguration(Bundle ownerBundle) {
+		super(ownerBundle);
+	}
+    
+    public Selenium selenium() {
+        synchronized (this) {
+            if (selenium == null) {
+                selenium = defaultSelenium();
+            }
+        }
+        return selenium;
+    }
+
+    public SeleniumContext seleniumContext() {
+        synchronized (this) {
+            if (seleniumContext == null) {
+                seleniumContext = new SeleniumContext();
+            }
+        }
+        return seleniumContext;
+    }
+    
+    public SeleniumOsgiConfiguration useSelenium(Selenium selenium){
+        this.selenium = selenium;
+        return this;
+    }
+
+    public SeleniumOsgiConfiguration useSeleniumContext(SeleniumContext seleniumContext) {
+        this.seleniumContext = seleniumContext;
+        return this;
+    }
+    
+    public SeleniumOsgiConfiguration useWebDriverProvider(WebDriverProvider webDriverProvider){
+        this.driverProvider = webDriverProvider;
+        return this;
+    }
+
+    public WebDriverProvider webDriverProvider() {
+        return driverProvider;
     }
     
 }
