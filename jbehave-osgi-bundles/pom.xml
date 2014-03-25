@@ -11,17 +11,6 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGi : Pom-First Bundles</name>
 
-	<prerequisites>
-		<maven>3.0.0</maven>
-	</prerequisites>
-
-	<modules>
-		<module>org.jbehave.osgi.core</module>
-		<module>org.jbehave.osgi.web</module>
-		<module>org.jbehave.osgi.paxexam</module>
-		<module>org.jbehave.osgi.fragment.jdk</module>
-	</modules>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -90,7 +79,6 @@
 					<configuration>
 						<!-- that unpack is reaaaaly needed -->
 						<unpackBundle>true</unpackBundle>
-						<rebuildBundle>true</rebuildBundle>
 						<instructions>
 							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 							<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
@@ -191,10 +179,10 @@
 									</goals>
 									<configuration>
 										<tasks>
-<!-- 											<delete dir="${basedir}/META-INF" quiet="true" /> -->
-<!-- 											<mkdir dir="${basedir}/META-INF" /> -->
-<!-- 											<copy file="${project.build.outputDirectory}/META-INF/MANIFEST.MF" -->
-<!-- 												tofile="${basedir}/META-INF/MANIFEST.MF" /> -->
+											<delete dir="${basedir}/META-INF" quiet="true" />
+											<mkdir dir="${basedir}/META-INF" />
+											<copy file="${project.build.outputDirectory}/META-INF/MANIFEST.MF"
+												tofile="${basedir}/META-INF/MANIFEST.MF" />
 											<delete dir="${basedir}/OSGI-INF" quiet="true" />
 											<mkdir dir="${basedir}/OSGI-INF" />
 											<copy todir="${basedir}/OSGI-INF">
@@ -246,7 +234,7 @@
 							<groupId>org.apache.felix</groupId>
 							<artifactId>maven-bundle-plugin</artifactId>
 							<configuration>
-								<manifestLocation>${basedir}/META-INF</manifestLocation>
+<!-- 								<manifestLocation>${basedir}/META-INF</manifestLocation> -->
 							</configuration>
 						</plugin>
 						<plugin>
