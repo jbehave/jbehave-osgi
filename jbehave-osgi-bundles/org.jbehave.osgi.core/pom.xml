@@ -26,15 +26,28 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>commons-io</artifactId>
+			<groupId>commons-io</groupId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>commons-collections</artifactId>
+			<groupId>commons-collections</groupId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<artifactId>paranamer</artifactId>
 			<groupId>com.thoughtworks.paranamer</groupId>
-			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.5</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -52,8 +65,8 @@
 					<groupId>com.thoughtworks.paranamer</groupId>
 				</exclusion>
 				<exclusion>
-					<artifactId>freemarker</artifactId>
 					<groupId>org.freemarker</groupId>
+					<artifactId>freemarker</artifactId>
 				</exclusion>
 				<exclusion>
 					<artifactId>xmlpull</artifactId>
@@ -96,6 +109,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -111,26 +125,26 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
-					<!-- that unpack is reaaaaly needed -->
-					<unpackBundle>true</unpackBundle>
 					<instructions>
-						<Export-Package>org.jbehave.osgi.core.*</Export-Package>
+						<Export-Package>org.jbehave.osgi.*</Export-Package>
 						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
 						<Import-Package>
 							groovy.lang.*;resolution:=optional,
 							javax.inject.*;resolution:=optional,
+							javax.swing.*;resolution:=optional,
 							org.junit.*;version="4.11.0",
 							!org.hamcrest.*,
+							com.thoughtworks.paranamer;version="2.4.0",
 							*
 						</Import-Package>
 						<Require-Bundle>org.hamcrest.integration;bundle-version="1.3.0"</Require-Bundle>
 						<Embed-Dependency>
-							jbehave-core;scope=compile;inline=true,
-							plexus-utils;scope=compile;inline=false
+							jbehave-core;inline=false,
+							plexus-utils;inline=false
 						</Embed-Dependency>
 						<_exportcontents>
-							org.jbehave.core.*;version="${jbehave.core.osgiVersion}",
-							org.codehaus.plexus.util.*;version="3.0.10"
+							org.codehaus.plexus.util.*;version="3.0.10",
+							org.jbehave.core.*;version="${jbehave.core.osgiVersion}"
 						</_exportcontents>
 					</instructions>
 				</configuration>

@@ -4,8 +4,7 @@ import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 import org.apache.felix.service.command.Converter;
 import org.jbehave.osgi.core.components.AbstractComponent;
@@ -23,7 +22,7 @@ import org.osgi.service.log.LogService;
 @Component(enabled = true, immediate = true)
 public class ArgumentConverterInjectableStepFactory extends AbstractComponent
 		implements Converter {
-	private final ConcurrentMap<String, InjectableStepsFactoryService> stepsFactoryServices = new ConcurrentSkipListMap<String, InjectableStepsFactoryService>();
+	private final ConcurrentSkipListSet<InjectableStepsFactoryService> stepsFactoryServices = new ConcurrentSkipListSet<InjectableStepsFactoryService>();
 
 	@Reference
 	@Override
@@ -35,8 +34,7 @@ public class ArgumentConverterInjectableStepFactory extends AbstractComponent
 	protected void bindInjectableStepsFactoryService(
 			InjectableStepsFactoryService injectableStepsFactoryService,
 			Map<?, ?> properties) {
-		getInjectableStepsFactoryServices().putIfAbsent(
-				injectableStepsFactoryService.getStepFactoryId(),
+		getInjectableStepsFactoryServices().add(
 				injectableStepsFactoryService);
 	}
 
@@ -46,23 +44,19 @@ public class ArgumentConverterInjectableStepFactory extends AbstractComponent
 		if (desiredType == InjectableStepsFactoryService.class) {
 
 			if (inArg instanceof String) {
-				InjectableStepsFactoryService runnerService = getInjectableStepsFactoryServices()
-						.get(inArg);
-				if (runnerService == null) {
-					logError(
-							"Any InjectableStepsFactoryService couldn't be found using argument: '"
-									+ inArg + "'.", null);
-				}
-				return runnerService;
+			    for (InjectableStepsFactoryService runnerService : getInjectableStepsFactoryServices()) {
+			        if (runnerService.getStepFactoryId().equalsIgnoreCase((String)inArg)){
+			            return runnerService;
+			        }
+                }
 			}
 			if (inArg instanceof Long) {
 				InjectableStepsFactoryService[] allrunners = getInjectableStepsFactoryServices()
-						.values()
 						.toArray(
 								new InjectableStepsFactoryService[getInjectableStepsFactoryServices()
-										.values().size()]);
+										.size()]);
 				int id = ((Long) inArg).intValue();
-				if (id < 0 || id > allrunners.length) {
+				if (id < 1 || id > allrunners.length + 1) {
 					throw new IllegalArgumentException("StoryRunner with id '"
 							+ id + "' doesn't exists");
 				}
@@ -80,7 +74,7 @@ public class ArgumentConverterInjectableStepFactory extends AbstractComponent
 		return null;
 	}
 
-	public ConcurrentMap<String, InjectableStepsFactoryService> getInjectableStepsFactoryServices() {
+	public ConcurrentSkipListSet<InjectableStepsFactoryService> getInjectableStepsFactoryServices() {
 		return stepsFactoryServices;
 	}
 

@@ -20,157 +20,147 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 
 @Component(servicefactory = true, configurationPid = Constants.STEP_FACTORY_FPID, service = { InjectableStepsFactoryService.class }, configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class StepsFactoryServiceFactoryComponent extends AbstractComponent
-		implements InjectableStepsFactoryService,
-		Comparable<StepsFactoryServiceFactoryComponent> {
+public class StepsFactoryServiceFactoryComponent extends AbstractServiceComponent
+        implements InjectableStepsFactoryService {
 
-	@SuppressWarnings("serial")
-	public static class StepsInstanceNotFound extends RuntimeException {
+    @SuppressWarnings("serial")
+    public static class StepsInstanceNotFound extends RuntimeException {
 
-		public StepsInstanceNotFound(Class<?> type,
-				InjectableStepsFactory stepsFactory) {
-			super("Steps instance not found for type " + type + " in factory "
-					+ stepsFactory);
-		}
+        public StepsInstanceNotFound(Class<?> type,
+                InjectableStepsFactory stepsFactory) {
+            super("Steps instance not found for type " + type + " in factory "
+                    + stepsFactory);
+        }
 
-	}
+    }
 
-	private final Map<Class<?>, Object> stepsInstances = new LinkedHashMap<Class<?>, Object>();
+    private final Map<Class<?>, Object> stepsInstances = new LinkedHashMap<Class<?>, Object>();
 
-	private String stepFactoryBundleName = "";
+    private String[] stepClassesNames;
 
-	private String stepFactoryBundleVersion = "";
+    public StepsFactoryServiceFactoryComponent() {
+    }
 
-	private String[] stepClassesNames;
+    @Activate
+    @Override
+    protected void activate(ComponentContext context) {
+        super.activate(context);
 
-	private String stepFactoryId = "";
+        Object stepFactoryIdObj = getProperties().get(
+                Constants.STEP_FACTORY_EXTENDER_PROPERTY_GROUP);
+        setExtendeeID(stepFactoryIdObj != null ? (String) stepFactoryIdObj
+                : "no defined");
 
-	public StepsFactoryServiceFactoryComponent() {
-	}
+        Object stepClassesNamesObj = getProperties().get(
+                Constants.STEP_FACTORY_EXTENDER_PROPERTY_ITEM);
+        stepClassesNames = stepClassesNamesObj != null ? ((String[]) stepClassesNamesObj)
+                : null;
 
-	@Activate
-	@Override
-	protected void activate(ComponentContext context) {
-		super.activate(context);
+        try {
+            loadStepClassesInstances();
+        } catch (Exception e) {
+            logError(
+                    "Error loading step classes. Component is being disabled.",
+                    e);
+        }
+        logDebug("An InjectableStepsFactoryService was activated for: "
+                + getStepFactoryId() + " from bundle: "
+                + getStepFactoryBundleName());
+    }
 
-		Object stepFactoryBundleNameObj = getProperties().get(
-				Constants.EXTENDEE_BUNDLE);
-		stepFactoryBundleName = stepFactoryBundleNameObj != null ? (String) stepFactoryBundleNameObj
-				: "no defined";
+    @Reference
+    @Override
+    protected void bindLogService(LogService logService) {
+        super.bindLogService(logService);
+    }
 
-		Object stepFactoryBundleVersionObj = getProperties().get(
-				Constants.EXTENDEE_BUNDLE_VERSION);
-		stepFactoryBundleVersion = stepFactoryBundleVersionObj != null ? (String) stepFactoryBundleVersionObj
-				: "no defined";
+    @Override
+    public List<CandidateSteps> createCandidateSteps() {
+        List<Class<?>> types = stepsTypes();
+        List<CandidateSteps> steps = new ArrayList<CandidateSteps>();
+        for (Class<?> type : types) {
+            configuration().parameterConverters().addConverters(
+                    methodReturningConverters(type));
+            steps.add(new Steps(configuration(), type, this));
+        }
+        return steps;
+    }
 
-		Object stepFactoryIdObj = getProperties().get(
-				Constants.STEP_FACTORY_EXTENDER_PROPERTY_GROUP);
-		stepFactoryId = stepFactoryIdObj != null ? (String) stepFactoryIdObj
-				: "no defined";
+    @Override
+    public Object createInstanceOfType(Class<?> type) {
+        Object instance = stepsInstances.get(type);
+        if (instance == null) {
+            throw new StepsInstanceNotFound(type, this);
+        }
+        return instance;
+    }
 
-		Object stepClassesNamesObj = getProperties().get(
-				Constants.STEP_FACTORY_EXTENDER_PROPERTY_ITEM);
-		stepClassesNames = stepClassesNamesObj != null ? ((String[]) stepClassesNamesObj)
-				: null;
-		setOwnerBundle(searchOwnerBundle(context.getBundleContext(), stepFactoryBundleName, stepFactoryBundleVersion));
+    @Deactivate
+    @Override
+    protected void deactivate(ComponentContext context) {
+        super.deactivate(context);
+    }
 
-		try {
-			loadStepClassesInstances();
-		} catch (Exception e) {
-			logError(
-					"Error loading step classes. Component is being disabled.",
-					e);
-		}
-		logDebug("An InjectableStepsFactoryService was activated for: "
-				+ stepFactoryId + " from bundle: " + stepFactoryBundleName);
-	}
+    @Override
+    public String[] getStepClassesNames() {
+        return stepClassesNames;
+    }
 
-	@Override
-	public int compareTo(StepsFactoryServiceFactoryComponent o) {
+    public String getStepFactoryBundleName() {
+        return getExtendeeBundleName();
+    }
 
-		return this.getStepFactoryId().compareTo(o.getStepFactoryId());
-	}
+    public String getStepFactoryBundleVersion() {
+        return getExtendeeBundleVersion();
+    }
 
-	@Override
-	public List<CandidateSteps> createCandidateSteps() {
-		List<Class<?>> types = stepsTypes();
-		List<CandidateSteps> steps = new ArrayList<CandidateSteps>();
-		for (Class<?> type : types) {
-			configuration().parameterConverters().addConverters(
-					methodReturningConverters(type));
-			steps.add(new Steps(configuration(), type, this));
-		}
-		return steps;
-	}
+    @Override
+    public String getStepFactoryId() {
+        return getExtendeeID();
+    }
 
-	@Override
-	public Object createInstanceOfType(Class<?> type) {
-		Object instance = stepsInstances.get(type);
-		if (instance == null) {
-			throw new StepsInstanceNotFound(type, this);
-		}
-		return instance;
-	}
+    private void loadStepClassesInstances() throws InstantiationException,
+            IllegalAccessException {
 
-	@Deactivate
-	@Override
-	protected void deactivate(ComponentContext context) {
-		super.deactivate(context);
-	}
+        String[] classes = (String[]) getComponentContext().getProperties()
+                .get(Constants.STEP_FACTORY_EXTENDER_PROPERTY_ITEM);
+        for (int i = 0; i < classes.length; i++) {
+            String stepClassName = classes[i];
+            Class<Object> clazz;
+            try {
+                clazz = loadClass(stepClassName, Object.class);
+                if (!Modifier.isAbstract(clazz.getModifiers())) {
+                    Object obj = instanceOf(Object.class, clazz);
+                    stepsInstances.put(clazz, obj);
+                }
+            } catch (ClassNotFoundException e) {
+                logError("Fail to load StepClass.", e);
+            }
+        }
+    }
 
-	@Override
-	public String[] getStepClassesNames() {
-		return stepClassesNames;
-	}
+    /**
+     * Create parameter converters from methods annotated with @AsParameterConverter
+     */
+    private List<ParameterConverter> methodReturningConverters(Class<?> type) {
+        List<ParameterConverter> converters = new ArrayList<ParameterConverter>();
 
-	public String getStepFactoryBundleName() {
-		return stepFactoryBundleName;
-	}
+        for (Method method : type.getMethods()) {
+            if (method.isAnnotationPresent(AsParameterConverter.class)) {
+                converters
+                        .add(new MethodReturningConverter(method, type, this));
+            }
+        }
 
-	public String getStepFactoryBundleVersion() {
-		return stepFactoryBundleVersion;
-	}
+        return converters;
+    }
 
-	@Override
-	public String getStepFactoryId() {
-		return stepFactoryId;
-	}
-
-	private void loadStepClassesInstances() throws ClassNotFoundException,
-			InstantiationException, IllegalAccessException {
-
-		String[] classes = (String[]) getComponentContext().getProperties()
-				.get(Constants.STEP_FACTORY_EXTENDER_PROPERTY_ITEM);
-		for (int i = 0; i < classes.length; i++) {
-			String stepClassName = classes[i];
-			Class<Object> clazz = loadClass(stepClassName, Object.class);
-			if (!Modifier.isAbstract(clazz.getModifiers())) {
-				Object obj = instanceOf(Object.class, clazz);
-				stepsInstances.put(clazz, obj);
-			}
-		}
-	}
-
-	/**
-	 * Create parameter converters from methods annotated with @AsParameterConverter
-	 */
-	private List<ParameterConverter> methodReturningConverters(Class<?> type) {
-		List<ParameterConverter> converters = new ArrayList<ParameterConverter>();
-
-		for (Method method : type.getMethods()) {
-			if (method.isAnnotationPresent(AsParameterConverter.class)) {
-				converters
-						.add(new MethodReturningConverter(method, type, this));
-			}
-		}
-
-		return converters;
-	}
-
-	protected List<Class<?>> stepsTypes() {
-		return new ArrayList<Class<?>>(stepsInstances.keySet());
-	}
+    protected List<Class<?>> stepsTypes() {
+        return new ArrayList<Class<?>>(stepsInstances.keySet());
+    }
 
 }

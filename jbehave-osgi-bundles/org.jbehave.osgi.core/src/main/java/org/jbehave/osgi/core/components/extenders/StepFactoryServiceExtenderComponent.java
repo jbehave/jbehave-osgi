@@ -16,6 +16,8 @@ import org.jbehave.osgi.core.configuration.dto.StepFactoryDTO;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.wiring.BundleWiring;
 import org.osgi.service.cm.ConfigurationAdmin;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -30,20 +32,25 @@ public class StepFactoryServiceExtenderComponent extends
 		AbstractExtenderComponent {
 
 	public StepFactoryServiceExtenderComponent() {
-		setComponentDescription("JBehave StepFactory Extender Component");
 		setExtenderManifestHeader(Constants.STEP_FACTORY_EXTENDER_MANIFEST_HEADER);
 		setExtenderPropertyGroup(Constants.STEP_FACTORY_EXTENDER_PROPERTY_GROUP);
 		setExtenderPropertyItem(Constants.STEP_FACTORY_EXTENDER_PROPERTY_ITEM);
 		setExtenderTargetFactoryPid(Constants.STEP_FACTORY_FPID);
 	}
 
+    @Activate
+    @Override
+    protected void activate(ComponentContext context) {
+        super.activate(context);
+    }
+    
 	@Reference(cardinality = ReferenceCardinality.MANDATORY)
 	@Override
 	protected void bindConfigurationAdmin(ConfigurationAdmin configurationAdmin) {
 		super.bindConfigurationAdmin(configurationAdmin);
 	}
 
-	@Reference(cardinality = ReferenceCardinality.OPTIONAL)
+	@Reference
 	@Override
 	protected void bindLogService(LogService logService) {
 		super.bindLogService(logService);
@@ -130,7 +137,7 @@ public class StepFactoryServiceExtenderComponent extends
 		StepFactoryDTO factoryDTO = null;
 		int colonIdx = stepFactoryManifestHeaderItem
 				.indexOf(Constants.CHAR_COLLON);
-		if (colonIdx != 0) {
+		if (colonIdx > 0) {
 			name = stepFactoryManifestHeaderItem.substring(0, colonIdx);
 		}
 
