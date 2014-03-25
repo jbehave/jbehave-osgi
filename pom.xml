@@ -6,7 +6,7 @@
 	<artifactId>jbehave-osgi</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>JBehave OSGi</name>
+	<name>JBehave OSGi : POM</name>
 	<description>JBehave OSGi provides a OSGi integration layer for JBehave Core functionality.</description>
 
 	<prerequisites>
@@ -18,17 +18,156 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jbehave.core.version>4.0-SNAPSHOT</jbehave.core.version>
 		<jbehave.web.version>3.6-SNAPSHOT</jbehave.web.version>
-		<selenium.version>2.39.0</selenium.version>
+		<selenium.version>2.40.0</selenium.version>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
 		<maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
 		<tycho-version>0.20.0</tycho-version>
 		<tychoExtrasVersion>${tycho-version}</tychoExtrasVersion>
 		<paxexam.version>3.4.0</paxexam.version>
+		<url.version>1.6.0</url.version>
 	</properties>
+
+	<profiles>
+		<!-- NOTE: we can't build pom-first bundles (bnd/maven-bundle-plugin) in 
+			same maven reactor than equinox (tycho) -->
+		<profile>
+			<id>bundles</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-bundles</module>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.core</module>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.web</module>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.paxexam</module>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.fragment.jdk</module>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.logging</module>
+			</modules>
+		</profile>
+		<profile>
+			<!-- This profile requires setting property pax.exam.framework. eg: -Dpax.exam.framework=equinox_kepler -->
+			<id>itests</id>
+			<activation>
+				<property>
+					<name>pax.exam.framework</name>
+				</property>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-bundles/org.jbehave.osgi.core.itests</module>
+			</modules>
+		</profile>
+		<profile>
+			<!-- This profile can't run together with bundle or itest profiles, only 
+				with another Tycho based profile. -->
+			<!-- In order to automatically copy the generated p2 to a distribution 
+				folder you must set the property jbehave.osgi.distr.p2.location. eg: -Djbehave.osgi.distr.p2.location=/www/jbehave/p2 -->
+			<id>distribution-equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>jbehave-osgi-equinox</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.commands</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.commands.test</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.swtbot</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.features.core</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.features.web</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.features.swtbot</module>
+				<module>jbehave-osgi-equinox/org.jbehave.osgi.equinox.p2</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<!-- An RCP application that uses SwtBot and Tycho based building -->
+			<id>example-rcpmail</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+				<module>jbehave-osgi-examples/rcpmail-tycho-swtbot</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<!-- An console application that uses Tycho based building -->
+			<id>example-trader-tycho-equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+				<module>jbehave-osgi-examples/trader-equinox-tycho</module>
+			</modules>
+		</profile>
+
+		<!-- An console application that uses Maven and Pax-Exam (Felix) to run 
+			the integration tests -->
+		<profile>
+			<id>example-trader-paxexam-felix</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+			</properties>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+				<module>jbehave-osgi-examples/trader-pomfirst-paxexam</module>
+			</modules>
+		</profile>
+
+
+		<!-- An console application that uses Maven and Pax-Exam (Equinox) to run 
+			the integration tests -->
+		<profile>
+			<id>example-trader-paxexam-equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+			</properties>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>jbehave-osgi-examples</module>
+				<module>jbehave-osgi-examples/trader-pomfirst-paxexam</module>
+			</modules>
+		</profile>
+	</profiles>
+
+	<organization>
+		<name>JBehave.org</name>
+		<url>www.jbehave.org</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>cvgaviao</id>
+			<name>Cristiano Gavião</name>
+		</developer>
+		<developer>
+			<id>maurotalevi</id>
+			<name>Mauro Talevi</name>
+		</developer>
+	</developers>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.ops4j.pax.tinybundles</groupId>
+				<artifactId>tinybundles</artifactId>
+				<version>2.0.0</version>
+			</dependency>
 			<dependency>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.gogo.runtime</artifactId>
@@ -74,6 +213,12 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
+				<version>1.7.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
 				<version>1.7.5</version>
 				<scope>provided</scope>
 			</dependency>
@@ -168,7 +313,7 @@
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
-				<version>2.5.2_1</version>
+				<version>2.4_1</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -207,14 +352,187 @@
 				<version>16.0.1</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore-osgi</artifactId>
+				<version>4.3.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient-osgi</artifactId>
+				<version>4.3.3</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<artifactId>commons-io</artifactId>
+				<groupId>commons-io</groupId>
+				<version>2.4</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<artifactId>commons-codec</artifactId>
+				<groupId>commons-codec</groupId>
+				<version>1.8</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.java.dev.jna</groupId>
+				<artifactId>jna</artifactId>
+				<version>4.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.java.dev.jna</groupId>
+				<artifactId>jna-platform</artifactId>
+				<version>4.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.20</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<artifactId>paranamer</artifactId>
+				<groupId>com.thoughtworks.paranamer</groupId>
+				<version>2.4</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.htmlunit</groupId>
+				<artifactId>htmlunit</artifactId>
+				<version>2.14</version>
+			</dependency>
+			<dependency>
+				<artifactId>phantomjsdriver</artifactId>
+				<groupId>com.github.detro.ghostdriver</groupId>
+				<version>1.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-java</artifactId>
+				<version>${selenium.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.web</groupId>
+				<artifactId>jbehave-web-selenium</artifactId>
+				<version>${jbehave.web.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.web</groupId>
+				<artifactId>jbehave-web-selenium</artifactId>
+				<version>${jbehave.web.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.knowhowlab.osgi</groupId>
+				<artifactId>org.knowhowlab.osgi.testing.assertions</artifactId>
+				<version>1.2.2</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.knowhowlab.osgi</groupId>
+				<artifactId>org.knowhowlab.osgi.testing.utils</artifactId>
+				<version>1.2.2</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-exam-container-forked</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-exam-container-native</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-exam-junit4</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-exam</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-exam-link-mvn</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.url</groupId>
+				<artifactId>pax-url-aether</artifactId>
+				<version>${url.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.url</groupId>
+				<artifactId>pax-url-wrap</artifactId>
+				<version>${url.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.ops4j.pax.exam</groupId>
+					<artifactId>maven-paxexam-plugin</artifactId>
+					<version>1.2.4</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.4.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2.1</version>
 				</plugin>
 				<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
 				<plugin>
@@ -242,11 +560,11 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.16</version>
+					<version>2.17</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.16</version>
+					<version>2.17</version>
 					<configuration>
 						<skip>true</skip>
 					</configuration>
@@ -260,52 +578,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>bundles</id>
-			<!-- NOTE: we can't build pom-first bundles (bnd) in same maven reactor 
-				than equinox (tycho) -->
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-bundles</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>features</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-equinox</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>p2</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>jbehave-osgi-equinox</module>
-			</modules>
-		</profile>
-	</profiles>
-
-	<organization>
-		<name>JBehave.org</name>
-		<url>www.jbehave.org</url>
-	</organization>
-	<developers>
-		<developer>
-			<id>cvgaviao</id>
-			<name>Cristiano Gavião</name>
-		</developer>
-		<developer>
-			<id>maurotalevi</id>
-			<name>Mauro Talevi</name>
-		</developer>
-	</developers>
 
 	<scm>
 		<connection>scm:git:git://git.codehaus.org/jbehave-osgi.git</connection>
