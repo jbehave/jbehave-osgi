@@ -15,12 +15,26 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<dependency>
+			<artifactId>paranamer</artifactId>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.paxexam</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -28,6 +42,7 @@
 			<artifactId>
 				org.jbehave.osgi.examples.trader.pomfirst.application
 			</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -40,28 +55,29 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.4.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Import-Package>
-							org.hamcrest;integration=split;version="1.3.0";mandatory:=integration,
-							com.thoughtworks.paranamer,
-							*
-						</Import-Package>
-						<Require-Bundle>org.jbehave.osgi.core;bundle-version="[1.0.0,2.0.0)"</Require-Bundle>
-						<Export-Package>org.jbehave.osgi.examples.trader.pomfirst.jbehave.*</Export-Package>
+						<Import-Package>!org.hamcrest,!org.jbehave.*,
+							com.thoughtworks.paranamer,*</Import-Package>
+						<Require-Bundle>
+							org.jbehave.osgi.core;bundle-version="[1.0.0,2.0.0)",
+							org.hamcrest.integration;bundle-version="1.3.0"
+						</Require-Bundle>
+						<Export-Package>org.jbehave.osgi.examples.trader.pomfirst.itests.*</Export-Package>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Include-Resource>{maven-resources}</Include-Resource>
 						<JBehave-StoryRunner>
-						  org.jbehave.osgi.examples.trader.pomfirst.jbehave.embedders.TraderAnnotatedPathRunnerOsgi,
-						  org.jbehave.osgi.examples.trader.pomfirst.jbehave.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter,
-						  org.jbehave.osgi.examples.trader.pomfirst.jbehave.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter2
+							org.jbehave.osgi.examples.trader.pomfirst.itests.embedders.TraderAnnotatedPathRunnerOsgi,
+							org.jbehave.osgi.examples.trader.pomfirst.itests.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter,
+							org.jbehave.osgi.examples.trader.pomfirst.itests.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter2
 						</JBehave-StoryRunner>
 						<JBehave-StepFactory>
 							stepFactory1:
-							org.jbehave.osgi.examples.trader.pomfirst.jbehave.steps1.*,
+							org.jbehave.osgi.examples.trader.pomfirst.itests.steps1.*,
 							stepFactory2:
-							org.jbehave.osgi.examples.trader.pomfirst.jbehave.steps2.*
+							org.jbehave.osgi.examples.trader.pomfirst.itests.steps2.*
 						</JBehave-StepFactory>
 					</instructions>
 				</configuration>
@@ -73,11 +89,6 @@
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- enable source bundle generation -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 </project>

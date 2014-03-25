@@ -12,12 +12,11 @@
 	<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests.paxexam</artifactId>
 	<name>JBehave OSGi :: POM-First Trader Example : Pax-Exam Junit launcher under Felix and Equinox</name>
 	<packaging>jar</packaging>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
-            <version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -27,8 +26,14 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-container-native</artifactId>
+			<artifactId>pax-exam-container-forked</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -50,6 +55,12 @@
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-wrap</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.osgi.core</artifactId>
+					<groupId>org.osgi</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -75,9 +86,12 @@
 
 	<profiles>
 		<profile>
-			<id>example-trader-paxexam-felix</id>
+			<id>on-felix</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>pax.exam.framework</name>
+					<value>felix</value>
+				</property>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -89,9 +103,12 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>example-trader-paxexam-equinox</id>
+			<id>on-equinox-kepler</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>pax.exam.framework</name>
+					<value>equinox-kepler</value>
+				</property>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -112,14 +129,41 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
+
 			<plugin>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>exam-maven-plugin</artifactId>
+				<version>${paxexam.version}</version>
+				<configuration>
+					<configClass>org.jbehave.osgi.examples.trader.pomfirst.paxexam.PaxExamForkedContainerConfiguration</configClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>start-container</goal>
+							<goal>stop-container</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<failIfNoTests>true</failIfNoTests>
+					<forkMode>always</forkMode>
 					<parallel>none</parallel>
 					<threadCount>1</threadCount>
 					<includes>
-						<include>**/*TraderEmbedderOsgiForPaxExam.java</include>
+						<include>**/PaxExamLauncherForJBehaveOption1.java</include>
 					</includes>
 					<systemProperties>
 						<property>
@@ -128,20 +172,6 @@
 						</property>
 					</systemProperties>
 				</configuration>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

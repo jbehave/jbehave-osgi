@@ -41,10 +41,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.jbehave.osgi.examples</groupId>
-			<artifactId>org.jbehave.osgi.examples.trader.equinox.feature</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+	
 	</dependencies>
 </project>

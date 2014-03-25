@@ -13,8 +13,10 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-consoleLog -console -noExit</programArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <programArgs>-consoleLog -console -noExit
+      </programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
@@ -53,7 +55,6 @@
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="1" />
       <plugin id="org.jbehave.osgi.examples.trader.application" autoStart="true" startLevel="4" />
-      <plugin id="org.jbehave.osgi.interactive" autoStart="true" startLevel="3" />
    </configurations>
 
 </product>

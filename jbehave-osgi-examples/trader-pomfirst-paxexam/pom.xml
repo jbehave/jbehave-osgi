@@ -21,16 +21,10 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.jbehave.osgi.examples</groupId>
-				<artifactId>org.jbehave.osgi.examples.trader.pomfirst.application</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jbehave.osgi.examples</groupId>
-				<artifactId>org.jbehave.osgi.examples.trader.pomfirst.steps</artifactId>
+				<groupId>org.jbehave.osgi</groupId>
+				<artifactId>org.jbehave.osgi.core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 </project>

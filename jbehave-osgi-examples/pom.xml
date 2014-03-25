@@ -12,17 +12,20 @@
 	<artifactId>jbehave-osgi-examples</artifactId>
 	<packaging>pom</packaging>
 	<name>JBehave OSGi Examples</name>
-	<description>JBehave OSGi Examples provides examples of OSGi integration with JBehave Core functionality.</description>
+	<description>JBehave OSGi Examples provides samples of OSGi integration with JBehave Core functionality.</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<eclipse-site>http://download.eclipse.org/releases/kepler</eclipse-site>
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
-		<jbehave-osgi-p2-repo>http://jbehave.github.com/jbehave-osgi/p2</jbehave-osgi-p2-repo>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
 	</properties>
 
 	<repositories>
+		<repository>
+			<id>eclipse-platform</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+		</repository>
 		<repository>
 			<id>swtbot</id>
 			<layout>p2</layout>
@@ -37,55 +40,13 @@
 
 	<profiles>
 		<profile>
-			<id>example-rcpmail</id>
+			<id>local_repo</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>rcpmail-tycho-swtbot</module>
-			</modules>
-		</profile>
-
-		<profile>
-			<id>example-trader-tycho-equinox</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>trader-equinox-tycho</module>
-			</modules>
-		</profile>
-
-		<profile>
-			<id>example-trader-paxexam-felix</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>trader-pomfirst-paxexam</module>
-			</modules>
-		</profile>
-
-		<profile>
-			<id>example-trader-paxexam-equinox</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-			</build>
-			<modules>
-				<module>trader-pomfirst-paxexam</module>
-			</modules>
+			<properties>
+				<jbehave-osgi-p2-repo>file:///${basedir}/../../../jbehave-osgi-equinox/org.jbehave.osgi.equinox.p2/target/repository</jbehave-osgi-p2-repo>
+			</properties>
 		</profile>
 	</profiles>
 </project>
