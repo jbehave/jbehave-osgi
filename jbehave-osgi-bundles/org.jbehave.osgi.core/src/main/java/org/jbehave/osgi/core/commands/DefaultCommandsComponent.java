@@ -105,22 +105,24 @@ public class DefaultCommandsComponent extends AbstractComponent {
         return builder.toString();
     }
 
+    @Descriptor("Manage registered JBehave's InjectableStepsFactory services. \n\tWithout parameter is like as 'stf list'")
     public void stf() {
         stf("list", new InjectableStepsFactoryService[0]);
     }
 
-    @Descriptor("Manage registered JBehave's StepFactory services.")
+    @Descriptor("Manage registered JBehave's InjectableStepsFactory services. \n\tA short version of stepsFactory command.")
     public void stf(
             @Descriptor("StepsFactory services actions are:(list - all registered services| details)") String action,
             @Descriptor("One or more registered StepFactory services") InjectableStepsFactoryService... stepsFactoryServices) {
         stepsFactory(action, stepsFactoryServices);
     }
 
+    @Descriptor("Manage registered JBehave's StoryRunner services. \n\tWithout parameter is like as 'str list'")
     public void str() {
         str("", "list", new StoryRunnerService[0]);
     }
 
-    @Descriptor("Manage registered JBehave's StoryRunner services.")
+    @Descriptor("Manage registered JBehave's StoryRunner services. \n\tA short version of storyRunner command.")
     public void str(
             @Descriptor("sets the reporting output directory only for one run.") @Parameter(names = {
                     "-o", "--output" }, absentValue = "") String reportOutputDir,
@@ -129,7 +131,7 @@ public class DefaultCommandsComponent extends AbstractComponent {
         storyRunner(reportOutputDir, action, storyRunnerServices);
     }
 
-    @Descriptor("Manage registered JBehave's StepFactory services.")
+    @Descriptor("Manage registered JBehave's InjectableStepsFactory services.")
     public void stepsFactory(
             @Descriptor("StepsFactory services actions are:(list - all registered services| details)") String action,
             @Descriptor("One or more registered StepFactory services") InjectableStepsFactoryService... stepsFactoryServices) {
