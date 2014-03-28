@@ -15,6 +15,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<scope>test</scope>
@@ -33,8 +37,23 @@
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-container-forked</artifactId>
+			<artifactId>pax-exam</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-container-native</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>pax-exam</artifactId>
+					<groupId>org.ops4j.pax.exam</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>pax-url-link</artifactId>
+					<groupId>org.ops4j.pax.url</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
@@ -45,10 +64,30 @@
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-link-mvn</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-aether</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>pax-url-link</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-link-assembly</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-link</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -82,6 +121,20 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbehave.osgi.examples</groupId>
+			<artifactId>
+				org.jbehave.osgi.examples.trader.pomfirst.itests
+			</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -107,7 +160,7 @@
 			<activation>
 				<property>
 					<name>pax.exam.framework</name>
-					<value>equinox-kepler</value>
+					<value>equinox_kepler</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -124,27 +177,22 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>maven-paxexam-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-config</id>
+						<goals>
+							<goal>generate-depends-file</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.ops4j.pax.exam</groupId>
-				<artifactId>exam-maven-plugin</artifactId>
-				<version>${paxexam.version}</version>
-				<configuration>
-					<configClass>org.jbehave.osgi.examples.trader.pomfirst.paxexam.PaxExamForkedContainerConfiguration</configClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>start-container</goal>
-							<goal>stop-container</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
@@ -159,7 +207,7 @@
 				</executions>
 				<configuration>
 					<failIfNoTests>true</failIfNoTests>
-					<forkMode>always</forkMode>
+					<forkCount>0</forkCount>
 					<parallel>none</parallel>
 					<threadCount>1</threadCount>
 					<includes>

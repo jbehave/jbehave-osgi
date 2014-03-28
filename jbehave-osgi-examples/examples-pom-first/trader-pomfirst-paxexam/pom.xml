@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.jbehave.osgi.examples</groupId>
-		<artifactId>jbehave-osgi-examples</artifactId>
+		<groupId>org.jbehave.osgi</groupId>
+		<artifactId>jbehave-osgi-bundles</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
@@ -18,6 +18,18 @@
 		<module>org.jbehave.osgi.examples.trader.pomfirst.itests.paxexam</module>
 	</modules>
 
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-to-pde</id>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
