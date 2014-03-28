@@ -12,37 +12,12 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGI : Equinox Distribution</name>
 	<properties>
+		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
 		<jetty-site>http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.14.v20131031</jetty-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/</orbit-site>
+		<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
 	</properties>
-
-	<profiles>
-		<profile>
-			<id>kepler</id>
-			<activation>
-				<property>
-					<name>jbehave.osgi.distr.equinox</name>
-					<value>kepler</value>
-				</property>
-			</activation>
-			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/kepler</eclipse-site>
-			</properties>
-		</profile>
-		<profile>
-			<id>luna</id>
-			<activation>
-				<property>
-					<name>jbehave.osgi.distr.equinox</name>
-					<value>luna</value>
-				</property>
-			</activation>
-			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
-			</properties>
-		</profile>
-	</profiles>
 
 	<dependencyManagement>
 		<dependencies>

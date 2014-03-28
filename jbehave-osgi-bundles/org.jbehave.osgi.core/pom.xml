@@ -54,7 +54,7 @@
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
 			<version>${jbehave.core.version}</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>com.thoughtworks.xstream</groupId>
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -139,8 +139,8 @@
 						</Import-Package>
 						<Require-Bundle>org.hamcrest.integration;bundle-version="1.3.0"</Require-Bundle>
 						<Embed-Dependency>
-							jbehave-core;inline=false,
-							plexus-utils;inline=false
+							jbehave-core;scope=provided;inline=true,
+							plexus-utils;scope=provided;inline=false
 						</Embed-Dependency>
 						<_exportcontents>
 							org.codehaus.plexus.util.*;version="3.0.10",

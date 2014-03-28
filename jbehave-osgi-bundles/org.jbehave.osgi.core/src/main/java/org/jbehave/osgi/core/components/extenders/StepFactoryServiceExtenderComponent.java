@@ -67,8 +67,10 @@ public class StepFactoryServiceExtenderComponent extends
 	 *         found.
 	 */
 	protected boolean hasAnnotatedMethods(Type type) {
-		if (type instanceof Class<?>) {
-			for (Method method : ((Class<?>) type).getMethods()) {
+		if (type != null && type instanceof Class<?>) {
+		    Method[] methods = ((Class<?>) type).getMethods();
+		    
+			for (Method method : methods) {
 				for (Annotation annotation : method.getAnnotations()) {
 					if (annotation.annotationType().getName()
 							.startsWith("org.jbehave.core.annotations")) {
@@ -204,14 +206,14 @@ public class StepFactoryServiceExtenderComponent extends
 	 *            a list of names of classes that will be added to the
 	 *            StepFactory.
 	 * 
-	 * @param extensionBundle
+	 * @param extendeeBundle
 	 * @param className
 	 */
-	private void processStepFactoryManifestHeaderClass(Bundle extensionBundle,
+	private void processStepFactoryManifestHeaderClass(Bundle extendeeBundle,
 			StepFactoryDTO stepFactoryDto, String className) {
 		Class<?> clazz = null;
 		try {
-			clazz = extensionBundle.loadClass(className);
+			clazz = extendeeBundle.loadClass(className);
 
 			if (hasAnnotatedMethods(clazz)) {
 				// has annotations then I will add it to the service properties
@@ -219,7 +221,7 @@ public class StepFactoryServiceExtenderComponent extends
 				stepFactoryDto.getStepClasses().add(className);
 			} else {
 				logDebug("Ignoring step class " + className + " for "
-						+ extensionBundle.getSymbolicName());
+						+ extendeeBundle.getSymbolicName());
 			}
 		} catch (ClassNotFoundException e) {
 			logError("Could not instantiate " + className, e);

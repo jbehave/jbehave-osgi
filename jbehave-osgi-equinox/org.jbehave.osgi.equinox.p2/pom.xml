@@ -12,15 +12,15 @@
 
 	<profiles>
 		<profile>
-			<id>deploy-p2</id>
+			<id>copy-p2</id>
 			<activation>
 				<property>
-					<name>jbehave.osgi.distr.p2.location</name>
+					<name>jbehave.osgi.distr.p2.copy.to</name>
 				</property>
 			</activation>
 			<properties>
 				<from-repo>${project.build.directory}/repository</from-repo>
-				<to_repo_final>${jbehave.osgi.distr.p2.location}</to_repo_final>
+				<to_repo_final>${jbehave.osgi.distr.p2.copy.to}</to_repo_final>
 			</properties>
 			<build>
 				<plugins>
@@ -63,19 +63,14 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.jbehave.osgi</groupId>
-            <artifactId>org.jbehave.osgi.logging</artifactId>
-			<classifier>sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.jbehave.osgi</groupId>
-            <artifactId>org.jbehave.osgi.logging</artifactId>
-        </dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.fragment.jdk</artifactId>
-			<version>${project.version}</version>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
