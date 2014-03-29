@@ -15,26 +15,29 @@
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-junit4</artifactId>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam</artifactId>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

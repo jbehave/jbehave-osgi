@@ -120,7 +120,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -149,45 +148,27 @@
 					</instructions>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-scr-plugin</artifactId>
 			</plugin>
-
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-to-pde</id>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- enable source bundle generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-manifest</id>
+					</execution>
+					<execution>
+						<id>copy-osgi-inf</id>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>in-eclipse</id>
-			<!-- activated only when running in m2e (eclipse) -->
-			<activation>
-				<property>
-					<name>m2e.version</name>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

@@ -32,7 +32,7 @@
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.eventadmin</artifactId>
 					<version>1.3.2</version>
-					<type>bundle</type>
+					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
@@ -40,19 +40,25 @@
 						org.apache.felix.configadmin
 					</artifactId>
 					<version>1.8.0</version>
-					<type>bundle</type>
+					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.scr</artifactId>
 					<version>1.8.2</version>
-					<type>bundle</type>
+					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.log</artifactId>
 					<version>1.0.1</version>
-					<type>bundle</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.metatype</artifactId>
+					<version>1.0.10</version>
+					<scope>provided</scope>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -62,7 +68,7 @@
 				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>pax.exam.framework</name>
-					<value>equinox_kepler</value>
+					<value>equinox-kepler</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -76,7 +82,7 @@
 					<groupId>org.eclipse.birt.runtime</groupId>
 					<artifactId>org.eclipse.osgi.services</artifactId>
 					<version>3.3.100.v20130513-1956</version>
-					<scope>test</scope>
+					<scope>provided</scope>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -87,23 +93,23 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.logging</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.paxexam</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<artifactId>paranamer</artifactId>
 			<groupId>com.thoughtworks.paranamer</groupId>
+			<artifactId>paranamer</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -115,6 +121,16 @@
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-junit4</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.ops4j.pax.tinybundles</groupId>
+					<artifactId>tinybundles</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.osgi</groupId>
+					<artifactId>org.osgi.compendium</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
@@ -183,22 +199,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.ops4j.pax.exam</groupId>
-				<artifactId>exam-maven-plugin</artifactId>
-				<version>${paxexam.version}</version>
-				<configuration>
-					<configClass>org.jbehave.osgi.core.itests.PaxExamForkedContainerConfiguration</configClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>start-container</goal>
-							<goal>stop-container</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
@@ -210,26 +211,60 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>functional-test</id>
 						<goals>
 							<goal>integration-test</goal>
 						</goals>
+						<configuration>
+							<includes>
+								<include>**/*Itests.java</include>
+							</includes>
+							<skip>false</skip>
+							<failIfNoTests>true</failIfNoTests>
+							<forkCount>1</forkCount>
+							<reuseForks>true</reuseForks>
+							<parallel>none</parallel>
+							<threadCount>1</threadCount>
+							<systemProperties>
+								<property>
+									<name>project.version</name>
+									<value>${project.version}</value>
+								</property>
+							</systemProperties>
+						</configuration>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>verify</goal>
+						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>exam-maven-plugin</artifactId>
+				<version>${paxexam.version}</version>
 				<configuration>
-					<failIfNoTests>true</failIfNoTests>
-					<forkMode>always</forkMode>
-					<parallel>none</parallel>
-					<threadCount>1</threadCount>
-					<includes>
-						<include>**/*Itests.java</include>
-					</includes>
-					<systemProperties>
-						<property>
-							<name>project.version</name>
-							<value>${project.version}</value>
-						</property>
-					</systemProperties>
+					<configClass>org.jbehave.osgi.core.itests.PaxExamForkedContainerConfiguration</configClass>
 				</configuration>
+				<executions>
+					<!-- <execution> -->
+					<!-- <id>dependencies</id> -->
+					<!-- <phase>generate-test-resources</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>generate-link-files</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<execution>
+						<id>server</id>
+						<goals>
+							<goal>start-container</goal>
+							<goal>stop-container</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

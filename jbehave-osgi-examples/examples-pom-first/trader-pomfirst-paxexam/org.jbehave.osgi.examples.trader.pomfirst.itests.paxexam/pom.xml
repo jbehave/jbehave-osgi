@@ -7,6 +7,7 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.trader.pomfirst</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests.paxexam</artifactId>
@@ -17,6 +18,7 @@
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
@@ -203,23 +205,31 @@
 						<goals>
 							<goal>integration-test</goal>
 						</goals>
+						<configuration>
+							<failIfNoTests>true</failIfNoTests>
+							<forkCount>1</forkCount>
+							<parallel>none</parallel>
+							<threadCount>1</threadCount>
+							<reuseForks>true</reuseForks>
+							<includes>
+								<include>**/PaxExamLauncherForJBehaveOption1.java</include>
+							</includes>
+							<systemProperties>
+								<property>
+									<name>project.version</name>
+									<value>${project.version}</value>
+								</property>
+							</systemProperties>
+						</configuration>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>verify</goal>
+						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<failIfNoTests>true</failIfNoTests>
-					<forkCount>0</forkCount>
-					<parallel>none</parallel>
-					<threadCount>1</threadCount>
-					<includes>
-						<include>**/PaxExamLauncherForJBehaveOption1.java</include>
-					</includes>
-					<systemProperties>
-						<property>
-							<name>project.version</name>
-							<value>${project.version}</value>
-						</property>
-					</systemProperties>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

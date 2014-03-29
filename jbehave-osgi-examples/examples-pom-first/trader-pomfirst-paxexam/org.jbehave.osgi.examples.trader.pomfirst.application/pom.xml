@@ -7,6 +7,7 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.trader.pomfirst</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.trader.pomfirst.application</artifactId>
@@ -17,9 +18,9 @@
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			</dependency>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -44,6 +45,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-manifest</id>
+					</execution>
+                    <execution>
+                        <id>copy-osgi-inf</id>
+                        <phase>none</phase>
+                    </execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

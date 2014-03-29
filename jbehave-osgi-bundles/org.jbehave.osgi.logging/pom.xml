@@ -36,12 +36,10 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
-					<unpackBundle>true</unpackBundle>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 					</instructions>
@@ -57,11 +55,15 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
-					<execution>
-						<id>copy-to-pde</id>
-					</execution>
+                    <execution>
+                        <id>copy-manifest</id>
+                    </execution>
+                    <execution>
+                        <id>copy-osgi-inf</id>
+                    </execution>
 				</executions>
 			</plugin>
 		</plugins>

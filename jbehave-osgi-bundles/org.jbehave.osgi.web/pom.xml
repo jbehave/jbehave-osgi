@@ -21,11 +21,11 @@
 			<artifactId>org.osgi.core</artifactId>
 			<scope>provided</scope>
 		</dependency>
-        <dependency>
-            <artifactId>paranamer</artifactId>
-            <groupId>com.thoughtworks.paranamer</groupId>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<artifactId>paranamer</artifactId>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.scr.ds-annotations</artifactId>
@@ -57,6 +57,7 @@
 					<groupId>org.mortbay.jetty</groupId>
 				</exclusion>
 			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -87,6 +88,7 @@
 					<groupId>net.java.dev.jna</groupId>
 				</exclusion>
 			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<artifactId>phantomjsdriver</artifactId>
@@ -121,6 +123,7 @@
 					<groupId>org.seleniumhq.selenium</groupId>
 				</exclusion>
 			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.web</groupId>
@@ -139,6 +142,7 @@
 					<groupId>org.seleniumhq.selenium</groupId>
 				</exclusion>
 			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
@@ -205,6 +209,7 @@
 					<groupId>org.apache.httpcomponents</groupId>
 				</exclusion>
 			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -336,16 +341,20 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.felix</groupId> -->
+			<!-- <artifactId>maven-scr-plugin</artifactId> -->
+			<!-- </plugin> -->
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-scr-plugin</artifactId>
-			</plugin>
-
-			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>copy-to-pde</id>
+						<id>copy-manifest</id>
+					</execution>
+					<execution>
+						<id>copy-osgi-inf</id>
+						<phase>none</phase>
 					</execution>
 				</executions>
 			</plugin>
@@ -360,4 +369,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 </project>
