@@ -17,7 +17,6 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 @ExamReactorStrategy(PerClass.class)
 public class JBehaveOsgiServicesItests extends AbstractCommonTest {
 
-
     @Test
     public void ensureStepsFactoryServiceAreBeingCreated() throws Throwable {
         assertServiceAvailable(and(create(InjectableStepsFactoryService.class),

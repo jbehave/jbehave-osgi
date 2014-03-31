@@ -71,7 +71,8 @@
 							com.thoughtworks.paranamer,*</Import-Package>
 						<Require-Bundle>
 							org.jbehave.osgi.core;bundle-version="[1.0.0,2.0.0)",
-							org.hamcrest.integration;bundle-version="1.3.0"
+							org.hamcrest.integration;bundle-version="1.3.0",
+							org.jbehave.osgi.examples.trader.pomfirst.application
 						</Require-Bundle>
 						<Export-Package>org.jbehave.osgi.examples.trader.pomfirst.itests.*</Export-Package>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>

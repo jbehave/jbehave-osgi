@@ -5,8 +5,6 @@ import static org.jbehave.osgi.core.Constants.STORY_RUNNER_EXTENDER_MANIFEST_HEA
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.streamBundle;
 import static org.ops4j.pax.exam.CoreOptions.systemProperty;
-import static org.ops4j.pax.exam.CoreOptions.systemTimeout;
-import static org.ops4j.pax.exam.CoreOptions.vmOption;
 import static org.osgi.framework.Constants.BUNDLE_SYMBOLICNAME;
 import static org.osgi.framework.Constants.BUNDLE_VERSION;
 import static org.osgi.framework.Constants.EXPORT_PACKAGE;
@@ -16,12 +14,15 @@ import static org.osgi.framework.Constants.REQUIRE_BUNDLE;
 import org.jbehave.osgi.core.itests.lib.embedders.AnnotatedPathRunnerOsgiExample;
 import org.jbehave.osgi.core.itests.lib.steps.NamedParametersSteps;
 import org.jbehave.osgi.core.itests.lib.steps.SearchSteps;
-import org.jbehave.osgi.paxexam.junit.ProbeOptions;
+import org.jbehave.osgi.paxexam.ProbeOptions;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.options.UrlProvisionOption;
 import org.ops4j.pax.tinybundles.core.TinyBundles;
 
 public class PaxExamForkedContainerConfiguration {
+
+    public PaxExamForkedContainerConfiguration() {
+    }
 
     private UrlProvisionOption buildEmbedderExtendeeBundle() {
         return streamBundle(TinyBundles
@@ -34,10 +35,10 @@ public class PaxExamForkedContainerConfiguration {
                 .set(BUNDLE_VERSION, "1.0.0")
                 .set(STORY_RUNNER_EXTENDER_MANIFEST_HEADER,
                         "org.jbehave.osgi.core.itests.lib.embedders.AnnotatedPathRunnerOsgiExample")
-                .set(REQUIRE_BUNDLE,
-                        "org.jbehave.osgi.core,org.hamcrest.integration;bundle-version=\"1.3.0\"")
                 .set(IMPORT_PACKAGE,
                         "com.thoughtworks.paranamer,org.osgi.framework")
+                .set(REQUIRE_BUNDLE,
+                        "org.jbehave.osgi.core,org.hamcrest.integration;bundle-version=\"1.3.0\"")
                 .build(TinyBundles.withClassicBuilder()));
     }
 
@@ -61,15 +62,14 @@ public class PaxExamForkedContainerConfiguration {
     @org.ops4j.pax.exam.Configuration
     public Option[] config() {
 
-        return options(
-                systemProperty("osgi.debug").value("true"),
+        return options(systemProperty("osgi.debug").value("true"),
                 systemProperty("eclipse.consoleLog").value("true"),
                 systemProperty("eclipse.log.level").value("ALL"),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
-                        .value("ALL"), ProbeOptions
-                        .jbehaveCoreAndDependencies(), ProbeOptions
-                        .simpleOSGiLogging(), buildEmbedderExtendeeBundle()
-                        .startLevel(4),
+                        .value("ALL"),
+                ProbeOptions.consoleOSGiLogging().startLevel(1),
+                ProbeOptions.jbehaveCoreAndDependencies(),
+                buildEmbedderExtendeeBundle().startLevel(4),
                 buildInjectableStepsFactoryExtendeeBundle().startLevel(4));
     }
 }

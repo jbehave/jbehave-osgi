@@ -1,14 +1,24 @@
-package org.jbehave.osgi.paxexam.junit;
+package org.jbehave.osgi.paxexam;
 
+import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.CoreOptions.frameworkProperty;
+import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
+import static org.ops4j.pax.exam.CoreOptions.streamBundle;
 import static org.ops4j.pax.exam.CoreOptions.url;
 import static org.ops4j.pax.exam.CoreOptions.when;
-import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
+import static org.osgi.framework.Constants.BUNDLE_SYMBOLICNAME;
+import static org.osgi.framework.Constants.BUNDLE_VERSION;
+import static org.osgi.framework.Constants.EXPORT_PACKAGE;
+import static org.osgi.framework.Constants.IMPORT_PACKAGE;
+import static org.osgi.framework.Constants.BUNDLE_ACTIVATIONPOLICY;
 
-import org.ops4j.pax.exam.Option;
+import org.jbehave.osgi.paxexam.junit.AbstractPaxExamForStoryRunner;
 import org.ops4j.pax.exam.options.CompositeOption;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
+import org.ops4j.pax.exam.options.MavenArtifactProvisionOption;
+import org.ops4j.pax.exam.options.UrlProvisionOption;
+import org.ops4j.pax.tinybundles.core.TinyBundles;
 
 public class ProbeOptions {
 
@@ -39,12 +49,16 @@ public class ProbeOptions {
 
     public static boolean isEquinoxLuna() {
         return "equinox_luna".equals(System
-                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
+                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY))
+                || "equinox-luna".equals(System
+                        .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
     }
 
     public static boolean isEquinoxKepler() {
         return "equinox_kepler".equals(System
-                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
+                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY))
+                || "equinox-kepler".equals(System
+                        .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
     }
 
     public static boolean isFelix() {
@@ -72,18 +86,23 @@ public class ProbeOptions {
      */
     public static CompositeOption jbehaveCoreDependencies(boolean cleanCaches) {
         return new DefaultCompositeOption(
+                junitBundles(),
                 when(cleanCaches).useOptions(cleanCaches()),
 
                 when(isEquinoxLuna())
                         .useOptions(
                                 url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
                                         + "org.eclipse.osgi.services_3.4.0.v20131120-1328.jar"),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.cm_1.1.0.v20131021-1936.jar"),
+                                url(
+                                        EQUINOX_LUNA_BASE_DOWNLOAD_URL
+                                                + "org.eclipse.equinox.cm_1.1.0.v20131021-1936.jar")
+                                        .startLevel(1),
                                 url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
                                         + "org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.ds_1.4.200.v20131126-2331.jar"),
+                                url(
+                                        EQUINOX_LUNA_BASE_DOWNLOAD_URL
+                                                + "org.eclipse.equinox.ds_1.4.200.v20131126-2331.jar")
+                                        .startLevel(1),
                                 url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
                                         + "org.eclipse.equinox.console_1.1.0.v20140131-1639.jar"),
                                 url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
@@ -94,12 +113,16 @@ public class ProbeOptions {
                         .useOptions(
                                 url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
                                         + "org.eclipse.osgi.services_3.3.100.v20130513-1956.jar"),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.cm_1.0.400.v20130327-1442.jar").startLevel(1),
+                                url(
+                                        EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+                                                + "org.eclipse.equinox.cm_1.0.400.v20130327-1442.jar")
+                                        .startLevel(1),
                                 url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
                                         + "org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.ds_1.4.101.v20130813-1853.jar").startLevel(1),
+                                url(
+                                        EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+                                                + "org.eclipse.equinox.ds_1.4.101.v20130813-1853.jar")
+                                        .startLevel(1),
                                 url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
                                         + "org.eclipse.equinox.console_1.0.100.v20130429-0953.jar"),
                                 url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
@@ -114,24 +137,26 @@ public class ProbeOptions {
                                 "org.apache.felix.eventadmin", "1.3.2")
                                 .startLevel(2),
                         mavenBundle("org.apache.felix",
+                                "org.apache.felix.metatype", "1.0.10"),
+                        mavenBundle("org.apache.felix",
                                 "org.apache.felix.prefs", "1.0.6")
                                 .startLevel(2),
-                        mavenBundle("org.apache.felix",
-                                "org.apache.felix.log", "1.0.1")
-                                .startLevel(2),
-                        mavenBundle("org.apache.felix", "org.apache.felix.scr", "1.8.2")
-                                .startLevel(1)),
+                        mavenBundle("org.apache.felix", "org.apache.felix.log",
+                                "1.0.1").startLevel(1),
+                        mavenBundle("org.apache.felix", "org.apache.felix.scr",
+                                "1.8.2").startLevel(1)),
 
                 frameworkProperty("org.osgi.framework.system.packages.extra")
-                        .value("org.ops4j.pax.exam;version=3.4.0,org.ops4j.pax.exam.options;version=3.4.0,org.ops4j.pax.exam.util;version=3.4.0,org.w3c.dom.traversal"),
-                url(ORBIT_BASE_DOWNLOAD_URL
-                        + "org.junit_4.11.0.v201303080030.jar"),
+                        .value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal"),
+                // url(ORBIT_BASE_DOWNLOAD_URL
+                // + "org.junit_4.11.0.v201303080030.jar"),
                 url(ORBIT_BASE_DOWNLOAD_URL
                         + "org.hamcrest.integration_1.3.0.v201305210900.jar"),
                 url(ORBIT_BASE_DOWNLOAD_URL
                         + "org.hamcrest.library_1.3.0.v201305281000.jar"),
                 url(ORBIT_BASE_DOWNLOAD_URL
                         + "org.hamcrest.core_1.3.0.v201303031735.jar"),
+                buildPaxExamExtensionBundle(),
                 mavenBundle("org.knowhowlab.osgi",
                         "org.knowhowlab.osgi.testing.utils", "1.2.2"),
                 mavenBundle("org.knowhowlab.osgi",
@@ -149,11 +174,11 @@ public class ProbeOptions {
                 mavenBundle("commons-lang", "commons-lang", "2.6"),
                 mavenBundle("org.apache.felix",
                         "org.apache.felix.gogo.runtime", "0.10.0"),
+                mavenBundle("org.apache.felix", "org.apache.felix.gogo.shell",
+                        "0.10.0"), 
                 mavenBundle("commons-collections",
-                        "commons-collections", "3.2.1"), 
-                mavenBundle(
-                        "commons-io", "commons-io", "2.4"), 
-                mavenBundle(
+                        "commons-collections", "3.2.1"), mavenBundle(
+                        "commons-io", "commons-io", "2.4"), mavenBundle(
                         "org.apache.servicemix.bundles",
                         "org.apache.servicemix.bundles.paranamer", "2.4_1"),
                 mavenBundle("com.google.guava", "guava", "16.0.1"));
@@ -169,8 +194,25 @@ public class ProbeOptions {
                         .versionAsInProject());
     }
 
-    public static Option simpleOSGiLogging() {
+    public static MavenArtifactProvisionOption consoleOSGiLogging() {
         return mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.logging")
                 .versionAsInProject();
     }
+
+    private static UrlProvisionOption buildPaxExamExtensionBundle() {
+        return streamBundle(TinyBundles
+                .bundle()
+                .add(AbstractPaxExamForStoryRunner.class)
+                .set(BUNDLE_ACTIVATIONPOLICY, "lazy")
+                .set(EXPORT_PACKAGE, "org.jbehave.osgi.paxexam.junit")
+                .set(BUNDLE_SYMBOLICNAME, "org.jbehave.osgi.paxexam.junit")
+                .set(BUNDLE_VERSION, "1.0.0")
+                .set(IMPORT_PACKAGE,
+                        "javax.inject,org.jbehave.osgi.core.annotations;version=\"[1.0,2)\","
+                                + "org.jbehave.osgi.core.services;version=\"[1.0,2)\",org.junit,org.ops4j.pax.exam;version=\"[3.5,4)\","
+                                + "org.ops4j.pax.exam.options;version=\"[3.5,4)\",org.ops4j.pax.exam.options.extra;version=\"[3.5,4)\","
+                                + "org.osgi.framework;version=\"[1.6,2)\",org.osgi.util.tracker;version=\"[1.5,2)\"")
+                .build(TinyBundles.withClassicBuilder()));
+    }
+
 }

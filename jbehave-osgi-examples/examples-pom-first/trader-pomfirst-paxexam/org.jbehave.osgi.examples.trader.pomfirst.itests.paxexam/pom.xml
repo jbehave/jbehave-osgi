@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
@@ -35,7 +35,7 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.logging</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
@@ -48,12 +48,8 @@
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
-					<artifactId>pax-exam</artifactId>
-					<groupId>org.ops4j.pax.exam</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>pax-url-link</artifactId>
-					<groupId>org.ops4j.pax.url</groupId>
+					<artifactId>org.osgi.core</artifactId>
+					<groupId>org.osgi</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -65,31 +61,6 @@
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-link-mvn</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.ops4j.pax.url</groupId>
-					<artifactId>pax-url-aether</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.ops4j.pax.url</groupId>
-					<artifactId>pax-url-link</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-link-assembly</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-link</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -128,14 +99,21 @@
 			<artifactId>slf4j-api</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
 			<artifactId>
 				org.jbehave.osgi.examples.trader.pomfirst.itests
 			</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi.examples</groupId>
+			<artifactId>
+				org.jbehave.osgi.examples.trader.pomfirst.application
+			</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -196,7 +174,6 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -207,12 +184,15 @@
 						</goals>
 						<configuration>
 							<failIfNoTests>true</failIfNoTests>
-							<forkCount>1</forkCount>
+							<forkMode>none</forkMode>
+<!-- 							<forkCount>0</forkCount> -->
+<!-- 							<reuseForks>true</reuseForks> -->
 							<parallel>none</parallel>
-							<threadCount>1</threadCount>
-							<reuseForks>true</reuseForks>
+<!-- 							<threadCount>1</threadCount> -->
 							<includes>
-								<include>**/PaxExamLauncherForJBehaveOption1.java</include>
+<!-- 								<include>**/PaxExamLauncherForJBehaveOption1.java</include> -->
+								<include>**/PaxExamLauncherForJBehaveOption2.java</include>
+<!-- 								<include>**/PaxExamLauncherForJBehaveOption3.java</include> -->
 							</includes>
 							<systemProperties>
 								<property>

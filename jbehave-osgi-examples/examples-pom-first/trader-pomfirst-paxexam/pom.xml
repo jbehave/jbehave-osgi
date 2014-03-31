@@ -10,7 +10,7 @@
 	<groupId>org.jbehave.osgi.examples</groupId>
 	<artifactId>org.jbehave.osgi.examples.trader.pomfirst</artifactId>
 	<packaging>pom</packaging>
-	<name>JBehave OSGi : Pom-First Trader Example</name>
+	<name>JBehave OSGi :: Pom-First Trader Example</name>
 	<description>An OSGi example that uses POM-First bundle creation strategy and is built by pure Maven with Maven-Bundle Plugin and tested by JBehave-OSGi plus Pax-Exam</description>
 
 	<modules>

@@ -13,5 +13,6 @@ import java.lang.annotation.Target;
 @Documented
 public @interface UsingStoryRunnerServiceFilter {
 
-	String value() default "(objectClass=StoryRunnerService)";
+	String filter() default "";
+	Class<?>[] classes() default {};
 }

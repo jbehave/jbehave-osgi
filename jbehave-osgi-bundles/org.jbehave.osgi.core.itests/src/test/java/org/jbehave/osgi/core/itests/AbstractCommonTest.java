@@ -13,8 +13,11 @@ import org.knowhowlab.osgi.testing.assertions.BundleAssert;
 import org.knowhowlab.osgi.testing.assertions.OSGiAssert;
 import org.knowhowlab.osgi.testing.assertions.ServiceAssert;
 import org.knowhowlab.osgi.testing.assertions.cmpn.ConfigurationAdminAssert;
+import org.ops4j.pax.exam.ProbeBuilder;
+import org.ops4j.pax.exam.TestProbeBuilder;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.Version;
 import org.osgi.service.cm.ConfigurationAdmin;
@@ -28,6 +31,15 @@ public abstract class AbstractCommonTest {
      */
     @Inject
     protected BundleContext bc;
+
+    
+    @ProbeBuilder
+    public TestProbeBuilder probeConfiguration(TestProbeBuilder probe) {
+        probe.setHeader(Constants.REQUIRE_BUNDLE,
+                        "org.jbehave.osgi.core,org.hamcrest.integration;bundle-version=\"1.3.0\"");
+        probe.setHeader(Constants.BUNDLE_SYMBOLICNAME, "JBEHAVE.ITEST.BUNDLE");
+        return probe;
+    }
 
     @Before
     public void init() throws Exception {

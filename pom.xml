@@ -138,7 +138,6 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<module>jbehave-osgi-examples/examples-pom-first</module>
 				<module>jbehave-osgi-examples/examples-pom-first/trader-pomfirst-paxexam</module>
 			</modules>
 		</profile>

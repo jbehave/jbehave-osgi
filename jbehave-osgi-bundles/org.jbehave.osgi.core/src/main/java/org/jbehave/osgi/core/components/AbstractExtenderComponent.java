@@ -186,11 +186,11 @@ public abstract class AbstractExtenderComponent extends AbstractComponent {
     }
 
     protected void deleteFactoryConfigurationsForExtendeeBundle(
-            String extenderBundle, String extenderBundleVersion) {
+            String extendeeBundle, String extendeeBundleVersion) {
         Configuration[] configurations;
         try {
             configurations = findFactoryConfigurationsForExtendeeBundle(
-                    extenderBundle, extenderBundleVersion);
+                    extendeeBundle, extendeeBundleVersion);
             if (configurations != null) {
                 for (int i = 0; i < configurations.length; i++) {
                     Configuration configuration = configurations[i];
@@ -203,12 +203,12 @@ public abstract class AbstractExtenderComponent extends AbstractComponent {
                 }
             } else
                 logDebug("no configuration for factoryPid '"
-                        + extenderTargetFactoryPid + "' and extenderBundle '"
-                        + extenderBundle + "'");
+                        + extenderTargetFactoryPid + "' and extendeeBundle '"
+                        + extendeeBundle + "'");
         } catch (IOException e1) {
             logError("no configuration for factoryPid '"
-                    + extenderTargetFactoryPid + "' and extenderBundle '"
-                    + extenderBundle + "'", e1);
+                    + extenderTargetFactoryPid + "' and extendeeBundle '"
+                    + extendeeBundle + "'", e1);
         }
     }
 
