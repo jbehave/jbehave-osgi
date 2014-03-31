@@ -19,6 +19,8 @@ import org.jbehave.osgi.core.itests.lib.steps.NamedParametersSteps;
 import org.jbehave.osgi.core.reporters.StoryReporterBuilderOsgi;
 import org.osgi.framework.Bundle;
 
+import com.thoughtworks.paranamer.NullParanamer;
+
 /**
  * This annotated class is using @UsingSteps, so the StoryRunner service to be
  * generated and registered will be bound to an InjectableStepsFactory service
@@ -27,7 +29,7 @@ import org.osgi.framework.Bundle;
  * @author Cristiano Gavião
  *
  */
-@Configure(stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class)
+@Configure(paranamer=NullParanamer.class, stepPatternParser = MyRegexPrefixCapturingPatternParser.class, storyControls = MyStoryControls.class, storyLoader = MyStoryLoader.class, storyReporterBuilder = MyReportBuilder.class)
 @UsingEmbedder(generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
 @UsingSteps(instances = { NamedParametersSteps.class })
 @UsingPaths(storyFinder = StoryFinderOsgiBundle.class, searchIn = "/org/jbehave/osgi/core/itests/stories", includes = { "*.story" })

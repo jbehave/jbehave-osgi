@@ -144,10 +144,10 @@ public class ProbeOptions {
                         mavenBundle("org.apache.felix", "org.apache.felix.log",
                                 "1.0.1").startLevel(1),
                         mavenBundle("org.apache.felix", "org.apache.felix.scr",
-                                "1.8.2").startLevel(1)),
+                                "1.8.2").startLevel(1),
+                        frameworkProperty("org.osgi.framework.system.packages.extra")
+                                .value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal")),
 
-                frameworkProperty("org.osgi.framework.system.packages.extra")
-                        .value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal"),
                 // url(ORBIT_BASE_DOWNLOAD_URL
                 // + "org.junit_4.11.0.v201303080030.jar"),
                 url(ORBIT_BASE_DOWNLOAD_URL

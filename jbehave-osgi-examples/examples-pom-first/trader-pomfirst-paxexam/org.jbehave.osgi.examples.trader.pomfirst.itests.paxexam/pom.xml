@@ -7,7 +7,7 @@
 		<groupId>org.jbehave.osgi.examples</groupId>
 		<artifactId>org.jbehave.osgi.examples.trader.pomfirst</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests.paxexam</artifactId>
@@ -61,6 +61,21 @@
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-link-mvn</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+		<!-- <artifactId>pax-exam-link-assembly</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-classpath</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-link</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -150,6 +165,12 @@
 					<version>3.9.1.v20130814-1242</version>
 					<scope>test</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.eclipse.birt.runtime</groupId>
+					<artifactId>org.eclipse.osgi.services</artifactId>
+					<version>3.3.100.v20130513-1956</version>
+					<scope>provided</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 	</profiles>
@@ -185,14 +206,11 @@
 						<configuration>
 							<failIfNoTests>true</failIfNoTests>
 							<forkMode>none</forkMode>
-<!-- 							<forkCount>0</forkCount> -->
-<!-- 							<reuseForks>true</reuseForks> -->
 							<parallel>none</parallel>
-<!-- 							<threadCount>1</threadCount> -->
 							<includes>
-<!-- 								<include>**/PaxExamLauncherForJBehaveOption1.java</include> -->
+								<include>**/PaxExamLauncherForJBehaveOption1.java</include>
 								<include>**/PaxExamLauncherForJBehaveOption2.java</include>
-<!-- 								<include>**/PaxExamLauncherForJBehaveOption3.java</include> -->
+								<include>**/PaxExamLauncherForJBehaveOption3.java</include>
 							</includes>
 							<systemProperties>
 								<property>

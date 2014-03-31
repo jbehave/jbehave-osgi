@@ -32,7 +32,7 @@
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.eventadmin</artifactId>
 					<version>1.3.2</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
@@ -40,25 +40,25 @@
 						org.apache.felix.configadmin
 					</artifactId>
 					<version>1.8.0</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.scr</artifactId>
 					<version>1.8.2</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.log</artifactId>
 					<version>1.0.1</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>org.apache.felix.metatype</artifactId>
 					<version>1.0.10</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -90,14 +90,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.core</artifactId>
-			<version>${project.version}</version>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.logging</artifactId>
+			<artifactId>org.jbehave.osgi.core</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -108,38 +107,35 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.thoughtworks.paranamer</groupId>
-			<artifactId>paranamer</artifactId>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
+			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-container-forked</artifactId>
+			<artifactId>pax-exam</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-junit4</artifactId>
+			<artifactId>pax-exam-container-native</artifactId>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
-					<groupId>org.ops4j.pax.tinybundles</groupId>
-					<artifactId>tinybundles</artifactId>
-				</exclusion>
-				<exclusion>
+					<artifactId>org.osgi.core</artifactId>
 					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.compendium</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-link-mvn</artifactId>
+			<artifactId>pax-exam-junit4</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-link-mvn</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -173,6 +169,17 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.knowhowlab.osgi</groupId>
 			<artifactId>org.knowhowlab.osgi.testing.assertions</artifactId>
@@ -221,10 +228,8 @@
 							</includes>
 							<skip>false</skip>
 							<failIfNoTests>true</failIfNoTests>
-							<forkCount>1</forkCount>
-							<reuseForks>true</reuseForks>
+							<forkMode>none</forkMode>
 							<parallel>none</parallel>
-							<threadCount>1</threadCount>
 							<systemProperties>
 								<property>
 									<name>project.version</name>
@@ -238,30 +243,6 @@
 						<phase>verify</phase>
 						<goals>
 							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.ops4j.pax.exam</groupId>
-				<artifactId>exam-maven-plugin</artifactId>
-				<version>${paxexam.version}</version>
-				<configuration>
-					<configClass>org.jbehave.osgi.core.itests.PaxExamForkedContainerConfiguration</configClass>
-				</configuration>
-				<executions>
-					<!-- <execution> -->
-					<!-- <id>dependencies</id> -->
-					<!-- <phase>generate-test-resources</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>generate-link-files</goal> -->
-					<!-- </goals> -->
-					<!-- </execution> -->
-					<execution>
-						<id>server</id>
-						<goals>
-							<goal>start-container</goal>
-							<goal>stop-container</goal>
 						</goals>
 					</execution>
 				</executions>

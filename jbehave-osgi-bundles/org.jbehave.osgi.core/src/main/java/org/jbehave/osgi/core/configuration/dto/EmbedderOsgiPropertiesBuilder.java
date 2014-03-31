@@ -198,17 +198,17 @@ public class EmbedderOsgiPropertiesBuilder {
         transformToProperties(buildConfigurationModel(),
                 Constants.DTO_PREFIX_CONFIGURATION, properties);
 
+        filterBuilder = new StringBuilder();
         if (finder.isAnnotationPresent(UsingStepsFactoryServiceFilter.class)) {
             String custom = finder.getAnnotatedValue(
                     UsingStepsFactoryServiceFilter.class, String.class,
                     "custom");
             if (custom != null && !custom.isEmpty()) {
-                filterBuilder = new StringBuilder(custom);
+                filterBuilder.append(custom);
 
             } else {
 
-                this.filterBuilder = new StringBuilder("(&");
-                this.filterBuilder.append("(")
+                this.filterBuilder.append("(&").append("(")
                         .append(org.osgi.framework.Constants.OBJECTCLASS)
                         .append("=")
                         .append(InjectableStepsFactoryService.class.getName())
@@ -237,8 +237,7 @@ public class EmbedderOsgiPropertiesBuilder {
         } else if (finder.isAnnotationPresent(UsingSteps.class)) {
             List<Class<Object>> stepsClasses = finder.getAnnotatedClasses(
                     UsingSteps.class, Object.class, "instances");
-            this.filterBuilder = new StringBuilder("(&");
-            this.filterBuilder.append("(")
+            this.filterBuilder.append("(&").append("(")
                     .append(org.osgi.framework.Constants.OBJECTCLASS)
                     .append("=")
                     .append(InjectableStepsFactoryService.class.getName())
@@ -312,8 +311,9 @@ public class EmbedderOsgiPropertiesBuilder {
                     value = method.invoke(object);
                     if (value == null)
                         continue;
-                    if (Collection.class.isAssignableFrom(value.getClass())){
-                        int size = (Integer) value.getClass().getMethod("size").invoke(value);
+                    if (Collection.class.isAssignableFrom(value.getClass())) {
+                        int size = (Integer) value.getClass().getMethod("size")
+                                .invoke(value);
                         if (size == 0)
                             continue;
                     }

@@ -20,7 +20,7 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-@UsingStoryRunnerServiceFilter(filter = "(&(objectClass=StoryRunnerService)(storyRunnerClass=*))")
+@UsingStoryRunnerServiceFilter(filter = "(&(objectClass=org.jbehave.osgi.core.services.StoryRunnerService)(storyRunnerClass=*))")
 public class PaxExamLauncherForJBehaveOption3 extends
         AbstractExampleTestConfiguration {
 

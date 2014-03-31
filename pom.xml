@@ -25,7 +25,7 @@
 		<tycho-version>0.20.0</tycho-version>
 		<tychoExtrasVersion>${tycho-version}</tychoExtrasVersion>
 		<paxexam.version>3.5.0-SNAPSHOT</paxexam.version>
-		<url.version>1.6.0</url.version>
+		<url.version>2.0.0-SNAPSHOT</url.version>
 	</properties>
 
 	<profiles>
@@ -500,6 +500,18 @@
 				<groupId>org.ops4j.pax.exam</groupId>
 				<artifactId>pax-exam-link-mvn</artifactId>
 				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>pax-url-assembly</artifactId>
+				<version>${paxexam.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.url</groupId>
+				<artifactId>pax-url-classpath</artifactId>
+				<version>${url.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
