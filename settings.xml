@@ -1,0 +1,61 @@
+<settings>
+  <pluginGroups>
+    <pluginGroup>org.jbehave</pluginGroup>
+    <pluginGroup>org.sonatype.plugins</pluginGroup>
+  </pluginGroups>
+  <profiles>
+    <profile>
+      <id>codehaus</id>
+      <repositories>
+        <repository>
+          <id>codehaus-public-repository-group</id>
+          <name>Codehaus Public Repository Group</name>
+          <url>https://nexus.codehaus.org/content/groups/public/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>codehaus-public-repository-group</id>
+          <name>Codehaus Public Repository Group</name>
+          <url>https://nexus.codehaus.org/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+	<id>ops4j</id>
+	<activation>
+	  <activeByDefault>true</activeByDefault>
+	</activation>
+	  <repositories>
+		<repository>
+                    <id>ops4j-deps-snapshots</id>
+                    <name>OPS4j Snapshots</name>
+                    <url>http://oss.sonatype.org/content/repositories/ops4j-snapshots/
+                    </url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <updatePolicy>always</updatePolicy>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+	</repositories>
+    </profile>
+  </profiles>
+</settings>
