@@ -27,7 +27,7 @@
       <import plugin="org.apache.commons.collections" version="3.2.1" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.io" version="2.4.0" match="greaterOrEqual"/>
       <import plugin="org.apache.felix.gogo.runtime" version="0.10.0" match="greaterOrEqual"/>
-s   </requires>
+   </requires>
 
    <plugin
          id="com.google.guava"

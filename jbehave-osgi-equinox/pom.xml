@@ -15,9 +15,20 @@
 		<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
 		<jetty-site>http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.14.v20131031</jetty-site>
 		<swtbot-site>http://download.eclipse.org/technology/swtbot/snapshots</swtbot-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/</orbit-site>
+		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</orbit-site>
 		<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
 	</properties>
+
+	<modules>
+		<module>org.jbehave.osgi.fragment.jdk</module>
+		<module>org.jbehave.osgi.equinox.commands</module>
+		<module>org.jbehave.osgi.equinox.commands.test</module>
+		<module>org.jbehave.osgi.equinox.swtbot</module>
+		<module>org.jbehave.osgi.equinox.features.core</module>
+		<module>org.jbehave.osgi.equinox.features.web</module>
+		<module>org.jbehave.osgi.equinox.features.swtbot</module>
+		<module>org.jbehave.osgi.equinox.p2</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>

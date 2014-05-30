@@ -4,7 +4,7 @@ Bundle-Name: JBehave OSGi Equinox : SWTBot Extension
 Bundle-SymbolicName: org.jbehave.osgi.equinox.swtbot;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: JBehave.org
 Require-Bundle: org.junit;bundle-version="4.11.0",
  org.jbehave.osgi.core;bundle-version="1.0.0"

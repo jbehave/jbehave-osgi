@@ -19,10 +19,7 @@
 
    <requires>
       <import feature="org.jbehave.osgi.equinox.features.core" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jetty.http" version="8.1.13" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jetty.io" version="8.1.13" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jetty.util" version="8.1.13" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jetty.websocket" version="8.1.13" match="greaterOrEqual"/>
+      <import plugin="org.json" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -34,6 +31,13 @@
 
    <plugin
          id="com.sun.jna"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="nu.xom"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -160,6 +164,18 @@
 
    <plugin
          id="jcl.over.slf4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="log4j.over.slf4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="joda-time"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

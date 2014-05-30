@@ -80,6 +80,10 @@
 			<artifactId>commons-io</artifactId>
 			<groupId>commons-io</groupId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.runtime</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -103,7 +107,6 @@
 						<plugin id="javax.xml.stream" />
 						<plugin id="org.apache.servicemix.bundles.xmlpull" />
 						<plugin id="org.apache.servicemix.bundles.xstream" />
-						<plugin id="org.apache.servicemix.bundles.hamcrest" />
 						<plugin id="org.apache.servicemix.bundles.woodstox" />
 						<plugin id="org.apache.servicemix.bundles.paranamer" />
 						<plugin id="org.apache.servicemix.bundles.freemarker" />

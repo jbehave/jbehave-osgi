@@ -46,6 +46,10 @@
 			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>xom</groupId>
+			<artifactId>xom</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
 		</dependency>
@@ -66,6 +70,14 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-exec</artifactId>
 		</dependency>
@@ -80,7 +92,6 @@
 		<dependency>
 			<groupId>net.java.dev.jna</groupId>
 			<artifactId>jna-platform</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -123,17 +134,24 @@
 			<groupId>commons-io</groupId>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ning</groupId>
+			<artifactId>async-http-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
@@ -155,12 +173,15 @@
 					<labelSuffix> (source)</labelSuffix>
 					<excludes>
 						<plugin id="com.ning.async-http-client" />
-						<plugin id="org.json" />
+						<plugin id="nu.xom" />
 						<plugin id="com.sun.jna" />
+						<plugin id="org.json" />
 						<plugin id="org.apache.xalan" />
 						<plugin id="com.sun.jna.platform" />
 						<plugin id="org.apache.commons.collections" />
 						<plugin id="jcl.over.slf4j" />
+						<plugin id="log4j.over.slf4j" />
+						<plugin id="joda-time" />
 						<plugin id="org.apache.commons.io" />
 						<plugin id="org.apache.httpcomponents.httpclient" />
 						<plugin id="org.apache.httpcomponents.httpcore" />

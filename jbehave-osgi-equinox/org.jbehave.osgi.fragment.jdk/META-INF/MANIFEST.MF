@@ -5,7 +5,7 @@ Bundle-Description: JBehave OSGi provides a OSGi integration layer for J
 Bundle-DocURL: www.jbehave.org
 Bundle-ManifestVersion: 2
 Bundle-Name: JBehave OSGi : System fragment for JDK packages exporting
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-SymbolicName: org.jbehave.osgi.fragment.jdk
 Bundle-Vendor: JBehave.org
 Bundle-Version: 1.0.0.qualifier

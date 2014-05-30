@@ -15,10 +15,10 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.jbehave.osgi</groupId>
-            <artifactId>org.jbehave.osgi.logging</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.jbehave.osgi</groupId>
+			<artifactId>org.jbehave.osgi.logging</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -54,6 +54,10 @@
 		<dependency>
 			<artifactId>commons-io</artifactId>
 			<groupId>commons-io</groupId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.gogo.runtime</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
