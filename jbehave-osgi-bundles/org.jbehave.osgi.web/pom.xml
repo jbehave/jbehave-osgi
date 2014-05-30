@@ -22,13 +22,13 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<artifactId>paranamer</artifactId>
-			<groupId>com.thoughtworks.paranamer</groupId>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -38,14 +38,20 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<artifactId>jna</artifactId>
 			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.java.dev.jna</groupId>
 			<artifactId>jna-platform</artifactId>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>net.java.dev.jna</groupId>
+					<artifactId>jna</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -56,12 +62,37 @@
 					<artifactId>servlet-api-2.5</artifactId>
 					<groupId>org.mortbay.jetty</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>commons-codec</artifactId>
+					<groupId>commons-codec</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-repacked</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>selenium-java</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
 			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${selenium.version}</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>json</artifactId>
+					<groupId>org.json</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>htmlunit</artifactId>
@@ -89,6 +120,119 @@
 				</exclusion>
 			</exclusions>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>json</artifactId>
+					<groupId>org.json</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>selenium-remote-driver</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>selenium-remote-driver</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>selenium-remote-driver</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>selenium-remote-driver</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jna</artifactId>
+					<groupId>net.java.dev.jna</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>selenium-remote-driver</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>httpclient</artifactId>
+					<groupId>org.apache.httpcomponents</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>json</artifactId>
+					<groupId>org.json</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jna</artifactId>
+					<groupId>net.java.dev.jna</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.webbitserver</groupId>
+			<artifactId>webbit</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<artifactId>phantomjsdriver</artifactId>
@@ -122,8 +266,12 @@
 					<artifactId>selenium-remote-driver</artifactId>
 					<groupId>org.seleniumhq.selenium</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>selenium-server</artifactId>
+					<groupId>org.seleniumhq.selenium</groupId>
+				</exclusion>
 			</exclusions>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.web</groupId>
@@ -141,6 +289,10 @@
 					<artifactId>selenium-android-driver</artifactId>
 					<groupId>org.seleniumhq.selenium</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>phantomjsdriver</artifactId>
+					<groupId>com.github.detro.ghostdriver</groupId>
+				</exclusion>
 			</exclusions>
 			<scope>provided</scope>
 		</dependency>
@@ -149,56 +301,56 @@
 			<artifactId>htmlunit</artifactId>
 			<exclusions>
 				<exclusion>
-					<artifactId>httpclient</artifactId>
 					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>commons-lang3</artifactId>
 					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-lang3</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>commons-collections</artifactId>
 					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>commons-codec</artifactId>
 					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>xercesImpl</artifactId>
 					<groupId>xerces</groupId>
+					<artifactId>xercesImpl</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>xalan</artifactId>
 					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>xml-apis</artifactId>
 					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>commons-logging</artifactId>
 					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>commons-io</artifactId>
 					<groupId>commons-io</groupId>
+					<artifactId>commons-io</artifactId>
 				</exclusion>
 				<exclusion>
+					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-io</artifactId>
-					<groupId>org.eclipse.jetty</groupId>
 				</exclusion>
 				<exclusion>
+					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-util</artifactId>
-					<groupId>org.eclipse.jetty</groupId>
 				</exclusion>
 				<exclusion>
+					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-websocket</artifactId>
-					<groupId>org.eclipse.jetty</groupId>
 				</exclusion>
 				<exclusion>
-					<artifactId>jetty-http</artifactId>
 					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-http</artifactId>
 				</exclusion>
 				<exclusion>
 					<artifactId>sac</artifactId>
@@ -209,7 +361,7 @@
 					<groupId>org.apache.httpcomponents</groupId>
 				</exclusion>
 			</exclusions>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -254,6 +406,52 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.dom4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ning</groupId>
+			<artifactId>async-http-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>jetty-repacked</artifactId>
+			<version>7.6.1</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -274,10 +472,14 @@
 						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
 						<Embed-Dependency>
 							!netty,
-							*;scope=compile|runtime
+							selenium-java,
+							selenium-api,
+							jbehave-web-selenium,
+							*;scope=runtime
 						</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 						<Import-Package>
+							org.json;version="1.0.0",
 							geb;resolution:=optional,
 							groovy.lang;resolution:=optional,
 							com.github.tanob.groobe;resolution:=optional,
@@ -290,6 +492,9 @@
 							org.junit;resolution:=optional,
 							junit.framework;resolution:=optional,
 							org.picocontainer.*;resolution:=optional,
+							net.sf.ehcache;resolution:=optional,
+							net.sf.cglib.asm.util.*;resolution:=optional,
+							net.spy.memcached;resolution:=optional,
 							org.seleniumhq.selenium.fluent.*;resolution:=optional,
 							org.slf4j.*;resolution:=optional,
 							org.apache.log4j.*;resolution:=optional,
@@ -297,29 +502,42 @@
 							org.codehaus.groovy.*;resolution:=optional,
 							org.codehaus.aspectwerkz.hook.*;resolution:=optional,
 							org.apache.avalon.framework.logger;resolution:=optional,
-							net.sf.cglib.asm.util.*;resolution:=optional,
-							com.sun.net.ssl.*;resolution:=optional,
+							org.openqa.selenium.android;resolution:=optional,
+							sun.reflect;resolution:=optional,
 							org.hamcrest.*;resolution:=optional,
 							org.mortbay.*;resolution:=optional,
 							org.eclipse.jetty.*;resolution:=optional,
 							javax.net.ssl.*;resolution:=optional,
 							org.python.*;resolution:=optional,
-							!org.seleniumhq.jetty7.jmx,
 							org.apache.axis.*;resolution:=optional,
+							com.bea.xml.stream;resolution:=optional,
 							com.caucho.*;resolution:=optional,
-							org.openqa.selenium.phantomjs;version="[1.1.0,2.0.0)",
+							com.sun.net.ssl.*;resolution:=optional,
+							com.sun.jna.platform.win32;resolution:=optional,
 							!javax.xml.rpc,
+							!org.seleniumhq.jetty7.jmx,
 							!mx4j,
 							*
 						</Import-Package>
 						<_exportcontents>
+							org.seleniumhq.jetty7;version="${selenium.version}",
+							org.json;version="20080701",
 							org.jbehave.web.selenium;version="3.6.0.qualifier",
 							org.openqa.selenium.phantomjs;version="1.1.0",
+							org.openqa.selenium.os;version="${selenium.version}",
 							org.openqa.selenium.*;version="${selenium.version}",
+							com.thoughtworks.selenium;version="${selenium.version}",
+							com.thoughtworks.selenium.condition;version="${selenium.version}",
+							com.thoughtworks.selenium.webdriven;version="${selenium.version}",
+							com.thoughtworks.selenium.webdriven.commands;version="${selenium.version}"
+							org.openqa.jetty.util;version="${selenium.version}",
+							org.openqa.jetty.jetty;version="${selenium.version}",
+							org.openqa.jetty.http;version="${selenium.version}",
+							org.openqa.jetty.http.handler;version="${selenium.version}",
+							org.openqa.jetty.jetty.servlet;version="${selenium.version}",
+							org.openqa.jetty.xml;version="${selenium.version}",
 							org.openqa.jetty.*;version="${selenium.version}",
 							org.openqa.grid.*;version="${selenium.version}",
-							com.thoughtworks.selenium.webdriven;version="${selenium.version}",
-							com.thoughtworks.selenium.*;version="${selenium.version}",
 							org.webbitserver.*;version="0.4.15",
 							com.gargoylesoftware.htmlunit.*;version="2.14.0",
 							net.sourceforge.htmlunit.corejs.*;version="2.14.0",
@@ -328,6 +546,7 @@
 							org.cyberneko.html.*;version="1.9.20",
 							org.yaml.snakeyaml.*;version="1.8.0",
 							org.bouncycastle.*;version="1.48.0",
+							org.seleniumhq.jetty7;version="7.6.1",
 							org.seleniumhq.jetty7.*;version="7.6.1",
 							net.jcip.annotations;version="1.0.0",
 							mx4j.*;version="3.0.1"
@@ -339,24 +558,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.felix</groupId> -->
-			<!-- <artifactId>maven-scr-plugin</artifactId> -->
-			<!-- </plugin> -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-manifest</id>
-					</execution>
-					<execution>
-						<id>copy-osgi-inf</id>
-						<phase>none</phase>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
