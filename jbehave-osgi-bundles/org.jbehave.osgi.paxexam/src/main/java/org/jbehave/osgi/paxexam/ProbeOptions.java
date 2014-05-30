@@ -2,217 +2,253 @@ package org.jbehave.osgi.paxexam;
 
 import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.CoreOptions.frameworkProperty;
-import static org.ops4j.pax.exam.CoreOptions.junitBundles;
+import static org.ops4j.pax.exam.CoreOptions.systemProperty;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.streamBundle;
+import static org.ops4j.pax.exam.CoreOptions.bundle;
 import static org.ops4j.pax.exam.CoreOptions.url;
 import static org.ops4j.pax.exam.CoreOptions.when;
+import static org.osgi.framework.Constants.BUNDLE_ACTIVATIONPOLICY;
 import static org.osgi.framework.Constants.BUNDLE_SYMBOLICNAME;
 import static org.osgi.framework.Constants.BUNDLE_VERSION;
 import static org.osgi.framework.Constants.EXPORT_PACKAGE;
 import static org.osgi.framework.Constants.IMPORT_PACKAGE;
-import static org.osgi.framework.Constants.BUNDLE_ACTIVATIONPOLICY;
 
 import org.jbehave.osgi.paxexam.junit.AbstractPaxExamForStoryRunner;
 import org.ops4j.pax.exam.options.CompositeOption;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 import org.ops4j.pax.exam.options.MavenArtifactProvisionOption;
 import org.ops4j.pax.exam.options.UrlProvisionOption;
+import org.ops4j.pax.exam.options.libraries.JUnitBundlesOption;
 import org.ops4j.pax.tinybundles.core.TinyBundles;
 
 public class ProbeOptions {
 
-    /**
-     * This is the base download URL for LUNA
-     */
-    public final static String EQUINOX_LUNA_BASE_DOWNLOAD_URL = "http://download.eclipse.org/eclipse/updates/4.4milestones/S-4.4M6-201403061200/plugins/";
+	private static UrlProvisionOption buildPaxExamExtensionBundle() {
+		return streamBundle(TinyBundles
+				.bundle()
+				.add(AbstractPaxExamForStoryRunner.class)
+				.set(BUNDLE_ACTIVATIONPOLICY, "lazy")
+				.set(EXPORT_PACKAGE, "org.jbehave.osgi.paxexam.junit")
+				.set(BUNDLE_SYMBOLICNAME, "org.jbehave.osgi.paxexam.junit")
+				.set(BUNDLE_VERSION, "1.0.0")
+				.set(IMPORT_PACKAGE,
+						"javax.inject,org.jbehave.osgi.core.annotations;version=\"[1.0,2)\","
+								+ "org.jbehave.osgi.core.services;version=\"[1.0,2)\",org.junit,org.ops4j.pax.exam;version=\"[3.5,4)\","
+								+ "org.ops4j.pax.exam.options;version=\"[3.5,4)\",org.ops4j.pax.exam.options.extra;version=\"[3.5,4)\","
+								+ "org.osgi.framework,org.osgi.util.tracker")
+				.build(TinyBundles.withClassicBuilder()));
+	}
 
-    /**
-     * This is the base download URL for LUNA
-     */
-    public final static String EQUINOX_KEPLER_BASE_DOWNLOAD_URL = "http://download.eclipse.org/eclipse/updates/4.3/R-4.3.1-201309111000/plugins/";
+	public static MavenArtifactProvisionOption consoleOSGiLogging() {
+		return mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.logging")
+				.versionAsInProject();
+	}
 
-    /**
-     * this is the eclipse orbit repository
-     */
-    public final static String ORBIT_BASE_DOWNLOAD_URL = "http://download.eclipse.org/tools/orbit/downloads/drops/S20140227085123/repository/plugins/";
+	public static CompositeOption equinoxKepler() {
 
-    /**
-     * Property that should be used to specify which OSGi framework to use.
-     * <p>
-     * Currently the options are: equinox_kepler, equinox_luna, felix.
-     */
-    public final static String PAXEXAM_FRAMEWORK_PROPERTY = "pax.exam.framework";
+		DefaultCompositeOption options = new DefaultCompositeOption();
 
-    public ProbeOptions() {
-    }
+		options.add(url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+				+ "org.eclipse.osgi.services_3.3.100.v20130513-1956.jar"));
+		options.add(url(
+				EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+						+ "org.eclipse.equinox.cm_1.0.400.v20130327-1442.jar")
+				.startLevel(1));
+		options.add(url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+				+ "org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"));
+		options.add(url(
+				EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+						+ "org.eclipse.equinox.ds_1.4.101.v20130813-1853.jar")
+				.startLevel(1));
+		options.add(url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+				+ "org.eclipse.equinox.event_1.3.0.v20130327-1442.jar"));
+		options.add(url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
+				+ "org.eclipse.equinox.util_1.0.500.v20130404-1337.jar"));
+		return options;
+	}
 
-    public static boolean isEquinoxLuna() {
-        return "equinox_luna".equals(System
-                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY))
-                || "equinox-luna".equals(System
-                        .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
-    }
+	protected static CompositeOption equinoxLuna() {
+		DefaultCompositeOption options = new DefaultCompositeOption();
 
-    public static boolean isEquinoxKepler() {
-        return "equinox_kepler".equals(System
-                .getProperty(PAXEXAM_FRAMEWORK_PROPERTY))
-                || "equinox-kepler".equals(System
-                        .getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
-    }
+		options.add(mavenBundle("org.lunifera.osgi",
+				"org.eclipse.osgi.services").versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi", "org.eclipse.equinox.ds")
+				.versionAsInProject().startLevel(1));
+		options.add(mavenBundle("org.lunifera.osgi", "org.eclipse.equinox.cm")
+				.startLevel(1).versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi",
+				"org.eclipse.equinox.event").versionAsInProject().startLevel(2));
+		options.add(mavenBundle("org.lunifera.osgi",
+				"org.eclipse.equinox.common").versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi", "org.eclipse.equinox.util")
+				.versionAsInProject());
 
-    public static boolean isFelix() {
-        return "felix".equals(System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
-    }
+		if (isConsoleOn()) {
+			options.add(mavenBundle("org.apache.felix",
+					"org.apache.felix.gogo.command").start()
+					.versionAsInProject());
+			options.add(mavenBundle("org.apache.felix",
+					"org.apache.felix.gogo.shell").start().versionAsInProject());
+			options.add(mavenBundle("org.lunifera.osgi",
+					"org.eclipse.equinox.console").start().versionAsInProject());
+		}
 
-    /**
-     * A collection of PaxExam configuration options that will install all
-     * JBehave OSGi core dependencies into the OSGi container.
-     * 
-     * @return a {@link CompositeOption} for the JBehave dependencies without
-     *         clear the caches.
-     */
-    public static CompositeOption jbehaveDeps() {
-        return jbehaveCoreDependencies(false);
-    }
+		return options;
+	}
 
-    /**
-     * A collection of PaxExam configuration options that will install all
-     * JBehave OSGi core dependencies into the OSGi container.
-     * 
-     * @param cleanCaches
-     *            determine if the caches must be clean.
-     * @return a {@link CompositeOption} for the JBehave dependencies.
-     */
-    public static CompositeOption jbehaveCoreDependencies(boolean cleanCaches) {
-        return new DefaultCompositeOption(
-                junitBundles(),
-                when(cleanCaches).useOptions(cleanCaches()),
+	protected static CompositeOption felix() {
+		DefaultCompositeOption options = new DefaultCompositeOption();
+		options.add(mavenBundle("org.apache.felix",
+				"org.apache.felix.configadmin").versionAsInProject()
+				.startLevel(1));
+		options.add(mavenBundle("org.apache.felix",
+				"org.apache.felix.eventadmin").versionAsInProject().startLevel(
+				2));
+		options.add(mavenBundle("org.apache.felix", "org.apache.felix.metatype")
+				.versionAsInProject());
+		options.add(mavenBundle("org.apache.felix", "org.apache.felix.prefs")
+				.versionAsInProject().startLevel(2));
+		options.add(mavenBundle("org.apache.felix", "org.apache.felix.log")
+				.versionAsInProject().startLevel(1));
+		options.add(mavenBundle("org.apache.felix", "org.apache.felix.scr")
+				.versionAsInProject().startLevel(2));
+		options.add(frameworkProperty(
+				"org.osgi.framework.system.packages.extra")
+				.value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal"));
+		return options;
+	}
 
-                when(isEquinoxLuna())
-                        .useOptions(
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.osgi.services_3.4.0.v20131120-1328.jar"),
-                                url(
-                                        EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                                + "org.eclipse.equinox.cm_1.1.0.v20131021-1936.jar")
-                                        .startLevel(1),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"),
-                                url(
-                                        EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                                + "org.eclipse.equinox.ds_1.4.200.v20131126-2331.jar")
-                                        .startLevel(1),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.console_1.1.0.v20140131-1639.jar"),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.event_1.3.100.v20140115-1647.jar"),
-                                url(EQUINOX_LUNA_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.util_1.0.500.v20130404-1337.jar")),
-                when(isEquinoxKepler())
-                        .useOptions(
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.osgi.services_3.3.100.v20130513-1956.jar"),
-                                url(
-                                        EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                                + "org.eclipse.equinox.cm_1.0.400.v20130327-1442.jar")
-                                        .startLevel(1),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"),
-                                url(
-                                        EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                                + "org.eclipse.equinox.ds_1.4.101.v20130813-1853.jar")
-                                        .startLevel(1),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.console_1.0.100.v20130429-0953.jar"),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.event_1.3.0.v20130327-1442.jar"),
-                                url(EQUINOX_KEPLER_BASE_DOWNLOAD_URL
-                                        + "org.eclipse.equinox.util_1.0.500.v20130404-1337.jar")),
-                when(isFelix()).useOptions(
-                        mavenBundle("org.apache.felix",
-                                "org.apache.felix.configadmin", "1.8.0")
-                                .startLevel(1),
-                        mavenBundle("org.apache.felix",
-                                "org.apache.felix.eventadmin", "1.3.2")
-                                .startLevel(2),
-                        mavenBundle("org.apache.felix",
-                                "org.apache.felix.metatype", "1.0.10"),
-                        mavenBundle("org.apache.felix",
-                                "org.apache.felix.prefs", "1.0.6")
-                                .startLevel(2),
-                        mavenBundle("org.apache.felix", "org.apache.felix.log",
-                                "1.0.1").startLevel(1),
-                        mavenBundle("org.apache.felix", "org.apache.felix.scr",
-                                "1.8.2").startLevel(1),
-                        frameworkProperty("org.osgi.framework.system.packages.extra")
-                                .value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal")),
+	public static boolean isConsoleOn() {
+		String port = System.getProperty(OSGI_CONSOLE_PROPERTY);
+		if (port != null && !port.isEmpty())
+			return true;
+		else
+			return false;
+	}
 
-                // url(ORBIT_BASE_DOWNLOAD_URL
-                // + "org.junit_4.11.0.v201303080030.jar"),
-                url(ORBIT_BASE_DOWNLOAD_URL
-                        + "org.hamcrest.integration_1.3.0.v201305210900.jar"),
-                url(ORBIT_BASE_DOWNLOAD_URL
-                        + "org.hamcrest.library_1.3.0.v201305281000.jar"),
-                url(ORBIT_BASE_DOWNLOAD_URL
-                        + "org.hamcrest.core_1.3.0.v201303031735.jar"),
-                buildPaxExamExtensionBundle(),
-                mavenBundle("org.knowhowlab.osgi",
-                        "org.knowhowlab.osgi.testing.utils", "1.2.2"),
-                mavenBundle("org.knowhowlab.osgi",
-                        "org.knowhowlab.osgi.testing.assertions", "1.2.2"),
-                mavenBundle("org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.xstream", "1.4.4_2"),
-                mavenBundle("org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.xpp3", "1.1.4c_6"),
-                mavenBundle("org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.xmlpull", "1.1.3.1_2"),
-                mavenBundle("org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.woodstox", "3.2.9_3"),
-                mavenBundle("org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.freemarker", "2.3.20_1"),
-                mavenBundle("commons-lang", "commons-lang", "2.6"),
-                mavenBundle("org.apache.felix",
-                        "org.apache.felix.gogo.runtime", "0.10.0"),
-                mavenBundle("org.apache.felix", "org.apache.felix.gogo.shell",
-                        "0.10.0"), 
-                mavenBundle("commons-collections",
-                        "commons-collections", "3.2.1"), mavenBundle(
-                        "commons-io", "commons-io", "2.4"), mavenBundle(
-                        "org.apache.servicemix.bundles",
-                        "org.apache.servicemix.bundles.paranamer", "2.4_1"),
-                mavenBundle("com.google.guava", "guava", "16.0.1"));
-    }
+	public static boolean isEquinoxKepler() {
+		String env = System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY);
+		return "equinox_kepler".equals(env) || "equinox-kepler".equals(env);
+	}
 
-    public static CompositeOption jbehaveCoreAndDependencies() {
-        return jbehaveCoreAndDependencies(true);
-    }
+	public static boolean isEquinoxLuna() {
+		String env = System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY);
+		return "equinox_luna".equals(env) || "equinox-luna".equals(env);
+	}
 
-    public static CompositeOption jbehaveCoreAndDependencies(boolean cleanCache) {
-        return new DefaultCompositeOption(jbehaveCoreDependencies(cleanCache),
-                mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.core")
-                        .versionAsInProject());
-    }
+	public static boolean isFelix() {
 
-    public static MavenArtifactProvisionOption consoleOSGiLogging() {
-        return mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.logging")
-                .versionAsInProject();
-    }
+		return "felix".equals(System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY));
+	}
 
-    private static UrlProvisionOption buildPaxExamExtensionBundle() {
-        return streamBundle(TinyBundles
-                .bundle()
-                .add(AbstractPaxExamForStoryRunner.class)
-                .set(BUNDLE_ACTIVATIONPOLICY, "lazy")
-                .set(EXPORT_PACKAGE, "org.jbehave.osgi.paxexam.junit")
-                .set(BUNDLE_SYMBOLICNAME, "org.jbehave.osgi.paxexam.junit")
-                .set(BUNDLE_VERSION, "1.0.0")
-                .set(IMPORT_PACKAGE,
-                        "javax.inject,org.jbehave.osgi.core.annotations;version=\"[1.0,2)\","
-                                + "org.jbehave.osgi.core.services;version=\"[1.0,2)\",org.junit,org.ops4j.pax.exam;version=\"[3.5,4)\","
-                                + "org.ops4j.pax.exam.options;version=\"[3.5,4)\",org.ops4j.pax.exam.options.extra;version=\"[3.5,4)\","
-                                + "org.osgi.framework;version=\"[1.6,2)\",org.osgi.util.tracker;version=\"[1.5,2)\"")
-                .build(TinyBundles.withClassicBuilder()));
-    }
+	public static CompositeOption jbehaveCoreAndDependencies() {
+		return jbehaveCoreAndDependencies(true);
+	}
+
+	public static CompositeOption jbehaveCoreAndDependencies(boolean cleanCache) {
+		return new DefaultCompositeOption(jbehaveDependenciesOnly(cleanCache),
+				mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.core")
+						.versionAsInProject());
+	}
+
+	/**
+	 * A collection of PaxExam configuration options that will install all
+	 * JBehave OSGi core dependencies into the OSGi container.
+	 * 
+	 * @param cleanCaches
+	 *            determine if the caches must be clean.
+	 * @return a {@link CompositeOption} for the JBehave dependencies.
+	 */
+	public static CompositeOption jbehaveDependenciesOnly(boolean cleanCaches) {
+
+		DefaultCompositeOption options = new DefaultCompositeOption();
+
+		// repository(
+		// "http://maven.lunifera.org:8086/nexus/content/repositories/releases/")
+		// .id("lunifera"),
+		options.add(junitBundles());
+		options.add(when(cleanCaches).useOptions(cleanCaches()));
+		if (isFelix()) {
+			options.add(felix());
+		} else if (isEquinoxLuna()) {
+			options.add(equinoxLuna());
+		} else if (isEquinoxKepler()) {
+			options.add(equinoxKepler());
+		}
+		options.add(mavenBundle("org.knowhowlab.osgi",
+				"org.knowhowlab.osgi.testing.utils").versionAsInProject());
+		options.add(mavenBundle("org.knowhowlab.osgi",
+				"org.knowhowlab.osgi.testing.assertions").versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.xstream").versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.xpp3").versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.xmlpull").versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.woodstox").versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.freemarker")
+				.versionAsInProject());
+		options.add(mavenBundle("commons-lang", "commons-lang")
+				.versionAsInProject());
+		options.add(mavenBundle("org.apache.felix",
+				"org.apache.felix.gogo.runtime").versionAsInProject());
+		options.add(mavenBundle("commons-collections", "commons-collections")
+				.versionAsInProject());
+		options.add(mavenBundle("commons-io", "commons-io")
+				.versionAsInProject());
+		options.add(mavenBundle("org.apache.servicemix.bundles",
+				"org.apache.servicemix.bundles.paranamer").versionAsInProject());
+		options.add(buildPaxExamExtensionBundle());
+		options.add(mavenBundle("com.google.guava", "guava")
+				.versionAsInProject());
+
+		return options;
+	}
+
+	/**
+	 * Creates a {@link JUnitBundlesOption}.
+	 * 
+	 * @return junit bundles option
+	 */
+	public static CompositeOption junitBundles() {
+		DefaultCompositeOption options = new DefaultCompositeOption();
+
+		options.add(new OrbitJUnitBundlesOption());
+		options.add(systemProperty("pax.exam.invoker").value("junit"));
+		options.add(bundle("link:classpath:META-INF/links/org.ops4j.pax.exam.invoker.junit.link"));
+
+		options.add(mavenBundle("org.lunifera.osgi", "org.hamcrest.integration")
+				.versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi", "org.hamcrest.library")
+				.versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi", "org.hamcrest.core")
+				.versionAsInProject());
+		return options;
+	}
+
+	/**
+	 * This is the base download URL for LUNA
+	 */
+	public final static String EQUINOX_KEPLER_BASE_DOWNLOAD_URL = "http://download.eclipse.org/eclipse/updates/4.3/R-4.3.1-201309111000/plugins/";
+
+	/**
+	 * this is the eclipse orbit repository
+	 */
+	public final static String ORBIT_BASE_DOWNLOAD_URL = "http://download.eclipse.org/tools/orbit/downloads/drops/S20140227085123/repository/plugins/";
+
+	/**
+	 * Property that should be used to specify which OSGi framework to use.
+	 * <p>
+	 * Currently the options are: equinox_kepler, equinox_luna, felix.
+	 */
+	public final static String PAXEXAM_FRAMEWORK_PROPERTY = "pax.exam.framework";
+
+	public final static String OSGI_CONSOLE_PROPERTY = "osgi.console";
+
+	public ProbeOptions() {
+	}
 
 }
