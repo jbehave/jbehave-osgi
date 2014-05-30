@@ -10,7 +10,7 @@ import org.osgi.service.log.LogReaderService;
 @Component(immediate = true, service = ConsoleLogComponent.class)
 public class ConsoleLogComponent {
 
-    List<LogReaderService> logReaderServices = new CopyOnWriteArrayList<>();
+    List<LogReaderService> logReaderServices = new CopyOnWriteArrayList<LogReaderService>();
 
     ConsoleOutput consoleOutput = new ConsoleOutput();
 
