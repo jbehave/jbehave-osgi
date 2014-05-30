@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Documented
 /**
  * Determines which StepFactoryServices must be bound by a StoryRunnerService registered by an Embedder class annotated with it.
- * @author cvgaviao
+ * @author Cristiano Gavião
  *
  */
 public @interface UsingStepsFactoryServiceFilter {

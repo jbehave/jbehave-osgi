@@ -71,8 +71,8 @@ import com.thoughtworks.paranamer.Paranamer;
  * @author Cristiano Gavião
  */
 @Component(enabled = true, configurationPid = Constants.STORY_RUNNER_FACTORY_FPID, service = { StoryRunnerService.class }, configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
-        implements StoryRunnerService {
+public class StoryRunnerServiceFactoryComponent extends
+        AbstractServiceComponent implements StoryRunnerService {
 
     private class OsgiLogEmbedderMonitor extends NullEmbedderMonitor {
 
@@ -261,7 +261,7 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
 
     private String[] storyType = null;
 
-    private final Queue<InjectableStepsFactoryService> injectableStepsFactoriesQueue = new ConcurrentLinkedQueue<>();
+    private final Queue<InjectableStepsFactoryService> injectableStepsFactoriesQueue = new ConcurrentLinkedQueue<InjectableStepsFactoryService>();
 
     @Activate
     @Override
@@ -272,8 +272,8 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
             initializeEmbedder(context);
         } catch (Exception e) {
             logError("Could not register Story Runner Service for: "
-                    + getStoryClassName() + " from bundle: " + getExtendeeBundleName(),
-                    e);
+                    + getStoryClassName() + " from bundle: "
+                    + getExtendeeBundleName(), e);
         }
         if (embedder != null) {
             logDebug("An Story Runner Service instance was activated for: "
@@ -287,7 +287,6 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
     protected void bindLogService(LogService logService) {
         super.bindLogService(logService);
     }
-
 
     @Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE)
     protected void bindInjectableStepsFactoryService(
@@ -307,7 +306,7 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
 
     @Override
     public List<String> boundStepFactories() {
-        List<String> services = new ArrayList<>();
+        List<String> services = new ArrayList<String>();
         for (InjectableStepsFactoryService service : embedder
                 .injectableStepsFactories()) {
             services.add(service.getStepFactoryId());
@@ -492,8 +491,6 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
         return getComponentContext().getProperties();
     }
 
-
-
     private List<String> getExcludes() {
         return excludes;
     }
@@ -550,7 +547,7 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
 
         Object storyClassNameObj = getProperties().get(
                 Constants.STORY_RUNNER_EXTENDER_PROPERTY_ITEM);
-        
+
         setExtendeeID(storyClassNameObj != null ? (String) storyClassNameObj
                 : "no defined");
 
@@ -584,7 +581,8 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
             if (value.equals(implementation.getClass().getName())) {
                 return true;
             }
-        } catch (NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException e) {
+        } catch (SecurityException e2) {
         }
         return false;
     }
@@ -600,7 +598,7 @@ public class StoryRunnerServiceFactoryComponent extends AbstractServiceComponent
     }
 
     protected void modified(ComponentContext context) {
-        
+
         super.modified(context);
         try {
             initializeEmbedder(context);

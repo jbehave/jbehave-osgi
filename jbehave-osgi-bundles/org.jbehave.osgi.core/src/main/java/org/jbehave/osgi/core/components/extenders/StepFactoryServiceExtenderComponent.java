@@ -93,7 +93,7 @@ public class StepFactoryServiceExtenderComponent extends
 	@Override
 	public void onExtensionAddition(Bundle extendeeBundle, String[] headerValues) {
 
-		Map<String, StepFactoryDTO> factoryDTOs = new HashMap<>();
+		Map<String, StepFactoryDTO> factoryDTOs = new HashMap<String, StepFactoryDTO>();
 
 		for (int i = 0; i < headerValues.length; i++) {
 			String stepFactoryManifestHeaderItem = headerValues[i];
@@ -230,7 +230,7 @@ public class StepFactoryServiceExtenderComponent extends
 
 	private void registerStepFactoryServiceForBundle(Bundle extendeeBundle,
 			StepFactoryDTO stepFactoryDTO) {
-		Dictionary<String, Object> properties = new Hashtable<>();
+		Dictionary<String, Object> properties = new Hashtable<String, Object>();
 
 		// this will trigger DS to register a service using the passed
 		// properties.

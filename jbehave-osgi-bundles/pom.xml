@@ -11,6 +11,13 @@
 	<packaging>pom</packaging>
 	<name>JBehave OSGi : Pom-First Bundles</name>
 
+	<modules>
+		<module>org.jbehave.osgi.core</module>
+		<module>org.jbehave.osgi.logging</module>
+		<module>org.jbehave.osgi.paxexam</module>
+		<module>org.jbehave.osgi.web</module>
+	</modules>
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -57,6 +64,33 @@
 
 	<profiles>
 		<profile>
+			<id>itests.equinox.luna</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.core.itests</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>itests.equinox.kepler</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.core.itests</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>itests.felix</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.core.itests</module>
+			</modules>
+		</profile>
+		<profile>
 			<id>not-in-eclipse</id>
 			<!-- activated in normal Maven build -->
 			<activation>
@@ -74,33 +108,15 @@
 							<extensions>true</extensions>
 							<configuration>
 								<instructions>
+									<Bundle-Vendor>C4biz Softwares ME</Bundle-Vendor>
 									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 									<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
 									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 									<_snapshot>${osgi-version-qualifier}</_snapshot>
-									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+									<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+									<_dsannotations>*</_dsannotations>
 								</instructions>
 							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-scr-plugin</artifactId>
-							<version>1.16.0</version>
-							<executions>
-								<execution>
-									<id>generate-scr-scrdescriptor</id>
-									<goals>
-										<goal>scr</goal>
-									</goals>
-									<configuration>
-										<supportedProjectTypes>
-											<supportedProjectType>bundle</supportedProjectType>
-										</supportedProjectTypes>
-										<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-										<specVersion>1.2</specVersion>
-									</configuration>
-								</execution>
-							</executions>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -122,6 +138,7 @@
 								</excludes>
 								<archive>
 									<manifestEntries>
+										<Bundle-Vendor>C4biz Softwares ME</Bundle-Vendor>
 										<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 										<Bundle-Name>${project.name}</Bundle-Name>
 										<Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
@@ -175,72 +192,14 @@
 								<unpackBundle>true</unpackBundle>
 								<manifestLocation>${basedir}/META-INF</manifestLocation>
 								<instructions>
+									<Bundle-Vendor>C4biz Software ME</Bundle-Vendor>
 									<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 									<Bundle-Version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${osgi-version-qualifier}</Bundle-Version>
 									<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 									<_snapshot>${osgi-version-qualifier}</_snapshot>
-									<Bundle-RequiredExecutionEnvironment>JavaSE-1.7</Bundle-RequiredExecutionEnvironment>
+									<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
 								</instructions>
 							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.felix</groupId>
-							<artifactId>maven-scr-plugin</artifactId>
-							<version>1.16.0</version>
-							<executions>
-								<execution>
-									<id>generate-scr-scrdescriptor</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>scr</goal>
-									</goals>
-									<configuration>
-										<supportedProjectTypes>
-											<supportedProjectType>bundle</supportedProjectType>
-										</supportedProjectTypes>
-										<outputDirectory>${project.build.outputDirectory}</outputDirectory>
-										<specVersion>1.2</specVersion>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-antrun-plugin</artifactId>
-							<executions>
-								<execution>
-									<id>copy-manifest</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>run</goal>
-									</goals>
-									<configuration>
-										<tasks>
-											<delete dir="${project.build.outputDirectory}/META-INF"
-												quiet="true" />
-											<mkdir dir="${project.build.outputDirectory}/META-INF" />
-											<copy file="${basedir}/META-INF/MANIFEST.MF"
-												tofile="${project.build.outputDirectory}/META-INF/MANIFEST.MF" />
-										</tasks>
-									</configuration>
-								</execution>
-								<execution>
-									<id>copy-osgi-inf</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>run</goal>
-									</goals>
-									<configuration>
-										<tasks>
-											<delete dir="${basedir}/OSGI-INF" quiet="true" />
-											<mkdir dir="${basedir}/OSGI-INF" />
-											<copy todir="${basedir}/OSGI-INF">
-												<fileset dir="${project.build.outputDirectory}/OSGI-INF" />
-											</copy>
-										</tasks>
-									</configuration>
-								</execution>
-							</executions>
 						</plugin>
 						<plugin>
 							<artifactId>maven-dependency-plugin</artifactId>

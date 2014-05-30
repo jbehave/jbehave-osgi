@@ -68,7 +68,7 @@ public class EmbedderOsgi extends Embedder {
 
 	private final Bundle ownerBundle;
 
-	private final List<InjectableStepsFactoryService> injectableStepsFactories = new CopyOnWriteArrayList<>();
+	private final List<InjectableStepsFactoryService> injectableStepsFactories = new CopyOnWriteArrayList<InjectableStepsFactoryService>();
 	/**
 	 * The default constructor.
 	 * 

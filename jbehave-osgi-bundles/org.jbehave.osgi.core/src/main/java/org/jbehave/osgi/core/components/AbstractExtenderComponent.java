@@ -33,7 +33,7 @@ public abstract class AbstractExtenderComponent extends AbstractComponent {
 
     private BundleTracker<?> extensionTracker;
 
-    private AtomicReference<ConfigurationAdmin> configurationAdminRef = new AtomicReference<>();
+    private AtomicReference<ConfigurationAdmin> configurationAdminRef = new AtomicReference<ConfigurationAdmin>();
 
     protected static final String JAVA_IDENTIFIER = "\\p{javaJavaIdentifierStart}(\\p{javaJavaIdentifierPart})*";
 

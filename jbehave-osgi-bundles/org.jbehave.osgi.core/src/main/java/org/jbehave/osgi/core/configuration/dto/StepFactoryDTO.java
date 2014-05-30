@@ -6,7 +6,7 @@ import java.util.List;
 public class StepFactoryDTO {
 
 	private final String name;
-	private List<String> stepClassList = new ArrayList<>();
+	private List<String> stepClassList = new ArrayList<String>();
 	
 	public StepFactoryDTO (String name){
 		this.name = name;
