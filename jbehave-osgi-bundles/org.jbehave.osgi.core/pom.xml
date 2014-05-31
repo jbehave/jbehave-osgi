@@ -56,7 +56,10 @@
 			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.integration</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
@@ -147,25 +150,19 @@
 
 	<build>
 		<plugins>
-			<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
-						<unpackBundle>true</unpackBundle>
 						<Export-Package>org.jbehave.osgi.*</Export-Package>
 						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
 						<Import-Package>
 							groovy.lang.*;resolution:=optional,
 							javax.inject.*;resolution:=optional,
 							javax.swing.*;resolution:=optional,
-							org.junit.*;version="4.11.0",
-							!org.hamcrest.*;resolution:=optional;version="1.3.0",
+							!org.junit.*,
+							!org.hamcrest.*,
 							com.thoughtworks.paranamer;version="[2.4.0,3)",
 							org.osgi.service.cm;version="[1.4.0,2)",
 							org.osgi.service.component;version="[1.1,2)",
@@ -174,6 +171,10 @@
 							org.apache.felix.service.command;version="[0.10.0,1.0.0)",
 							*
 						</Import-Package>
+						<Require-Bundle>
+							org.junit;bundle-version="4.11.0",
+							org.hamcrest.integration;bundle-version="[1.3.0,1.4.0)";resolution:=optional
+						</Require-Bundle>
 						<Embed-Dependency>
 							jbehave-core;scope=provided;inline=true,
 							plexus-utils;scope=provided;inline=false
@@ -185,10 +186,9 @@
 					</instructions>
 				</configuration>
 			</plugin>
-			<!-- enable source bundle generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

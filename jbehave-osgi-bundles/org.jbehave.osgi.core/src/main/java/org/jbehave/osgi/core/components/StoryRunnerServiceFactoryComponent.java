@@ -485,7 +485,6 @@ public class StoryRunnerServiceFactoryComponent extends
         embedder = null;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Dictionary<String, ?> getConfigurationProperties() {
         return getComponentContext().getProperties();
