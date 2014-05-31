@@ -4,7 +4,7 @@ Bundle-Name: JBehave OSGi Trader IT Step Classes 2
 Bundle-SymbolicName: org.jbehave.osgi.examples.trader.equinox.it.steps2;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: JBehave.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: com.thoughtworks.paranamer;version="2.4.0",
  org.apache.commons.lang,
  org.apache.commons.lang.builder

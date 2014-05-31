@@ -4,7 +4,7 @@ Bundle-Name: JBehave OSGi Trader IT Stories
 Bundle-SymbolicName: org.jbehave.osgi.examples.trader.equinox.it;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: JBehave.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
 Require-Bundle: org.junit,
  org.hamcrest.integration;bundle-version="1.3.0",
  org.jbehave.osgi.core;bundle-version="1.0.0"

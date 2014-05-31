@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.jbehave.osgi.examples.rcpmail.application; singleton:=t
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.jbehave.osgi.examples.rcpmail.application.Activator
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Import-Package: org.eclipse.swt.graphics,org.eclipse.swt.widgets 

@@ -18,7 +18,7 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
  * attribute to specify which {@link StoryRunnerService} must be bound and
  * executed.
  * 
- * @author cvgaviao
+ * @author Cristiano Gavião
  *
  */
 @RunWith(PaxExam.class)

@@ -15,7 +15,7 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
  * This option uses of the {@link @UsingStoryRunnerServiceFilter} filter, that
  * binds all specified runner services and call them run() method.
  * 
- * @author cvgaviao
+ * @author Cristiano Gavião
  *
  */
 @RunWith(PaxExam.class)

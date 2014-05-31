@@ -2,7 +2,6 @@ package org.jbehave.osgi.examples.trader.pomfirst.paxexam.embedder;
 
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
-import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.systemProperty;
 
 import javax.inject.Inject;
@@ -27,7 +26,7 @@ import org.ops4j.pax.exam.util.Filter;
  * This option uses of the Pax-Exam {@link @Filter} annotation to specify which
  * {@link StoryRunnerService} must be bound and executed.
  * 
- * @author cvgaviao
+ * @author Cristiano Gavião
  *
  */
 @RunWith(PaxExam.class)
@@ -46,7 +45,6 @@ public class PaxExamLauncherForJBehaveOption1 {
     public Option[] config() {
 
         return options(
-                junitBundles(),
                 systemProperty("eclipse.consoleLog").value("true"),
                 systemProperty("eclipse.log.level").value("DEBUG"),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")

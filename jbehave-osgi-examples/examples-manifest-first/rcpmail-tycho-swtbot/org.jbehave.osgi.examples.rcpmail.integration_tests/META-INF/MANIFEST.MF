@@ -4,7 +4,7 @@ Bundle-Name: JBehave RCPmail IT Stories
 Bundle-SymbolicName: org.jbehave.osgi.examples.rcpmail.integration_tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: JBehave.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6 
 Export-Package: org.jbehave.osgi.examples.rcpmail.stories,
  org.jbehave.osgi.examples.rcpmail.stories.embedder,
  org.jbehave.osgi.examples.rcpmail.stories.steps

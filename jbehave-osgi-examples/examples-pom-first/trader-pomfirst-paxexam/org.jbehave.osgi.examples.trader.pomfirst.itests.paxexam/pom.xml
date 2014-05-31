@@ -37,9 +37,14 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+		<!-- <artifactId>pax-exam</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam</artifactId>
+			<artifactId>pax-exam-invoker-junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -60,22 +65,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-extender-service</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-link-mvn</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
-		<!-- <artifactId>pax-exam-link-assembly</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
 		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-classpath</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-link</artifactId>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-inject</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -104,11 +104,7 @@
 			<artifactId>commons-lang</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -116,17 +112,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
-			<artifactId>
-				org.jbehave.osgi.examples.trader.pomfirst.itests
-			</artifactId>
+			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
-			<artifactId>
-				org.jbehave.osgi.examples.trader.pomfirst.application
-			</artifactId>
+			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.application</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -172,6 +164,65 @@
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
+		</profile>
+		<profile>
+			<id>m2e</id>
+			<!-- This profile is only activated when building in Eclipse with m2e -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<dependencies>
+				<!-- <dependency> -->
+				<!-- <groupId>org.osgi</groupId> -->
+				<!-- <artifactId>org.osgi.core</artifactId> -->
+				<!-- </dependency> -->
+				<!-- <dependency> -->
+				<!-- <groupId>org.osgi</groupId> -->
+				<!-- <artifactId>org.osgi.compendium</artifactId> -->
+				<!-- </dependency> -->
+			</dependencies>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!--This plugin's configuration is used to store Eclipse m2e settings 
+							only. It has no influence on the Maven build itself. -->
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>
+													org.ops4j.pax.exam
+												</groupId>
+												<artifactId>
+													maven-paxexam-plugin
+												</artifactId>
+												<versionRange>
+													[1.2.4,)
+												</versionRange>
+												<goals>
+													<goal>
+														generate-depends-file
+													</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore></ignore>
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 	</profiles>
 
@@ -231,4 +282,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 </project>

@@ -26,8 +26,13 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<artifactId>paranamer</artifactId>
-			<groupId>com.thoughtworks.paranamer</groupId>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.paranamer</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -42,14 +47,22 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
-			<artifactId>
-				org.jbehave.osgi.examples.trader.pomfirst.application
-			</artifactId>
+			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.application</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-integration</artifactId>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.integration</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera.osgi</groupId>
+			<artifactId>org.hamcrest.library</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -67,12 +80,12 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Import-Package>!org.hamcrest,!org.jbehave.*,
+						<Import-Package>!org.jbehave.*,!org.hamcrest,
 							com.thoughtworks.paranamer,*</Import-Package>
 						<Require-Bundle>
 							org.jbehave.osgi.core;bundle-version="[1.0.0,2.0.0)",
-							org.hamcrest.integration;bundle-version="1.3.0",
-							org.jbehave.osgi.examples.trader.pomfirst.application
+							org.jbehave.osgi.examples.trader.pomfirst.application,
+							org.hamcrest.integration
 						</Require-Bundle>
 						<Export-Package>org.jbehave.osgi.examples.trader.pomfirst.itests.*</Export-Package>
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
