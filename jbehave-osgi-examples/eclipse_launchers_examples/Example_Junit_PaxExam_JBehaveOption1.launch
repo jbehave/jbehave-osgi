@@ -17,5 +17,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.jbehave.osgi.examples.trader.pomfirst.paxexam.embedder.PaxExamLauncherForJBehaveOption1"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.jbehave.osgi.examples.trader.pomfirst.itests.paxexam"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dpax.exam.framework=equinox"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dpax.exam.framework=equinox_luna"/>
 </launchConfiguration>

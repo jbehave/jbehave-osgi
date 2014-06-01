@@ -6,7 +6,7 @@
 <stringAttribute key="bootstrap" value=""/>
 <stringAttribute key="checked" value="[NONE]"/>
 <booleanAttribute key="clearConfig" value="true"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/JBehave OSGi - Interactive run example - remote console telnet"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/JBehave OSGi - Interactive run example - remote console telnet + debug"/>
 <booleanAttribute key="default" value="true"/>
 <booleanAttribute key="default_auto_start" value="false"/>
 <intAttribute key="default_start_level" value="4"/>
@@ -18,11 +18,11 @@
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console 8885"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true -Declipse.log.level=ERROR"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true -Xrunjdwp:transport=dt_socket,server=y,address=8000,suspend=y&#10;-Xdebug -Declipse.log.level=ALL"/>
 <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:org.jbehave.osgi.examples.trader.pomfirst}/target/equinox"/>
 <stringAttribute key="pde.version" value="3.3"/>
 <booleanAttribute key="show_selected_only" value="false"/>
-<stringAttribute key="target_bundles" value="ch.qos.logback.classic@default:default,ch.qos.logback.core@default:default,com.google.guava@default:default,javax.inject@default:default,javax.xml@default:default,org.apache.commons.collections@default:default,org.apache.commons.io@default:default,org.apache.commons.lang@default:default,org.apache.felix.gogo.command@default:default,org.apache.felix.gogo.runtime@default:default,org.apache.felix.gogo.shell@default:default,org.apache.servicemix.bundles.freemarker@default:default,org.apache.servicemix.bundles.paranamer@default:default,org.apache.servicemix.bundles.xstream@default:default,org.apache.servicemix.specs.jaxp-api-1.4@default:default,org.eclipse.core.contenttype@default:default,org.eclipse.core.jobs@default:default,org.eclipse.core.runtime@default:true,org.eclipse.equinox.app@default:default,org.eclipse.equinox.cm@1:true,org.eclipse.equinox.common@2:true,org.eclipse.equinox.console@default:default,org.eclipse.equinox.ds@1:true,org.eclipse.equinox.event@default:default,org.eclipse.equinox.preferences@default:default,org.eclipse.equinox.registry@default:default,org.eclipse.equinox.simpleconfigurator@1:true,org.eclipse.equinox.util@default:default,org.eclipse.osgi.compatibility.state@default:false,org.eclipse.osgi.services@default:default,org.eclipse.osgi.util@default:default,org.eclipse.osgi@-1:true,org.hamcrest.core@default:default,org.hamcrest.integration@default:default,org.jbehave.osgi.fragment.jdk@default:false,org.junit@default:default,slf4j.api@default:default"/>
+<stringAttribute key="target_bundles" value="ch.qos.logback.classic@default:default,ch.qos.logback.core@default:default,com.google.guava@default:default,javax.inject@default:default,javax.xml@default:default,org.apache.commons.collections@default:default,org.apache.commons.io@default:default,org.apache.commons.lang@default:default,org.apache.felix.gogo.command@default:default,org.apache.felix.gogo.runtime@default:default,org.apache.felix.gogo.shell@default:default,org.apache.servicemix.bundles.freemarker@default:default,org.apache.servicemix.bundles.paranamer@default:default,org.apache.servicemix.bundles.xstream@default:default,org.apache.servicemix.specs.jaxp-api-1.4@default:default,org.eclipse.core.contenttype@default:default,org.eclipse.core.jobs@default:default,org.eclipse.core.runtime@default:true,org.eclipse.equinox.app@default:default,org.eclipse.equinox.cm@1:true,org.eclipse.equinox.common@2:true,org.eclipse.equinox.console@default:default,org.eclipse.equinox.ds@1:true,org.eclipse.equinox.event@default:default,org.eclipse.equinox.preferences@default:default,org.eclipse.equinox.registry@default:default,org.eclipse.equinox.simpleconfigurator@1:true,org.eclipse.equinox.util@default:default,org.eclipse.osgi.compatibility.state@default:false,org.eclipse.osgi.services@default:default,org.eclipse.osgi@-1:true,org.hamcrest.core@default:default,org.hamcrest.integration@default:default,org.jbehave.osgi.core@default:default,org.jbehave.osgi.fragment.jdk@default:false,org.jbehave.osgi.logging@default:default,org.junit@default:default,slf4j.api@default:default"/>
 <booleanAttribute key="tracing" value="false"/>
 <mapAttribute key="tracingOptions">
 <mapEntry key="org.eclipse.equinox.ds/debug" value="true"/>
@@ -77,5 +77,5 @@
 </mapAttribute>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.jbehave.osgi.core@default:default,org.jbehave.osgi.equinox.commands@default:false,org.jbehave.osgi.examples.trader.equinox.application@default:default,org.jbehave.osgi.examples.trader.equinox.it.steps1@default:true,org.jbehave.osgi.examples.trader.equinox.it.steps2@default:true,org.jbehave.osgi.examples.trader.equinox.it@default:true"/>
+<stringAttribute key="workspace_bundles" value="org.jbehave.osgi.examples.trader.equinox.application@default:default,org.jbehave.osgi.examples.trader.equinox.it.steps1@default:true,org.jbehave.osgi.examples.trader.equinox.it.steps2@default:true,org.jbehave.osgi.examples.trader.equinox.it@default:true"/>
 </launchConfiguration>

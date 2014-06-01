@@ -20,26 +20,6 @@
 			<artifactId>commons-lang</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.lunifera.osgi</groupId>
-			<artifactId>org.hamcrest.core</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera.osgi</groupId>
-			<artifactId>org.hamcrest.integration</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera.osgi</groupId>
-			<artifactId>org.hamcrest.library</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera.osgi</groupId>
-			<artifactId>org.junit</artifactId>
-			<scope>provided</scope>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

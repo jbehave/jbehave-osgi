@@ -23,7 +23,7 @@ Require-Bundle:
  org.hamcrest.library;bundle-version="1.1.0",
  org.jbehave.osgi.core;bundle-version="1.0.0",
  org.eclipse.equinox.event;bundle-version="1.3.100"
-JBehave-Embedders: 
 Import-Package: com.thoughtworks.paranamer,
  org.jbehave.osgi.examples.rcpmail.stories.steps,
  org.eclipse.swt.widgets
+JBehave-StoryRunner: *
