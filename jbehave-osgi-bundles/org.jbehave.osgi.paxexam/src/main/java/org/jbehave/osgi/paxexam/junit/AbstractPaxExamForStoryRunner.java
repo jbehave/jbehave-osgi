@@ -1,6 +1,5 @@
 package org.jbehave.osgi.paxexam.junit;
 
-import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.systemProperty;
 
@@ -90,14 +89,7 @@ public abstract class AbstractPaxExamForStoryRunner {
                 systemProperty("eclipse.log.level").value("DEBUG"),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
                         .value("ALL"),
-                ProbeOptions.consoleOSGiLogging().startLevel(1),
-                ProbeOptions.jbehaveCoreAndDependencies(),
-                mavenBundle("org.jbehave.osgi.examples",
-                        "org.jbehave.osgi.examples.trader.pomfirst.application")
-                        .versionAsInProject().start(),
-                mavenBundle("org.jbehave.osgi.examples",
-                        "org.jbehave.osgi.examples.trader.pomfirst.itests")
-                        .versionAsInProject().start());
+                ProbeOptions.jbehaveCoreAndDependencies());
     }
 
     @After

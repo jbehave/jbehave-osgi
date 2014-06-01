@@ -19,15 +19,28 @@
 		<eclipse-site>http://download.eclipse.org/releases/luna</eclipse-site>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>p2</id>
+			<activation>
+				<property>
+					<name>generate-p2</name>
+				</property>
+			</activation>
+			<modules>
+				<module>org.jbehave.osgi.equinox.features.core</module>
+				<module>org.jbehave.osgi.equinox.features.web</module>
+				<module>org.jbehave.osgi.equinox.features.swtbot</module>
+				<module>org.jbehave.osgi.equinox.p2</module>
+			</modules>
+		</profile>
+	</profiles>
+
 	<modules>
 		<module>org.jbehave.osgi.fragment.jdk</module>
 		<module>org.jbehave.osgi.equinox.commands</module>
 		<module>org.jbehave.osgi.equinox.commands.test</module>
 		<module>org.jbehave.osgi.equinox.swtbot</module>
-		<module>org.jbehave.osgi.equinox.features.core</module>
-		<module>org.jbehave.osgi.equinox.features.web</module>
-		<module>org.jbehave.osgi.equinox.features.swtbot</module>
-		<module>org.jbehave.osgi.equinox.p2</module>
 	</modules>
 
 	<dependencyManagement>

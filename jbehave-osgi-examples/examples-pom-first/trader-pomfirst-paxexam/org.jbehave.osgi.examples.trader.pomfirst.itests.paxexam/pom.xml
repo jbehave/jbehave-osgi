@@ -16,11 +16,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.core</artifactId>
 			<scope>test</scope>
@@ -37,79 +32,81 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
-		<!-- <artifactId>pax-exam</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-invoker-junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-container-native</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>org.osgi.core</artifactId>
-					<groupId>org.osgi</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-junit4</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-extender-service</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-link-mvn</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-inject</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-wrap</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>org.osgi.core</artifactId>
-					<groupId>org.osgi</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.inject</groupId> -->
+<!-- 			<artifactId>javax.inject</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.exam</groupId> -->
+<!-- 			<artifactId>pax-exam-container-native</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.exam</groupId> -->
+<!-- 			<artifactId>pax-exam-junit4</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.exam</groupId> -->
+<!-- 			<artifactId>pax-exam-extender-service</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.exam</groupId> -->
+<!-- 			<artifactId>pax-exam-link-mvn</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.exam</groupId> -->
+<!-- 			<artifactId>pax-exam-inject</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.ops4j.pax.url</groupId> -->
+<!-- 			<artifactId>pax-url-wrap</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-lang</groupId> -->
+<!-- 			<artifactId>commons-lang</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.osgi</groupId> -->
+<!-- 			<artifactId>org.hamcrest.core</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.osgi</groupId> -->
+<!-- 			<artifactId>org.hamcrest.integration</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.osgi</groupId> -->
+<!-- 			<artifactId>org.hamcrest.library</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.lunifera.osgi</groupId> -->
+<!-- 			<artifactId>org.junit</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.knowhowlab.osgi</groupId> -->
+<!-- 			<artifactId>org.knowhowlab.osgi.testing.assertions</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.knowhowlab.osgi</groupId> -->
+<!-- 			<artifactId>org.knowhowlab.osgi.testing.utils</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
 			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests</artifactId>
@@ -126,13 +123,17 @@
 
 	<profiles>
 		<profile>
-			<id>on-felix</id>
+			<id>itest.felix</id>
 			<activation>
 				<property>
 					<name>pax.exam.framework</name>
 					<value>felix</value>
 				</property>
+				<activeByDefault>false</activeByDefault>
 			</activation>
+			<properties>
+				<pax.exam.framework>felix</pax.exam.framework>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>org.apache.felix</groupId>
@@ -140,16 +141,74 @@
 					<version>4.2.1</version>
 					<scope>test</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.eventadmin</artifactId>
+					<version>1.3.2</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.configadmin</artifactId>
+					<version>1.8.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.gogo.runtime</artifactId>
+					<version>0.12.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.gogo.command</artifactId>
+					<version>0.12.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.gogo.shell</artifactId>
+					<version>0.10.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.scr</artifactId>
+					<version>1.8.2</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.prefs</artifactId>
+					<version>1.0.6</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.log</artifactId>
+					<version>1.0.1</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>org.apache.felix.metatype</artifactId>
+					<version>1.0.10</version>
+					<scope>test</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 		<profile>
-			<id>on-equinox-kepler</id>
+			<id>itests.equinox.kepler</id>
 			<activation>
 				<property>
 					<name>pax.exam.framework</name>
 					<value>equinox_kepler</value>
 				</property>
+				<activeByDefault>false</activeByDefault>
 			</activation>
+			<properties>
+				<pax.exam.framework>equinox_kepler</pax.exam.framework>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>org.eclipse.tycho</groupId>
@@ -163,8 +222,141 @@
 					<version>3.3.100.v20130513-1956</version>
 					<scope>provided</scope>
 				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.event</artifactId>
+					<version>1.3.0.v20130327-1442</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.cm</artifactId>
+					<version>1.0.400.v20130327-1442</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.runtime</artifactId>
+					<version>0.10.0.v201209301036</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.coordinator</artifactId>
+					<version>1.2.0.v20130327-1442</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.ds</artifactId>
+					<version>1.4.101.v20130813-1853</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.common</artifactId>
+					<version>3.6.200.v20130402-1505</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.util</artifactId>
+					<version>1.0.500.v20130404-1337</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.preferences</artifactId>
+					<version>3.5.100.v20130422-1538</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.console</artifactId>
+					<version>1.0.100.v20130429-0953</version>
+					<scope>test</scope>
+				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>itests.equinox.luna</id>
+			<!-- LUNA 3.10 -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<pax.exam.framework>equinox_luna</pax.exam.framework>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.osgi</artifactId>
+					<version>3.10.0.v20140407-2102</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.osgi.services</artifactId>
+					<version>3.4.0.v20140312-2051</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.event</artifactId>
+					<version>1.3.100.v20140115-1647</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.cm</artifactId>
+					<version>1.1.0.v20131021-1936</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.runtime</artifactId>
+					<version>0.10.0.v201209301036</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.coordinator</artifactId>
+					<version>1.3.0.v20140327-1650</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.ds</artifactId>
+					<version>1.4.200.v20131126-2331</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.common</artifactId>
+					<version>3.6.200.v20130402-1505</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.util</artifactId>
+					<version>1.0.500.v20130404-1337</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.preferences</artifactId>
+					<version>3.5.200.v20140224-1527</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.eclipse.equinox.console</artifactId>
+					<version>1.1.0.v20140131-1639</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
 		<profile>
 			<id>m2e</id>
 			<!-- This profile is only activated when building in Eclipse with m2e -->

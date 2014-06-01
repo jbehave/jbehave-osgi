@@ -49,7 +49,6 @@ public class PaxExamLauncherForJBehaveOption1 {
                 systemProperty("eclipse.log.level").value("DEBUG"),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
                         .value("ALL"),
-                ProbeOptions.consoleOSGiLogging(),
                 ProbeOptions.jbehaveCoreAndDependencies(),
                 mavenBundle("org.jbehave.osgi.examples",
                         "org.jbehave.osgi.examples.trader.pomfirst.application")

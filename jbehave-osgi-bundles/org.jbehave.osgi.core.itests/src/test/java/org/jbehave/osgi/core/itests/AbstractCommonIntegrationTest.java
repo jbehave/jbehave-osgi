@@ -97,7 +97,6 @@ public abstract class AbstractCommonIntegrationTest {
 				// systemProperty("osgi.console").value("8885"),
 				systemProperty("eclipse.consoleLog").value("true"),
 				systemProperty("eclipse.log.level").value("DEBUG"),
-				ProbeOptions.consoleOSGiLogging().startLevel(1),
 				ProbeOptions.jbehaveCoreAndDependencies(),
 				buildInjectableStepsFactoryExtendeeBundle().startLevel(4),
 				buildEmbedderExtendeeBundle().startLevel(4));
