@@ -10,13 +10,15 @@ import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 
 /**
+ * A launcher that calls story runner services registered in the OSGi container.
+ * <p>
  * This example uses the PAX-Exam test framework to instantiate an OSGi
- * container, install bundles containing the stories and steps and execute the
- * required stories. <br>
+ * container, to install bundles containing the stories and steps and then
+ * execute the specified stories. <br>
  * 
- * This option uses of the {@link @UsingStoryRunnerServiceFilter} classes
- * attribute to specify which {@link StoryRunnerService} must be bound and
- * executed.
+ * This option uses the {@link @UsingStoryRunnerServiceFilter} <i>classes</i>
+ * attribute to specify which {@link StoryRunnerService } must be bound to the it
+ * and executed.
  * 
  * @author Cristiano Gavião
  *
@@ -25,9 +27,9 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 @ExamReactorStrategy(PerClass.class)
 @UsingStoryRunnerServiceFilter(classes = { TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter.class })
 public class PaxExamLauncherForJBehaveOption2 extends
-        AbstractExampleTestConfiguration {
+		AbstractExampleTestConfiguration {
 
-    public PaxExamLauncherForJBehaveOption2() {
-    }
+	public PaxExamLauncherForJBehaveOption2() {
+	}
 
 }

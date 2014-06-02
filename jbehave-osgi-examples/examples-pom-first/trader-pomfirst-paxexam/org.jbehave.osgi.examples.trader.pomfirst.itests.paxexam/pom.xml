@@ -167,6 +167,18 @@
 				</dependency>
 				<dependency>
 					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.command</artifactId>
+					<version>0.10.0.v201209301215</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.shell</artifactId>
+					<version>0.10.0.v201212101605</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
 					<artifactId>org.eclipse.equinox.coordinator</artifactId>
 					<version>1.2.0.v20130327-1442</version>
 					<scope>test</scope>
@@ -245,6 +257,18 @@
 					<groupId>org.lunifera.osgi</groupId>
 					<artifactId>org.apache.felix.gogo.runtime</artifactId>
 					<version>0.10.0.v201209301036</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.command</artifactId>
+					<version>0.10.0.v201209301215</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.lunifera.osgi</groupId>
+					<artifactId>org.apache.felix.gogo.shell</artifactId>
+					<version>0.10.0.v201212101605</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
@@ -403,6 +427,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>

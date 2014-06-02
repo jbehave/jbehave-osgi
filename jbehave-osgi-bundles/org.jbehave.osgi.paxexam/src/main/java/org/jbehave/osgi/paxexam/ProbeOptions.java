@@ -50,15 +50,17 @@ public class ProbeOptions {
 		options.add(mavenBundle("org.lunifera.osgi",
 				"org.eclipse.equinox.event").versionAsInProject().startLevel(2));
 		options.add(mavenBundle("org.lunifera.osgi",
+				"org.apache.felix.gogo.runtime").start().versionAsInProject());
+		options.add(mavenBundle("org.lunifera.osgi",
 				"org.eclipse.equinox.common").versionAsInProject());
 		options.add(mavenBundle("org.lunifera.osgi", "org.eclipse.equinox.util")
 				.versionAsInProject());
 
 		if (isConsoleOn()) {
-			options.add(mavenBundle("org.apache.felix",
+			options.add(mavenBundle("org.lunifera.osgi",
 					"org.apache.felix.gogo.command").start()
 					.versionAsInProject());
-			options.add(mavenBundle("org.apache.felix",
+			options.add(mavenBundle("org.lunifera.osgi",
 					"org.apache.felix.gogo.shell").start().versionAsInProject());
 			options.add(mavenBundle("org.lunifera.osgi",
 					"org.eclipse.equinox.console").start().versionAsInProject());
@@ -106,7 +108,7 @@ public class ProbeOptions {
 		String env = System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY);
 		return "equinox_kepler".equals(env) || "equinox-kepler".equals(env);
 	}
-	
+
 	public static boolean isEquinoxLuna() {
 		String env = System.getProperty(PAXEXAM_FRAMEWORK_PROPERTY);
 		return "equinox_luna".equals(env) || "equinox-luna".equals(env);
@@ -122,12 +124,14 @@ public class ProbeOptions {
 	}
 
 	public static CompositeOption jbehaveCoreAndDependencies(boolean cleanCache) {
-		DefaultCompositeOption composite = new DefaultCompositeOption(jbehaveDependenciesOnly(cleanCache));
+		DefaultCompositeOption composite = new DefaultCompositeOption(
+				jbehaveDependenciesOnly(cleanCache));
 		composite.add(mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.core")
-						.versionAsInProject());
-		if (isTraceOn()){
-			composite.add(mavenBundle("org.jbehave.osgi", "org.jbehave.osgi.logging")
-				.versionAsInProject().startLevel(1));
+				.versionAsInProject());
+		if (isTraceOn()) {
+			composite.add(mavenBundle("org.jbehave.osgi",
+					"org.jbehave.osgi.logging").versionAsInProject()
+					.startLevel(1));
 		}
 		return composite;
 	}
@@ -169,21 +173,14 @@ public class ProbeOptions {
 		options.add(mavenBundle("org.apache.servicemix.bundles",
 				"org.apache.servicemix.bundles.woodstox").versionAsInProject());
 		options.add(mavenBundle("org.apache.servicemix.bundles",
-				"org.apache.servicemix.bundles.freemarker")
-				.versionAsInProject());
-		options.add(mavenBundle("commons-lang", "commons-lang")
-				.versionAsInProject());
-		options.add(mavenBundle("org.apache.felix",
-				"org.apache.felix.gogo.runtime").versionAsInProject());
-		options.add(mavenBundle("commons-collections", "commons-collections")
-				.versionAsInProject());
-		options.add(mavenBundle("commons-io", "commons-io")
-				.versionAsInProject());
+				"org.apache.servicemix.bundles.freemarker").versionAsInProject());
 		options.add(mavenBundle("org.apache.servicemix.bundles",
 				"org.apache.servicemix.bundles.paranamer").versionAsInProject());
+		options.add(mavenBundle("commons-lang", "commons-lang").versionAsInProject());
+		options.add(mavenBundle("commons-collections", "commons-collections").versionAsInProject());
+		options.add(mavenBundle("commons-io", "commons-io").versionAsInProject());
 		options.add(buildPaxExamExtensionBundle());
-		options.add(mavenBundle("com.google.guava", "guava")
-				.versionAsInProject());
+		options.add(mavenBundle("com.google.guava", "guava").versionAsInProject());
 		return options;
 	}
 
@@ -208,7 +205,6 @@ public class ProbeOptions {
 		return options;
 	}
 
-
 	/**
 	 * Property that should be used to specify which OSGi framework to use.
 	 * <p>
@@ -217,7 +213,7 @@ public class ProbeOptions {
 	public final static String PAXEXAM_FRAMEWORK_PROPERTY = "pax.exam.framework";
 
 	public final static String OSGI_CONSOLE_PROPERTY = "osgi.console";
-	
+
 	public final static String JBEHAVE_OSGi_TRACE_PROPERTY = "jbehave.osgi.trace";
 
 	public ProbeOptions() {

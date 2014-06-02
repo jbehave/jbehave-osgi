@@ -114,9 +114,6 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>copy-manifest</id>
-					</execution>
-					<execution>
 						<id>copy-osgi-inf</id>
 						<phase>none</phase>
 					</execution>

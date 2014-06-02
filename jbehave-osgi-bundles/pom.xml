@@ -230,10 +230,36 @@
 							</configuration>
 						</plugin>
 						<plugin>
+							<!-- this plugin is needed mostly to deal with divergencies between 
+								PDE, m2e and maven. -->
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-antrun-plugin</artifactId>
 							<version>1.7</version>
 							<executions>
+								<execution>
+									<id>copy-meta-inf</id>
+									<phase>package</phase>
+									<goals>
+										<goal>run</goal>
+									</goals>
+									<configuration>
+										<target>
+											<taskdef resource="net/sf/antcontrib/antlib.xml" />
+											<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+
+											<echo message="Copying META-INF..." />
+											<if>
+												<available file="${basedir}/META-INF/MANIFEST.MF"
+													type="file" />
+												<then>
+													<mkdir dir="${project.build.outputDirectory}/META-INF" />
+													<copyfile src="${basedir}/META-INF/MANIFEST.MF"
+														dest="${project.build.outputDirectory}/META-INF/MANIFEST.MF" />
+												</then>
+											</if>
+										</target>
+									</configuration>
+								</execution>
 								<execution>
 									<id>copy-osgi-inf</id>
 									<phase>package</phase>
@@ -241,7 +267,7 @@
 										<goal>run</goal>
 									</goals>
 									<configuration>
-										<tasks>
+										<target>
 											<taskdef resource="net/sf/antcontrib/antlib.xml" />
 											<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
 
@@ -257,7 +283,7 @@
 													</copy>
 												</then>
 											</if>
-										</tasks>
+										</target>
 									</configuration>
 								</execution>
 							</executions>

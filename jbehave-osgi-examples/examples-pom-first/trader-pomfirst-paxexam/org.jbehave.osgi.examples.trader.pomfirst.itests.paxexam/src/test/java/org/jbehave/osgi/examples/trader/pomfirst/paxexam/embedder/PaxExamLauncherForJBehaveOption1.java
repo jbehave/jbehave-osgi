@@ -19,6 +19,8 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
 
 /**
+ * A launcher that calls story runner services registered in the OSGi container.
+ * <p>
  * This example uses the PAX-Exam test framework to instantiate an OSGi
  * container, install bundles containing the stories and steps and execute the
  * required stories. <br>
@@ -33,36 +35,35 @@ import org.ops4j.pax.exam.util.Filter;
 @ExamReactorStrategy(PerClass.class)
 public class PaxExamLauncherForJBehaveOption1 {
 
-    @Inject
-    // without a filter this should bind the first service found...
-    @Filter("(&(objectClass=org.jbehave.osgi.core.services.StoryRunnerService)(storyRunnerClass=org.jbehave.osgi.examples.trader.pomfirst.itests.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter))")
-    StoryRunnerService storyRunnerService;
+	@Inject
+	// without a filter this should bind the first service found...
+	@Filter("(&(objectClass=org.jbehave.osgi.core.services.StoryRunnerService)(storyRunnerClass=org.jbehave.osgi.examples.trader.pomfirst.itests.embedders.TraderAnnotatedPathRunnerOsgiWithStepFactoryServiceFilter))")
+	StoryRunnerService storyRunnerService;
 
-    public PaxExamLauncherForJBehaveOption1() {
-    }
+	public PaxExamLauncherForJBehaveOption1() {
+	}
 
-    @Configuration
-    public Option[] config() {
+	@Configuration
+	public Option[] config() {
 
-        return options(
-                systemProperty("eclipse.consoleLog").value("true"),
-                systemProperty("eclipse.log.level").value("DEBUG"),
-                systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
-                        .value("ALL"),
-                ProbeOptions.jbehaveCoreAndDependencies(),
-                mavenBundle("org.jbehave.osgi.examples",
-                        "org.jbehave.osgi.examples.trader.pomfirst.application")
-                        .versionAsInProject().start(),
-                mavenBundle("org.jbehave.osgi.examples",
-                        "org.jbehave.osgi.examples.trader.pomfirst.itests")
-                        .versionAsInProject().start()
-                        );
-    }
+		return options(
+				systemProperty("eclipse.consoleLog").value("true"),
+				systemProperty("eclipse.log.level").value("DEBUG"),
+				systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
+						.value("ALL"),
+				ProbeOptions.jbehaveCoreAndDependencies(),
+				mavenBundle("org.jbehave.osgi.examples",
+						"org.jbehave.osgi.examples.trader.pomfirst.application")
+						.versionAsInProject().start(),
+				mavenBundle("org.jbehave.osgi.examples",
+						"org.jbehave.osgi.examples.trader.pomfirst.itests")
+						.versionAsInProject().start());
+	}
 
-    @Test
-    public void run() throws Throwable {
+	@Test
+	public void run() throws Throwable {
 
-        Assert.assertNotNull(storyRunnerService);
-        storyRunnerService.run();
-    }
+		Assert.assertNotNull(storyRunnerService);
+		storyRunnerService.run();
+	}
 }
