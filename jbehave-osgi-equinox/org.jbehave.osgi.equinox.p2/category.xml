@@ -6,12 +6,6 @@
    <feature id="org.jbehave.osgi.equinox.features.core.source" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>
-   <feature id="org.jbehave.osgi.equinox.features.web" version="0.0.0">
-      <category name="jbehave_equinox_category_id"/>
-   </feature>
-   <feature id="org.jbehave.osgi.equinox.features.web.source" version="0.0.0">
-      <category name="jbehave_equinox_category_id"/>
-   </feature>
    <feature id="org.jbehave.osgi.equinox.features.swtbot" version="0.0.0">
       <category name="jbehave_equinox_category_id"/>
    </feature>

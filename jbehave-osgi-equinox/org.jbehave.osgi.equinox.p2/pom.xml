@@ -73,15 +73,6 @@
 			<artifactId>org.jbehave.osgi.logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave.osgi</groupId>
-			<artifactId>org.jbehave.osgi.web</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty</artifactId>
 		</dependency>

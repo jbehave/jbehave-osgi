@@ -15,7 +15,6 @@
 		<module>org.jbehave.osgi.core</module>
 		<module>org.jbehave.osgi.logging</module>
 		<module>org.jbehave.osgi.paxexam</module>
-		<module>org.jbehave.osgi.web</module>
 	</modules>
 
 	<build>
