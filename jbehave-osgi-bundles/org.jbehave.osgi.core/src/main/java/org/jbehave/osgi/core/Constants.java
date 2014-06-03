@@ -7,7 +7,8 @@ public interface Constants {
 
 	public static final String COMPONENT_DESCRIPTION = "component.description";
 
-	
+    public static final String SKIP_EXTENDERS = "jbehave.osgi.skip.extenders"; 
+
 	//public static final String EXTENDER_PROPERTY_GROUP = "extender.property.group";
 	//public static final String EXTENDER_PROPERTY_ITEM = "extender.property.item";
 	//public static final String EXTENDER_PROPERTY_ITEM_CLASSIFIER = "extender.property.item.classifier";

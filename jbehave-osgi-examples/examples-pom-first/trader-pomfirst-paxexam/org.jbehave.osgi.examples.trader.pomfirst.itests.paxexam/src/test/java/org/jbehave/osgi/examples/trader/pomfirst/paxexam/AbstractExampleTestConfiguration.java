@@ -2,7 +2,6 @@ package org.jbehave.osgi.examples.trader.pomfirst.paxexam;
 
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.systemProperty;
-import static org.ops4j.pax.exam.CoreOptions.url;
 import static org.ops4j.pax.exam.CoreOptions.bundle;
 
 import org.jbehave.osgi.paxexam.ProbeOptions;

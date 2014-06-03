@@ -23,13 +23,25 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.ops4j.pax.exam</groupId>
+				<artifactId>maven-paxexam-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-config</id>
+						<goals>
+							<goal>generate-depends-file</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-                    <systemProperties>
-                        <jbehave.osgi.outputdir>${project.build.directory}</jbehave.osgi.outputdir>
-                    </systemProperties>
+					<systemProperties>
+						<jbehave.osgi.outputdir>${project.build.directory}</jbehave.osgi.outputdir>
+					</systemProperties>
 					<includes>
 						<include>**/*TraderAnnotatedPathRunnerOsgi.java</include>
 					</includes>

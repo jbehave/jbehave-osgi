@@ -30,19 +30,19 @@
 			<groupId>org.jbehave.osgi</groupId>
 			<artifactId>org.jbehave.osgi.logging</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
 			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.itests</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jbehave.osgi.examples</groupId>
 			<artifactId>org.jbehave.osgi.examples.trader.pomfirst.application</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -54,7 +54,6 @@
 					<name>pax.exam.framework</name>
 					<value>felix</value>
 				</property>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<pax.exam.framework>felix</pax.exam.framework>
@@ -129,23 +128,22 @@
 					<name>pax.exam.framework</name>
 					<value>equinox_kepler</value>
 				</property>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<pax.exam.framework>equinox_kepler</pax.exam.framework>
 			</properties>
 			<dependencies>
 				<dependency>
-					<groupId>org.eclipse.tycho</groupId>
+					<groupId>org.lunifera.osgi</groupId>
 					<artifactId>org.eclipse.osgi</artifactId>
-					<version>3.9.1.v20130814-1242</version>
+					<version>3.9.1.v20140110-1610</version>
 					<scope>test</scope>
 				</dependency>
 				<dependency>
-					<groupId>org.eclipse.birt.runtime</groupId>
+					<groupId>org.lunifera.osgi</groupId>
 					<artifactId>org.eclipse.osgi.services</artifactId>
 					<version>3.3.100.v20130513-1956</version>
-					<scope>provided</scope>
+					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.lunifera.osgi</groupId>
@@ -219,7 +217,6 @@
 			<id>itests.equinox.luna</id>
 			<!-- LUNA 3.10 -->
 			<activation>
-				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>pax.exam.framework</name>
 					<value>equinox_luna</value>
@@ -331,40 +328,6 @@
 			<build>
 				<pluginManagement>
 					<plugins>
-						<!--This plugin's configuration is used to store Eclipse m2e settings 
-							only. It has no influence on the Maven build itself. -->
-						<plugin>
-							<groupId>org.eclipse.m2e</groupId>
-							<artifactId>lifecycle-mapping</artifactId>
-							<version>1.0.0</version>
-							<configuration>
-								<lifecycleMappingMetadata>
-									<pluginExecutions>
-										<pluginExecution>
-											<pluginExecutionFilter>
-												<groupId>
-													org.ops4j.pax.exam
-												</groupId>
-												<artifactId>
-													maven-paxexam-plugin
-												</artifactId>
-												<versionRange>
-													[1.2.4,)
-												</versionRange>
-												<goals>
-													<goal>
-														generate-depends-file
-													</goal>
-												</goals>
-											</pluginExecutionFilter>
-											<action>
-												<execute></execute>
-											</action>
-										</pluginExecution>
-									</pluginExecutions>
-								</lifecycleMappingMetadata>
-							</configuration>
-						</plugin>
 					</plugins>
 				</pluginManagement>
 			</build>
@@ -401,12 +364,10 @@
 						</goals>
 						<configuration>
 							<failIfNoTests>true</failIfNoTests>
-							<forkMode>none</forkMode>
-							<parallel>none</parallel>
 							<includes>
 								<include>**/PaxExamLauncherForJBehaveOption1.java</include>
-								<include>**/PaxExamLauncherForJBehaveOption2.java</include>
-								<include>**/PaxExamLauncherForJBehaveOption3.java</include>
+<!-- 								<include>**/PaxExamLauncherForJBehaveOption2.java</include> -->
+<!-- 								<include>**/PaxExamLauncherForJBehaveOption3.java</include> -->
 							</includes>
 							<systemProperties>
 								<property>

@@ -11,6 +11,7 @@ import static org.osgi.framework.Constants.BUNDLE_ACTIVATIONPOLICY;
 import static org.osgi.framework.Constants.BUNDLE_SYMBOLICNAME;
 import static org.osgi.framework.Constants.BUNDLE_VERSION;
 import static org.osgi.framework.Constants.EXPORT_PACKAGE;
+import static org.osgi.framework.Constants.REQUIRE_BUNDLE;
 import static org.osgi.framework.Constants.IMPORT_PACKAGE;
 
 import org.jbehave.osgi.paxexam.junit.AbstractPaxExamForStoryRunner;
@@ -28,11 +29,14 @@ public class ProbeOptions {
 				.add(AbstractPaxExamForStoryRunner.class)
 				.set(BUNDLE_ACTIVATIONPOLICY, "lazy")
 				.set(EXPORT_PACKAGE, "org.jbehave.osgi.paxexam.junit")
+				.set(REQUIRE_BUNDLE,
+						"org.jbehave.osgi.core,org.hamcrest.integration;bundle-version=\"1.3.0\"")
 				.set(BUNDLE_SYMBOLICNAME, "org.jbehave.osgi.paxexam.junit")
 				.set(BUNDLE_VERSION, "1.0.0")
 				.set(IMPORT_PACKAGE,
-						"javax.inject,org.jbehave.osgi.core.annotations;version=\"[1.0,2)\","
-								+ "org.jbehave.osgi.core.services;version=\"[1.0,2)\",org.junit,org.ops4j.pax.exam;version=\"[3.5,4)\","
+						"javax.inject,org.junit,org.jbehave.osgi.core.services,"
+						+ "org.jbehave.osgi.core.annotations,"
+								+ "org.ops4j.pax.exam;version=\"[3.5,4)\","
 								+ "org.ops4j.pax.exam.options;version=\"[3.5,4)\",org.ops4j.pax.exam.options.extra;version=\"[3.5,4)\","
 								+ "org.osgi.framework,org.osgi.util.tracker")
 				.build(TinyBundles.withClassicBuilder()));
@@ -77,6 +81,8 @@ public class ProbeOptions {
 		options.add(mavenBundle("org.apache.felix",
 				"org.apache.felix.eventadmin").versionAsInProject().startLevel(
 				2));
+		options.add(mavenBundle("org.apache.felix",
+				"org.apache.felix.gogo.runtime").start().versionAsInProject());
 		options.add(mavenBundle("org.apache.felix", "org.apache.felix.metatype")
 				.versionAsInProject());
 		options.add(mavenBundle("org.apache.felix", "org.apache.felix.prefs")
@@ -88,6 +94,15 @@ public class ProbeOptions {
 		options.add(frameworkProperty(
 				"org.osgi.framework.system.packages.extra")
 				.value("org.ops4j.pax.exam;version=3.5.0,org.ops4j.pax.exam.options;version=3.5.0,org.ops4j.pax.exam.util;version=3.5.0,org.w3c.dom.traversal"));
+
+		if (isConsoleOn()) {
+			options.add(mavenBundle("org.lunifera.osgi",
+					"org.apache.felix.gogo.command").start()
+					.versionAsInProject());
+			options.add(mavenBundle("org.lunifera.osgi",
+					"org.apache.felix.gogo.shell").start().versionAsInProject());
+		}
+
 		return options;
 	}
 
@@ -173,14 +188,19 @@ public class ProbeOptions {
 		options.add(mavenBundle("org.apache.servicemix.bundles",
 				"org.apache.servicemix.bundles.woodstox").versionAsInProject());
 		options.add(mavenBundle("org.apache.servicemix.bundles",
-				"org.apache.servicemix.bundles.freemarker").versionAsInProject());
+				"org.apache.servicemix.bundles.freemarker")
+				.versionAsInProject());
 		options.add(mavenBundle("org.apache.servicemix.bundles",
 				"org.apache.servicemix.bundles.paranamer").versionAsInProject());
-		options.add(mavenBundle("commons-lang", "commons-lang").versionAsInProject());
-		options.add(mavenBundle("commons-collections", "commons-collections").versionAsInProject());
-		options.add(mavenBundle("commons-io", "commons-io").versionAsInProject());
+		options.add(mavenBundle("commons-lang", "commons-lang")
+				.versionAsInProject());
+		options.add(mavenBundle("commons-collections", "commons-collections")
+				.versionAsInProject());
+		options.add(mavenBundle("commons-io", "commons-io")
+				.versionAsInProject());
 		options.add(buildPaxExamExtensionBundle());
-		options.add(mavenBundle("com.google.guava", "guava").versionAsInProject());
+		options.add(mavenBundle("com.google.guava", "guava")
+				.versionAsInProject());
 		return options;
 	}
 

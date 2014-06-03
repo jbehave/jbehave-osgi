@@ -17,9 +17,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jbehave.core.version>4.0-SNAPSHOT</jbehave.core.version>
-<!-- 		<jbehave.core.version>4.0-beta-7</jbehave.core.version> -->
+		<!-- <jbehave.core.version>4.0-beta-7</jbehave.core.version> -->
 		<jbehave.web.version>3.6-SNAPSHOT</jbehave.web.version>
-<!-- 		<jbehave.web.version>3.6-beta-2</jbehave.web.version> -->
+		<!-- <jbehave.web.version>3.6-beta-2</jbehave.web.version> -->
 		<selenium.version>2.42.1</selenium.version>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<osgi-version-qualifier>${maven.build.timestamp}</osgi-version-qualifier>
@@ -31,6 +31,54 @@
 	</properties>
 
 	<profiles>
+		<profile>
+			<id>m2e</id>
+			<!-- This profile is only activated when building in Eclipse with m2e -->
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>						<!--This plugin's configuration is used to store Eclipse m2e settings only. 
+							It has no influence on the Maven build itself. -->
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>
+													org.ops4j.pax.exam
+												</groupId>
+												<artifactId>
+													maven-paxexam-plugin
+												</artifactId>
+												<versionRange>
+													[1.2.4,)
+												</versionRange>
+												<goals>
+													<goal>
+														generate-depends-file
+													</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute></execute>
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
 		<!-- NOTE: we can't build pom-first bundles (bnd/maven-bundle-plugin) in 
 			same maven reactor than equinox (tycho) -->
 		<profile>

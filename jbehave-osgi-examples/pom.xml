@@ -26,7 +26,6 @@
 			</build>
 			<modules>
 				<module>examples-manifest-first</module>
-				<module>examples-manifest-first/rcpmail-tycho-swtbot</module>
 			</modules>
 		</profile>
 
@@ -41,7 +40,6 @@
 			</build>
 			<modules>
 				<module>examples-manifest-first</module>
-				<module>examples-manifest-first/trader-equinox-tycho</module>
 			</modules>
 		</profile>
 

@@ -42,12 +42,16 @@ public class EmbedderOsgi extends Embedder {
 
 		public List<CandidateSteps> createCandidateSteps() {
 			List<CandidateSteps> steps = new ArrayList<CandidateSteps>();
-			synchronized (injectableStepsFactories) {
-				for (InjectableStepsFactoryService factory : injectableStepsFactories) {
-					factory.setConfiguration(configuration);
-					steps.addAll(factory.createCandidateSteps());
+			if (injectableStepsFactories != null
+					&& !injectableStepsFactories.isEmpty())
+				synchronized (injectableStepsFactories) {
+					for (InjectableStepsFactoryService factory : injectableStepsFactories) {
+						if (factory != null) {
+							factory.setConfiguration(configuration);
+							steps.addAll(factory.createCandidateSteps());
+						}
+					}
 				}
-			}
 			return steps;
 		}
 
@@ -56,7 +60,8 @@ public class EmbedderOsgi extends Embedder {
 			synchronized (injectableStepsFactories) {
 				for (InjectableStepsFactory factory : injectableStepsFactories) {
 					try {
-						instance = factory.createInstanceOfType(type);
+						if (factory != null)
+							instance = factory.createInstanceOfType(type);
 					} catch (RuntimeException e) {
 						// creation failed on given factory, carry on
 					}
@@ -71,7 +76,7 @@ public class EmbedderOsgi extends Embedder {
 
 	private final Bundle ownerBundle;
 
-	private final List<InjectableStepsFactoryService> injectableStepsFactories = new CopyOnWriteArrayList<InjectableStepsFactoryService>();
+	private volatile List<InjectableStepsFactoryService> injectableStepsFactories = new CopyOnWriteArrayList<InjectableStepsFactoryService>();
 
 	/**
 	 * The default constructor.
@@ -90,7 +95,8 @@ public class EmbedderOsgi extends Embedder {
 
 	public void addInjectableStepsFactoryService(
 			InjectableStepsFactoryService injectableStepsFactoryService) {
-		injectableStepsFactories.add(injectableStepsFactoryService);
+		if (injectableStepsFactories != null)
+			injectableStepsFactories.add(injectableStepsFactoryService);
 	}
 
 	public EmbedderClassLoader classLoader() {
@@ -120,7 +126,8 @@ public class EmbedderOsgi extends Embedder {
 
 	public void removeInjectableStepsFactoryService(
 			InjectableStepsFactoryService injectableStepsFactoryService) {
-		injectableStepsFactories.remove(injectableStepsFactoryService);
+		if (injectableStepsFactoryService != null)
+			injectableStepsFactories.remove(injectableStepsFactoryService);
 	}
 
 	public InjectableStepsFactory stepsFactory() {

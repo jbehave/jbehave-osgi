@@ -6,6 +6,7 @@
 		<groupId>org.jbehave.osgi</groupId>
 		<artifactId>jbehave-osgi-equinox</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath />
 	</parent>
 
 	<groupId>org.jbehave.osgi.examples</groupId>
@@ -26,31 +27,34 @@
 		</repository>
 	</repositories>
 
-	<modules>
-		<module>trader-equinox-tycho</module>
-		<module>rcpmail-tycho-swtbot</module>
-	</modules>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 	<profiles>
+		<profile>
+			<!-- An RCP application that uses SwtBot and Tycho based building -->
+			<id>example-rcpmail</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>rcpmail-tycho-swtbot</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<!-- An console application that uses Tycho based building -->
+			<id>example-trader-tycho-equinox</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>trader-equinox-tycho</module>
+			</modules>
+		</profile>
 		<profile>
 			<id>external-p2</id>
 			<activation>
@@ -74,4 +78,24 @@
 			</properties>
 		</profile>
 	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

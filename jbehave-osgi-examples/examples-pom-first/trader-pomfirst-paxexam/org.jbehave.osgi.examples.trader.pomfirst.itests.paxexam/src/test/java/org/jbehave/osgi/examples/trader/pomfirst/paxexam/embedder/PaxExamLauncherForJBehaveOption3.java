@@ -2,6 +2,7 @@ package org.jbehave.osgi.examples.trader.pomfirst.paxexam.embedder;
 
 import org.jbehave.osgi.core.annotations.UsingStoryRunnerServiceFilter;
 import org.jbehave.osgi.examples.trader.pomfirst.paxexam.AbstractExampleTestConfiguration;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
@@ -29,6 +30,7 @@ public class PaxExamLauncherForJBehaveOption3 extends
 	public PaxExamLauncherForJBehaveOption3() {
 	}
 	
+	@Test
 	@Override
 	public synchronized void runAllServices() throws Throwable {
 		super.runAllServices();

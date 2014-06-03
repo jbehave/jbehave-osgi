@@ -4,21 +4,23 @@
 <setAttribute key="M2_DISABLED_EXTENSIONS">
 <setEntry value="com.ifedorenko.m2e.sourcelookup"/>
 </setAttribute>
-<stringAttribute key="M2_GOALS" value="clean verify  -Declipse.log.level=ERROR"/>
+<stringAttribute key="M2_GOALS" value="clean verify"/>
 <booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
 <booleanAttribute key="M2_OFFLINE" value="false"/>
 <stringAttribute key="M2_PROFILES" value="example-trader-tycho-equinox"/>
-<listAttribute key="M2_PROPERTIES"/>
+<listAttribute key="M2_PROPERTIES">
+<listEntry value="eclipse.log.level=ERROR"/>
+</listAttribute>
 <stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
 <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
 <intAttribute key="M2_THREADS" value="1"/>
 <booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
-<stringAttribute key="M2_USER_SETTINGS" value=""/>
+<stringAttribute key="M2_USER_SETTINGS" value="../settings.xml"/>
 <booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${workspace}"/>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${project_loc:jbehave-osgi}"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${project_loc:jbehave-osgi-examples}"/>
 </launchConfiguration>
