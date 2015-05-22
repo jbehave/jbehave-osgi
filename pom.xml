@@ -662,8 +662,8 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:git://git.codehaus.org/jbehave-osgi.git</connection>
-		<developerConnection>scm:git:ssh://git@git.codehaus.org/jbehave-osgi.git</developerConnection>
-		<url>http://git.codehaus.org/gitweb.cgi?p=jbehave-osgi.git</url>
+		<connection>scm:git:git://github.com/jbehave/jbehave-osgi.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jbehave/jbehave-osgi.git</developerConnection>
+		<url>http://github.com/jbehave/jbehave-osgi</url>
 	</scm>
 </project>
